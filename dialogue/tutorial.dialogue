@@ -1,0 +1,17 @@
+~ tutorial_start
+
+Euler: Addition: 1 + 2 = 3
+Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
+- {{tutorial_x * 2}}
+	Euler: Falsch!
+	Euler: Versuche es nochmal!
+	=> tutorial_start
+- {{tutorial_x + tutorial_y}}
+	Euler: Korrekt!
+- {{tutorial_y * 2}}
+	Euler: Falsch!
+	Euler: Versuche es nochmal! 
+	=> tutorial_start
+- Bitte erkläre nochmal! => tutorial_start
+- Ende
+=> END
