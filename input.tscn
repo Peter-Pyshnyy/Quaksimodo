@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5ook81xorskx"]
+
+[ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/background_input.png" id="1_b1qk8"]
+
+[node name="Input" type="Node2D"]
+
+[node name="BackgroundInput" type="Sprite2D" parent="."]
+position = Vector2(576, 548)
+scale = Vector2(9.93104, 2.22222)
+texture = ExtResource("1_b1qk8")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 448, 1152, 448)

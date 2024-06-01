@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://di01bxnwvvn8m"]
+
+[ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/background.png" id="1_ch403"]
+[ext_resource type="PackedScene" uid="uid://b5ook81xorskx" path="res://input.tscn" id="2_akt1l"]
+
+[node name="Fight" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(9.29032, 8.1)
+texture = ExtResource("1_ch403")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Sex"
+
+[node name="Node2D" parent="." instance=ExtResource("2_akt1l")]
