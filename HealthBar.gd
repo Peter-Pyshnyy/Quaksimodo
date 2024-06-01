@@ -9,3 +9,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+var health = 0: set = _set_health
+
+func init_health(_health):
+	print("9iniz")
+	health = _health
+	max_value = health
+	value = health
+	
+func _set_health(new_health):
+	print("called")
+	health = new_health
+	value = health
