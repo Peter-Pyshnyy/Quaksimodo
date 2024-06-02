@@ -13,7 +13,8 @@ func _ready():
 	print(enemy_health)
 	healthbar.init_health(enemy_health)
 	load_questions()
-	$Sprite2D/AnimationPlayer.play("idle")
+	$Enemy/AnimationPlayer.play("idle")
+	$Frog/AnimationPlayer.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,7 +34,13 @@ func _on_attack_button_pressed():
 		enemy_health = enemy_health - 1
 		healthbar.health = enemy_health
 		print("right")
+		$Enemy.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Enemy.modulate = Color.WHITE
 	else:
+		$Frog.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Frog.modulate = Color.WHITE
 		print("wrong")
 	
 	await get_tree().create_timer(0.75).timeout
@@ -43,7 +50,13 @@ func _on_attack_button_pressed():
 		enemy_health = enemy_health - 1
 		healthbar.health = enemy_health
 		print("right")
+		$Enemy.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Enemy.modulate = Color.WHITE
 	else:
+		$Frog.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Frog.modulate = Color.WHITE
 		print("wrong")
 	
 	await get_tree().create_timer(0.75).timeout
@@ -52,8 +65,14 @@ func _on_attack_button_pressed():
 	if(anwer_to_q3 == Levels.QuestionDatabase[str(current_question_number)].a3):
 		enemy_health = enemy_health - 1
 		healthbar.health = enemy_health
+		$Enemy.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Enemy.modulate = Color.WHITE
 		print("right")
 	else:
+		$Frog.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Frog.modulate = Color.WHITE
 		print("wrong")
 		
 	await get_tree().create_timer(0.75).timeout
