@@ -23,6 +23,7 @@ Randomnumbers="*res://randomnumbers.gd"
 [dialogue_manager]
 
 general/states=["Randomnumbers"]
+general/balloon_path="res://dialogue/balloon.tscn"
 
 [editor_plugins]
 
