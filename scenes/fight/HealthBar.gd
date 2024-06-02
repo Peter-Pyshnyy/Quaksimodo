@@ -17,8 +17,12 @@ func init_health(_health):
 	health = _health
 	max_value = health
 	value = health
+	$HealthNumber.text = str(health)
 	
 func _set_health(new_health):
 	print("called")
 	health = new_health
 	value = health
+	if(health < 0):
+		health = 0
+	$HealthNumber.text = str(health)

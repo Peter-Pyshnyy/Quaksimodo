@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=12 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/fight_scene/background.png" id="1_ch403"]
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
@@ -49,6 +49,9 @@ tracks/0/keys = {
 _data = {
 "idle": SubResource("Animation_hxc4k")
 }
+
+[sub_resource type="Theme" id="Theme_5545p"]
+default_font_size = 25
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_fxtqe")
@@ -112,10 +115,12 @@ libraries = {
 }
 
 [node name="Function" type="Label" parent="."]
-offset_left = 816.0
-offset_top = 192.0
-offset_right = 960.0
-offset_bottom = 224.0
+offset_left = 734.0
+offset_top = 197.0
+offset_right = 986.0
+offset_bottom = 259.0
+theme = SubResource("Theme_5545p")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
 [node name="Question" type="Label" parent="."]

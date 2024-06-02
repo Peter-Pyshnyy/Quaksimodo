@@ -13,7 +13,7 @@ const QuestionDatabase = {
 				"a1" : "-25",
 				"q2" : "Was ist der Startwert?",
 				"a2" : "100",
-				"q3" : "Ist die Funktion linear, ja oder nein?",
+				"q3" : "Ist die Funktion linear, 'ja' oder 'nein'?",
 				"a3" : "ja"
 			},
 			"2" : {
@@ -22,7 +22,7 @@ const QuestionDatabase = {
 				"a1" : "0",
 				"q2" : "Was ist der Startwert?",
 				"a2" : "0",
-				"q3" : "Ist die Funktion linear, ja oder nein?",
+				"q3" : "Ist die Funktion linear, 'ja' oder 'nein'?",
 				"a3" : "nein"
 			},
 			"3" : {
@@ -31,7 +31,7 @@ const QuestionDatabase = {
 				"a1" : "-5",
 				"q2" : "Was ist der Startwert?",
 				"a2" : "10",
-				"q3" : "Ist die Funktion linear, ja oder nein?",
+				"q3" : "Ist die Funktion linear, 'ja' oder 'nein'?",
 				"a3" : "ja"
 			}
 		}
