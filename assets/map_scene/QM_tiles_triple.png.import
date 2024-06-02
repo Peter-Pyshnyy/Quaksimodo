@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5ma72pcncqwx"
-path="res://.godot/imported/QM_tiles_triple.png-1c2c675825c4ab6df834719a0b2f601e.ctex"
+path="res://.godot/imported/QM_tiles_triple.png-a7d898c817eceea98930273afe14cc72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://QM_tiles_triple.png"
-dest_files=["res://.godot/imported/QM_tiles_triple.png-1c2c675825c4ab6df834719a0b2f601e.ctex"]
+source_file="res://assets/map_scene/QM_tiles_triple.png"
+dest_files=["res://.godot/imported/QM_tiles_triple.png-a7d898c817eceea98930273afe14cc72.ctex"]
 
 [params]
 

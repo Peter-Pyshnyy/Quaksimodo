@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://di01bxnwvvn8m"]
 
-[ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/background.png" id="1_ch403"]
-[ext_resource type="Script" path="res://fight.gd" id="1_fxtqe"]
-[ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/background_input.png" id="3_teae5"]
-[ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://health_bar.tscn" id="4_dqjig"]
-[ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/sheet_schwan.png" id="5_vwpuy"]
+[ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/fight_scene/background.png" id="1_ch403"]
+[ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
+[ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/fight_scene/background_input.png" id="3_teae5"]
+[ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="4_dqjig"]
+[ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/fight_scene/sheet_schwan.png" id="5_vwpuy"]
 
 [sub_resource type="Animation" id="Animation_b6umv"]
 resource_name = "idle"

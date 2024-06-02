@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dyk3l5r2ap5qe"]
 
-[ext_resource type="Script" path="res://Map.gd" id="1_qhwr2"]
-[ext_resource type="Texture2D" uid="uid://bo3e36fg7g6p0" path="res://QM_tiles_single.png" id="3_ddekt"]
-[ext_resource type="Texture2D" uid="uid://xvg8a4qu8xqn" path="res://Tiles.png" id="3_vk6ns"]
-[ext_resource type="Texture2D" uid="uid://dyewqxhaos8ie" path="res://QM_tiles_double.png" id="4_6a002"]
-[ext_resource type="Texture2D" uid="uid://b5ma72pcncqwx" path="res://QM_tiles_triple.png" id="5_prgvj"]
+[ext_resource type="Script" path="res://scenes/Map/Map.gd" id="1_qhwr2"]
+[ext_resource type="Texture2D" uid="uid://bo3e36fg7g6p0" path="res://assets/map_scene/QM_tiles_single.png" id="3_ddekt"]
+[ext_resource type="Texture2D" uid="uid://xvg8a4qu8xqn" path="res://assets/map_scene/Tiles.png" id="3_vk6ns"]
+[ext_resource type="Texture2D" uid="uid://dyewqxhaos8ie" path="res://assets/map_scene/QM_tiles_double.png" id="4_6a002"]
+[ext_resource type="Texture2D" uid="uid://b5ma72pcncqwx" path="res://assets/map_scene/QM_tiles_triple.png" id="5_prgvj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ae0vl"]
 resource_name = "Atlas"

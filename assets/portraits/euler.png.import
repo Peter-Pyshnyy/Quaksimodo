@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddp0o33nqegbv"
-path="res://.godot/imported/sheet_schwan.png-b8137b19fdd647d478f22f83752582fd.ctex"
+uid="uid://b6t371xuu6pkx"
+path="res://.godot/imported/euler.png-736e6083e367e5d6af49a4e3510d2cbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sheet_schwan.png"
-dest_files=["res://.godot/imported/sheet_schwan.png-b8137b19fdd647d478f22f83752582fd.ctex"]
+source_file="res://assets/portraits/euler.png"
+dest_files=["res://.godot/imported/euler.png-736e6083e367e5d6af49a4e3510d2cbc.ctex"]
 
 [params]
 
