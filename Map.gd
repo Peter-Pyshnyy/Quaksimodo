@@ -123,28 +123,38 @@ func find_furthest_square() -> Vector2i:
 	return furthest_point
 
 func draw_map():
-	#for square_coords in squares_dict:
-		#tile_map.set_cell(0, square_coords, 1, Vector2i(1,0));
-	
 	for square: Square in squares_dict.values():
-		var atlas_coords = choose_tile(square)
+		#used to select a tile set
 		var atlas_id = square.get_taken_paths().size()
+		
+		#tile with 4 exits in on QM_tiles_double
 		if (atlas_id == 4):
 			atlas_id = 2; 
 		
-		tile_map.set_cell(0, square.coords, atlas_id, atlas_coords);
+		#used to select a tile from a tile set
+		var atlas_coords = choose_tile(square)
+		
+		#sets a sprite on a cell (y reversed)
+		tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
 
 func choose_tile(square: Square) -> Vector2i:
 	match square.get_taken_paths().size():
 		1:
-			var exit: int = DIR_INDX_DICT[square.get_free_paths()[0]]
+			#selects based on the single outgoing path
+			var exit: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
 			return Vector2i(exit, 0)
 		2:
+			#uses the grid of the tile set to select a tile
 			var exit_1: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
 			var exit_2: int = DIR_INDX_DICT[square.get_taken_paths()[1]]
-			return Vector2i(exit_1, exit_2);
+			
+			return Vector2i(exit_2, exit_1);
 		3:
-			var closed_exit: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
+			#selects based on the single closed path
+			if(square.get_free_paths().is_empty()):
+				return Vector2i(2,0)
+				
+			var closed_exit: int = DIR_INDX_DICT[square.get_free_paths()[0]]
 			return Vector2i(closed_exit, 0)
 		_:
 			return Vector2i(0,0)
