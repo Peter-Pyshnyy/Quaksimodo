@@ -24,14 +24,15 @@ const COORDS_ADD_DICT = {
 	"left": Vector2i(-1,0),
 }
 
-var squares_dict: Dictionary;
+var squares_dict: Dictionary
+var active_sqr: Square
 @onready var tile_map = $TileMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_map(7)
 	print_map()
-	draw_map()
+	draw_active_square()
 
 
 
@@ -43,6 +44,7 @@ func _process(delta):
 func generate_map(i: int = 6):
 	#creates the first square with coords (0,0) of type START
 	var start = Square.new(); 
+	active_sqr = start
 	squares_dict[start.coords] = start
 	
 	for n in i:
@@ -136,6 +138,23 @@ func draw_map():
 		
 		#sets a sprite on a cell (y reversed)
 		tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
+
+func draw_active_square():	
+	var square = active_sqr
+	
+	#used to select a tile set
+	var atlas_id = square.get_taken_paths().size()
+	
+	#tile with 4 exits in on QM_tiles_double
+	if (atlas_id == 4):
+		atlas_id = 2; 
+	
+	#used to select a tile from a tile set
+	var atlas_coords = choose_tile(square)
+	
+	#sets a sprite on a cell (y reversed)
+	tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
+
 
 func choose_tile(square: Square) -> Vector2i:
 	match square.get_taken_paths().size():
