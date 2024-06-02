@@ -14,9 +14,17 @@ config/name="Quaksimodo"
 run/main_scene="res://scenes/Map/Map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+Randomnumbers="*res://randomnumbers.gd"
+
+[dialogue_manager]
+
+general/states=["Randomnumbers"]
+general/balloon_path="res://dialogue/balloon.tscn"
 
 [editor_plugins]
 
@@ -29,3 +37,4 @@ locale/translations_pot_files=PackedStringArray("res://assets/dialogue/tutorial.
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+
