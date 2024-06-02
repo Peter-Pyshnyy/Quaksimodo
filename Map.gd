@@ -8,6 +8,14 @@ const CONNECTION_DICT = {
 	"left": "right",
 }
 
+#used to select a correct tile for the map
+const DIR_INDX_DICT = {
+	"up": 0,
+	"right": 1,
+	"down": 2,
+	"left": 3,
+}
+
 #used to generate new square coordinates by adding to the previous coords
 const COORDS_ADD_DICT = {
 	"up": Vector2i(0,1),
@@ -17,11 +25,13 @@ const COORDS_ADD_DICT = {
 }
 
 var squares_dict: Dictionary;
+@onready var tile_map = $TileMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_map()
+	generate_map(7)
 	print_map()
+	draw_map()
 
 
 
@@ -29,7 +39,7 @@ func _ready():
 func _process(delta):
 	pass
 
-
+#i = map size - 2
 func generate_map(i: int = 6):
 	#creates the first square with coords (0,0) of type START
 	var start = Square.new(); 
@@ -112,6 +122,34 @@ func find_furthest_square() -> Vector2i:
 	
 	return furthest_point
 
+func draw_map():
+	#for square_coords in squares_dict:
+		#tile_map.set_cell(0, square_coords, 1, Vector2i(1,0));
+	
+	for square: Square in squares_dict.values():
+		var atlas_coords = choose_tile(square)
+		var atlas_id = square.get_taken_paths().size()
+		if (atlas_id == 4):
+			atlas_id = 2; 
+		
+		tile_map.set_cell(0, square.coords, atlas_id, atlas_coords);
+
+func choose_tile(square: Square) -> Vector2i:
+	match square.get_taken_paths().size():
+		1:
+			var exit: int = DIR_INDX_DICT[square.get_free_paths()[0]]
+			return Vector2i(exit, 0)
+		2:
+			var exit_1: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
+			var exit_2: int = DIR_INDX_DICT[square.get_taken_paths()[1]]
+			return Vector2i(exit_1, exit_2);
+		3:
+			var closed_exit: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
+			return Vector2i(closed_exit, 0)
+		_:
+			return Vector2i(0,0)
+
+	
 
 func print_map():
 	for square in squares_dict.values():
