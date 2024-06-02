@@ -25,26 +25,34 @@ const COORDS_ADD_DICT = {
 }
 
 var squares_dict: Dictionary
-var active_sqr: Square
 @onready var tile_map = $TileMap
+@onready var player_icon = $TileMap/player_icon
+@onready var start_btn = $TileMap/player_icon/Camera2D/start
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate_map(7)
-	print_map()
+	if(!MapAutoload.squares_dict.is_empty()):
+		squares_dict = MapAutoload.squares_dict
+		player_icon.position = MapAutoload.player_icon_pos
+		MapAutoload.active_sqr.completed = true
+		btn_toggle()
+		
+		for square in MapAutoload.visited_squares:
+			draw_square(square)
+		
+		
+	else:
+		generate_map(7)
+	
 	draw_active_square()
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 #i = map size - 2
 func generate_map(i: int = 6):
 	#creates the first square with coords (0,0) of type START
-	var start = Square.new(); 
-	active_sqr = start
+	var start = Square.new()
+	start.completed = true
+	MapAutoload.active_sqr = start
 	squares_dict[start.coords] = start
 	
 	for n in i:
@@ -75,6 +83,9 @@ func generate_map(i: int = 6):
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
 	squares_dict[boss_square.coords] = boss_square
+	
+	MapAutoload.squares_dict = squares_dict
+	btn_toggle()
 
 
 func connect_squares(s1: Square, s2: Square, path: String):
@@ -140,8 +151,12 @@ func draw_map():
 		tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
 
 func draw_active_square():	
-	var square = active_sqr
+	var square = MapAutoload.active_sqr
+	MapAutoload.visited_squares.push_back(square)
 	
+	draw_square(square)
+
+func draw_square(square: Square):
 	#used to select a tile set
 	var atlas_id = square.get_taken_paths().size()
 	
@@ -154,7 +169,6 @@ func draw_active_square():
 	
 	#sets a sprite on a cell (y reversed)
 	tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
-
 
 func choose_tile(square: Square) -> Vector2i:
 	match square.get_taken_paths().size():
@@ -178,10 +192,18 @@ func choose_tile(square: Square) -> Vector2i:
 		_:
 			return Vector2i(0,0)
 
-	
-
 func print_map():
 	for square in squares_dict.values():
 		print(square.coords)
 		print(square.get_taken_paths())
 		print()
+
+
+func _on_start_pressed():
+	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
+
+func btn_toggle():
+	if(MapAutoload.active_sqr.completed):
+		start_btn.hide()
+	else:
+		start_btn.show()

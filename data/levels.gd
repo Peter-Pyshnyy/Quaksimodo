@@ -11,8 +11,8 @@ const QuestionDatabase = {
 				"f" : "f(x) = 4x + 100",
 				"q1" : "Wo befindet sich die Nullstelle?",
 				"a1" : "-25",
-				"q2" : "Was ist der Startwert?",
-				"a2" : "100",
+				"q2" : "Was ist f(2)?",
+				"a2" : "108",
 				"q3" : "Ist die Funktion linear, 'ja' oder 'nein'?",
 				"a3" : "ja"
 			},
@@ -20,7 +20,7 @@ const QuestionDatabase = {
 				"f" : "f(x) = x²",
 				"q1" : "Wo befindet sich die Nullstelle?",
 				"a1" : "0",
-				"q2" : "Was ist der Startwert?",
+				"q2" : "Was ist f(0)?",
 				"a2" : "0",
 				"q3" : "Ist die Funktion linear, 'ja' oder 'nein'?",
 				"a3" : "nein"
@@ -29,8 +29,8 @@ const QuestionDatabase = {
 				"f" : "f(x) = 2x + 10",
 				"q1" : "Wo befindet sich die Nullstelle?",
 				"a1" : "-5",
-				"q2" : "Was ist der Startwert?",
-				"a2" : "10",
+				"q2" : "Was ist f(10)?",
+				"a2" : "30",
 				"q3" : "Ist die Funktion linear, 'ja' oder 'nein'?",
 				"a3" : "ja"
 			}

@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://b01qed20k885c"]
+
+[ext_resource type="Script" path="res://scenes/menu/options.gd" id="1_evj1a"]
+
+[node name="options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_evj1a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 1160.0
+offset_bottom = 672.0
+color = Color(0.00394095, 0.213376, 0.368103, 1)
+
+[node name="game_title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 16.0
+offset_right = 816.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 70
+text = "Options"
+
+[node name="volume" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 168.0
+offset_right = 664.0
+offset_bottom = 252.0
+pivot_offset = Vector2(144, 48)
+theme_override_font_sizes/font_size = 55
+text = "Volume"
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 272.0
+offset_right = 666.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 55
+text = "Back"
+
+[connection signal="pressed" from="volume" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

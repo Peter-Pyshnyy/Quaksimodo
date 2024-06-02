@@ -11,11 +11,12 @@ var current_question_number
 func _ready():
 	current_level = 1
 	current_question_number = 1
-	frog_health = 10
+	frog_health = PlayerDataAl.health
 	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
-	print(enemy_health)
+
 	healthbar_enemy.init_health(enemy_health)
-	healthbar_frog.init_health(frog_health)
+	healthbar_frog.init_health(10)
+	healthbar_frog.health = frog_health
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
@@ -72,8 +73,10 @@ func _on_attack_button_pressed():
 	$Answer2.modulate = Color.WHITE
 	$Answer3.modulate = Color.WHITE
 	$Button.grab_focus()
-	if(enemy_health <= 0 or frog_health <= 0):
-		get_tree().change_scene_to_file("res://spiel.tscn")
+	if(enemy_health <= 0):
+		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+	elif(frog_health <= 0):
+		get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 	else:
 		if(current_question_number == 3 ):
 			current_question_number = 1
@@ -87,6 +90,7 @@ func hurt_frog():
 	$Frog.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	$Frog.modulate = Color.WHITE
+	PlayerDataAl.health = frog_health
 	
 func hurt_enemy():
 	enemy_health = enemy_health - 1

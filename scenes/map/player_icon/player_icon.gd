@@ -17,10 +17,13 @@ func _input(event):
 		return
 	
 	self.position += 16*input_movement
+	MapAutoload.player_icon_pos = self.position
+	
 	var square = Vector2i(self.position/16)
 	square.y *= -1
-	map.active_sqr = map.squares_dict[square]
+	MapAutoload.active_sqr = map.squares_dict[square]
 	map.draw_active_square()
+	map.btn_toggle()
 	
 	
 

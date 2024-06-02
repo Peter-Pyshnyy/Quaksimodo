@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Quaksimodo"
-run/main_scene="res://scenes/map/Map.tscn"
+run/main_scene="res://scenes/menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Randomnumbers="*res://randomnumbers.gd"
+Randomnumbers="*res://scenes/tutorial/randomnumbers.gd"
+MapAutoload="*res://scenes/map/map_autoload.gd"
+PlayerDataAl="*res://main_classes/player/player_data_AL.gd"
 
 [dialogue_manager]
 

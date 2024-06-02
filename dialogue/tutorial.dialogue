@@ -13,5 +13,6 @@ Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
 	Euler: Versuche es nochmal! 
 	=> tutorial_start
 - Bitte erkläre nochmal! => tutorial_start
-- Ende
+- Skip
+do get_tree().change_scene_to_file("res://scenes/map/map.tscn")
 => END

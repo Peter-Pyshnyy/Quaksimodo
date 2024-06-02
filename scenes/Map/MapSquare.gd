@@ -13,6 +13,7 @@ var exits_dict = {
 
 var coords: Vector2i
 var roomType: ROOMS
+var completed: bool
 
 func _init(coords: Vector2i = Vector2i(0,0), roomType: ROOMS = ROOMS.START):
 	self.coords = coords
