@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=11 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/fight_scene/background.png" id="1_ch403"]
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
 [ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/fight_scene/background_input.png" id="3_teae5"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="4_dqjig"]
 [ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/fight_scene/sheet_schwan.png" id="5_vwpuy"]
+[ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
 
 [sub_resource type="Animation" id="Animation_b6umv"]
 resource_name = "idle"
@@ -28,11 +29,32 @@ _data = {
 "idle": SubResource("Animation_b6umv")
 }
 
+[sub_resource type="Animation" id="Animation_hxc4k"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iybaq"]
+_data = {
+"idle": SubResource("Animation_hxc4k")
+}
+
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_fxtqe")
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(579, 324)
 scale = Vector2(9.29032, 8.1)
 texture = ExtResource("1_ch403")
 
@@ -59,33 +81,77 @@ offset_right = 224.0
 offset_bottom = 608.0
 text = "Attack"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Enemy" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(936, 528)
 scale = Vector2(0.452333, 0.452333)
 texture = ExtResource("5_vwpuy")
 hframes = 2
-frame = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
 libraries = {
 "": SubResource("AnimationLibrary_54lx1")
 }
 
+[node name="Frog" type="Sprite2D" parent="."]
+position = Vector2(400, 437)
+scale = Vector2(1.474, 0.566)
+texture = ExtResource("6_hen0n")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frog"]
+libraries = {
+"": SubResource("AnimationLibrary_iybaq")
+}
+
+[node name="Function" type="Label" parent="."]
+offset_left = 816.0
+offset_top = 192.0
+offset_right = 960.0
+offset_bottom = 224.0
+horizontal_alignment = 1
+
 [node name="Question" type="Label" parent="."]
-offset_left = 640.0
-offset_top = 208.0
-offset_right = 810.0
-offset_bottom = 231.0
+offset_left = 320.0
+offset_top = 456.0
+offset_right = 490.0
+offset_bottom = 479.0
+
+[node name="Question2" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 544.0
+offset_right = 490.0
+offset_bottom = 567.0
+
+[node name="Question3" type="Label" parent="."]
+offset_left = 576.0
+offset_top = 456.0
+offset_right = 746.0
+offset_bottom = 479.0
 
 [node name="Answer" type="LineEdit" parent="."]
-offset_left = 304.0
+offset_left = 320.0
 offset_top = 496.0
-offset_right = 450.0
+offset_right = 466.0
 offset_bottom = 527.0
 placeholder_text = "Solution"
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Answer"]
+[node name="Answer2" type="LineEdit" parent="."]
+offset_left = 320.0
+offset_top = 584.0
+offset_right = 466.0
+offset_bottom = 615.0
+placeholder_text = "Solution"
+
+[node name="Answer3" type="LineEdit" parent="."]
+offset_left = 576.0
+offset_top = 496.0
+offset_right = 722.0
+offset_bottom = 527.0
+placeholder_text = "Solution"
 
 [connection signal="pressed" from="Button" to="." method="_on_attack_button_pressed"]
-[connection signal="text_submitted" from="Answer" to="." method="_on_answer_text_submitted"]
+[connection signal="focus_exited" from="Answer" to="." method="_on_answer_focus_exited"]
+[connection signal="focus_exited" from="Answer2" to="." method="_on_answer_2_focus_exited"]
+[connection signal="focus_exited" from="Answer3" to="." method="_on_answer_3_focus_exited"]
