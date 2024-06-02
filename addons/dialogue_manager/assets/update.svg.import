@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:addons/dialogue_manager/assets/update.svg.import
 uid="uid://dyu04pk6222m6"
 path="res://.godot/imported/update.svg-f1628866ed4eb2e13e3b81f75443687e.ctex"
+========
+uid="uid://dyewqxhaos8ie"
+path="res://.godot/imported/QM_tiles_double.png-8f101b633b323d67656a7bb28a4f5219.ctex"
+>>>>>>>> Level-generation:QM_tiles_double.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:addons/dialogue_manager/assets/update.svg.import
 source_file="res://addons/dialogue_manager/assets/update.svg"
 dest_files=["res://.godot/imported/update.svg-f1628866ed4eb2e13e3b81f75443687e.ctex"]
+========
+source_file="res://QM_tiles_double.png"
+dest_files=["res://.godot/imported/QM_tiles_double.png-8f101b633b323d67656a7bb28a4f5219.ctex"]
+>>>>>>>> Level-generation:QM_tiles_double.png.import
 
 [params]
 
@@ -32,6 +42,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
