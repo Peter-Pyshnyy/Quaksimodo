@@ -5,40 +5,34 @@ var direction = Vector2.ZERO
 
 var speed = 70
 var health = player_data.health
+var coin_count = player_data.coins
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	move()
-	update_move_anim()
+	move(delta)
 
-
-func move():
+func move(delta):
 	input_movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if input_movement != Vector2.ZERO:
 		velocity = input_movement * speed
-		
-	if input_movement == Vector2.ZERO:
+	else:
 		velocity = Vector2.ZERO
 		
 	move_and_slide()
-	
-func update_move_anim():
-	if input_movement != Vector2.ZERO:
-		if Input.is_action_pressed("ui_right"):
-			direction = Vector2(1, 0)
-			$anim.play("WalkRight")
-		if Input.is_action_pressed("ui_left"):
-			direction = Vector2(-1, 0)
-			$anim.play("WalkLeft")
-		if Input.is_action_pressed("ui_up"):
-			direction = Vector2(0, -1)
-			$anim.play("WalkUp")
-		if Input.is_action_pressed("ui_down"):
-			direction = Vector2(0, 1)
-			$anim.play("WalkDown")
+
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		die()
+		
+func heal_life(amount):
+	health += amount
+
+func die():
+	queue_free()
+
+func collect_coin():
+	coin_count += 1
