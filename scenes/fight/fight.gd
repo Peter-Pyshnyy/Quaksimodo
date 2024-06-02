@@ -76,6 +76,8 @@ func _on_attack_button_pressed():
 	if(enemy_health <= 0):
 		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
 	elif(frog_health <= 0):
+		MapAutoload.reset()
+		PlayerDataAl.reset()
 		get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 	else:
 		if(current_question_number == 3 ):
