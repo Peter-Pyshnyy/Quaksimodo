@@ -75,10 +75,10 @@ offset_right = 1072.0
 offset_bottom = 176.0
 
 [node name="HealthBarFrog" parent="." instance=ExtResource("4_dqjig")]
-offset_left = 17.0
-offset_top = 21.0
-offset_right = 377.0
-offset_bottom = 141.0
+offset_left = 30.0
+offset_top = 71.0
+offset_right = 390.0
+offset_bottom = 191.0
 
 [node name="Button" type="Button" parent="."]
 offset_left = 72.0

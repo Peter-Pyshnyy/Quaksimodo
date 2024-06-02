@@ -72,6 +72,14 @@ func _on_attack_button_pressed():
 	$Answer2.modulate = Color.WHITE
 	$Answer3.modulate = Color.WHITE
 	$Button.grab_focus()
+	if(enemy_health <= 0):
+		get_tree().change_scene_to_file("res://spiel.tscn")
+	else:
+		if(current_question_number == 3 ):
+			current_question_number = 1
+		else:
+			current_question_number += 1
+		load_questions()
 
 func hurt_frog():
 	frog_health = frog_health - 1
