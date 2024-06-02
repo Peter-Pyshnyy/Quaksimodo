@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://di01bxnwvvn8m"]
+
+[ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/background.png" id="1_ch403"]
+[ext_resource type="Script" path="res://fight.gd" id="1_fxtqe"]
+[ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/background_input.png" id="3_teae5"]
+[ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://health_bar.tscn" id="4_dqjig"]
+[ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/sheet_schwan.png" id="5_vwpuy"]
+
+[sub_resource type="Animation" id="Animation_b6umv"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54lx1"]
+_data = {
+"idle": SubResource("Animation_b6umv")
+}
+
+[node name="Fight" type="Node2D"]
+script = ExtResource("1_fxtqe")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(9.29032, 8.1)
+texture = ExtResource("1_ch403")
+
+[node name="Line2D" type="Line2D" parent="background"]
+position = Vector2(-62, -40)
+scale = Vector2(0.107639, 0.123457)
+points = PackedVector2Array(0, 448, 1152, 448)
+
+[node name="BackgroundInput" type="Sprite2D" parent="background"]
+position = Vector2(0, 27.6543)
+scale = Vector2(1.06897, 0.274348)
+texture = ExtResource("3_teae5")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_dqjig")]
+offset_left = 712.0
+offset_top = 56.0
+offset_right = 1072.0
+offset_bottom = 176.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 496.0
+offset_right = 224.0
+offset_bottom = 608.0
+text = "Attack"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(936, 528)
+scale = Vector2(0.452333, 0.452333)
+texture = ExtResource("5_vwpuy")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_54lx1")
+}
+
+[node name="Question" type="Label" parent="."]
+offset_left = 640.0
+offset_top = 208.0
+offset_right = 810.0
+offset_bottom = 231.0
+
+[node name="Answer" type="LineEdit" parent="."]
+offset_left = 304.0
+offset_top = 496.0
+offset_right = 450.0
+offset_bottom = 527.0
+placeholder_text = "Solution"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Answer"]
+
+[connection signal="pressed" from="Button" to="." method="_on_attack_button_pressed"]
+[connection signal="text_submitted" from="Answer" to="." method="_on_answer_text_submitted"]
