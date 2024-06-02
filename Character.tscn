@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqmqew2va8qrj"]
+
+[ext_resource type="PackedScene" uid="uid://dnct8qrsq6gtk" path="res://player.tscn" id="1_8g2fc"]
+[ext_resource type="PackedScene" uid="uid://wll5j1tky7rg" path="res://coin.tscn" id="2_mq748"]
+
+[node name="Character" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8g2fc")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="coin" parent="." instance=ExtResource("2_mq748")]
+position = Vector2(75, 0)
+
+[node name="coin2" parent="." instance=ExtResource("2_mq748")]
+position = Vector2(-82, 30)
+
+[node name="coin3" parent="." instance=ExtResource("2_mq748")]
+position = Vector2(-0.999998, -58)
+
+[node name="coin4" parent="." instance=ExtResource("2_mq748")]
+position = Vector2(75, 60)
