@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://m73f0l7q404i"]
+
+[ext_resource type="Texture2D" uid="uid://wtctjm0irv0o" path="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png" id="1_sq5wv"]
+
+[node name="Steuerung" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.00001, -2)
+scale = Vector2(0.830803, 0.611678)
+texture = ExtResource("1_sq5wv")
+offset = Vector2(-24.46, 21.81)
