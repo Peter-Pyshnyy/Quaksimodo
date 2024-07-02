@@ -34,5 +34,11 @@ func check_path(pos: Vector2i) -> bool:
 	var grid_coords = round(pos / 16)
 	grid_coords.y *= -1
 
-	return map.squares_dict.has(grid_coords)
+	if !map.squares_dict.has(grid_coords):
+		return false
+	
+	if !MapAutoload.active_sqr.completed && !map.squares_dict[grid_coords].completed:
+		return false
+	
+	return true
 
