@@ -20,6 +20,8 @@ func _ready():
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
+	$background/AnimationPlayer.play("idle")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
