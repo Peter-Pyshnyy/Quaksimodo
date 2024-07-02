@@ -15,7 +15,7 @@ func _ready():
 	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
 
 	healthbar_enemy.init_health(enemy_health)
-	healthbar_frog.init_health(10)
+	healthbar_frog.init_health(frog_health)
 	healthbar_frog.health = frog_health
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")
@@ -74,6 +74,7 @@ func _on_attack_button_pressed():
 	$Answer3.modulate = Color.WHITE
 	$Button.grab_focus()
 	if(enemy_health <= 0):
+		activate_random_power_up()
 		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
@@ -87,7 +88,7 @@ func _on_attack_button_pressed():
 		load_questions()
 
 func hurt_frog():
-	frog_health = frog_health - 1
+	frog_health = frog_health - PlayerDataAl.enemy_damage
 	healthbar_frog.health = frog_health
 	$Frog.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
@@ -95,7 +96,7 @@ func hurt_frog():
 	PlayerDataAl.health = frog_health
 	
 func hurt_enemy():
-	enemy_health = enemy_health - 1
+	enemy_health = enemy_health - PlayerDataAl.player_damage
 	healthbar_enemy.health = enemy_health
 	$Enemy.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
@@ -114,5 +115,37 @@ func _on_answer_2_focus_exited():
 func _on_answer_3_focus_exited():
 	anwer_to_q3 = $Answer3.text
 
+func activate_random_power_up():
+	var power_up = randi() % 6
+	match power_up:
+		0:
+			set_health_power_up()
+		1:
+			set_map_power_up()
+		2:
+			set_frog_reduced_receive_damage_power_up()
+		3:
+			set_frog_more_attack_damage_power_up()
+		4:
+			set_frog_shield_power_up()
+		5:
+			set_next_question_right_power_up()
+	print("Zufälliges Power-Up aktiviert: ", power_up)
+	
+func set_health_power_up():
+	PlayerDataAl.health_power_up = true
 
+func set_map_power_up():
+	PlayerDataAl.map_power_up = true
 
+func set_frog_reduced_receive_damage_power_up():
+	PlayerDataAl.frog_reduced_receive_damage_power_up = true
+
+func set_frog_more_attack_damage_power_up():
+	PlayerDataAl.frog_more_attack_damage_power_up = true
+
+func set_frog_shield_power_up():
+	PlayerDataAl.frog_shield_power_up = true
+
+func set_next_question_right_power_up():
+	PlayerDataAl.next_question_right_power_up = true
