@@ -1,6 +1,6 @@
 extends Node
 
-var health
+var health = 10
 var max_health = 10
 var player_damage = 1
 var enemy_damage = 1

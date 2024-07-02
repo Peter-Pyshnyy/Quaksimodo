@@ -15,7 +15,7 @@ func _ready():
 	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
 
 	healthbar_enemy.init_health(enemy_health)
-	healthbar_frog.init_health(frog_health)
+	healthbar_frog.init_health(10)
 	healthbar_frog.health = frog_health
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")

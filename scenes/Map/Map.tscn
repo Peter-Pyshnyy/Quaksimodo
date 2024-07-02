@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyk3l5r2ap5qe"]
+[gd_scene load_steps=26 format=3 uid="uid://dyk3l5r2ap5qe"]
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://bo3e36fg7g6p0" path="res://assets/map_scene/QM_tiles_single.png" id="3_ddekt"]
@@ -9,6 +9,16 @@
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="7_sgvhx"]
 [ext_resource type="Texture2D" uid="uid://wtctjm0irv0o" path="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png" id="8_7aiy5"]
 [ext_resource type="Script" path="res://scenes/Map/steuerung.gd" id="9_ikvlr"]
+[ext_resource type="Texture2D" uid="uid://cj87bgxhjcqgh" path="res://main_classes/player/item_gabel.png" id="10_3meua"]
+[ext_resource type="Texture2D" uid="uid://cv486psqiacjb" path="res://main_classes/player/item_geodreieck.png" id="11_777n0"]
+[ext_resource type="Script" path="res://scenes/Map/Sprite2D2.gd" id="11_ne5k7"]
+[ext_resource type="Texture2D" uid="uid://cyvf4caogi8vk" path="res://main_classes/player/item_mittagspause.png" id="12_41rcj"]
+[ext_resource type="Script" path="res://scenes/Map/Sprite2D3.gd" id="13_6ht5b"]
+[ext_resource type="Texture2D" uid="uid://dv8p6xedn3n6p" path="res://main_classes/player/item_stadtplan.png" id="13_biv36"]
+[ext_resource type="Texture2D" uid="uid://b24gbdry1sle1" path="res://main_classes/player/item_eimer.png" id="14_e5lo6"]
+[ext_resource type="Script" path="res://scenes/Map/Sprite2D4.gd" id="15_74ion"]
+[ext_resource type="Script" path="res://scenes/Map/Sprite2D5.gd" id="17_eg05m"]
+[ext_resource type="Script" path="res://scenes/Map/Sprite2D6.gd" id="19_yggjx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6lwc"]
 texture = ExtResource("3_ddekt")
@@ -84,10 +94,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
 [node name="start" type="Button" parent="TileMap/player_icon/Camera2D"]
-offset_left = -39.0
-offset_top = -57.0
-offset_right = 39.0
-offset_bottom = -40.0
+offset_left = -41.0
+offset_top = -59.0
+offset_right = 37.0
+offset_bottom = -42.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Start!"
@@ -142,6 +152,36 @@ offset_right = 30.0001
 offset_bottom = 113.0
 scale = Vector2(1.73982, 1.92173)
 text = "nach unten"
+
+[node name="Gabel" type="Sprite2D" parent="."]
+position = Vector2(-56, -43)
+scale = Vector2(0.875, 0.75)
+texture = ExtResource("10_3meua")
+script = ExtResource("11_ne5k7")
+
+[node name="GeoDreieck" type="Sprite2D" parent="."]
+position = Vector2(-86, -43)
+scale = Vector2(0.875, 0.8125)
+texture = ExtResource("11_777n0")
+script = ExtResource("13_6ht5b")
+
+[node name="Mittagspause" type="Sprite2D" parent="."]
+position = Vector2(-41, -43)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("12_41rcj")
+script = ExtResource("15_74ion")
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(-72, -43)
+scale = Vector2(0.875, 0.8125)
+texture = ExtResource("13_biv36")
+script = ExtResource("17_eg05m")
+
+[node name="Eimer" type="Sprite2D" parent="."]
+position = Vector2(-100, -43)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_e5lo6")
+script = ExtResource("19_yggjx")
 
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/start/start" to="." method="_on_start_pressed"]
