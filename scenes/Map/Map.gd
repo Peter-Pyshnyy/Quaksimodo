@@ -48,7 +48,7 @@ func _ready():
 
 
 #i = map size - 2
-func generate_map(i: int = 6):
+func generate_map(i: int = 7):
 	#creates the first square with coords (0,0) of type START
 	var start = Square.new()
 	start.completed = true
@@ -73,6 +73,8 @@ func generate_map(i: int = 6):
 		#connects the new square to surrounding squares
 		connect_surroundings(new_square)
 		
+		new_square.roomType = Square.ROOMS.ENEMY
+		
 		squares_dict[new_square.coords] = new_square
 	
 	#add boss square near the furthest square from (0,0)
@@ -82,9 +84,16 @@ func generate_map(i: int = 6):
 	#same as adding new square
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
+	boss_square.roomType = Square.ROOMS.BOSS
 	squares_dict[boss_square.coords] = boss_square
 	
+	#spawns a chest and a shop in the world
+	var keys = squares_dict.keys()
+	squares_dict[keys[round(squares_dict.size()/3)]].roomType = Square.ROOMS.CHEST
+	squares_dict[keys[2*round(squares_dict.size()/3)]].roomType = Square.ROOMS.SHOP
+	
 	MapAutoload.squares_dict = squares_dict
+	
 	btn_toggle()
 
 
@@ -207,3 +216,9 @@ func btn_toggle():
 		start_btn.hide()
 	else:
 		start_btn.show()
+
+
+#TO DO:
+#Each lvl a little bit more rooms
+#Show when there's a chest/enemy/shop
+#not completed paths are shown as squares and don't show conntections jet

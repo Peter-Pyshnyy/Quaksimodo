@@ -76,6 +76,7 @@ func _on_attack_button_pressed():
 	$Answer3.modulate = Color.WHITE
 	$Button.grab_focus()
 	if(enemy_health <= 0):
+		MapAutoload.active_sqr.completed = true
 		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
