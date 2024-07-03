@@ -1,7 +1,6 @@
 ~ tutorial_start
 
 Euler: Addition: 1 + 2 = 3
-Storch: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
 Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
 - {{tutorial_x * 2}}
 	Euler: Falsch!
@@ -22,10 +21,28 @@ do get_tree().change_scene_to_file("res://scenes/map/map.tscn")
 
 % Storch: Endlich was zu essen!
 % Storch: Bringen wir's hinter uns. Ich hab dann noch ein Baby zu liefern.
-% Storch: Ughh, ich glaube ich hab noch einen Frosch im Hals.
 % Storch: Froschschenkel! Die mag ich am Liebsten!
 % Storch: Ab in den Horst mit dir!
 % Storch: Wenn ich mit dir fertig bin, wirst DU die Nullstelle sein.
 % Storch: Ich zieh gleich deine Wurzeln!
 
 => END
+
+~ storch_battle_victory
+
+% Storch: Nächstes mal krieg ich dich!
+% Storch: Ughh, ich glaube ich hab noch einen anderen Frosch im Hals.
+% Storch: Ach halt doch den Schnabel!
+% Storch: So lecker siehst du eh nicht aus!
+% Storch: Jetzt hab ich keinen Appetit mehr...
+% Storch: Taschenrechner ist Schummeln!
+
+=> END
+
+~ storch_battle_failure
+
+% Storch: Das wird lecker.
+% Storch: Ich bereite schonmal den Herd vor...
+% Storch: Damit wäre das Abendessen schonmal gesichert.
+% Storch: Ich hoffe ich kann das Baby noch rechtzeitig abgeben.
+% Storch: So viel kann ich garnicht essen.
