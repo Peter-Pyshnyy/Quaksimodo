@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmi6y0yuqnbvl"
-path="res://.godot/imported/euler.png-736e6083e367e5d6af49a4e3510d2cbc.ctex"
+uid="uid://wftokpby7wyk"
+path="res://.godot/imported/storch2.png-924c81a953327942b68ab13b7d4ca4a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/euler.png"
-dest_files=["res://.godot/imported/euler.png-736e6083e367e5d6af49a4e3510d2cbc.ctex"]
+source_file="res://assets/portraits/storch2.png"
+dest_files=["res://.godot/imported/storch2.png-924c81a953327942b68ab13b7d4ca4a5.ctex"]
 
 [params]
 
