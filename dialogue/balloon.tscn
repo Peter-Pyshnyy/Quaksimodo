@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=12 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="AudioStream" uid="uid://do8gy44f5vty0" path="res://sounds/hoo.wav" id="4_xsjmb"]
+[ext_resource type="AudioStream" uid="uid://bi8xg6uw5y65q" path="res://sounds/storch.wav" id="5_8ufbr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r8ag"]
 bg_color = Color(0.913006, 0.940145, 0.796076, 1)
@@ -106,10 +107,10 @@ theme = SubResource("Theme_qq3yp")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-offset_left = 51.0
-offset_top = 300.0
-offset_right = 251.0
-offset_bottom = 500.0
+offset_left = 50.0
+offset_top = 270.0
+offset_right = 250.0
+offset_bottom = 470.0
 
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
@@ -179,8 +180,11 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
-[node name="TalkingNoises" type="AudioStreamPlayer" parent="."]
+[node name="EulerNoises" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xsjmb")
+
+[node name="StorchNoises" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8ufbr")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
