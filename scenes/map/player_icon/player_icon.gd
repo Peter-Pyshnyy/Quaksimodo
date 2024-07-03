@@ -26,6 +26,8 @@ func _input(event):
 	map.draw_active_square()
 	map.btn_toggle()
 	
+	print(MapAutoload.active_sqr.roomType)
+	
 	if not has_moved:
 		has_moved = true
 		player_data.movement = true
@@ -37,8 +39,9 @@ func check_path(pos: Vector2i) -> bool:
 	if !map.squares_dict.has(grid_coords):
 		return false
 	
-	if !MapAutoload.active_sqr.completed && !map.squares_dict[grid_coords].completed:
-		return false
+	#can't move from one incompleted square to another
+	#if !MapAutoload.active_sqr.completed && !map.squares_dict[grid_coords].completed:
+		#return false
 	
 	return true
 
