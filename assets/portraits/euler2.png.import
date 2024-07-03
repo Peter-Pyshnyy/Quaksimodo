@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmi6y0yuqnbvl"
-path="res://.godot/imported/euler.png-736e6083e367e5d6af49a4e3510d2cbc.ctex"
+uid="uid://d3xxfcxkcp6vh"
+path="res://.godot/imported/euler2.png-dc3f58532362feaf3ef7aed800a0d542.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/euler.png"
-dest_files=["res://.godot/imported/euler.png-736e6083e367e5d6af49a4e3510d2cbc.ctex"]
+source_file="res://assets/portraits/euler2.png"
+dest_files=["res://.godot/imported/euler2.png-dc3f58532362feaf3ef7aed800a0d542.ctex"]
 
 [params]
 

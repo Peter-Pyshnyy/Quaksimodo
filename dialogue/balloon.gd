@@ -11,8 +11,18 @@ extends CanvasLayer
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var char_portrait = %CharPortrait
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
-@onready var talking_noises = $TalkingNoises
+@onready var euler_noises = $EulerNoises
+@onready var storch_noises = $StorchNoises
 
+
+## The empty path for the character portrait
+var char_portrait_path: String = ""
+
+## Variable to determine how much time has passed inbetween animation frames
+var timeToNextFrameChange = 0
+
+## Variable to determine the current frame
+var currentframe = 0
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -46,7 +56,7 @@ var dialogue_line: DialogueLine:
 
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-		var char_portrait_path: String = "res://portraits/%s.png" %dialogue_line.character.to_lower()
+		char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
 		if FileAccess.file_exists(char_portrait_path):
 			char_portrait.texture = load(char_portrait_path)
 		else:
@@ -163,5 +173,35 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 func _on_dialogue_label_spoke(letter, letter_index, speed):
 	if not letter in [".", " "]:
-		talking_noises.pitch_scale = randf_range(0.9, 1.1)
-		talking_noises.play()
+		var speaker
+		match dialogue_line.character.to_lower():
+			"euler":
+				speaker = euler_noises
+			"storch":
+				speaker = storch_noises
+			_:
+				speaker = null
+		speaker.pitch_scale = randf_range(0.9, 1.1)
+		speaker.play()
+
+func _process(delta):
+	var animationTime = 0.5
+	
+	if timeToNextFrameChange < animationTime:
+		timeToNextFrameChange += delta
+	else:
+		timeToNextFrameChange = 0
+		
+		if currentframe == 0:
+			char_portrait_path = "res://assets/portraits/%s2.png" %dialogue_line.character.to_lower()
+			print("animate 1")
+			currentframe = 1
+		else:
+			char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
+			print("animate 2")
+			currentframe = 0
+		
+		if FileAccess.file_exists(char_portrait_path):
+			char_portrait.texture = load(char_portrait_path)
+		else:
+			char_portrait.texture = ""
