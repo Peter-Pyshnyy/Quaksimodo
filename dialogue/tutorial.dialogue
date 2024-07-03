@@ -14,8 +14,41 @@ Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
 	=> tutorial_start
 - Bitte erkläre nochmal! => tutorial_start
 - Skip
-do get_tree().change_scene_to_file("res://scenes/map/map.tscn")
+Euler: Was soll ich heute erklären?
+- Nullstellen => tutorial_nullstellen
+
 => END
+
+~ tutorial_nullstellen
+
+Euler: Nullstellen errechnen ist ganz einfach!
+Euler: Du musst nur die Funktion gegen 0 setzen und gegen x rechnen.
+Euler: Zum Beispiel: f(x)= 2x+4 -> 0 = 2x+4 |-4 -> -4 = 2x |:2 -> -2 = x
+Euler: Bei komplizierteren Funktionen musst du einfach in die pq-Formel umstellen.
+Euler: Was ist die pq-Formel? Ganz einfach!
+Euler: x = -p/2 +/- √((p/2)²-q)
+Euler: Sagen wir, deine Funktion ist x²-6x+5. Dann wäre -6 dein p und 5 dein q
+Euler: Also wäre dein x = 6/2 +/- √((-6/2)²-5), oder vereinfacht: 3 +/- √4
+Euler: Du siehst, dass zwei Lösungen herauskommen: 3+2 und 3-2
+Euler: Die Funktion schneidet die x-Achse also an x=1 und x=5
+Euler: Sollte unter der Wurzel 0 herauskommen gäbe es nur eine Nullstelle. 
+Euler: Pass auf, dass du immer alle Nullstellen angibst!
+
+=> END
+
+~tutorial_ableitung
+Euler: Eine Ableitung gibt die Steigung der Funktion an einer jeweiligen Stelle an.
+Euler: Um eine Ableitung zu finden muss essenziell die Funktion auf das x reduziert werden.
+Euler: Zum Beispiel: Die lineare Funktion f(x)= 5x+3 hat überall den Anstieg 5.
+Euler: Alle Zahlen ohne x werden weggeschmissen und nur das die 5 bleibt übrig. Die Ableitung f'(x) ist 5.
+Euler: Bei Potenzen ist es etwas anders. Die Potenz wird um 1 subtrahiert und die vorherige Potenz wird zum x multipliziert
+Euler: x² wird zu 2x. x³ wird zu 3x². 3x² wird zu 6x.
+
+
+=> END
+
+
+
 
 ~ storch_battle_start
 
@@ -44,5 +77,7 @@ do get_tree().change_scene_to_file("res://scenes/map/map.tscn")
 % Storch: Das wird lecker.
 % Storch: Ich bereite schonmal den Herd vor...
 % Storch: Damit wäre das Abendessen schonmal gesichert.
-% Storch: Ich hoffe ich kann das Baby noch rechtzeitig abgeben.
+% Storch: Ich hoffe ich kann das Baby noch rechtzeitig abliefern.
 % Storch: So viel kann ich garnicht essen.
+
+=> END
