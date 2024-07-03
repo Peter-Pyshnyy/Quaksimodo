@@ -20,6 +20,7 @@ func _ready():
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
+	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"storch_battle_start")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -75,10 +76,12 @@ func _on_attack_button_pressed():
 	$Button.grab_focus()
 	if(enemy_health <= 0):
 		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+		DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"storch_battle_victory")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
 		PlayerDataAl.reset()
 		get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+		DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"storch_battle_failure")
 	else:
 		if(current_question_number == 3 ):
 			current_question_number = 1

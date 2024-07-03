@@ -56,11 +56,13 @@ var dialogue_line: DialogueLine:
 
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-		char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
-		if FileAccess.file_exists(char_portrait_path):
-			char_portrait.texture = load(char_portrait_path)
-		else:
-			char_portrait.texture = ""
+		
+		if char_portrait_path == "":
+			char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
+			if FileAccess.file_exists(char_portrait_path):
+				char_portrait.texture = load(char_portrait_path)
+			else:
+				char_portrait.texture = ""
 
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line
@@ -186,7 +188,9 @@ func _on_dialogue_label_spoke(letter, letter_index, speed):
 
 func _process(delta):
 	var animationTime = 0.5
-	
+	character_label.visible = not dialogue_line.character.is_empty()
+	character_label.text = tr(dialogue_line.character, "dialogue")
+		
 	if timeToNextFrameChange < animationTime:
 		timeToNextFrameChange += delta
 	else:
@@ -194,11 +198,9 @@ func _process(delta):
 		
 		if currentframe == 0:
 			char_portrait_path = "res://assets/portraits/%s2.png" %dialogue_line.character.to_lower()
-			print("animate 1")
 			currentframe = 1
 		else:
 			char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
-			print("animate 2")
 			currentframe = 0
 		
 		if FileAccess.file_exists(char_portrait_path):
