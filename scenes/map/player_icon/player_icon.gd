@@ -36,7 +36,7 @@ func check_path(pos: Vector2i) -> bool:
 	var grid_coords = round(pos / 16)
 	grid_coords.y *= -1
 
-	if !map.squares_dict.has(grid_coords):
+	if !MapAutoload.squares_dict.has(grid_coords):
 		return false
 	
 	#can't move from one incompleted square to another
