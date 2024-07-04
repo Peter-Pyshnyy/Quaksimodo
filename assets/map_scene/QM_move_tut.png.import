@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br751ihnb32p3"
-path="res://.godot/imported/QM_tiles_double.png-6102b1aaa58a31d88a2bde8e2ee1c350.ctex"
+uid="uid://mn6wonkh2r6l"
+path="res://.godot/imported/QM_move_tut.png-e11126c9fb2e9dd28614ec99a2efed51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map_scene/QM_tiles_double.png"
-dest_files=["res://.godot/imported/QM_tiles_double.png-6102b1aaa58a31d88a2bde8e2ee1c350.ctex"]
+source_file="res://assets/map_scene/QM_move_tut.png"
+dest_files=["res://.godot/imported/QM_move_tut.png-e11126c9fb2e9dd28614ec99a2efed51.ctex"]
 
 [params]
 

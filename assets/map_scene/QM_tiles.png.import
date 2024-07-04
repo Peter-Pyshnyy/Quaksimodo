@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxdwfyldem60b"
-path="res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-05e3c5d0d96c3f8cdc30bf0556e4b692.ctex"
+uid="uid://djsbwcc645wxp"
+path="res://.godot/imported/QM_tiles.png-9215d9e86f1951c2bca41f415fd33669.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-05e3c5d0d96c3f8cdc30bf0556e4b692.ctex"]
+source_file="res://assets/map_scene/QM_tiles.png"
+dest_files=["res://.godot/imported/QM_tiles.png-9215d9e86f1951c2bca41f415fd33669.ctex"]
 
 [params]
 

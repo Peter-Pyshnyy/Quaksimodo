@@ -2,7 +2,7 @@ class_name Levels
 
 const LevelDatabase = {
 	"1" : {
-		"enemy_health" : 5,
+		"enemy_health" : 1,
 		
 	} 
 }

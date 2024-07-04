@@ -27,45 +27,50 @@ const COORDS_ADD_DICT = {
 var squares_dict: Dictionary
 @onready var tile_map = $TileMap
 @onready var player_icon = $TileMap/player_icon
-@onready var start_btn = $TileMap/player_icon/Camera2D/start
+@onready var btn_fight = $TileMap/player_icon/Camera2D/btn_fight
+@onready var btn_shop = $TileMap/player_icon/Camera2D/btn_shop
+@onready var btn_chest = $TileMap/player_icon/Camera2D/btn_chest
+@onready var btn_boss = $TileMap/player_icon/Camera2D/btn_boss
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#redraw map after fight
 	if(!MapAutoload.squares_dict.is_empty()):
 		squares_dict = MapAutoload.squares_dict
 		player_icon.position = MapAutoload.player_icon_pos
-		MapAutoload.active_sqr.completed = true
-		btn_toggle()
+		btn_toggle(MapAutoload.active_sqr.roomType)
 		
 		for square in MapAutoload.visited_squares:
 			draw_square(square)
+			draw_neighbours(square)
 		
 		
 	else:
-		generate_map(7)
+		generate_map()
 	
 	draw_active_square()
 
 
 #i = map size - 2
 func generate_map(i: int = 7):
-	#creates the first square with coords (0,0) of type START
+	#creates the first square with coords (0,0) of type PATH
 	var start = Square.new()
-	start.completed = true
+	start.visited = true
 	MapAutoload.active_sqr = start
 	squares_dict[start.coords] = start
 	
 	for n in i:
-		var selected_square: Square;
+		var selected_square: Square
+		
 		while true:
-			#picks a square to attach new square to
+			#selects a square to attach new square to
 			selected_square = squares_dict.values().pick_random(); 
 			
 			#if the square has no more free paths, different square gets picked
 			if(!selected_square.get_free_paths().is_empty()): 
 				break
 		
-		var new_path = selected_square.get_free_paths().pick_random();
+		var new_path = selected_square.get_free_paths().pick_random()
 		
 		#new_square.coords = neigboring coords of selected_square.coords
 		var new_square = Square.new(selected_square.coords + COORDS_ADD_DICT[new_path])
@@ -94,7 +99,7 @@ func generate_map(i: int = 7):
 	
 	MapAutoload.squares_dict = squares_dict
 	
-	btn_toggle()
+	btn_toggle(MapAutoload.active_sqr.roomType)
 
 
 func connect_squares(s1: Square, s2: Square, path: String):
@@ -146,32 +151,25 @@ func find_furthest_square() -> Vector2i:
 
 func draw_map():
 	for square: Square in squares_dict.values():
-		#used to select a tile set
-		var atlas_id = square.get_taken_paths().size()
-		
-		#tile with 4 exits in on QM_tiles_double
-		if (atlas_id == 4):
-			atlas_id = 2; 
-		
-		#used to select a tile from a tile set
-		var atlas_coords = choose_tile(square)
-		
-		#sets a sprite on a cell (y reversed)
-		tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
+		draw_square(square)
 
 func draw_active_square():	
 	var square = MapAutoload.active_sqr
 	MapAutoload.visited_squares.push_back(square)
 	
 	draw_square(square)
+	draw_neighbours(square)
+
+func draw_neighbours(square: Square):
+	if square.roomType == Square.ROOMS.ENEMY: return
+	
+	for neighbor in square.exits_dict.values():
+			if neighbor != null && !neighbor.visited:
+				draw_square(neighbor)
 
 func draw_square(square: Square):
 	#used to select a tile set
-	var atlas_id = square.get_taken_paths().size()
-	
-	#tile with 4 exits in on QM_tiles_double
-	if (atlas_id == 4):
-		atlas_id = 2; 
+	var atlas_id = 0
 	
 	#used to select a tile from a tile set
 	var atlas_coords = choose_tile(square)
@@ -180,26 +178,18 @@ func draw_square(square: Square):
 	tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
 
 func choose_tile(square: Square) -> Vector2i:
-	match square.get_taken_paths().size():
+	if !square.visited:
+		return Vector2i(4, 0)
+	
+	match square.roomType:
 		1:
-			#selects based on the single outgoing path
-			var exit: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
-			return Vector2i(exit, 0)
+			return Vector2i(1, 0)
 		2:
-			#uses the grid of the tile set to select a tile
-			var exit_1: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
-			var exit_2: int = DIR_INDX_DICT[square.get_taken_paths()[1]]
-			
-			return Vector2i(exit_2, exit_1);
+			return Vector2i(2, 0)
 		3:
-			#selects based on the single closed path
-			if(square.get_free_paths().is_empty()):
-				return Vector2i(2,0)
-				
-			var closed_exit: int = DIR_INDX_DICT[square.get_free_paths()[0]]
-			return Vector2i(closed_exit, 0)
+			return Vector2i(3, 0)
 		_:
-			return Vector2i(0,0)
+			return Vector2i(0, 0)
 
 func print_map():
 	for square in squares_dict.values():
@@ -208,17 +198,29 @@ func print_map():
 		print()
 
 
-func _on_start_pressed():
+func _on_btn_fight_pressed():
 	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
 
-func btn_toggle():
-	if(MapAutoload.active_sqr.completed):
-		start_btn.hide()
-	else:
-		start_btn.show()
+func btn_toggle(roomType: int):
+	btn_fight.hide()
+	btn_shop.hide()
+	btn_chest.hide()
+	btn_boss.hide()
+	
+	#if a path -> don't show button
+	if(MapAutoload.active_sqr.roomType == 0):
+		return
+		
+	match roomType:
+		1: btn_fight.show()
+		2: btn_chest.show()
+		3: btn_shop.show()
+		4: btn_boss.show()
 
 
 #TO DO:
 #Each lvl a little bit more rooms
-#Show when there's a chest/enemy/shop
 #not completed paths are shown as squares and don't show conntections jet
+
+
+
