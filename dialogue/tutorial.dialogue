@@ -1,4 +1,4 @@
-~ tutorial_start
+~ tutorial_test
 
 Euler: Addition: 1 + 2 = 3
 Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
@@ -14,11 +14,21 @@ Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
 	=> tutorial_start
 - Bitte erkläre nochmal! => tutorial_start
 - Skip
-Euler: Was soll ich heute erklären?
-- Nullstellen => tutorial_nullstellen
-- Nichts => END
 
 => END
+
+~ tutorial_start
+Euler: Was soll ich heute erklären?
+Storch: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
+Igel: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
+Bieber: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
+
+- Nullstellen => tutorial_nullstellen
+- Ableitungen (wahrscheinlich nicht implementiert) => tutorial_ableitung
+- Quadratische Funktionen => tutorial_quadratischeFunktionen
+- Nichts => END
+=> END
+
 
 ~ tutorial_nullstellen
 
@@ -37,7 +47,21 @@ Euler: Pass auf, dass du immer alle Nullstellen angibst!
 
 => END
 
-~tutorial_ableitung
+~ tutorial_quadratischeFunktionen
+
+Euler: Es gibt verschiedene Arten von quadratischen Funktionen, die nach der Form a*x²+b*x+c verlaufen!
+Euler: a*x²+b*x+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
+Euler: a*x²+b*x+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
+Euler: a*x²+b*x+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse gestaucht.
+Euler: a*x²+b*x+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse gestreckt.
+Euler: a*x²+b*x+c\nc verschiebt den Graphen entlang der y-Achse.
+Euler: (x+d)²+b*x+c\nd hingegen verschiebt den Graphen entlang der x-Achse.
+Euler: Euler: a*x²+b*x+c\nb hingegen verschiebt entgegengesetzt essenziell, wo der Graph x=0 schneidet.
+
+=> END
+
+~ tutorial_ableitung
+
 Euler: Eine Ableitung gibt die Steigung der Funktion an einer jeweiligen Stelle an.
 Euler: Um eine Ableitung zu finden muss essenziell die Funktion auf das x reduziert werden.
 Euler: Zum Beispiel: Die lineare Funktion f(x)= 5x+3 hat überall den Anstieg 5.
