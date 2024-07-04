@@ -39,9 +39,9 @@ func check_path(pos: Vector2i) -> bool:
 		return false
 	
 	#can't coninue from undefeated enemy
-	if MapAutoload.active_sqr.roomType == Square.ROOMS.ENEMY:
-		if !map.squares_dict[grid_coords].visited || map.squares_dict[grid_coords].roomType == Square.ROOMS.ENEMY:
-			return false
+	#if MapAutoload.active_sqr.roomType == Square.ROOMS.ENEMY:
+		#if !map.squares_dict[grid_coords].visited || map.squares_dict[grid_coords].roomType == Square.ROOMS.ENEMY:
+			#return false
 	
 	return true
 
