@@ -2,10 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
-[ext_resource type="Texture2D" uid="uid://bo3e36fg7g6p0" path="res://assets/map_scene/QM_tiles_single.png" id="3_ddekt"]
-[ext_resource type="Texture2D" uid="uid://br751ihnb32p3" path="res://assets/map_scene/QM_tiles_double.png" id="4_6a002"]
 [ext_resource type="Script" path="res://scenes/map/player_icon/player_icon.gd" id="5_m0txf"]
-[ext_resource type="Texture2D" uid="uid://b5ma72pcncqwx" path="res://assets/map_scene/QM_tiles_triple.png" id="5_prgvj"]
 [ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/Map/player_icon/frog1.png" id="6_0r7ri"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="7_sgvhx"]
 [ext_resource type="Texture2D" uid="uid://dxdwfyldem60b" path="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png" id="8_7aiy5"]
@@ -20,15 +17,21 @@ texture = ExtResource("2_63p1a")
 3:0/0 = 0
 4:0/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oex7a"]
+load_path = "res://.godot/imported/QM_tiles_single.png-ba78cd8b753cd08d9e1ab36a0a558b3f.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6lwc"]
-texture = ExtResource("3_ddekt")
+texture = SubResource("CompressedTexture2D_oex7a")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pk4c8"]
+load_path = "res://.godot/imported/QM_tiles_double.png-6102b1aaa58a31d88a2bde8e2ee1c350.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkxin"]
-texture = ExtResource("4_6a002")
+texture = SubResource("CompressedTexture2D_pk4c8")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -37,8 +40,11 @@ texture = ExtResource("4_6a002")
 3:1/0 = 0
 3:2/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i82p1"]
+load_path = "res://.godot/imported/QM_tiles_triple.png-a7d898c817eceea98930273afe14cc72.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kxduf"]
-texture = ExtResource("5_prgvj")
+texture = SubResource("CompressedTexture2D_i82p1")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -91,7 +97,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap/player_icon"]
 position = Vector2(8, 8)
-zoom = Vector2(5, 5)
+zoom = Vector2(8.68, 8.68)
 limit_left = -135
 limit_top = -110
 limit_right = 150
