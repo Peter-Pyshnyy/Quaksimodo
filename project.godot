@@ -28,6 +28,10 @@ GlobalProgressBar="*res://scenes/menu/ProgressBar.gd"
 general/states=["Randomnumbers"]
 general/balloon_path="res://dialogue/balloon.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
