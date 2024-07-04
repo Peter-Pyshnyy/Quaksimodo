@@ -11,8 +11,11 @@ extends CanvasLayer
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var char_portrait = %CharPortrait
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+
 @onready var euler_noises = $EulerNoises
 @onready var storch_noises = $StorchNoises
+@onready var igel_noises = $IgelNoises
+@onready var bieber_noises = $BieberNoises
 
 
 ## The empty path for the character portrait
@@ -23,6 +26,9 @@ var timeToNextFrameChange = 0
 
 ## Variable to determine the current frame
 var currentframe = 0
+
+## Variable to determine the current speaker
+var currentSpeaker = null
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -57,8 +63,9 @@ var dialogue_line: DialogueLine:
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
 		
-		if char_portrait_path == "":
-			char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
+		if char_portrait_path == "" || currentSpeaker != dialogue_line.character.to_lower():
+			currentSpeaker = dialogue_line.character.to_lower()
+			char_portrait_path = "res://assets/portraits/%s.png" %currentSpeaker
 			if FileAccess.file_exists(char_portrait_path):
 				char_portrait.texture = load(char_portrait_path)
 			else:
@@ -181,6 +188,10 @@ func _on_dialogue_label_spoke(letter, letter_index, speed):
 				speaker = euler_noises
 			"storch":
 				speaker = storch_noises
+			"igel":
+				speaker = igel_noises
+			"bieber":
+				speaker = bieber_noises
 			_:
 				speaker = null
 		speaker.pitch_scale = randf_range(0.9, 1.1)
@@ -197,10 +208,10 @@ func _process(delta):
 		timeToNextFrameChange = 0
 		
 		if currentframe == 0:
-			char_portrait_path = "res://assets/portraits/%s2.png" %dialogue_line.character.to_lower()
+			char_portrait_path = "res://assets/portraits/%s2.png" %currentSpeaker
 			currentframe = 1
 		else:
-			char_portrait_path = "res://assets/portraits/%s.png" %dialogue_line.character.to_lower()
+			char_portrait_path = "res://assets/portraits/%s.png" %currentSpeaker
 			currentframe = 0
 		
 		if FileAccess.file_exists(char_portrait_path):
