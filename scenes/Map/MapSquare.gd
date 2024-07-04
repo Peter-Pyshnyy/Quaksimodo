@@ -2,22 +2,23 @@ class_name Square
 
 extends Node
 
-enum ROOMS {START, ENEMY, CHEST, SHOP, BOSS}
+enum ROOMS {PATH, ENEMY, CHEST, SHOP, BOSS}
 
 var exits_dict = {
 	"up": null,
 	"right": null,
-	"down": null,
 	"left": null,
+	"down": null,
 }
 
 var coords: Vector2i
 var roomType: ROOMS
-var completed: bool
+var visited: bool
 
-func _init(coords: Vector2i = Vector2i(0,0), roomType: ROOMS = ROOMS.START):
+func _init(coords: Vector2i = Vector2i(0,0), roomType: ROOMS = ROOMS.PATH):
 	self.coords = coords
 	self.roomType = roomType
+	self.visited = false
 	
 	if (self.coords[1] == 0):
 		exits_dict.erase("down")

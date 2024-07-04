@@ -22,11 +22,10 @@ func _input(event):
 	
 	var square = Vector2i(self.position / 16)
 	square.y *= -1
+	map.squares_dict[square].visited = true
 	MapAutoload.active_sqr = map.squares_dict[square]
 	map.draw_active_square()
-	map.btn_toggle()
-	
-	print(MapAutoload.active_sqr.roomType)
+	map.btn_toggle(MapAutoload.active_sqr.roomType)
 	
 	if not has_moved:
 		has_moved = true
@@ -39,9 +38,10 @@ func check_path(pos: Vector2i) -> bool:
 	if !map.squares_dict.has(grid_coords):
 		return false
 	
-	#can't move from one incompleted square to another
-	#if !MapAutoload.active_sqr.completed && !map.squares_dict[grid_coords].completed:
-		#return false
+	#can't coninue from undefeated enemy
+	if MapAutoload.active_sqr.roomType == Square.ROOMS.ENEMY:
+		if !map.squares_dict[grid_coords].visited || map.squares_dict[grid_coords].roomType == Square.ROOMS.ENEMY:
+			return false
 	
 	return true
 

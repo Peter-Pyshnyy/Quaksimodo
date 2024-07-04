@@ -1,14 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyk3l5r2ap5qe"]
+[gd_scene load_steps=19 format=3 uid="uid://dyk3l5r2ap5qe"]
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
+[ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
 [ext_resource type="Texture2D" uid="uid://bo3e36fg7g6p0" path="res://assets/map_scene/QM_tiles_single.png" id="3_ddekt"]
 [ext_resource type="Texture2D" uid="uid://br751ihnb32p3" path="res://assets/map_scene/QM_tiles_double.png" id="4_6a002"]
 [ext_resource type="Script" path="res://scenes/map/player_icon/player_icon.gd" id="5_m0txf"]
 [ext_resource type="Texture2D" uid="uid://b5ma72pcncqwx" path="res://assets/map_scene/QM_tiles_triple.png" id="5_prgvj"]
 [ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/Map/player_icon/frog1.png" id="6_0r7ri"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="7_sgvhx"]
-[ext_resource type="Texture2D" uid="uid://wtctjm0irv0o" path="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png" id="8_7aiy5"]
+[ext_resource type="Texture2D" uid="uid://dxdwfyldem60b" path="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png" id="8_7aiy5"]
 [ext_resource type="Script" path="res://scenes/Map/steuerung.gd" id="9_ikvlr"]
+[ext_resource type="Texture2D" uid="uid://cu2mvsfg13t8e" path="res://assets/map_scene/QM_bg.png" id="11_7xx01"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64uvy"]
+texture = ExtResource("2_63p1a")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6lwc"]
 texture = ExtResource("3_ddekt")
@@ -38,6 +48,7 @@ texture = ExtResource("5_prgvj")
 sources/2 = SubResource("TileSetAtlasSource_lkxin")
 sources/1 = SubResource("TileSetAtlasSource_l6lwc")
 sources/3 = SubResource("TileSetAtlasSource_kxduf")
+sources/0 = SubResource("TileSetAtlasSource_64uvy")
 
 [sub_resource type="GDScript" id="GDScript_g3uhb"]
 script/source = "extends TileMap
@@ -83,7 +94,18 @@ zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
-[node name="start" type="Button" parent="TileMap/player_icon/Camera2D"]
+[node name="btn_fight" type="Button" parent="TileMap/player_icon/Camera2D"]
+visible = false
+offset_left = -39.0
+offset_top = -57.0
+offset_right = 39.0
+offset_bottom = -40.0
+theme_override_fonts/font = ExtResource("7_sgvhx")
+theme_override_font_sizes/font_size = 10
+text = "Kämpfen!"
+
+[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_fight"]
+layout_mode = 0
 offset_left = -39.0
 offset_top = -57.0
 offset_right = 39.0
@@ -92,7 +114,57 @@ theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Start!"
 
-[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/start"]
+[node name="btn_shop" type="Button" parent="TileMap/player_icon/Camera2D"]
+visible = false
+offset_left = -39.0
+offset_top = -57.0
+offset_right = 39.0
+offset_bottom = -40.0
+theme_override_fonts/font = ExtResource("7_sgvhx")
+theme_override_font_sizes/font_size = 10
+text = "Zum Shop"
+
+[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_shop"]
+layout_mode = 0
+offset_left = -39.0
+offset_top = -57.0
+offset_right = 39.0
+offset_bottom = -40.0
+theme_override_fonts/font = ExtResource("7_sgvhx")
+theme_override_font_sizes/font_size = 10
+text = "Start!"
+
+[node name="btn_chest" type="Button" parent="TileMap/player_icon/Camera2D"]
+visible = false
+offset_left = -39.0
+offset_top = -57.0
+offset_right = 39.0
+offset_bottom = -40.0
+theme_override_fonts/font = ExtResource("7_sgvhx")
+theme_override_font_sizes/font_size = 10
+text = "Schatz! OwO"
+
+[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_chest"]
+layout_mode = 0
+offset_left = -39.0
+offset_top = -57.0
+offset_right = 39.0
+offset_bottom = -40.0
+theme_override_fonts/font = ExtResource("7_sgvhx")
+theme_override_font_sizes/font_size = 10
+text = "Start!"
+
+[node name="btn_boss" type="Button" parent="TileMap/player_icon/Camera2D"]
+visible = false
+offset_left = -39.0
+offset_top = -57.0
+offset_right = 39.0
+offset_bottom = -40.0
+theme_override_fonts/font = ExtResource("7_sgvhx")
+theme_override_font_sizes/font_size = 10
+text = "Boss!"
+
+[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_boss"]
 layout_mode = 0
 offset_left = -39.0
 offset_top = -57.0
@@ -143,5 +215,16 @@ offset_bottom = 113.0
 scale = Vector2(1.73982, 1.92173)
 text = "nach unten"
 
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/start/start" to="." method="_on_start_pressed"]
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -114.0
+offset_top = -63.0
+offset_right = 131.0
+offset_bottom = 79.0
+texture = ExtResource("11_7xx01")
+
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight" to="." method="_on_btn_fight_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_shop/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_chest/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_boss/start" to="." method="_on_start_pressed"]
