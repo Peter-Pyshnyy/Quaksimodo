@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn0f8pfjoorpi"]
+[gd_scene load_steps=3 format=3 uid="uid://dcc40141uitgn"]
 
-[ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_tb0rw"]
+[ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_thwqc"]
+[ext_resource type="Texture2D" uid="uid://d0g8gl5d0kams" path="res://assets/menu_scene/backgroundpuddle.png" id="2_tjyw3"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -13,21 +14,21 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_tb0rw")
+script = ExtResource("1_thwqc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 8.0
 offset_right = 1160.0
 offset_bottom = 672.0
-color = Color(0.00394095, 0.213376, 0.368103, 1)
+texture = ExtResource("2_tjyw3")
 
 [node name="game_title" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 376.0
+offset_left = 368.0
 offset_top = 16.0
-offset_right = 760.0
+offset_right = 752.0
 offset_bottom = 136.0
 theme_override_font_sizes/normal_font_size = 70
 text = "Game Title"
@@ -43,12 +44,13 @@ text = "Play"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 448.0
+offset_left = 432.0
 offset_top = 272.0
-offset_right = 666.0
+offset_right = 679.0
 offset_bottom = 356.0
 theme_override_font_sizes/font_size = 55
-text = "Options"
+text = "Statistics
+"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0

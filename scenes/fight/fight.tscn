@@ -1,15 +1,37 @@
-[gd_scene load_steps=12 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=14 format=3 uid="uid://di01bxnwvvn8m"]
 
-[ext_resource type="Texture2D" uid="uid://bokmgocyvov4s" path="res://assets/fight_scene/background.png" id="1_ch403"]
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
+[ext_resource type="Texture2D" uid="uid://n0qlom81yux4" path="res://assets/fight_scene/background_animation.png" id="2_uro12"]
 [ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/fight_scene/background_input.png" id="3_teae5"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="4_dqjig"]
 [ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/fight_scene/sheet_schwan.png" id="5_vwpuy"]
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
 
+[sub_resource type="Animation" id="Animation_ik2so"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r031u"]
+_data = {
+"idle": SubResource("Animation_ik2so")
+}
+
 [sub_resource type="Animation" id="Animation_b6umv"]
 resource_name = "idle"
-length = 1.5
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,6 +53,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_hxc4k"]
 resource_name = "idle"
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,7 +62,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -57,18 +80,25 @@ default_font_size = 25
 script = ExtResource("1_fxtqe")
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(579, 324)
-scale = Vector2(9.29032, 8.1)
-texture = ExtResource("1_ch403")
+position = Vector2(576, 221.5)
+scale = Vector2(7.2, 4.92222)
+texture = ExtResource("2_uro12")
+hframes = 2
+frame = 1
 
-[node name="Line2D" type="Line2D" parent="background"]
-position = Vector2(-62, -40)
-scale = Vector2(0.107639, 0.123457)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background"]
+libraries = {
+"": SubResource("AnimationLibrary_r031u")
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(3.00012, 0)
+scale = Vector2(1, 1)
 points = PackedVector2Array(0, 448, 1152, 448)
 
-[node name="BackgroundInput" type="Sprite2D" parent="background"]
-position = Vector2(0, 27.6543)
-scale = Vector2(1.06897, 0.274348)
+[node name="BackgroundInput" type="Sprite2D" parent="."]
+position = Vector2(579, 548)
+scale = Vector2(9.93107, 2.22222)
 texture = ExtResource("3_teae5")
 
 [node name="HealthBarEnemy" parent="." instance=ExtResource("4_dqjig")]
@@ -92,10 +122,11 @@ text = "Attack"
 
 [node name="Enemy" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(936, 528)
+position = Vector2(946, 533)
 scale = Vector2(0.452333, 0.452333)
 texture = ExtResource("5_vwpuy")
 hframes = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
 libraries = {
@@ -103,8 +134,8 @@ libraries = {
 }
 
 [node name="Frog" type="Sprite2D" parent="."]
-position = Vector2(400, 437)
-scale = Vector2(1.474, 0.566)
+position = Vector2(219, 443)
+scale = Vector2(4.80833, 4.80833)
 texture = ExtResource("6_hen0n")
 hframes = 2
 frame = 1
