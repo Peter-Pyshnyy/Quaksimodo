@@ -46,7 +46,7 @@ func _ready():
 		
 		
 	else:
-		generate_map(7)
+		generate_map()
 	
 	draw_active_square()
 
@@ -60,16 +60,17 @@ func generate_map(i: int = 7):
 	squares_dict[start.coords] = start
 	
 	for n in i:
-		var selected_square: Square;
+		var selected_square: Square
+		
 		while true:
-			#picks a square to attach new square to
+			#selects a square to attach new square to
 			selected_square = squares_dict.values().pick_random(); 
 			
 			#if the square has no more free paths, different square gets picked
 			if(!selected_square.get_free_paths().is_empty()): 
 				break
 		
-		var new_path = selected_square.get_free_paths().pick_random();
+		var new_path = selected_square.get_free_paths().pick_random()
 		
 		#new_square.coords = neigboring coords of selected_square.coords
 		var new_square = Square.new(selected_square.coords + COORDS_ADD_DICT[new_path])
@@ -150,18 +151,7 @@ func find_furthest_square() -> Vector2i:
 
 func draw_map():
 	for square: Square in squares_dict.values():
-		#used to select a tile set
-		var atlas_id = square.get_taken_paths().size()
-		
-		#tile with 4 exits in on QM_tiles_double
-		if (atlas_id == 4):
-			atlas_id = 2; 
-		
-		#used to select a tile from a tile set
-		var atlas_coords = choose_tile(square)
-		
-		#sets a sprite on a cell (y reversed)
-		tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
+		draw_square(square)
 
 func draw_active_square():	
 	var square = MapAutoload.active_sqr

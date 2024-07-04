@@ -20,8 +20,15 @@ func _init(coords: Vector2i = Vector2i(0,0), roomType: ROOMS = ROOMS.PATH):
 	self.roomType = roomType
 	self.visited = false
 	
-	if (self.coords[1] == 0):
+	#map limits
+	if (self.coords[0] == -5):
+		exits_dict.erase("left")
+	if (self.coords[0] == 5):
+		exits_dict.erase("right")
+	if (self.coords[1] == -1):
 		exits_dict.erase("down")
+	if (self.coords[1] == 4):
+		exits_dict.erase("up")
 
 
 func get_free_paths() -> Array:

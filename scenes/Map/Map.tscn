@@ -79,11 +79,12 @@ script = SubResource("GDScript_g3uhb")
 script = ExtResource("5_m0txf")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMap/player_icon"]
-position = Vector2(8, 8)
-scale = Vector2(0.5, 0.443)
+position = Vector2(8, 8.99675)
+scale = Vector2(0.472222, 0.444083)
 texture = ExtResource("6_0r7ri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/player_icon"]
+visible = false
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_dmuyi")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -91,88 +92,54 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="Camera2D" type="Camera2D" parent="TileMap/player_icon"]
 position = Vector2(8, 8)
 zoom = Vector2(5, 5)
+limit_left = -135
+limit_top = -110
+limit_right = 150
+limit_bottom = 74
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
 [node name="btn_fight" type="Button" parent="TileMap/player_icon/Camera2D"]
 visible = false
+clip_contents = true
 offset_left = -39.0
-offset_top = -57.0
+offset_top = -44.0
 offset_right = 39.0
-offset_bottom = -40.0
+offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Kämpfen!"
 
-[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_fight"]
-layout_mode = 0
-offset_left = -39.0
-offset_top = -57.0
-offset_right = 39.0
-offset_bottom = -40.0
-theme_override_fonts/font = ExtResource("7_sgvhx")
-theme_override_font_sizes/font_size = 10
-text = "Start!"
-
 [node name="btn_shop" type="Button" parent="TileMap/player_icon/Camera2D"]
 visible = false
 offset_left = -39.0
-offset_top = -57.0
+offset_top = -44.0
 offset_right = 39.0
-offset_bottom = -40.0
+offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Zum Shop"
 
-[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_shop"]
-layout_mode = 0
-offset_left = -39.0
-offset_top = -57.0
-offset_right = 39.0
-offset_bottom = -40.0
-theme_override_fonts/font = ExtResource("7_sgvhx")
-theme_override_font_sizes/font_size = 10
-text = "Start!"
-
 [node name="btn_chest" type="Button" parent="TileMap/player_icon/Camera2D"]
 visible = false
 offset_left = -39.0
-offset_top = -57.0
+offset_top = -44.0
 offset_right = 39.0
-offset_bottom = -40.0
+offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Schatz! OwO"
 
-[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_chest"]
-layout_mode = 0
-offset_left = -39.0
-offset_top = -57.0
-offset_right = 39.0
-offset_bottom = -40.0
-theme_override_fonts/font = ExtResource("7_sgvhx")
-theme_override_font_sizes/font_size = 10
-text = "Start!"
-
 [node name="btn_boss" type="Button" parent="TileMap/player_icon/Camera2D"]
 visible = false
 offset_left = -39.0
-offset_top = -57.0
+offset_top = -44.0
 offset_right = 39.0
-offset_bottom = -40.0
+offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Boss!"
-
-[node name="start" type="Button" parent="TileMap/player_icon/Camera2D/btn_boss"]
-layout_mode = 0
-offset_left = -39.0
-offset_top = -57.0
-offset_right = 39.0
-offset_bottom = -40.0
-theme_override_fonts/font = ExtResource("7_sgvhx")
-theme_override_font_sizes/font_size = 10
-text = "Start!"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-59, 8)
@@ -217,14 +184,11 @@ text = "nach unten"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
-offset_left = -114.0
-offset_top = -63.0
-offset_right = 131.0
-offset_bottom = 79.0
+offset_left = -151.0
+offset_top = -118.0
+offset_right = 161.0
+offset_bottom = 78.0
+mouse_filter = 2
 texture = ExtResource("11_7xx01")
 
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight" to="." method="_on_btn_fight_pressed"]
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_shop/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_chest/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_boss/start" to="." method="_on_start_pressed"]
