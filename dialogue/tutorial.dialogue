@@ -16,6 +16,7 @@ Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
 - Skip
 Euler: Was soll ich heute erklären?
 - Nullstellen => tutorial_nullstellen
+- Nichts => END
 
 => END
 
@@ -79,5 +80,67 @@ Euler: x² wird zu 2x. x³ wird zu 3x². 3x² wird zu 6x.
 % Storch: Damit wäre das Abendessen schonmal gesichert.
 % Storch: Ich hoffe ich kann das Baby noch rechtzeitig abliefern.
 % Storch: So viel kann ich garnicht essen.
+
+=> END
+
+~ igel_battle_start
+
+% Igel: Komm her, ich pieks dich!!!
+% Igel: Ich zerhack dich!!!
+% Igel: Ich hoffe, du magst Nadeln!
+% Igel: Hau lieber ab! Ich hab eine Axt gefunden und will sie ausprobieren!
+% Igel: Das wird dir mehr weh tun als mir!
+
+=> END
+
+~ igel_battle_victory
+
+% Igel: Autsch...
+% Igel: Hast du dich wenigstens gestochen?
+% Igel: Uiuiuiui, das wars...
+% Igel: Hey warte, du sollst verlieren!
+% Igel: Das war unfair!
+
+=> END
+
+~ igel_battle_failure
+
+% Igel: Hack hack hack hahahaha
+% Igel: Ich weiß genau, welche Soße ich nehmen werde!
+% Igel: Wie genau bereitet man Frosch überhaupt zu...?
+% Igel: Hat sich jemand gestochen?
+% Igel: Das passiert, wenn man einen Igel anstachelt.
+
+=> END
+
+~ bieber_battle_start
+
+% Bieber: Holz... Holz... Holz... Frosch... Frosch!?
+% Bieber: Ach verdammt, ich hatte eigentlich schon was vor. Aber für dich wird die Zeit noch reichen
+% Bieber: AH! EIN FROSCH! Ich mag Frösche nicht!
+% Bieber: AH! EIN FROSCH! Ich liebe Frösche!
+% Bieber: Ah, ein Frosch. Ich habe keine starken Gefühle gegenüber Fröschen.
+% Bieber: Bleib ja weg von meinem Damm!
+
+=> END
+
+~ bieber_battle_victory
+
+% Bieber: Ach verdammt...
+% Bieber: Du blöde Nervennage!
+% Bieber: AH! Mein ganzer Damm fällt auseinander!
+% Bieber: Ich glaube, das reicht erstmal für mich.
+% Bieber: Eh, egal. Ich geh weiter Stöcke sammeln.
+% Bieber: Ich mag dich nicht.
+
+=> END
+
+~ bieber_battle_failure
+
+% Bieber: Bleh!
+% Bieber: Plitsch platsch und du bist Matsch!
+% Bieber: Oh warte, alles okay? Du siehst garnicht gut aus.
+% Bieber: Endlich! Ich dachte schon, wir werden hier garnicht fertig.
+% Bieber: Nein nein, so rechnet man das nicht.
 
 => END
