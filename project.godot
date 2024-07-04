@@ -13,6 +13,7 @@ config_version=5
 config/name="Quaksimodo"
 run/main_scene="res://scenes/menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
 
 [autoload]
 
@@ -20,11 +21,16 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Randomnumbers="*res://scenes/tutorial/randomnumbers.gd"
 MapAutoload="*res://scenes/map/map_autoload.gd"
 PlayerDataAl="*res://main_classes/player/player_data_AL.gd"
+GlobalProgressBar="*res://scenes/menu/ProgressBar.gd"
 
 [dialogue_manager]
 
 general/states=["Randomnumbers"]
 general/balloon_path="res://dialogue/balloon.tscn"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
@@ -45,3 +51,5 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/tutorial.dialogu
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

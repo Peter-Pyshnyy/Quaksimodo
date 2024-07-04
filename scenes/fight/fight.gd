@@ -20,7 +20,9 @@ func _ready():
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
+	$background/AnimationPlayer.play("idle")
 	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"storch_battle_start")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

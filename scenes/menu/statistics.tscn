@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://b01qed20k885c"]
+
+[ext_resource type="Script" path="res://scenes/menu/statistics.gd" id="1_cu5lm"]
+[ext_resource type="Texture2D" uid="uid://d0g8gl5d0kams" path="res://assets/menu_scene/backgroundpuddle.png" id="2_sky1n"]
+[ext_resource type="Script" path="res://scenes/menu/ProgressBar.gd" id="3_n2upv"]
+
+[node name="options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cu5lm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.16
+anchor_right = 0.09
+anchor_bottom = 0.16
+offset_left = -103.68
+offset_top = -95.68
+offset_right = 1064.32
+offset_bottom = 568.32
+texture = ExtResource("2_sky1n")
+
+[node name="game_title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 8.0
+offset_right = 808.0
+offset_bottom = 128.0
+theme_override_font_sizes/normal_font_size = 70
+text = "Statistics
+"
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 376.0
+offset_right = 666.0
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 55
+text = "Back"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.125
+anchor_bottom = 0.222
+offset_left = 424.0
+offset_top = 232.0
+offset_right = 568.0
+offset_bottom = 160.144
+script = ExtResource("3_n2upv")
+
+[connection signal="pressed" from="back" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

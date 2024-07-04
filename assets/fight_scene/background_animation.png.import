@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy3gmcpu7cqaq"
-path="res://.godot/imported/frog1.png-8e75b82908d169847d470989869d5748.ctex"
+uid="uid://n0qlom81yux4"
+path="res://.godot/imported/background_animation.png-348ce733b792ecaadaaed7f29a2353f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/map/player_icon/frog1.png"
-dest_files=["res://.godot/imported/frog1.png-8e75b82908d169847d470989869d5748.ctex"]
+source_file="res://assets/fight_scene/background_animation.png"
+dest_files=["res://.godot/imported/background_animation.png-348ce733b792ecaadaaed7f29a2353f0.ctex"]
 
 [params]
 
