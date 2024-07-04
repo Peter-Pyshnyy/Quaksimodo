@@ -6,6 +6,7 @@ var has_moved = false
 
 func _input(event):
 	var input_movement: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	input_movement = round(input_movement)
 	currPos = self.position
 	
 	if input_movement == Vector2.ZERO:
@@ -35,7 +36,7 @@ func check_path(pos: Vector2i) -> bool:
 	var grid_coords = round(pos / 16)
 	grid_coords.y *= -1
 
-	if !map.squares_dict.has(grid_coords):
+	if !MapAutoload.squares_dict.has(grid_coords):
 		return false
 	
 	#can't coninue from undefeated enemy
