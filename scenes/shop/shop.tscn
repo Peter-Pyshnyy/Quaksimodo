@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=3 uid="uid://djjsq5p3fb0w4"]
+
+[ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_64oh5"]
+[ext_resource type="Texture2D" uid="uid://87dkl61jyij6" path="res://assets/shop_scene/QM_shop_bg.png" id="1_l3py8"]
+[ext_resource type="Texture2D" uid="uid://2frunt8ctxn3" path="res://assets/shop_scene/item_hidden_0.png" id="3_qibl4"]
+[ext_resource type="Texture2D" uid="uid://cn5lbiw8xoou6" path="res://assets/shop_scene/item_hidden_1.png" id="4_k6odd"]
+[ext_resource type="Texture2D" uid="uid://cchiwlouavhy6" path="res://assets/shop_scene/item_hidden_2.png" id="5_6m2m8"]
+[ext_resource type="Texture2D" uid="uid://dgup1hwv33ucp" path="res://assets/shop_scene/item_hidden_3.png" id="6_xnkph"]
+[ext_resource type="Texture2D" uid="uid://xvbnwdgi7rfy" path="res://assets/shop_scene/item_hidden_4.png" id="7_owuix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idsge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jtyj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8460v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceqy5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58egb"]
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_64oh5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(580, 325)
+zoom = Vector2(1.685, 1.685)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_l3py8")
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 460.0
+offset_top = 34.0
+offset_right = 1125.0
+offset_bottom = 467.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+theme_override_styles/panel = SubResource("StyleBoxEmpty_idsge")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2jtyj")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_8460v")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_ceqy5")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_58egb")
+item_count = 5
+max_columns = 3
+icon_scale = 10.615
+item_0/text = ""
+item_0/icon = ExtResource("3_qibl4")
+item_1/text = ""
+item_1/icon = ExtResource("4_k6odd")
+item_2/text = ""
+item_2/icon = ExtResource("5_6m2m8")
+item_3/text = ""
+item_3/icon = ExtResource("6_xnkph")
+item_4/text = ""
+item_4/icon = ExtResource("7_owuix")
+
+[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
