@@ -1,28 +1,7 @@
-~ tutorial_test
-
-Euler: Addition: 1 + 2 = 3
-Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
-- {{tutorial_x * 2}}
-	Euler: Falsch!
-	Euler: Versuche es nochmal!
-	=> tutorial_start
-- {{tutorial_x + tutorial_y}}
-	Euler: Korrekt!
-- {{tutorial_y * 2}}
-	Euler: Falsch!
-	Euler: Versuche es nochmal! 
-	=> tutorial_start
-- Bitte erkläre nochmal! => tutorial_start
-- Skip
-
-=> END
-
 ~ tutorial_start
 Euler: Was soll ich heute erklären?
-Storch: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
-Igel: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
-Bieber: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
 
+- Lineare Funktionen => tutorial_lineareFunktionen
 - Nullstellen => tutorial_nullstellen
 - Ableitungen (wahrscheinlich nicht implementiert) => tutorial_ableitung
 - Quadratische Funktionen => tutorial_quadratischeFunktionen
@@ -30,12 +9,64 @@ Bieber: The FitnessGram Pacer Test is a multistage aerobic capacity test that pr
 => END
 
 
-~ tutorial_nullstellen
+~ tutorial_lineareFunktionen
 
+Euler: Lineare Funktionen sind wohl die einfachsten der Funktionen
+do show_graphic("linear")
+Euler: Eine lineare Funktion sieht in der Regel so aus:\na * x + b
+Euler: a * x + b\nDie Funktion, die du hier sehen kannst ist f(x) = x
+Euler: a * x + b\nDas b in der Funktion bestimmt die [b]Verschiebung entlang der y-Achse[/b]
+do show_graphic("linear1")
+Euler: a * x + b\nHier ist die Funktion f(x) = x + 1. Die Funktion wird um 1 nach oben verschoben.
+Euler: a * x + b\nDas b in der Funktion bestimmt die [b]Steigung[/b] der Funktion
+do show_graphic("linear2")
+Euler: a * x + b\nHier siehst du die Funktion f(x) = 2x
+do show_graphic("linear3")
+Euler: a * x + b\nUnd hier ist die Funktion f(x) = (1/2)x
+do hide_graphic()
+Euler: Soll ich lineare Funktionen noch einmal erklären?
+- Ja => tutorial_lineareFunktionen
+- Nein => END
+
+~ tutorial_quadratischeFunktionen
+
+Euler: Es gibt verschiedene Arten von quadratischen Funktionen, die nach der Form a*x²+b*x+c verlaufen!
+do show_graphic("quadratisch")
+Euler: a*x²+b*x+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
+Euler: a*x²+b*x+c\nDies hier ist f(x) = x^2
+do show_graphic("quadratisch1")
+Euler: a*x²+b*x+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
+Euler: a*x²+b*x+c\nHier siehst du die Funktion f(x) = -x^2
+do show_graphic("quadratisch2")
+Euler: a*x²+b*x+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse [b]gestaucht[/b].[wait = 0.5] Hier ist f(x) = 2 * x^2
+do show_graphic("quadratisch3")
+Euler: a*x²+b*x+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse [b]gestreckt[/b].[wait = 0.5] Hier ist f(x) = (1/2) * x^2
+do show_graphic("quadratisch")
+Euler: a*x²+b*x+c\nc verschiebt den Graphen entlang der y-Achse, genau wie bei linearen Funktionen.
+do show_graphic("quadratisch4")
+Euler: a*x²+b*x+c\nHier ist f(x) = x^2 + 1 zum Beispiel.
+Euler: a*x²+b*x+c\nDen Graphen entlang der x-Achse zu verschieben geht auch, ist aber ein wenig komplizierter
+Euler: a*x²+b*x+c\nInnerhalb einer Klammer muss zu x hinzuaddiert werden, um diesen Effekt zu erreichen.
+do show_graphic("quadratisch5")
+Euler: (x+d)²+b*x+c\nd verschiebt den Graphen entlang der x-Achse, jedoch in entgegengesetzter Richtung.
+Euler: (x+d)²+b*x+c\n Die Funktion vor dir ist f(x) = (x+1)^2
+do hide_graphic()
+=> quadratisch_weiter
+
+
+~ quadratisch_weiter
+Euler: Soll ich dir noch etwas zu quadratischen Funktionen erklären?
+- Wie berechne ich die Nullstellen? => tutorial_nullstellen
+- Wie finde ich Scheitelpunkte?
+- Kannst du das alles nochmal wiederholen? => tutorial_quadratischeFunktionen
+- Nein => END
+
+~ tutorial_nullstellen
 Euler: Nullstellen errechnen ist ganz einfach!
 Euler: Du musst nur die Funktion gegen 0 setzen und gegen x rechnen.
-Euler: Zum Beispiel: f(x)= 2x+4 -> 0 = 2x+4 |-4 -> -4 = 2x |:2 -> -2 = x
-Euler: Bei komplizierteren Funktionen musst du einfach in die pq-Formel umstellen.
+Euler: Bei linearen funktionen ist das sehr leicht.
+Euler: f(x)= 2x+4 -> 0 = 2x+4 |-4 -> -4 = 2x |:2 -> -2 = x
+Euler: Bei quadratischen Funktionen musst du einfach in die pq-Formel umstellen.
 Euler: Was ist die pq-Formel? Ganz einfach!
 Euler: x = -p/2 +/- √((p/2)²-q)
 Euler: Sagen wir, deine Funktion ist x²-6x+5. Dann wäre -6 dein p und 5 dein q
@@ -44,21 +75,21 @@ Euler: Du siehst, dass zwei Lösungen herauskommen: 3+2 und 3-2
 Euler: Die Funktion schneidet die x-Achse also an x=1 und x=5
 Euler: Sollte unter der Wurzel 0 herauskommen gäbe es nur eine Nullstelle. 
 Euler: Pass auf, dass du immer alle Nullstellen angibst!
+=> quadratisch_weiter
 
-=> END
+~ tutorial_scheitelpunkte
+Euler: Um einen Scheitelpunkt zu finden, musst du zuerst die Ableitung der Funktion bestimmen.
+Euler: Das tust du indem du ausschließlich jedes x in der Funktion nimmst und durch deren Faktoren ersetzt.
+Euler: Aus 5*x, zum Beispiel, wird 5. Aus 5*x + 3 wird ebenfalls 5.
+Euler: Das liegt daran, dass die Ableitung den Anstieg der Funktion an jeder Stelle angibt.
+Euler: Sollte x einen Faktor haben, so wird von diesem 1 subtrahiert und der ursprüngliche Faktor mit dem x multipliziert.
+Euler: 5*x^3, zum Beispiel, wird zu 15*x^2
+Euler: An einem Scheitelpunkt ist der Anstieg der Funktion 0, also suchen wir nach den Nullstellen der Ableitung.
+Euler: Die Ableitung der quadratischen Funktion f(x) = 3x^2 + 5x - 6 ist f'(x) = 6x + 5
+Euler: Die Nullstelle von f'(x) = 6x + 5 liegt bei -(5/6)
+Euler: Also ist der Scheitelpunkt von f(x) 3x^2 + 5x - 6 an der Stelle -(5/6)
+=> quadratisch_weiter
 
-~ tutorial_quadratischeFunktionen
-
-Euler: Es gibt verschiedene Arten von quadratischen Funktionen, die nach der Form a*x²+b*x+c verlaufen!
-Euler: a*x²+b*x+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
-Euler: a*x²+b*x+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
-Euler: a*x²+b*x+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse gestaucht.
-Euler: a*x²+b*x+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse gestreckt.
-Euler: a*x²+b*x+c\nc verschiebt den Graphen entlang der y-Achse.
-Euler: (x+d)²+b*x+c\nd hingegen verschiebt den Graphen entlang der x-Achse.
-Euler: Euler: a*x²+b*x+c\nb hingegen verschiebt entgegengesetzt essenziell, wo der Graph x=0 schneidet.
-
-=> END
 
 ~ tutorial_ableitung
 
@@ -68,7 +99,6 @@ Euler: Zum Beispiel: Die lineare Funktion f(x)= 5x+3 hat überall den Anstieg 5.
 Euler: Alle Zahlen ohne x werden weggeschmissen und nur das die 5 bleibt übrig. Die Ableitung f'(x) ist 5.
 Euler: Bei Potenzen ist es etwas anders. Die Potenz wird um 1 subtrahiert und die vorherige Potenz wird zum x multipliziert
 Euler: x² wird zu 2x. x³ wird zu 3x². 3x² wird zu 6x.
-
 
 => END
 

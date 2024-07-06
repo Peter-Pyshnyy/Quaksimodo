@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy3gmcpu7cqaq"
-path="res://.godot/imported/frog1.png-00f79c69810bebab93f8968e40cd987a.ctex"
+uid="uid://dk50i3too46gy"
+path="res://.godot/imported/linear2.png-d767e5566a21a641723f68991d93b5c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Map/player_icon/frog1.png"
-dest_files=["res://.godot/imported/frog1.png-00f79c69810bebab93f8968e40cd987a.ctex"]
+source_file="res://assets/graphs/linear2.png"
+dest_files=["res://.godot/imported/linear2.png-d767e5566a21a641723f68991d93b5c6.ctex"]
 
 [params]
 

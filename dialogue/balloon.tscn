@@ -186,6 +186,35 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
+[node name="Panel2" type="Panel" parent="Balloon"]
+visible = false
+custom_minimum_size = Vector2(450, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -290.0
+offset_right = 235.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InfoGraphic" type="TextureRect" parent="Balloon/Panel2"]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(444, 444)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 452.0
+offset_bottom = 452.0
+mouse_filter = 2
+
 [node name="EulerNoises" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xsjmb")
 

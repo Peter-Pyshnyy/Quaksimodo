@@ -11,6 +11,10 @@ extends CanvasLayer
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var char_portrait = %CharPortrait
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var info_graphic = %InfoGraphic
+@onready var panel_2 = $Balloon/Panel2
+
+
 
 @onready var euler_noises = $EulerNoises
 @onready var storch_noises = $StorchNoises
@@ -218,3 +222,12 @@ func _process(delta):
 			char_portrait.texture = load(char_portrait_path)
 		else:
 			char_portrait.texture = ""
+
+func show_graphic(path: String):
+	panel_2.visible = true
+	info_graphic.visible = true
+	info_graphic.texture = load("res://assets/graphs/%s.png" %path)
+	
+func hide_graphic():
+	panel_2.visible = false
+	info_graphic.visible = false
