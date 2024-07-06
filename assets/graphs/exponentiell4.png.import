@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy3gmcpu7cqaq"
-path="res://.godot/imported/frog1.png-00f79c69810bebab93f8968e40cd987a.ctex"
+uid="uid://24g2155tf01k"
+path="res://.godot/imported/exponentiell4.png-257151f22d1436ed0ed8a364259bb143.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Map/player_icon/frog1.png"
-dest_files=["res://.godot/imported/frog1.png-00f79c69810bebab93f8968e40cd987a.ctex"]
+source_file="res://assets/graphs/exponentiell4.png"
+dest_files=["res://.godot/imported/exponentiell4.png-257151f22d1436ed0ed8a364259bb143.ctex"]
 
 [params]
 

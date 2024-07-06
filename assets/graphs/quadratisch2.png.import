@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy3gmcpu7cqaq"
-path="res://.godot/imported/frog1.png-00f79c69810bebab93f8968e40cd987a.ctex"
+uid="uid://cllqkwegnvoaj"
+path="res://.godot/imported/quadratisch2.png-d33c301318fab6828740107625ba7542.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Map/player_icon/frog1.png"
-dest_files=["res://.godot/imported/frog1.png-00f79c69810bebab93f8968e40cd987a.ctex"]
+source_file="res://assets/graphs/quadratisch2.png"
+dest_files=["res://.godot/imported/quadratisch2.png-d33c301318fab6828740107625ba7542.ctex"]
 
 [params]
 

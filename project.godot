@@ -18,14 +18,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Randomnumbers="*res://scenes/tutorial/randomnumbers.gd"
+TutorialManager="*res://scenes/tutorial/tutorialManager.gd"
 MapAutoload="*res://scenes/map/map_autoload.gd"
 PlayerDataAl="*res://main_classes/player/player_data_AL.gd"
 GlobalProgressBar="*res://scenes/menu/ProgressBar.gd"
 
 [dialogue_manager]
 
-general/states=["Randomnumbers"]
+general/states=["Randomnumbers", "TutorialManager"]
 general/balloon_path="res://dialogue/balloon.tscn"
 
 [display]
@@ -33,7 +33,6 @@ general/balloon_path="res://dialogue/balloon.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
-
 window/stretch/mode="viewport"
 
 [editor_plugins]

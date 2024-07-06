@@ -1,41 +1,71 @@
-~ tutorial_test
-
-Euler: Addition: 1 + 2 = 3
-Euler: Was ist {{tutorial_x}} + {{tutorial_y}}?
-- {{tutorial_x * 2}}
-	Euler: Falsch!
-	Euler: Versuche es nochmal!
-	=> tutorial_start
-- {{tutorial_x + tutorial_y}}
-	Euler: Korrekt!
-- {{tutorial_y * 2}}
-	Euler: Falsch!
-	Euler: Versuche es nochmal! 
-	=> tutorial_start
-- Bitte erkläre nochmal! => tutorial_start
-- Skip
-
-=> END
-
 ~ tutorial_start
 Euler: Was soll ich heute erklären?
-Storch: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
-Igel: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
-Bieber: The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿ 
 
-- Nullstellen => tutorial_nullstellen
-- Ableitungen (wahrscheinlich nicht implementiert) => tutorial_ableitung
+- Lineare Funktionen => tutorial_lineareFunktionen
 - Quadratische Funktionen => tutorial_quadratischeFunktionen
+- Exponentialfunktionen => tutorial_exponentielleFunktionen
 - Nichts => END
 => END
 
 
-~ tutorial_nullstellen
+~ tutorial_lineareFunktionen
 
+Euler: Lineare Funktionen sind wohl die einfachsten der Funktionen
+do show_graphic("linear")
+Euler: Eine lineare Funktion sieht in der Regel so aus:\na * x + b
+Euler: a * x + b\nDie Funktion, die du hier sehen kannst ist f(x) = x
+Euler: a * x + b\nDas b in der Funktion bestimmt die [b]Verschiebung entlang der y-Achse[/b]
+do show_graphic("linear1")
+Euler: a * x + b\nHier ist die Funktion f(x) = x + 1. Die Funktion wird um 1 nach oben verschoben.
+Euler: a * x + b\nDas b in der Funktion bestimmt die [b]Steigung[/b] der Funktion
+do show_graphic("linear2")
+Euler: a * x + b\nHier siehst du die Funktion f(x) = 2x
+do show_graphic("linear3")
+Euler: a * x + b\nUnd hier ist die Funktion f(x) = (1/2)x
+do hide_graphic()
+Euler: Soll ich lineare Funktionen noch einmal erklären?
+- Ja => tutorial_lineareFunktionen
+- Nein => END
+
+~ tutorial_quadratischeFunktionen
+
+Euler: Es gibt verschiedene Arten von quadratischen Funktionen, die nach der Form a*x²+b*x+c verlaufen!
+do show_graphic("quadratisch")
+Euler: a*x²+b*x+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
+Euler: a*x²+b*x+c\nDies hier ist f(x) = x^2
+do show_graphic("quadratisch1")
+Euler: a*x²+b*x+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
+Euler: a*x²+b*x+c\nHier siehst du die Funktion f(x) = -x^2
+do show_graphic("quadratisch2")
+Euler: a*x²+b*x+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse [b]gestaucht[/b].[wait = 0.5] Hier ist f(x) = 2 * x^2
+do show_graphic("quadratisch3")
+Euler: a*x²+b*x+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse [b]gestreckt[/b].[wait = 0.5] Hier ist f(x) = (1/2) * x^2
+do show_graphic("quadratisch")
+Euler: a*x²+b*x+c\nc verschiebt den Graphen entlang der y-Achse, genau wie bei linearen Funktionen.
+do show_graphic("quadratisch4")
+Euler: a*x²+b*x+c\nHier ist f(x) = x^2 + 1 zum Beispiel.
+Euler: a*x²+b*x+c\nDen Graphen entlang der x-Achse zu verschieben geht auch, ist aber ein wenig komplizierter
+Euler: a*x²+b*x+c\nInnerhalb einer Klammer muss zu x hinzuaddiert werden, um diesen Effekt zu erreichen.
+do show_graphic("quadratisch5")
+Euler: (x+d)²+b*x+c\nd verschiebt den Graphen entlang der x-Achse, jedoch in entgegengesetzter Richtung.
+Euler: (x+d)²+b*x+c\n Die Funktion vor dir ist f(x) = (x+1)^2
+do hide_graphic()
+=> quadratisch_weiter
+
+
+~ quadratisch_weiter
+Euler: Soll ich dir noch etwas zu quadratischen Funktionen erklären?
+- Wie berechne ich die Nullstellen? => tutorial_nullstellen
+- Wie finde ich Scheitelpunkte? => tutorial_scheitelpunkte
+- Kannst du das alles nochmal wiederholen? => tutorial_quadratischeFunktionen
+- Nein => END
+
+~ tutorial_nullstellen
 Euler: Nullstellen errechnen ist ganz einfach!
 Euler: Du musst nur die Funktion gegen 0 setzen und gegen x rechnen.
-Euler: Zum Beispiel: f(x)= 2x+4 -> 0 = 2x+4 |-4 -> -4 = 2x |:2 -> -2 = x
-Euler: Bei komplizierteren Funktionen musst du einfach in die pq-Formel umstellen.
+Euler: Bei linearen funktionen ist das sehr leicht.
+Euler: f(x)= 2x+4 -> 0 = 2x+4 |-4 -> -4 = 2x |:2 -> -2 = x
+Euler: Bei quadratischen Funktionen musst du einfach in die pq-Formel umstellen.
 Euler: Was ist die pq-Formel? Ganz einfach!
 Euler: x = -p/2 +/- √((p/2)²-q)
 Euler: Sagen wir, deine Funktion ist x²-6x+5. Dann wäre -6 dein p und 5 dein q
@@ -44,35 +74,58 @@ Euler: Du siehst, dass zwei Lösungen herauskommen: 3+2 und 3-2
 Euler: Die Funktion schneidet die x-Achse also an x=1 und x=5
 Euler: Sollte unter der Wurzel 0 herauskommen gäbe es nur eine Nullstelle. 
 Euler: Pass auf, dass du immer alle Nullstellen angibst!
+=> quadratisch_weiter
 
-=> END
+~ tutorial_scheitelpunkte
+Euler: Um einen Scheitelpunkt zu finden, musst du zuerst die Ableitung der Funktion bestimmen.
+Euler: Das tust du indem du ausschließlich jedes x in der Funktion nimmst und durch deren Faktoren ersetzt.
+Euler: Aus 5*x, zum Beispiel, wird 5. Aus 5*x + 3 wird ebenfalls 5.
+Euler: Das liegt daran, dass die Ableitung den Anstieg der Funktion an jeder Stelle angibt.
+Euler: Sollte x einen Faktor haben, so wird von diesem 1 subtrahiert und der ursprüngliche Faktor mit dem x multipliziert.
+Euler: 5*x^3, zum Beispiel, wird zu 15*x^2
+Euler: An einem Scheitelpunkt ist der Anstieg der Funktion 0, also suchen wir nach den Nullstellen der Ableitung.
+Euler: Die Ableitung der quadratischen Funktion f(x) = 3x^2 + 5x - 6 ist f'(x) = 6x + 5
+Euler: Die Nullstelle von f'(x) = 6x + 5 liegt bei -(5/6)
+Euler: Also ist der Scheitelpunkt von f(x) 3x^2 + 5x - 6 an der Stelle -(5/6)
+=> quadratisch_weiter
 
-~ tutorial_quadratischeFunktionen
+~ tutorial_exponentielleFunktionen
 
-Euler: Es gibt verschiedene Arten von quadratischen Funktionen, die nach der Form a*x²+b*x+c verlaufen!
-Euler: a*x²+b*x+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
-Euler: a*x²+b*x+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
-Euler: a*x²+b*x+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse gestaucht.
-Euler: a*x²+b*x+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse gestreckt.
-Euler: a*x²+b*x+c\nc verschiebt den Graphen entlang der y-Achse.
-Euler: (x+d)²+b*x+c\nd hingegen verschiebt den Graphen entlang der x-Achse.
-Euler: Euler: a*x²+b*x+c\nb hingegen verschiebt entgegengesetzt essenziell, wo der Graph x=0 schneidet.
-
-=> END
-
-~ tutorial_ableitung
-
-Euler: Eine Ableitung gibt die Steigung der Funktion an einer jeweiligen Stelle an.
-Euler: Um eine Ableitung zu finden muss essenziell die Funktion auf das x reduziert werden.
-Euler: Zum Beispiel: Die lineare Funktion f(x)= 5x+3 hat überall den Anstieg 5.
-Euler: Alle Zahlen ohne x werden weggeschmissen und nur das die 5 bleibt übrig. Die Ableitung f'(x) ist 5.
-Euler: Bei Potenzen ist es etwas anders. Die Potenz wird um 1 subtrahiert und die vorherige Potenz wird zum x multipliziert
-Euler: x² wird zu 2x. x³ wird zu 3x². 3x² wird zu 6x.
-
-
-=> END
-
-
+Euler: Exponentialfunktionen mag ich am liebsten!
+Euler: Aber die sind echt kompliziert.
+Euler: Ganz grob sehen sie immer aus wie a * b^x + c
+do show_graphic("exponentiell")
+Euler: a * b^x + c\n1^x... Huch! Nanu?
+Euler: a * b^x + c\n1^x ist immer 1. Also eignet sie sich nicht als Wert für b!
+Euler: a * b^x + c\nNehmen wir stattdessen erstmal 2^x.
+do show_graphic("exponentiell1")
+Euler: a * b^x + c\nWie du siehst wird der Anstieg konstant immer größer. Der Wert steigt [b]exponentiell[/b]
+Euler: a * b^x + c\nEgal welchen Wert du für b einsetzt, der Graph wird bei f(0) immer durch 1 gehen, da b^0 immer 1 ist.
+Euler: a * b^x + c\nDa diese Funktion immer ansteigt, egal wie groß x wird nennt man sie auch [b]monoton steigend[/b].
+do show_graphic("exponentiell2")
+Euler: a * b^x + c\n(1/2)^x hingegen ist [b]monoton fallend[/b]
+Euler: a * b^x + c\nAuch wenn es vielleicht von weit weg so aussieht, wird der Graph 0 nie erreichen, jedoch stehst kleiner sein als zuvor.
+do show_graphic("exponentiell3")
+Euler: a * b^x + c\nNur wenn a [b]oder[/b] b negativ sind fällt der Graph wie hier unter 0.
+Euler: a * b^x + c\nEr nähert sich immernoch 0 an, jedoch jetzt aus dem Negativen. Jetzt ist auch er [b]monoton steigend[/b]
+do show_graphic("exponentiell4")
+Euler: a * b^x + c\nUnd wie du es dir mit Sicherheit schon denken konntest, -2^x fällt exponentiell schneller in das Negative. Auch es ist [b]monoton fallend[/b]
+do hide_graphic()
+Euler: Wusstest du, dass ich meine eigene Funktion habe?
+Euler: Die Euler Funktion!
+do show_graphic("efunktion")
+Euler: Hier ist sie! e^x: Die natürliche Exponentialfunktion.
+Euler: Das lustigste an dieser Funktion ist, dass sie ihre eigene Ableitung ist.
+Euler: Das ist richtig! Die Ableitung von e^x ist e^x.
+Euler: Was ist e?
+Euler: Natürlich [speed=10]2.71828182845904523536028747135266249775724709369995957496696762772407663035354759457138217852516642742746639193200305992181741359662904357290033429526059563073813232862794349076323382988075319525101901157383418793070215408914993488416750924476146066808226480016847741185374234544243710753907774499206955170276183860626133138458300075204493382656029760673711320070932870912744374704723069697720931014169283681902551510865746 [next]
+Euler: [speed=10]37721112523897844250569536967707854499699679468644549059879316368892300987931277361782154249992295763514822082698951936680331825288693984964651058209392398294887933203625094431173012381970684161403970198376793206832823764648042953118023287825098194558153017567173613320698112509961818815930416903515988885193458072738667385894228792284998920868058257492796104841984443634632449684875602336248270419786232090021609902353043699418491 [next]
+Euler: [speed=10]46314093431738143640546253152096183690888707016768396424378140592714563549061303107208510383750510115747704171898610687396965521267154688957035035402123407849819334321068170121005627880235193033224745015853904730419957777093503660416997329725088687696640355570716226844716256079882651787134195124665201030592123667719432527867539855894489697096409754591856956380236370162112047742722836489613422516445078182442352948636372141740238 [next]
+Euler: Das ist natürlich lange nicht alles. e ist schleißlich irrational, ähnlich wie pi.
+do hide_graphic()
+Euler: Soll ich das alles nochmal erklären?
+- Ja => tutorial_exponentielleFunktionen
+- Nein => END
 
 
 ~ storch_battle_start
