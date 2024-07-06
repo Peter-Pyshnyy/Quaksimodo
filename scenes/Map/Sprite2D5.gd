@@ -1,7 +1,8 @@
 extends Sprite2D
 
+
 func _process(delta):
-	if player_data.movement:
-		self.visible = false
-	else:
+	if PlayerDataAl.map_power_up:
 		self.visible = true
+	else:
+		self.visible = false
