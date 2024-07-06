@@ -175,3 +175,4 @@ mouse_filter = 2
 texture = ExtResource("11_7xx01")
 
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight" to="." method="_on_btn_fight_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_shop" to="." method="_on_btn_shop_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djjsq5p3fb0w4"]
+[gd_scene load_steps=14 format=3 uid="uid://djjsq5p3fb0w4"]
 
 [ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_64oh5"]
 [ext_resource type="Texture2D" uid="uid://87dkl61jyij6" path="res://assets/shop_scene/QM_shop_bg.png" id="1_l3py8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cchiwlouavhy6" path="res://assets/shop_scene/item_hidden_2.png" id="5_6m2m8"]
 [ext_resource type="Texture2D" uid="uid://dgup1hwv33ucp" path="res://assets/shop_scene/item_hidden_3.png" id="6_xnkph"]
 [ext_resource type="Texture2D" uid="uid://xvbnwdgi7rfy" path="res://assets/shop_scene/item_hidden_4.png" id="7_owuix"]
+[ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="8_f2rsy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idsge"]
 
@@ -60,4 +61,87 @@ item_3/icon = ExtResource("6_xnkph")
 item_4/text = ""
 item_4/icon = ExtResource("7_owuix")
 
+[node name="btn_hp" type="Button" parent="."]
+offset_left = 49.0
+offset_top = 83.0
+offset_right = 165.0
+offset_bottom = 153.0
+text = "HP UP"
+
+[node name="btn_dmg" type="Button" parent="."]
+offset_left = 265.0
+offset_top = 82.0
+offset_right = 381.0
+offset_bottom = 151.0
+text = "DMG UP"
+
+[node name="lbl_dmg" type="Label" parent="."]
+offset_left = 301.0
+offset_top = 188.0
+offset_right = 341.0
+offset_bottom = 211.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="lbl_hp" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 187.0
+offset_right = 127.0
+offset_bottom = 210.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="btn_buy" type="Button" parent="."]
+offset_left = 33.0
+offset_top = 547.0
+offset_right = 422.0
+offset_bottom = 621.0
+disabled = true
+text = "Kaufen"
+
+[node name="lbl_sold_0" type="Label" parent="."]
+visible = false
+offset_left = 452.0
+offset_top = 168.0
+offset_right = 655.0
+offset_bottom = 225.0
+rotation = -0.6353
+theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 41
+text = "VERKAUFT"
+
+[node name="lbl_sold_1" type="Label" parent="."]
+visible = false
+offset_left = 660.0
+offset_top = 168.0
+offset_right = 863.0
+offset_bottom = 225.0
+rotation = -0.6353
+theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 41
+text = "VERKAUFT"
+
+[node name="lbl_sold_2" type="Label" parent="."]
+visible = false
+offset_left = 876.0
+offset_top = 168.0
+offset_right = 1079.0
+offset_bottom = 225.0
+rotation = -0.6353
+theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 41
+text = "VERKAUFT"
+
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="btn_hp" to="." method="_on_btn_hp_pressed"]
+[connection signal="pressed" from="btn_dmg" to="." method="_on_btn_dmg_pressed"]
+[connection signal="pressed" from="btn_buy" to="." method="_on_btn_buy_pressed"]

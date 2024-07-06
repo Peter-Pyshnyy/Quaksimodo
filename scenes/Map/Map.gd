@@ -48,7 +48,10 @@ func _ready():
 	else:
 		generate_map()
 	
-	draw_active_square()
+	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.MAP]:
+		draw_map()
+	else:
+		draw_active_square()
 
 
 #i = map size - 2
@@ -153,6 +156,7 @@ func find_furthest_square() -> Vector2i:
 
 func draw_map():
 	for square: Square in squares_dict.values():
+		square.visited = true
 		draw_square(square)
 
 func draw_active_square():	
@@ -163,7 +167,7 @@ func draw_active_square():
 	draw_neighbours(square)
 
 func draw_neighbours(square: Square):
-	if square.roomType == Square.ROOMS.ENEMY: return
+	#if square.roomType == Square.ROOMS.ENEMY: return
 	
 	for neighbor in square.exits_dict.values():
 			if neighbor != null && !neighbor.visited:
@@ -208,10 +212,6 @@ func print_map():
 		print(square.get_taken_paths())
 		print()
 
-
-func _on_btn_fight_pressed():
-	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
-
 func btn_toggle(roomType: int):
 	btn_fight.hide()
 	btn_shop.hide()
@@ -228,10 +228,8 @@ func btn_toggle(roomType: int):
 		3: btn_shop.show()
 		4: btn_boss.show()
 
+func _on_btn_fight_pressed():
+	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
 
-#TO DO:
-#Each lvl a little bit more rooms
-#not completed paths are shown as squares and don't show conntections jet
-
-
-
+func _on_btn_shop_pressed():
+	get_tree().change_scene_to_file("res://scenes/shop/shop.tscn")
