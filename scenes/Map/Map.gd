@@ -90,6 +90,8 @@ func generate_map(i: int = 7):
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
 	boss_square.roomType = Square.ROOMS.BOSS
+	boss_square.boss = randi_range(0,2)
+	print(boss_square.boss)
 	squares_dict[boss_square.coords] = boss_square
 	
 	#spawns a chest and a shop in the world
@@ -169,7 +171,11 @@ func draw_neighbours(square: Square):
 
 func draw_square(square: Square):
 	#used to select a tile set
-	var atlas_id = 0
+	var atlas_id:int
+	if square.roomType == Square.ROOMS.BOSS:
+		atlas_id = 1
+	else:
+		atlas_id = 0
 	
 	#used to select a tile from a tile set
 	var atlas_coords = choose_tile(square)
@@ -181,7 +187,12 @@ func choose_tile(square: Square) -> Vector2i:
 	if !square.visited:
 		return Vector2i(4, 0)
 	
-	match square.roomType:
+	var matcher:int = square.roomType
+	
+	if square.roomType == Square.ROOMS.BOSS:
+		matcher = square.boss
+	
+	match matcher:
 		1:
 			return Vector2i(1, 0)
 		2:

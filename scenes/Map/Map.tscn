@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyk3l5r2ap5qe"]
+[gd_scene load_steps=15 format=3 uid="uid://dyk3l5r2ap5qe"]
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
+[ext_resource type="Texture2D" uid="uid://uavf1ddsk6e4" path="res://scenes/fight/QM_tiles_boss.png" id="3_gvv1e"]
 [ext_resource type="Script" path="res://scenes/map/player_icon/player_icon.gd" id="5_m0txf"]
 [ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/map/player_icon/frog1.png" id="6_0r7ri"]
 [ext_resource type="Texture2D" uid="uid://mn6wonkh2r6l" path="res://assets/map_scene/QM_move_tut.png" id="6_ejjvt"]
@@ -18,6 +19,7 @@ texture = ExtResource("2_63p1a")
 4:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0nne0"]
+texture = ExtResource("3_gvv1e")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
