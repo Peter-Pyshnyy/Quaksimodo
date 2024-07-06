@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=15 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
-[ext_resource type="AudioStream" uid="uid://do8gy44f5vty0" path="res://sounds/hoo.wav" id="4_xsjmb"]
-[ext_resource type="AudioStream" uid="uid://bi8xg6uw5y65q" path="res://sounds/storch.wav" id="5_8ufbr"]
-[ext_resource type="AudioStream" uid="uid://se8rf7hpoy53" path="res://sounds/igel.wav" id="6_vtsjb"]
-[ext_resource type="AudioStream" uid="uid://bqqgrxsrdghbx" path="res://sounds/bieber.wav" id="7_aya64"]
+[ext_resource type="AudioStream" uid="uid://do8gy44f5vty0" path="res://assets/sounds/hoo.wav" id="4_r0faj"]
+[ext_resource type="AudioStream" uid="uid://bi8xg6uw5y65q" path="res://assets/sounds/storch.wav" id="5_uufuh"]
+[ext_resource type="AudioStream" uid="uid://se8rf7hpoy53" path="res://assets/sounds/igel.wav" id="6_ylov8"]
+[ext_resource type="AudioStream" uid="uid://bqqgrxsrdghbx" path="res://assets/sounds/bieber.wav" id="7_rxfo5"]
+[ext_resource type="AudioStream" uid="uid://cu6h4dvlegbqi" path="res://assets/sounds/fox.wav" id="8_tm8fg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r8ag"]
 bg_color = Color(0.913006, 0.940145, 0.796076, 1)
@@ -216,16 +217,16 @@ offset_bottom = 452.0
 mouse_filter = 2
 
 [node name="EulerNoises" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_xsjmb")
+stream = ExtResource("4_r0faj")
 
 [node name="StorchNoises" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_8ufbr")
+stream = ExtResource("5_uufuh")
 
 [node name="IgelNoises" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_vtsjb")
+stream = ExtResource("6_ylov8")
 
 [node name="BieberNoises" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_aya64")
+stream = ExtResource("7_rxfo5")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = -1
@@ -235,6 +236,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="FoxNoises" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tm8fg")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]

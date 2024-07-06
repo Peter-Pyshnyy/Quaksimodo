@@ -20,6 +20,7 @@ extends CanvasLayer
 @onready var storch_noises = $StorchNoises
 @onready var igel_noises = $IgelNoises
 @onready var bieber_noises = $BieberNoises
+@onready var fox_noises = $FoxNoises
 
 
 ## The empty path for the character portrait
@@ -187,18 +188,27 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 func _on_dialogue_label_spoke(letter, letter_index, speed):
 	if not letter in [".", " "]:
 		var speaker
-		match dialogue_line.character.to_lower():
+		match currentSpeaker:
 			"euler":
 				speaker = euler_noises
+			"pythaguhus":
+				speaker = euler_noises
 			"storch":
+				speaker = storch_noises
+			"storchimedes":
 				speaker = storch_noises
 			"igel":
 				speaker = igel_noises
 			"bieber":
 				speaker = bieber_noises
+			"fuchlid":
+				speaker = fox_noises
 			_:
 				speaker = null
-		speaker.pitch_scale = randf_range(0.9, 1.1)
+		if currentSpeaker == "pythaguhus" or currentSpeaker == "storchimedes":
+			speaker.pitch_scale = randf_range(0.7, 0.9)
+		else:
+			speaker.pitch_scale = randf_range(0.9, 1.1)
 		speaker.play()
 
 func _process(delta):
