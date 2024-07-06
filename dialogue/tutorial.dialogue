@@ -2,9 +2,8 @@
 Euler: Was soll ich heute erklären?
 
 - Lineare Funktionen => tutorial_lineareFunktionen
-- Nullstellen => tutorial_nullstellen
-- Ableitungen (wahrscheinlich nicht implementiert) => tutorial_ableitung
 - Quadratische Funktionen => tutorial_quadratischeFunktionen
+- Exponentialfunktionen => tutorial_exponentielleFunktionen
 - Nichts => END
 => END
 
@@ -57,7 +56,7 @@ do hide_graphic()
 ~ quadratisch_weiter
 Euler: Soll ich dir noch etwas zu quadratischen Funktionen erklären?
 - Wie berechne ich die Nullstellen? => tutorial_nullstellen
-- Wie finde ich Scheitelpunkte?
+- Wie finde ich Scheitelpunkte? => tutorial_scheitelpunkte
 - Kannst du das alles nochmal wiederholen? => tutorial_quadratischeFunktionen
 - Nein => END
 
@@ -90,19 +89,43 @@ Euler: Die Nullstelle von f'(x) = 6x + 5 liegt bei -(5/6)
 Euler: Also ist der Scheitelpunkt von f(x) 3x^2 + 5x - 6 an der Stelle -(5/6)
 => quadratisch_weiter
 
+~ tutorial_exponentielleFunktionen
 
-~ tutorial_ableitung
-
-Euler: Eine Ableitung gibt die Steigung der Funktion an einer jeweiligen Stelle an.
-Euler: Um eine Ableitung zu finden muss essenziell die Funktion auf das x reduziert werden.
-Euler: Zum Beispiel: Die lineare Funktion f(x)= 5x+3 hat überall den Anstieg 5.
-Euler: Alle Zahlen ohne x werden weggeschmissen und nur das die 5 bleibt übrig. Die Ableitung f'(x) ist 5.
-Euler: Bei Potenzen ist es etwas anders. Die Potenz wird um 1 subtrahiert und die vorherige Potenz wird zum x multipliziert
-Euler: x² wird zu 2x. x³ wird zu 3x². 3x² wird zu 6x.
-
-=> END
-
-
+Euler: Exponentialfunktionen mag ich am liebsten!
+Euler: Aber die sind echt kompliziert.
+Euler: Ganz grob sehen sie immer aus wie a * b^x + c
+do show_graphic("exponentiell")
+Euler: a * b^x + c\n1^x... Huch! Nanu?
+Euler: a * b^x + c\n1^x ist immer 1. Also eignet sie sich nicht als Wert für b!
+Euler: a * b^x + c\nNehmen wir stattdessen erstmal 2^x.
+do show_graphic("exponentiell1")
+Euler: a * b^x + c\nWie du siehst wird der Anstieg konstant immer größer. Der Wert steigt [b]exponentiell[/b]
+Euler: a * b^x + c\nEgal welchen Wert du für b einsetzt, der Graph wird bei f(0) immer durch 1 gehen, da b^0 immer 1 ist.
+Euler: a * b^x + c\nDa diese Funktion immer ansteigt, egal wie groß x wird nennt man sie auch [b]monoton steigend[/b].
+do show_graphic("exponentiell2")
+Euler: a * b^x + c\n(1/2)^x hingegen ist [b]monoton fallend[/b]
+Euler: a * b^x + c\nAuch wenn es vielleicht von weit weg so aussieht, wird der Graph 0 nie erreichen, jedoch stehst kleiner sein als zuvor.
+do show_graphic("exponentiell3")
+Euler: a * b^x + c\nNur wenn a [b]oder[/b] b negativ sind fällt der Graph wie hier unter 0.
+Euler: a * b^x + c\nEr nähert sich immernoch 0 an, jedoch jetzt aus dem Negativen. Jetzt ist auch er [b]monoton steigend[/b]
+do show_graphic("exponentiell4")
+Euler: a * b^x + c\nUnd wie du es dir mit Sicherheit schon denken konntest, -2^x fällt exponentiell schneller in das Negative. Auch es ist [b]monoton fallend[/b]
+do hide_graphic()
+Euler: Wusstest du, dass ich meine eigene Funktion habe?
+Euler: Die Euler Funktion!
+do show_graphic("efunktion")
+Euler: Hier ist sie! e^x: Die natürliche Exponentialfunktion.
+Euler: Das lustigste an dieser Funktion ist, dass sie ihre eigene Ableitung ist.
+Euler: Das ist richtig! Die Ableitung von e^x ist e^x.
+Euler: Was ist e?
+Euler: Natürlich [speed=10]2.71828182845904523536028747135266249775724709369995957496696762772407663035354759457138217852516642742746639193200305992181741359662904357290033429526059563073813232862794349076323382988075319525101901157383418793070215408914993488416750924476146066808226480016847741185374234544243710753907774499206955170276183860626133138458300075204493382656029760673711320070932870912744374704723069697720931014169283681902551510865746 [next]
+Euler: [speed=10]37721112523897844250569536967707854499699679468644549059879316368892300987931277361782154249992295763514822082698951936680331825288693984964651058209392398294887933203625094431173012381970684161403970198376793206832823764648042953118023287825098194558153017567173613320698112509961818815930416903515988885193458072738667385894228792284998920868058257492796104841984443634632449684875602336248270419786232090021609902353043699418491 [next]
+Euler: [speed=10]46314093431738143640546253152096183690888707016768396424378140592714563549061303107208510383750510115747704171898610687396965521267154688957035035402123407849819334321068170121005627880235193033224745015853904730419957777093503660416997329725088687696640355570716226844716256079882651787134195124665201030592123667719432527867539855894489697096409754591856956380236370162112047742722836489613422516445078182442352948636372141740238 [next]
+Euler: Das ist natürlich lange nicht alles. e ist schleißlich irrational, ähnlich wie pi.
+do hide_graphic()
+Euler: Soll ich das alles nochmal erklären?
+- Ja => tutorial_exponentielleFunktionen
+- Nein => END
 
 
 ~ storch_battle_start
