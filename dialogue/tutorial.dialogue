@@ -221,3 +221,42 @@ Euler: Soll ich das alles nochmal erklären?
 % Bieber: Nein nein, so rechnet man das nicht.
 
 => END
+
+~ storchimedes_battle_start
+Storchimedes: Du begehst einen schweren Fehler, kleiner Frosch!
+Storchimedes: Ich brutzel dich mit meinem Storchimedes Hitzestrahl!
+=> END
+
+~ storchimedes_battle_victory
+Storchimedes: Oh nein. Ich glaube, ich wurde gebrutzelt...
+=> END
+
+~ storchimedes_battle_failure
+Storchimedes: Immernoch unbesiegt!
+=> END
+
+~ pythaguhus_battle_start
+Pythaguhus: Katheten bei Seite, ich schnapp mir 'nen Frosch!
+=> END
+
+~ pythaguhus_battle_victory
+Pythaguhus: Hurrah! Ich... [wait=1] warte was? Ich habe verloren???
+=> END
+
+~ pythaguhus_battle_failure
+Pythaguhus: Hypotenuse? Wohl eher Hypothe-[wait=0.5].[wait=0.5].[wait=0.5].[wait=0.5]Loser
+Pythaguhus: ...
+Pythaguhus: Argh, was auch immer. Ich fress dich!
+=> END
+
+~ fuchlid_battle_start
+Fuchlid: Was als nächstes passiert wird dir unproportional heftig weh tun.
+=> END
+
+~ fuchlid_battle_victory
+Fuchlid: ... >:(
+=> END
+
+~ fuchlid_battle_failure
+Fuchlid: Wenn ich mit dir fertig bin wirst du nicht mehr euklidisch aussehen, das verspreche ich dir.
+=> END
