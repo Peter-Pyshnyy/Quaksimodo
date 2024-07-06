@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=19 format=3 uid="uid://dyk3l5r2ap5qe"]
-
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
@@ -8,22 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/map/player_icon/frog1.png" id="6_0r7ri"]
 [ext_resource type="Texture2D" uid="uid://mn6wonkh2r6l" path="res://assets/map_scene/QM_move_tut.png" id="6_ejjvt"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="7_sgvhx"]
-
 [ext_resource type="Script" path="res://scenes/map/steuerung.gd" id="9_ikvlr"]
 [ext_resource type="Texture2D" uid="uid://cu2mvsfg13t8e" path="res://assets/map_scene/QM_bg.png" id="11_7xx01"]
 
-[ext_resource type="Script" path="res://scenes/Map/steuerung.gd" id="9_ikvlr"]
-[ext_resource type="Texture2D" uid="uid://cj87bgxhjcqgh" path="res://main_classes/player/item_gabel.png" id="10_3meua"]
-[ext_resource type="Texture2D" uid="uid://cv486psqiacjb" path="res://main_classes/player/item_geodreieck.png" id="11_777n0"]
-[ext_resource type="Script" path="res://scenes/Map/Sprite2D2.gd" id="11_ne5k7"]
-[ext_resource type="Texture2D" uid="uid://cyvf4caogi8vk" path="res://main_classes/player/item_mittagspause.png" id="12_41rcj"]
-[ext_resource type="Script" path="res://scenes/Map/Sprite2D3.gd" id="13_6ht5b"]
-[ext_resource type="Texture2D" uid="uid://dv8p6xedn3n6p" path="res://main_classes/player/item_stadtplan.png" id="13_biv36"]
-[ext_resource type="Texture2D" uid="uid://b24gbdry1sle1" path="res://main_classes/player/item_eimer.png" id="14_e5lo6"]
-[ext_resource type="Script" path="res://scenes/Map/Sprite2D4.gd" id="15_74ion"]
-[ext_resource type="Script" path="res://scenes/Map/Sprite2D5.gd" id="17_eg05m"]
-[ext_resource type="Script" path="res://scenes/Map/Sprite2D6.gd" id="19_yggjx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64uvy"]
+texture = ExtResource("2_63p1a")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oex7a"]
+load_path = "res://.godot/imported/QM_tiles_single.png-ba78cd8b753cd08d9e1ab36a0a558b3f.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6lwc"]
 texture = SubResource("CompressedTexture2D_oex7a")
@@ -111,7 +106,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
-
 [node name="btn_fight" type="Button" parent="TileMap/player_icon/Camera2D"]
 visible = false
 clip_contents = true
@@ -119,7 +113,6 @@ offset_left = -39.0
 offset_top = -44.0
 offset_right = 39.0
 offset_bottom = -27.0
-
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 text = "Kämpfen!"
@@ -199,35 +192,13 @@ scale = Vector2(1.73982, 1.92173)
 text = "nach unten"
 horizontal_alignment = 1
 
-[node name="Gabel" type="Sprite2D" parent="."]
-position = Vector2(-56, -43)
-scale = Vector2(0.875, 0.75)
-texture = ExtResource("10_3meua")
-script = ExtResource("11_ne5k7")
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -151.0
+offset_top = -118.0
+offset_right = 161.0
+offset_bottom = 78.0
+mouse_filter = 2
+texture = ExtResource("11_7xx01")
 
-[node name="GeoDreieck" type="Sprite2D" parent="."]
-position = Vector2(-86, -43)
-scale = Vector2(0.875, 0.8125)
-texture = ExtResource("11_777n0")
-script = ExtResource("13_6ht5b")
-
-[node name="Mittagspause" type="Sprite2D" parent="."]
-position = Vector2(-41, -43)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("12_41rcj")
-script = ExtResource("15_74ion")
-
-[node name="Map" type="Sprite2D" parent="."]
-position = Vector2(-72, -43)
-scale = Vector2(0.875, 0.8125)
-texture = ExtResource("13_biv36")
-script = ExtResource("17_eg05m")
-
-[node name="Eimer" type="Sprite2D" parent="."]
-position = Vector2(-100, -43)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("14_e5lo6")
-script = ExtResource("19_yggjx")
-
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TileMap/player_icon/Camera2D/start/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight" to="." method="_on_btn_fight_pressed"]

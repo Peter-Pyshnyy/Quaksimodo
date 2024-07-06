@@ -1,38 +1,38 @@
 extends CharacterBody2D
 
+var input_movement = Vector2.ZERO
+var direction = Vector2.ZERO
+
+var speed = 70
+var health = player_data.health
+var coin_count = player_data.coins
+
 func _ready():
 	pass
 
+func _physics_process(delta):
+	move(delta)
 
-func set_player_damage(damage):
-	PlayerDataAl.player_damage = damage
-
-func health_power_up():
-	if PlayerDataAl.health_power_up:
-		PlayerDataAl.health = PlayerDataAl.max_health
-		PlayerDataAl.health_power_up = false
-
-func map_power_up():
-	if PlayerDataAl.map_power_up:
-		print("map")
-		PlayerDataAl.map_power_up = false
+func move(delta):
+	input_movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	if input_movement != Vector2.ZERO:
+		velocity = input_movement * speed
+	else:
+		velocity = Vector2.ZERO
 		
-func frog_reduced_receive_damage_power_up():
-	if PlayerDataAl.frog_reduced_receive_damage_power_up:
-		PlayerDataAl.enemy_damage = PlayerDataAl.enemy_damage/2
-		PlayerDataAl.frog_reduced_receive_damage_power_up = false
+	move_and_slide()
 
-func frog_more_attack_damage_power_up():
-	if PlayerDataAl.frog_more_attack_damage_power_up:
-		PlayerDataAl.player_damage += 2
-		PlayerDataAl.frog_more_attack_damage_power_up = false
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		die()
 		
-func frog_shield_power_up():
-	if PlayerDataAl.frog_shield_power_up:
-		PlayerDataAl.enemy_damage = 0
-		PlayerDataAl.frog_shield_power_up = false
+func heal_life(amount):
+	health += amount
 
-func next_question_right_power_up():
-	if PlayerDataAl.next_question_right_power_up:
-		print("All Question right")
-		PlayerDataAl.next_question_right_power_up = false
+func die():
+	queue_free()
+
+func collect_coin():
+	coin_count += 1
