@@ -1,8 +1,8 @@
 extends Node
 
 var coins = 0
-var health = 10
-var max_health = 10
+var health = 100
+var max_health = 100
 var player_damage = 1
 var enemy_damage = 1
 var health_power_up = false
