@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=18 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
-[ext_resource type="Texture2D" uid="uid://n0qlom81yux4" path="res://assets/fight_scene/background_animation.png" id="2_uro12"]
-[ext_resource type="Texture2D" uid="uid://d1rsmh5ksb5wo" path="res://assets/fight_scene/background_input.png" id="3_teae5"]
+[ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_peegu"]
+[ext_resource type="Texture2D" uid="uid://bw8f11kgdg8xl" path="res://assets/fight_scene/input.png" id="3_jk81y"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="4_dqjig"]
+[ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="5_qfwxr"]
 [ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/fight_scene/sheet_schwan.png" id="5_vwpuy"]
+[ext_resource type="Texture2D" uid="uid://tgeuq7w7qpwd" path="res://assets/fight_scene/attack_btn_inverted.png" id="6_dx4cd"]
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
+[ext_resource type="Texture2D" uid="uid://crdnh3imwtcjk" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
+[ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="8_624dc"]
 
 [sub_resource type="Animation" id="Animation_ik2so"]
 resource_name = "new_animation"
@@ -78,11 +82,15 @@ default_font_size = 25
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_fxtqe")
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="background" type="Sprite2D" parent="."]
+light_mask = 0
 position = Vector2(576, 221.5)
 scale = Vector2(7.2, 4.92222)
-texture = ExtResource("2_uro12")
+texture = ExtResource("2_peegu")
 hframes = 2
 frame = 1
 
@@ -91,15 +99,10 @@ libraries = {
 "": SubResource("AnimationLibrary_r031u")
 }
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(3.00012, 0)
-scale = Vector2(1, 1)
-points = PackedVector2Array(0, 448, 1152, 448)
-
 [node name="BackgroundInput" type="Sprite2D" parent="."]
-position = Vector2(579, 548)
-scale = Vector2(9.93107, 2.22222)
-texture = ExtResource("3_teae5")
+position = Vector2(576, 324)
+scale = Vector2(7.2, 7.2)
+texture = ExtResource("3_jk81y")
 
 [node name="HealthBarEnemy" parent="." instance=ExtResource("4_dqjig")]
 offset_left = 712.0
@@ -113,20 +116,30 @@ offset_top = 71.0
 offset_right = 390.0
 offset_bottom = 191.0
 
-[node name="Button" type="Button" parent="."]
-offset_left = 72.0
-offset_top = 496.0
-offset_right = 224.0
-offset_bottom = 608.0
-text = "Attack"
+[node name="AttackButton" type="TextureButton" parent="."]
+offset_left = 30.0
+offset_top = 567.0
+offset_right = 551.0
+offset_bottom = 617.0
+texture_normal = ExtResource("5_qfwxr")
+texture_pressed = ExtResource("6_dx4cd")
+stretch_mode = 0
+
+[node name="HelpButton" type="TextureButton" parent="."]
+offset_left = 599.0
+offset_top = 567.0
+offset_right = 1128.0
+offset_bottom = 617.0
+texture_normal = ExtResource("7_vh5qi")
+texture_pressed = ExtResource("8_624dc")
+stretch_mode = 0
 
 [node name="Enemy" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(946, 533)
+position = Vector2(934, 515)
 scale = Vector2(0.452333, 0.452333)
 texture = ExtResource("5_vwpuy")
 hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
 libraries = {
@@ -134,7 +147,7 @@ libraries = {
 }
 
 [node name="Frog" type="Sprite2D" parent="."]
-position = Vector2(219, 443)
+position = Vector2(212, 425)
 scale = Vector2(4.80833, 4.80833)
 texture = ExtResource("6_hen0n")
 hframes = 2
@@ -155,45 +168,45 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
 [node name="Question" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 456.0
-offset_right = 490.0
-offset_bottom = 479.0
+offset_left = 40.0
+offset_top = 465.0
+offset_right = 210.0
+offset_bottom = 488.0
 
 [node name="Question2" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 544.0
-offset_right = 490.0
-offset_bottom = 567.0
+offset_left = 414.0
+offset_top = 465.0
+offset_right = 584.0
+offset_bottom = 488.0
 
 [node name="Question3" type="Label" parent="."]
-offset_left = 576.0
-offset_top = 456.0
-offset_right = 746.0
-offset_bottom = 479.0
+offset_left = 796.0
+offset_top = 465.0
+offset_right = 966.0
+offset_bottom = 488.0
 
 [node name="Answer" type="LineEdit" parent="."]
-offset_left = 320.0
-offset_top = 496.0
-offset_right = 466.0
-offset_bottom = 527.0
+offset_left = 40.0
+offset_top = 507.0
+offset_right = 356.0
+offset_bottom = 538.0
 placeholder_text = "Solution"
 
 [node name="Answer2" type="LineEdit" parent="."]
-offset_left = 320.0
-offset_top = 584.0
-offset_right = 466.0
-offset_bottom = 615.0
+offset_left = 414.0
+offset_top = 507.0
+offset_right = 730.0
+offset_bottom = 539.0
 placeholder_text = "Solution"
 
 [node name="Answer3" type="LineEdit" parent="."]
-offset_left = 576.0
-offset_top = 496.0
-offset_right = 722.0
-offset_bottom = 527.0
+offset_left = 796.0
+offset_top = 507.0
+offset_right = 1112.0
+offset_bottom = 538.0
 placeholder_text = "Solution"
 
-[connection signal="pressed" from="Button" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_exited" from="Answer" to="." method="_on_answer_focus_exited"]
 [connection signal="focus_exited" from="Answer2" to="." method="_on_answer_2_focus_exited"]
 [connection signal="focus_exited" from="Answer3" to="." method="_on_answer_3_focus_exited"]
