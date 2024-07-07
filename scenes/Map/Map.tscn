@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyk3l5r2ap5qe"]
+[gd_scene load_steps=27 format=3 uid="uid://dyk3l5r2ap5qe"]
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://bo3e36fg7g6p0" path="res://assets/map_scene/QM_tiles_single.png" id="3_ddekt"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scenes/Map/Sprite2D4.gd" id="15_74ion"]
 [ext_resource type="Script" path="res://scenes/Map/Sprite2D5.gd" id="17_eg05m"]
 [ext_resource type="Script" path="res://scenes/Map/Sprite2D6.gd" id="19_yggjx"]
+[ext_resource type="Texture2D" uid="uid://2h3pchkp2wt6" path="res://scenes/Map/cute-tadpole-pixel-art-style-suitable-for-sticker-and-decoration-free-vector-removebg-preview.png" id="20_50363"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6lwc"]
 texture = ExtResource("3_ddekt")
@@ -182,6 +183,20 @@ position = Vector2(-100, -43)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("14_e5lo6")
 script = ExtResource("19_yggjx")
+
+[node name="Laich" type="Label" parent="."]
+texture_filter = 4
+offset_left = 116.0
+offset_top = -54.0
+offset_right = 126.0
+offset_bottom = -31.0
+scale = Vector2(0.579818, 0.441731)
+text = "1"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(110, -48)
+scale = Vector2(0.02, 0.019)
+texture = ExtResource("20_50363")
 
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/start/start" to="." method="_on_start_pressed"]

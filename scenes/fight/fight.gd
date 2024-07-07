@@ -156,3 +156,4 @@ func give_random_coins():
 	rng.randomize()
 	var random_coins = rng.randi_range(1, 5)
 	PlayerDataAl.coins += random_coins
+	print(PlayerDataAl.coins)

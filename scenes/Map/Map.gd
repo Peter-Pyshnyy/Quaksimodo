@@ -1,6 +1,6 @@
 extends Node2D
 
-#used for connecting squares correctly
+# used for connecting squares correctly
 const CONNECTION_DICT = {
 	"up": "down",
 	"right": "left",
@@ -8,7 +8,7 @@ const CONNECTION_DICT = {
 	"left": "right",
 }
 
-#used to select a correct tile for the map
+# used to select a correct tile for the map
 const DIR_INDX_DICT = {
 	"up": 0,
 	"right": 1,
@@ -16,22 +16,23 @@ const DIR_INDX_DICT = {
 	"left": 3,
 }
 
-#used to generate new square coordinates by adding to the previous coords
+# used to generate new square coordinates by adding to the previous coords
 const COORDS_ADD_DICT = {
-	"up": Vector2i(0,1),
-	"right": Vector2i(1,0),
-	"down": Vector2i(0,-1),
-	"left": Vector2i(-1,0),
+	"up": Vector2i(0, 1),
+	"right": Vector2i(1, 0),
+	"down": Vector2i(0, -1),
+	"left": Vector2i(-1, 0),
 }
 
 var squares_dict: Dictionary
 @onready var tile_map = $TileMap
 @onready var player_icon = $TileMap/player_icon
 @onready var start_btn = $TileMap/player_icon/Camera2D/start
+@onready var coin_label = get_node("/root/map/Laich")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(!MapAutoload.squares_dict.is_empty()):
+	if !MapAutoload.squares_dict.is_empty():
 		squares_dict = MapAutoload.squares_dict
 		player_icon.position = MapAutoload.player_icon_pos
 		MapAutoload.active_sqr.completed = true
@@ -39,47 +40,32 @@ func _ready():
 		
 		for square in MapAutoload.visited_squares:
 			draw_square(square)
-		
-		
 	else:
 		generate_map(7)
 	
 	draw_active_square()
+	_update_coin_display()
 
-
-#i = map size - 2
 func generate_map(i: int = 6):
-	#creates the first square with coords (0,0) of type START
 	var start = Square.new()
 	start.completed = true
 	MapAutoload.active_sqr = start
 	squares_dict[start.coords] = start
 	
 	for n in i:
-		var selected_square: Square;
+		var selected_square: Square
 		while true:
-			#picks a square to attach new square to
-			selected_square = squares_dict.values().pick_random(); 
-			
-			#if the square has no more free paths, different square gets picked
-			if(!selected_square.get_free_paths().is_empty()): 
+			selected_square = squares_dict.values().pick_random()
+			if !selected_square.get_free_paths().is_empty():
 				break
 		
-		var new_path = selected_square.get_free_paths().pick_random();
-		
-		#new_square.coords = neigboring coords of selected_square.coords
+		var new_path = selected_square.get_free_paths().pick_random()
 		var new_square = Square.new(selected_square.coords + COORDS_ADD_DICT[new_path])
-		
-		#connects the new square to surrounding squares
 		connect_surroundings(new_square)
-		
 		squares_dict[new_square.coords] = new_square
 	
-	#add boss square near the furthest square from (0,0)
 	var furthest_square = squares_dict[find_furthest_square()]
-	var new_path = furthest_square.get_free_paths().pick_random();
-		
-	#same as adding new square
+	var new_path = furthest_square.get_free_paths().pick_random()
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
 	squares_dict[boss_square.coords] = boss_square
@@ -87,35 +73,25 @@ func generate_map(i: int = 6):
 	MapAutoload.squares_dict = squares_dict
 	btn_toggle()
 
-
 func connect_squares(s1: Square, s2: Square, path: String):
 	s1.exits_dict[path] = s2
 	s2.exits_dict[CONNECTION_DICT[path]] = s1
 
-
 func connect_surroundings(square: Square):
-	#loops through all 4 direction
 	for path in square.get_free_paths():
-		var neighbor_coords = square.coords+COORDS_ADD_DICT[path]
-		
-		#if there is an unconnected neighbor, connects the squares
-		if(squares_dict.has(neighbor_coords)):
+		var neighbor_coords = square.coords + COORDS_ADD_DICT[path]
+		if squares_dict.has(neighbor_coords):
 			var neighbor = squares_dict[neighbor_coords]
 			connect_squares(square, neighbor, path)
 
-
-#finds the square furthest away from (0, 0) using AStar
 func find_furthest_square() -> Vector2i:
 	var astar = AStar2D.new()
 	var map = squares_dict.keys()
 
-	# add points to the AStar grid
 	for coords in map:
-		astar.add_point(map.find(coords), coords) #(id=index, coords)
+		astar.add_point(map.find(coords), coords)
 	
-	# connect points
 	for coords in map:
-		#loops through square's neighbors and connects them in astar
 		for neighbor in squares_dict[coords].exits_dict.values():
 			if neighbor != null:
 				astar.connect_points(map.find(coords), map.find(neighbor.coords))
@@ -124,7 +100,6 @@ func find_furthest_square() -> Vector2i:
 	var max_distance = -1
 	var furthest_point = Vector2i(0, 0)
 	
-	# finds the furthest square from (0,0) by checking the distance to each one
 	for node in map:
 		var path = astar.get_point_path(start_id, map.find(node))
 		var distance = path.size()
@@ -137,60 +112,43 @@ func find_furthest_square() -> Vector2i:
 
 func draw_map():
 	for square: Square in squares_dict.values():
-		#used to select a tile set
 		var atlas_id = square.get_taken_paths().size()
+		if atlas_id == 4:
+			atlas_id = 2
 		
-		#tile with 4 exits in on QM_tiles_double
-		if (atlas_id == 4):
-			atlas_id = 2; 
-		
-		#used to select a tile from a tile set
 		var atlas_coords = choose_tile(square)
-		
-		#sets a sprite on a cell (y reversed)
-		tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
+		tile_map.set_cell(0, Vector2i(square.coords.x, -1 * square.coords.y), atlas_id, atlas_coords)
 
-func draw_active_square():	
+func draw_active_square():
 	var square = MapAutoload.active_sqr
 	MapAutoload.visited_squares.push_back(square)
-	
 	draw_square(square)
 
 func draw_square(square: Square):
-	#used to select a tile set
 	var atlas_id = square.get_taken_paths().size()
+	if atlas_id == 4:
+		atlas_id = 2
 	
-	#tile with 4 exits in on QM_tiles_double
-	if (atlas_id == 4):
-		atlas_id = 2; 
-	
-	#used to select a tile from a tile set
 	var atlas_coords = choose_tile(square)
-	
-	#sets a sprite on a cell (y reversed)
-	tile_map.set_cell(0, Vector2i(square.coords.x, -1*square.coords.y), atlas_id, atlas_coords);
+	tile_map.set_cell(0, Vector2i(square.coords.x, -1 * square.coords.y), atlas_id, atlas_coords)
 
 func choose_tile(square: Square) -> Vector2i:
 	match square.get_taken_paths().size():
 		1:
-			#selects based on the single outgoing path
 			var exit: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
 			return Vector2i(exit, 0)
 		2:
-			#uses the grid of the tile set to select a tile
 			var exit_1: int = DIR_INDX_DICT[square.get_taken_paths()[0]]
 			var exit_2: int = DIR_INDX_DICT[square.get_taken_paths()[1]]
-			
-			return Vector2i(exit_2, exit_1);
+			return Vector2i(exit_2, exit_1)
 		3:
-			#selects based on the single closed path
-			if(square.get_free_paths().is_empty()):
-				return Vector2i(2,0)
+			if square.get_free_paths().is_empty():
+				return Vector2i(2, 0)
 				
 			var closed_exit: int = DIR_INDX_DICT[square.get_free_paths()[0]]
 			return Vector2i(closed_exit, 0)
 		_:
-			return Vector2i(0,0)
+			return Vector2i(0, 0)
 
 func print_map():
 	for square in squares_dict.values():
@@ -198,12 +156,16 @@ func print_map():
 		print(square.get_taken_paths())
 		print()
 
-
 func _on_start_pressed():
+	_update_coin_display()
 	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
 
 func btn_toggle():
-	if(MapAutoload.active_sqr.completed):
+	_update_coin_display()
+	if MapAutoload.active_sqr.completed:
 		start_btn.hide()
 	else:
 		start_btn.show()
+
+func _update_coin_display():
+	coin_label.set_text(str(PlayerDataAl.coins))
