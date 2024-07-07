@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=19 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
 [ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_peegu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
 [ext_resource type="Texture2D" uid="uid://crdnh3imwtcjk" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="8_624dc"]
+[ext_resource type="Texture2D" uid="uid://h8rfbq2b3jrm" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
 
 [sub_resource type="Animation" id="Animation_ik2so"]
 resource_name = "new_animation"
@@ -84,8 +85,6 @@ default_font_size = 25
 script = ExtResource("1_fxtqe")
 metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="background" type="Sprite2D" parent="."]
 light_mask = 0
 position = Vector2(576, 221.5)
@@ -103,18 +102,6 @@ libraries = {
 position = Vector2(576, 324)
 scale = Vector2(7.2, 7.2)
 texture = ExtResource("3_jk81y")
-
-[node name="HealthBarEnemy" parent="." instance=ExtResource("4_dqjig")]
-offset_left = 712.0
-offset_top = 56.0
-offset_right = 1072.0
-offset_bottom = 176.0
-
-[node name="HealthBarFrog" parent="." instance=ExtResource("4_dqjig")]
-offset_left = 30.0
-offset_top = 71.0
-offset_right = 390.0
-offset_bottom = 191.0
 
 [node name="AttackButton" type="TextureButton" parent="."]
 offset_left = 30.0
@@ -136,8 +123,8 @@ stretch_mode = 0
 
 [node name="Enemy" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(934, 515)
-scale = Vector2(0.452333, 0.452333)
+position = Vector2(663, 524)
+scale = Vector2(0.499166, 0.499166)
 texture = ExtResource("5_vwpuy")
 hframes = 2
 
@@ -158,11 +145,28 @@ libraries = {
 "": SubResource("AnimationLibrary_iybaq")
 }
 
+[node name="HealthBarFrame" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(7.2, 7.2)
+texture = ExtResource("10_17p3r")
+
+[node name="HealthBarEnemy" parent="." instance=ExtResource("4_dqjig")]
+offset_left = 836.0
+offset_top = 303.0
+offset_right = 1131.0
+offset_bottom = 360.0
+
+[node name="HealthBarFrog" parent="." instance=ExtResource("4_dqjig")]
+offset_left = 29.0
+offset_top = 22.0
+offset_right = 324.0
+offset_bottom = 79.0
+
 [node name="Function" type="Label" parent="."]
-offset_left = 734.0
-offset_top = 197.0
-offset_right = 986.0
-offset_bottom = 259.0
+offset_left = 778.0
+offset_top = -168.0
+offset_right = 1030.0
+offset_bottom = -106.0
 theme = SubResource("Theme_5545p")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
