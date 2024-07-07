@@ -1,5 +1,6 @@
 extends Node
 
+var coins = 0
 var health = 10
 var max_health = 10
 var player_damage = 1
@@ -12,6 +13,7 @@ var frog_shield_power_up = false
 var next_question_right_power_up = false
 
 func reset():
+	coins = 0
 	health = max_health
 	player_damage = 1
 	enemy_damage = 1

@@ -25,7 +25,7 @@ func frog_reduced_receive_damage_power_up():
 func frog_more_attack_damage_power_up():
 	if PlayerDataAl.frog_more_attack_damage_power_up:
 		PlayerDataAl.player_damage += 2
-		PlayerDataAl.frog_more_attack_damage_power_up = false
+		PlayerDataAl.frog_more_attack_damage_power_upl = false
 		
 func frog_shield_power_up():
 	if PlayerDataAl.frog_shield_power_up:

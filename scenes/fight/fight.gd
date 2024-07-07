@@ -15,7 +15,7 @@ func _ready():
 	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
 
 	healthbar_enemy.init_health(enemy_health)
-	healthbar_frog.init_health(10)
+	healthbar_frog.init_health(frog_health)
 	healthbar_frog.health = frog_health
 	load_questions()
 	$Enemy/AnimationPlayer.play("idle")
@@ -75,6 +75,7 @@ func _on_attack_button_pressed():
 	$Button.grab_focus()
 	if(enemy_health <= 0):
 		activate_random_power_up()
+		give_random_coins()
 		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
@@ -149,3 +150,9 @@ func set_frog_shield_power_up():
 
 func set_next_question_right_power_up():
 	PlayerDataAl.next_question_right_power_up = true
+
+func give_random_coins():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var random_coins = rng.randi_range(1, 5)
+	PlayerDataAl.coins += random_coins
