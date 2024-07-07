@@ -13,14 +13,16 @@ var exits_dict = {
 
 var coords: Vector2i
 var roomType: ROOMS
-var boss: int
+var variation: int #used for bosses, shops, chests
 var visited: bool
+var completed: bool
 
 func _init(coords: Vector2i = Vector2i(0,0), roomType: ROOMS = ROOMS.PATH):
 	self.coords = coords
 	self.roomType = roomType
 	self.visited = false
-	self.boss = 0
+	self.completed = false
+	self.variation = 0
 	
 	#map limits
 	if (self.coords[0] == -5):

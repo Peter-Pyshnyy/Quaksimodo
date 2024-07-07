@@ -93,8 +93,8 @@ func generate_map(i: int = 7):
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
 	boss_square.roomType = Square.ROOMS.BOSS
-	boss_square.boss = randi_range(0,2)
-	print(boss_square.boss)
+	boss_square.variation = randi_range(0,2)
+	print(boss_square.variation)
 	squares_dict[boss_square.coords] = boss_square
 	
 	#spawns a chest and a shop in the world
@@ -175,9 +175,13 @@ func draw_neighbours(square: Square):
 
 func draw_square(square: Square):
 	#used to select a tile set
-	var atlas_id:int
+	var atlas_id = 0
+	
+	#usef for boss and bought item / opened chest
 	if square.roomType == Square.ROOMS.BOSS:
 		atlas_id = 1
+	elif square.completed:
+		atlas_id = square.roomType
 	else:
 		atlas_id = 0
 	
@@ -191,12 +195,10 @@ func choose_tile(square: Square) -> Vector2i:
 	if !square.visited:
 		return Vector2i(4, 0)
 	
-	var matcher:int = square.roomType
+	if square.roomType == Square.ROOMS.BOSS || square.completed:
+		return Vector2i(square.variation, 0)
 	
-	if square.roomType == Square.ROOMS.BOSS:
-		matcher = square.boss
-	
-	match matcher:
+	match square.roomType:
 		1:
 			return Vector2i(1, 0)
 		2:
@@ -218,8 +220,8 @@ func btn_toggle(roomType: int):
 	btn_chest.hide()
 	btn_boss.hide()
 	
-	#if a path -> don't show button
-	if(MapAutoload.active_sqr.roomType == 0):
+	#if a path or completed -> don't show button
+	if(MapAutoload.active_sqr.roomType == 0 || MapAutoload.active_sqr.completed):
 		return
 		
 	match roomType:

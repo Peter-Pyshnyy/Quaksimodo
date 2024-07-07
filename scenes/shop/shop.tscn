@@ -75,6 +75,22 @@ offset_right = 381.0
 offset_bottom = 151.0
 text = "DMG UP"
 
+[node name="btn_buy" type="Button" parent="."]
+offset_left = 33.0
+offset_top = 547.0
+offset_right = 422.0
+offset_bottom = 621.0
+disabled = true
+text = "Kaufen"
+
+[node name="btn_reset" type="Button" parent="."]
+visible = false
+offset_left = 923.0
+offset_top = 543.0
+offset_right = 1117.0
+offset_bottom = 608.0
+text = "RESET"
+
 [node name="lbl_dmg" type="Label" parent="."]
 offset_left = 301.0
 offset_top = 188.0
@@ -91,14 +107,6 @@ offset_bottom = 210.0
 text = "0"
 horizontal_alignment = 1
 
-[node name="btn_buy" type="Button" parent="."]
-offset_left = 33.0
-offset_top = 547.0
-offset_right = 422.0
-offset_bottom = 621.0
-disabled = true
-text = "Kaufen"
-
 [node name="lbl_sold_0" type="Label" parent="."]
 visible = false
 offset_left = 452.0
@@ -109,6 +117,8 @@ rotation = -0.6353
 theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
 theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("8_f2rsy")
 theme_override_font_sizes/font_size = 41
 text = "VERKAUFT"
@@ -123,6 +133,8 @@ rotation = -0.6353
 theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
 theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("8_f2rsy")
 theme_override_font_sizes/font_size = 41
 text = "VERKAUFT"
@@ -137,11 +149,39 @@ rotation = -0.6353
 theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
 theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("8_f2rsy")
 theme_override_font_sizes/font_size = 41
 text = "VERKAUFT"
+
+[node name="lbl_description" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 329.0
+offset_right = 370.0
+offset_bottom = 416.0
+
+[node name="lbl_thanks" type="Label" parent="."]
+visible = false
+offset_left = 12.0
+offset_top = 114.0
+offset_right = 1204.0
+offset_bottom = 555.0
+theme_override_colors/font_color = Color(0.990007, 0.991834, 0.989638, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 116
+text = "Danke 
+für 
+den Einkauf!"
+horizontal_alignment = 1
+uppercase = true
 
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="btn_hp" to="." method="_on_btn_hp_pressed"]
 [connection signal="pressed" from="btn_dmg" to="." method="_on_btn_dmg_pressed"]
 [connection signal="pressed" from="btn_buy" to="." method="_on_btn_buy_pressed"]
+[connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]

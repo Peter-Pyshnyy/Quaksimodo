@@ -5,7 +5,7 @@ var max_health = 10
 var player_damage = 1
 var enemy_damage = 1
 
-enum POWER_UPS {MAP, FORK, BUCKET, TRIANGLE, FLIES, CHEAT_SHEET, NONE}
+enum POWER_UPS {MAP, FORK, BUCKET, TRIANGLE, FLIES, NONE}
 
 #active power-ups
 var heal = 0
