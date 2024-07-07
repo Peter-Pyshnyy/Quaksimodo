@@ -22,6 +22,8 @@ const DESCRIPTIONS = {
 		"Triangle Description",
 	PlayerDataAl.POWER_UPS.FLIES:
 		"Flies Description",
+	PlayerDataAl.POWER_UPS.TOOTH:
+		"Tooth Description"
 } 
 
 var cart:Cart
@@ -61,7 +63,7 @@ func _process(delta):
 
 func _on_item_list_item_clicked(index, at_position, mouse_button_index):
 	item_selected()
-	for i in 5:
+	for i in DESCRIPTIONS.keys().size():
 		item_list.set_item_icon(i,load(str("res://assets/shop_scene/item_hidden_",i,".png")))
 	
 	cart.item = index

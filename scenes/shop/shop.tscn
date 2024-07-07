@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://djjsq5p3fb0w4"]
+[gd_scene load_steps=36 format=3 uid="uid://djjsq5p3fb0w4"]
 
 [ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_64oh5"]
 [ext_resource type="Texture2D" uid="uid://87dkl61jyij6" path="res://assets/shop_scene/QM_shop_bg.png" id="1_l3py8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xvbnwdgi7rfy" path="res://assets/shop_scene/item_hidden_4.png" id="7_owuix"]
 [ext_resource type="Texture2D" uid="uid://3n8uad355qui" path="res://assets/shop_scene/QM_shop_arrow.png" id="8_3qyuy"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="8_f2rsy"]
+[ext_resource type="Texture2D" uid="uid://dssjkkhwdl5un" path="res://assets/shop_scene/item_hidden_5.png" id="8_vcboe"]
 [ext_resource type="Texture2D" uid="uid://b36fd4rvbjog6" path="res://assets/shop_scene/QM_shop_buy.png" id="10_deute"]
 [ext_resource type="Texture2D" uid="uid://cu2ysg0pj1ky3" path="res://assets/shop_scene/QM_shop_reset.png" id="11_fony3"]
 
@@ -86,7 +87,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2jtyj")
 theme_override_styles/hovered = SubResource("StyleBoxEmpty_8460v")
 theme_override_styles/selected = SubResource("StyleBoxEmpty_ceqy5")
 theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_58egb")
-item_count = 5
+item_count = 6
 max_columns = 3
 icon_scale = 10.615
 item_0/text = ""
@@ -99,6 +100,8 @@ item_3/text = ""
 item_3/icon = ExtResource("6_xnkph")
 item_4/text = ""
 item_4/icon = ExtResource("7_owuix")
+item_5/text = ""
+item_5/icon = ExtResource("8_vcboe")
 
 [node name="btn_hp" type="Button" parent="."]
 offset_left = 48.0
@@ -179,9 +182,9 @@ offset_bottom = 74.0
 texture = ExtResource("10_deute")
 
 [node name="btn_reset" type="Button" parent="."]
-offset_left = 933.0
+offset_left = 735.0
 offset_top = 559.0
-offset_right = 1127.0
+offset_right = 929.0
 offset_bottom = 624.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_gidyd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wrxti")
@@ -270,6 +273,13 @@ size_flags_stretch_ratio = 0.0
 theme_override_font_sizes/normal_font_size = 18
 text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
 scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 560.0
+offset_right = 1133.0
+offset_bottom = 626.0
+text = "zurück"
 
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="button_down" from="btn_hp" to="." method="_on_btn_hp_button_down"]

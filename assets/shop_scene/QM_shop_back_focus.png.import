@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0qqjhrxf7hah"
-path="res://.godot/imported/item_hidden_2.png-0bce33e6b0b8d77a406fd40b42a5c56d.ctex"
+uid="uid://cubknpn705qlo"
+path="res://.godot/imported/QM_shop_back_focus.png-11f047d3fdff365522fcfefacfd1d301.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/item_hidden_2.png"
-dest_files=["res://.godot/imported/item_hidden_2.png-0bce33e6b0b8d77a406fd40b42a5c56d.ctex"]
+source_file="res://assets/shop_scene/QM_shop_back_focus.png"
+dest_files=["res://.godot/imported/QM_shop_back_focus.png-11f047d3fdff365522fcfefacfd1d301.ctex"]
 
 [params]
 

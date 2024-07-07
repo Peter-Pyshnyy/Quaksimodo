@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0315kdmorcky"
-path="res://.godot/imported/item_hidden_3.png-46174b2d56753e9b7268808417aa03fe.ctex"
+uid="uid://cxei05r4dcli"
+path="res://.godot/imported/item_5.png-31ae16098cc2a35c5fd349a2395c9418.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/item_hidden_3.png"
-dest_files=["res://.godot/imported/item_hidden_3.png-46174b2d56753e9b7268808417aa03fe.ctex"]
+source_file="res://assets/powerups/item_5.png"
+dest_files=["res://.godot/imported/item_5.png-31ae16098cc2a35c5fd349a2395c9418.ctex"]
 
 [params]
 
