@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://djjsq5p3fb0w4"]
+[gd_scene load_steps=41 format=3 uid="uid://djjsq5p3fb0w4"]
 
 [ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_64oh5"]
 [ext_resource type="Texture2D" uid="uid://87dkl61jyij6" path="res://assets/shop_scene/QM_shop_bg.png" id="1_l3py8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dssjkkhwdl5un" path="res://assets/shop_scene/item_hidden_5.png" id="8_vcboe"]
 [ext_resource type="Texture2D" uid="uid://b36fd4rvbjog6" path="res://assets/shop_scene/QM_shop_buy.png" id="10_deute"]
 [ext_resource type="Texture2D" uid="uid://cu2ysg0pj1ky3" path="res://assets/shop_scene/QM_shop_reset.png" id="11_fony3"]
+[ext_resource type="Texture2D" uid="uid://boey45mbpi20l" path="res://assets/shop_scene/QM_shop_back.png" id="13_kaiav"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idsge"]
 
@@ -49,7 +50,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnljv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gidyd"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uke22"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wrxti"]
 
@@ -58,6 +59,14 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fitim"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vu11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjn3m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hanim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6umjx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pymp2"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_64oh5")
@@ -115,6 +124,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_q8kw8")
 text = "HP UP"
 
 [node name="btn_dmg_txtr" type="TextureRect" parent="btn_hp"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 117.0
@@ -122,6 +132,7 @@ offset_bottom = 157.0
 texture = ExtResource("8_3qyuy")
 
 [node name="lbl_hp" type="Label" parent="btn_hp"]
+layout_mode = 0
 offset_left = 27.0
 offset_top = 101.0
 offset_right = 91.0
@@ -150,6 +161,7 @@ offset_bottom = 155.0
 texture = ExtResource("8_3qyuy")
 
 [node name="lbl_dmg" type="Label" parent="btn_dmg"]
+layout_mode = 0
 offset_left = 26.0
 offset_top = 100.0
 offset_right = 90.0
@@ -182,11 +194,11 @@ offset_bottom = 74.0
 texture = ExtResource("10_deute")
 
 [node name="btn_reset" type="Button" parent="."]
-offset_left = 735.0
-offset_top = 559.0
-offset_right = 929.0
-offset_bottom = 624.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gidyd")
+offset_left = 707.0
+offset_top = 577.0
+offset_right = 851.0
+offset_bottom = 626.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uke22")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wrxti")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_n711c")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_fitim")
@@ -194,9 +206,27 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_4vu11")
 
 [node name="TextureRect" type="TextureRect" parent="btn_reset"]
 layout_mode = 0
-offset_right = 194.0
-offset_bottom = 66.0
+offset_top = 1.0
+offset_right = 144.0
+offset_bottom = 50.0
 texture = ExtResource("11_fony3")
+
+[node name="btn_back" type="Button" parent="."]
+offset_left = 866.0
+offset_top = 577.0
+offset_right = 1136.0
+offset_bottom = 629.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yjn3m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hanim")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6umjx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pymp2")
+
+[node name="TextureRect" type="TextureRect" parent="btn_back"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 266.0
+offset_bottom = 50.0
+texture = ExtResource("13_kaiav")
 
 [node name="lbl_sold_0" type="Label" parent="."]
 visible = false
@@ -266,20 +296,78 @@ uppercase = true
 
 [node name="rt_description" type="RichTextLabel" parent="."]
 offset_left = 42.0
-offset_top = 315.0
-offset_right = 411.0
-offset_bottom = 424.0
+offset_top = 334.0
+offset_right = 369.0
+offset_bottom = 380.0
 size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(0.933333, 0.94902, 0.933333, 0.811765)
+theme_override_fonts/normal_font = ExtResource("8_f2rsy")
 theme_override_font_sizes/normal_font_size = 18
-text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
+text = "Effekt: beantwortet alle aktuellen Fragen (außer bei Kisten)"
 scroll_active = false
 
-[node name="Button" type="Button" parent="."]
-offset_left = 940.0
-offset_top = 560.0
-offset_right = 1133.0
-offset_bottom = 626.0
-text = "zurück"
+[node name="lbl_balance" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 433.0
+offset_right = 371.0
+offset_bottom = 464.0
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.933333, 1)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 35
+text = "0"
+vertical_alignment = 2
+
+[node name="lbl_sum" type="Label" parent="."]
+offset_left = 305.0
+offset_top = 490.0
+offset_right = 371.0
+offset_bottom = 522.0
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.933333, 1)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 35
+text = "0"
+vertical_alignment = 2
+
+[node name="lbl_hp_price" type="Label" parent="."]
+offset_left = 79.0
+offset_top = 247.0
+offset_right = 136.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.439216)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+text = "(2G)"
+horizontal_alignment = 1
+
+[node name="lbl_hp_price2" type="Label" parent="."]
+offset_left = 294.0
+offset_top = 247.0
+offset_right = 351.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.439216)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+text = "(2G)"
+horizontal_alignment = 1
+
+[node name="lbl_item_name" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 296.0
+offset_right = 239.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.933333, 0.941176)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 24
+text = "Karte (passiv)"
+uppercase = true
+
+[node name="lbl_item_price" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 395.0
+offset_right = 137.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.933333, 0.811765)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 18
+text = "Preis: 5G"
 
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="button_down" from="btn_hp" to="." method="_on_btn_hp_button_down"]
@@ -298,3 +386,7 @@ text = "zurück"
 [connection signal="button_up" from="btn_reset" to="." method="_on_btn_reset_button_up"]
 [connection signal="mouse_entered" from="btn_reset" to="." method="_on_btn_reset_mouse_entered"]
 [connection signal="mouse_exited" from="btn_reset" to="." method="_on_btn_reset_mouse_exited"]
+[connection signal="button_down" from="btn_back" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="btn_back" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="btn_back" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="btn_back" to="." method="_on_button_mouse_exited"]

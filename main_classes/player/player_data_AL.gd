@@ -2,6 +2,7 @@ extends Node
 
 var health = 10
 var max_health = 10
+var money = 14
 var player_damage = 1
 var enemy_damage = 1
 
