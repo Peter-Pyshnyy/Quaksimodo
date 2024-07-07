@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://djjsq5p3fb0w4"]
+[gd_scene load_steps=20 format=3 uid="uid://djjsq5p3fb0w4"]
 
 [ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_64oh5"]
 [ext_resource type="Texture2D" uid="uid://87dkl61jyij6" path="res://assets/shop_scene/QM_shop_bg.png" id="1_l3py8"]
@@ -9,8 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xvbnwdgi7rfy" path="res://assets/shop_scene/item_hidden_4.png" id="7_owuix"]
 [ext_resource type="Texture2D" uid="uid://3n8uad355qui" path="res://assets/shop_scene/QM_shop_arrow.png" id="8_3qyuy"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="8_f2rsy"]
-[ext_resource type="Texture2D" uid="uid://b36fd4rvbjog6" path="res://assets/shop_scene/QM_shop_buy.png" id="10_deute"]
-[ext_resource type="Texture2D" uid="uid://cu2ysg0pj1ky3" path="res://assets/shop_scene/QM_shop_reset.png" id="11_fony3"]
+[ext_resource type="Texture2D" uid="uid://b3rixq55mtlv0" path="res://assets/shop_scene/QM_shop_sum.png" id="10_bonsp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idsge"]
 
@@ -22,14 +21,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58egb"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hf1pw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jh5t0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3l1vt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8kw8"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edxdk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42fnu"]
@@ -37,26 +28,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwow1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efk5n"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xisyc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfqbi"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l186"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flc3n"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnljv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gidyd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wrxti"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n711c"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fitim"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vu11"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_64oh5")
@@ -101,39 +72,17 @@ item_4/text = ""
 item_4/icon = ExtResource("7_owuix")
 
 [node name="btn_hp" type="Button" parent="."]
-offset_left = 48.0
-offset_top = 87.0
-offset_right = 164.0
-offset_bottom = 246.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_hf1pw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_jh5t0")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3l1vt")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_q8kw8")
+offset_left = 216.0
+offset_top = 271.0
+offset_right = 332.0
+offset_bottom = 430.0
 text = "HP UP"
 
-[node name="btn_dmg_txtr" type="TextureRect" parent="btn_hp"]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 117.0
-offset_bottom = 157.0
-texture = ExtResource("8_3qyuy")
-
-[node name="lbl_hp" type="Label" parent="btn_hp"]
-offset_left = 27.0
-offset_top = 101.0
-offset_right = 91.0
-offset_bottom = 133.0
-theme_override_colors/font_color = Color(0.933333, 0.94902, 0.933333, 1)
-theme_override_fonts/font = ExtResource("8_f2rsy")
-theme_override_font_sizes/font_size = 36
-text = "000"
-horizontal_alignment = 1
-
 [node name="btn_dmg" type="Button" parent="."]
-offset_left = 264.0
-offset_top = 89.0
-offset_right = 380.0
-offset_bottom = 246.0
+offset_left = 265.0
+offset_top = 88.0
+offset_right = 381.0
+offset_bottom = 245.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_edxdk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_42fnu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bwow1")
@@ -141,59 +90,43 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_efk5n")
 
 [node name="btn_dmg_txtr" type="TextureRect" parent="btn_dmg"]
 layout_mode = 0
-offset_top = -1.0
 offset_right = 116.0
-offset_bottom = 155.0
+offset_bottom = 156.0
 texture = ExtResource("8_3qyuy")
 
 [node name="lbl_dmg" type="Label" parent="btn_dmg"]
-offset_left = 26.0
+offset_left = 38.0
 offset_top = 100.0
-offset_right = 90.0
-offset_bottom = 132.0
+offset_right = 78.0
+offset_bottom = 123.0
 theme_override_colors/font_color = Color(0.933739, 0.947798, 0.932514, 1)
 theme_override_fonts/font = ExtResource("8_f2rsy")
-theme_override_font_sizes/font_size = 36
-text = "000"
+text = "0"
 horizontal_alignment = 1
 
 [node name="btn_buy" type="Button" parent="."]
-visible = false
 offset_left = 33.0
 offset_top = 547.0
 offset_right = 422.0
 offset_bottom = 621.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xisyc")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xfqbi")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_1l186")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_flc3n")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_jnljv")
-text = "
-"
-
-[node name="TextureRect" type="TextureRect" parent="btn_buy"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 391.0
-offset_bottom = 74.0
-texture = ExtResource("10_deute")
+disabled = true
+text = "Kaufen"
 
 [node name="btn_reset" type="Button" parent="."]
-offset_left = 933.0
-offset_top = 559.0
-offset_right = 1127.0
-offset_bottom = 624.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gidyd")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_wrxti")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_n711c")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_fitim")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4vu11")
+visible = false
+offset_left = 923.0
+offset_top = 543.0
+offset_right = 1117.0
+offset_bottom = 608.0
+text = "RESET"
 
-[node name="TextureRect" type="TextureRect" parent="btn_reset"]
-layout_mode = 0
-offset_right = 194.0
-offset_bottom = 66.0
-texture = ExtResource("11_fony3")
+[node name="lbl_hp" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 187.0
+offset_right = 127.0
+offset_bottom = 210.0
+text = "0"
+horizontal_alignment = 1
 
 [node name="lbl_sold_0" type="Label" parent="."]
 visible = false
@@ -243,48 +176,48 @@ theme_override_fonts/font = ExtResource("8_f2rsy")
 theme_override_font_sizes/font_size = 41
 text = "VERKAUFT"
 
+[node name="lbl_description" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 329.0
+offset_right = 370.0
+offset_bottom = 416.0
+
 [node name="lbl_thanks" type="Label" parent="."]
 visible = false
-offset_left = 11.0
-offset_top = 165.0
-offset_right = 1144.0
-offset_bottom = 445.0
-theme_override_colors/font_color = Color(0.979136, 0.98405, 0.97913, 1)
+offset_left = 12.0
+offset_top = 114.0
+offset_right = 1204.0
+offset_bottom = 555.0
+theme_override_colors/font_color = Color(0.990007, 0.991834, 0.989638, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("8_f2rsy")
 theme_override_font_sizes/font_size = 116
-text = "Bis zum 
-nächsten mal"
+text = "Danke 
+für 
+den Einkauf!"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="rt_description" type="RichTextLabel" parent="."]
-offset_left = 42.0
-offset_top = 315.0
-offset_right = 411.0
-offset_bottom = 424.0
-size_flags_stretch_ratio = 0.0
-theme_override_font_sizes/normal_font_size = 18
-text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-scroll_active = false
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 49.0
+offset_top = 87.0
+offset_right = 164.0
+offset_bottom = 245.0
+texture_normal = ExtResource("8_3qyuy")
+
+[node name="QmShopSum" type="Sprite2D" parent="."]
+position = Vector2(332, 486)
+scale = Vector2(6.8, 4.38462)
+texture = ExtResource("10_bonsp")
 
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
-[connection signal="button_down" from="btn_hp" to="." method="_on_btn_hp_button_down"]
-[connection signal="button_up" from="btn_hp" to="." method="_on_btn_hp_button_up"]
-[connection signal="mouse_entered" from="btn_hp" to="." method="_on_btn_hp_mouse_entered"]
-[connection signal="mouse_exited" from="btn_hp" to="." method="_on_btn_hp_mouse_exited"]
+[connection signal="pressed" from="btn_hp" to="." method="_on_btn_hp_pressed"]
 [connection signal="button_down" from="btn_dmg" to="." method="_on_btn_dmg_button_down"]
 [connection signal="button_up" from="btn_dmg" to="." method="_on_btn_dmg_button_up"]
 [connection signal="mouse_entered" from="btn_dmg" to="." method="_on_btn_dmg_mouse_entered"]
 [connection signal="mouse_exited" from="btn_dmg" to="." method="_on_btn_dmg_mouse_exited"]
-[connection signal="button_down" from="btn_buy" to="." method="_on_btn_buy_button_down"]
-[connection signal="button_up" from="btn_buy" to="." method="_on_btn_buy_button_up"]
-[connection signal="mouse_entered" from="btn_buy" to="." method="_on_btn_buy_mouse_entered"]
-[connection signal="mouse_exited" from="btn_buy" to="." method="_on_btn_buy_mouse_exited"]
-[connection signal="button_down" from="btn_reset" to="." method="_on_btn_reset_button_down"]
-[connection signal="button_up" from="btn_reset" to="." method="_on_btn_reset_button_up"]
-[connection signal="mouse_entered" from="btn_reset" to="." method="_on_btn_reset_mouse_entered"]
-[connection signal="mouse_exited" from="btn_reset" to="." method="_on_btn_reset_mouse_exited"]
+[connection signal="pressed" from="btn_buy" to="." method="_on_btn_buy_pressed"]
+[connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]
