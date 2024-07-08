@@ -13,14 +13,12 @@ func _process(delta):
 var health = 0: set = _set_health
 
 func init_health(_health):
-	print("9iniz")
 	health = _health
 	max_value = health
 	value = health
 	$HealthNumber.text = str(health)
 	
 func _set_health(new_health):
-	print("called")
 	health = new_health
 	value = health
 	if(health < 0):
