@@ -28,6 +28,7 @@ func _input(event):
 	map.draw_active_square()
 	map.btn_toggle(MapAutoload.active_sqr.roomType)
 	
+	#used for the movement tutorial
 	if not has_moved:
 		has_moved = true
 		player_data.movement = true

@@ -48,7 +48,10 @@ func _ready():
 	else:
 		generate_map()
 	
-	draw_active_square()
+	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.MAP]:
+		draw_map()
+	else:
+		draw_active_square()
 
 
 #i = map size - 2
@@ -90,6 +93,8 @@ func generate_map(i: int = 7):
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
 	boss_square.roomType = Square.ROOMS.BOSS
+	boss_square.variation = randi_range(0,2)
+	print(boss_square.variation)
 	squares_dict[boss_square.coords] = boss_square
 	
 	#spawns a chest and a shop in the world
@@ -151,6 +156,7 @@ func find_furthest_square() -> Vector2i:
 
 func draw_map():
 	for square: Square in squares_dict.values():
+		square.visited = true
 		draw_square(square)
 
 func draw_active_square():	
@@ -161,7 +167,7 @@ func draw_active_square():
 	draw_neighbours(square)
 
 func draw_neighbours(square: Square):
-	if square.roomType == Square.ROOMS.ENEMY: return
+	#if square.roomType == Square.ROOMS.ENEMY: return
 	
 	for neighbor in square.exits_dict.values():
 			if neighbor != null && !neighbor.visited:
@@ -170,6 +176,14 @@ func draw_neighbours(square: Square):
 func draw_square(square: Square):
 	#used to select a tile set
 	var atlas_id = 0
+	
+	#usef for boss and bought item / opened chest
+	if square.roomType == Square.ROOMS.BOSS:
+		atlas_id = 1
+	elif square.completed:
+		atlas_id = square.roomType
+	else:
+		atlas_id = 0
 	
 	#used to select a tile from a tile set
 	var atlas_coords = choose_tile(square)
@@ -180,6 +194,9 @@ func draw_square(square: Square):
 func choose_tile(square: Square) -> Vector2i:
 	if !square.visited:
 		return Vector2i(4, 0)
+	
+	if square.roomType == Square.ROOMS.BOSS || square.completed:
+		return Vector2i(square.variation, 0)
 	
 	match square.roomType:
 		1:
@@ -197,18 +214,14 @@ func print_map():
 		print(square.get_taken_paths())
 		print()
 
-
-func _on_btn_fight_pressed():
-	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
-
 func btn_toggle(roomType: int):
 	btn_fight.hide()
 	btn_shop.hide()
 	btn_chest.hide()
 	btn_boss.hide()
 	
-	#if a path -> don't show button
-	if(MapAutoload.active_sqr.roomType == 0):
+	#if a path or completed -> don't show button
+	if(MapAutoload.active_sqr.roomType == 0 || MapAutoload.active_sqr.completed):
 		return
 		
 	match roomType:
@@ -217,10 +230,8 @@ func btn_toggle(roomType: int):
 		3: btn_shop.show()
 		4: btn_boss.show()
 
+func _on_btn_fight_pressed():
+	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
 
-#TO DO:
-#Each lvl a little bit more rooms
-#not completed paths are shown as squares and don't show conntections jet
-
-
-
+func _on_btn_shop_pressed():
+	get_tree().change_scene_to_file("res://scenes/shop/shop.tscn")

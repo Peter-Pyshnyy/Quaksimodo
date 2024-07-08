@@ -1,0 +1,223 @@
+[gd_scene load_steps=20 format=3 uid="uid://djjsq5p3fb0w4"]
+
+[ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1_64oh5"]
+[ext_resource type="Texture2D" uid="uid://87dkl61jyij6" path="res://assets/shop_scene/QM_shop_bg.png" id="1_l3py8"]
+[ext_resource type="Texture2D" uid="uid://2frunt8ctxn3" path="res://assets/shop_scene/item_hidden_0.png" id="3_qibl4"]
+[ext_resource type="Texture2D" uid="uid://cn5lbiw8xoou6" path="res://assets/shop_scene/item_hidden_1.png" id="4_k6odd"]
+[ext_resource type="Texture2D" uid="uid://cchiwlouavhy6" path="res://assets/shop_scene/item_hidden_2.png" id="5_6m2m8"]
+[ext_resource type="Texture2D" uid="uid://dgup1hwv33ucp" path="res://assets/shop_scene/item_hidden_3.png" id="6_xnkph"]
+[ext_resource type="Texture2D" uid="uid://xvbnwdgi7rfy" path="res://assets/shop_scene/item_hidden_4.png" id="7_owuix"]
+[ext_resource type="Texture2D" uid="uid://3n8uad355qui" path="res://assets/shop_scene/QM_shop_arrow.png" id="8_3qyuy"]
+[ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="8_f2rsy"]
+[ext_resource type="Texture2D" uid="uid://b3rixq55mtlv0" path="res://assets/shop_scene/QM_shop_sum.png" id="10_bonsp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idsge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jtyj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8460v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceqy5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58egb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edxdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42fnu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwow1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efk5n"]
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_64oh5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(580, 325)
+zoom = Vector2(1.685, 1.685)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_l3py8")
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 460.0
+offset_top = 34.0
+offset_right = 1125.0
+offset_bottom = 467.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+theme_override_styles/panel = SubResource("StyleBoxEmpty_idsge")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2jtyj")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_8460v")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_ceqy5")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_58egb")
+item_count = 5
+max_columns = 3
+icon_scale = 10.615
+item_0/text = ""
+item_0/icon = ExtResource("3_qibl4")
+item_1/text = ""
+item_1/icon = ExtResource("4_k6odd")
+item_2/text = ""
+item_2/icon = ExtResource("5_6m2m8")
+item_3/text = ""
+item_3/icon = ExtResource("6_xnkph")
+item_4/text = ""
+item_4/icon = ExtResource("7_owuix")
+
+[node name="btn_hp" type="Button" parent="."]
+offset_left = 216.0
+offset_top = 271.0
+offset_right = 332.0
+offset_bottom = 430.0
+text = "HP UP"
+
+[node name="btn_dmg" type="Button" parent="."]
+offset_left = 265.0
+offset_top = 88.0
+offset_right = 381.0
+offset_bottom = 245.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_edxdk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_42fnu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bwow1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_efk5n")
+
+[node name="btn_dmg_txtr" type="TextureRect" parent="btn_dmg"]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 156.0
+texture = ExtResource("8_3qyuy")
+
+[node name="lbl_dmg" type="Label" parent="btn_dmg"]
+offset_left = 38.0
+offset_top = 100.0
+offset_right = 78.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.933739, 0.947798, 0.932514, 1)
+theme_override_fonts/font = ExtResource("8_f2rsy")
+text = "0"
+horizontal_alignment = 1
+
+[node name="btn_buy" type="Button" parent="."]
+offset_left = 33.0
+offset_top = 547.0
+offset_right = 422.0
+offset_bottom = 621.0
+disabled = true
+text = "Kaufen"
+
+[node name="btn_reset" type="Button" parent="."]
+visible = false
+offset_left = 923.0
+offset_top = 543.0
+offset_right = 1117.0
+offset_bottom = 608.0
+text = "RESET"
+
+[node name="lbl_hp" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 187.0
+offset_right = 127.0
+offset_bottom = 210.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="lbl_sold_0" type="Label" parent="."]
+visible = false
+offset_left = 452.0
+offset_top = 168.0
+offset_right = 655.0
+offset_bottom = 225.0
+rotation = -0.6353
+theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 41
+text = "VERKAUFT"
+
+[node name="lbl_sold_1" type="Label" parent="."]
+visible = false
+offset_left = 660.0
+offset_top = 168.0
+offset_right = 863.0
+offset_bottom = 225.0
+rotation = -0.6353
+theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 41
+text = "VERKAUFT"
+
+[node name="lbl_sold_2" type="Label" parent="."]
+visible = false
+offset_left = 876.0
+offset_top = 168.0
+offset_right = 1079.0
+offset_bottom = 225.0
+rotation = -0.6353
+theme_override_colors/font_color = Color(0.262745, 0.509804, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.560784)
+theme_override_colors/font_outline_color = Color(0.115576, 0.245828, 0.0744562, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 41
+text = "VERKAUFT"
+
+[node name="lbl_description" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 329.0
+offset_right = 370.0
+offset_bottom = 416.0
+
+[node name="lbl_thanks" type="Label" parent="."]
+visible = false
+offset_left = 12.0
+offset_top = 114.0
+offset_right = 1204.0
+offset_bottom = 555.0
+theme_override_colors/font_color = Color(0.990007, 0.991834, 0.989638, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_f2rsy")
+theme_override_font_sizes/font_size = 116
+text = "Danke 
+für 
+den Einkauf!"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 49.0
+offset_top = 87.0
+offset_right = 164.0
+offset_bottom = 245.0
+texture_normal = ExtResource("8_3qyuy")
+
+[node name="QmShopSum" type="Sprite2D" parent="."]
+position = Vector2(332, 486)
+scale = Vector2(6.8, 4.38462)
+texture = ExtResource("10_bonsp")
+
+[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="btn_hp" to="." method="_on_btn_hp_pressed"]
+[connection signal="button_down" from="btn_dmg" to="." method="_on_btn_dmg_button_down"]
+[connection signal="button_up" from="btn_dmg" to="." method="_on_btn_dmg_button_up"]
+[connection signal="mouse_entered" from="btn_dmg" to="." method="_on_btn_dmg_mouse_entered"]
+[connection signal="mouse_exited" from="btn_dmg" to="." method="_on_btn_dmg_mouse_exited"]
+[connection signal="pressed" from="btn_buy" to="." method="_on_btn_buy_pressed"]
+[connection signal="pressed" from="btn_reset" to="." method="_on_btn_reset_pressed"]
