@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bghl05mgbmkx8"]
+
+[ext_resource type="Script" path="res://scenes/transition/transition.gd" id="1_u2jjf"]
+
+[sub_resource type="Animation" id="Animation_5q2uw"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_potem"]
+resource_name = "dissolve"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvfjv"]
+_data = {
+"RESET": SubResource("Animation_5q2uw"),
+"dissolve": SubResource("Animation_potem")
+}
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource("1_u2jjf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TransitionAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_xvfjv")
+}
+
+[connection signal="animation_finished" from="TransitionAnimationPlayer" to="." method="_on_transition_animation_player_animation_finished"]
