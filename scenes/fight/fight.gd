@@ -9,6 +9,7 @@ var current_level
 var current_question_number
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_menu.hide()
 	current_level = 1
 	current_question_number = 1
 	frog_health = PlayerDataAl.health
@@ -22,8 +23,23 @@ func _ready():
 	$Frog/AnimationPlayer.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@onready var pause_menu = $Control
+var paused = false
+
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+
+# Diese Methode pausiert das Spiel und zeigt das Pausenmenü an
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	paused = !paused
+
 
 func load_questions():
 	$Function.text = "Function: " + Levels.QuestionDatabase[str(current_question_number)].f
@@ -157,3 +173,19 @@ func give_random_coins():
 	var random_coins = rng.randi_range(1, 5)
 	PlayerDataAl.coins += random_coins
 	print(PlayerDataAl.coins)
+
+
+func _on_resume_pressed():
+	pauseMenu()
+
+
+func _on_main_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+
+func _on_option_pressed():
+	pass # Replace with function body.

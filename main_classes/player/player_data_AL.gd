@@ -11,6 +11,7 @@ var frog_reduced_receive_damage_power_up = false
 var frog_more_attack_damage_power_up = false
 var frog_shield_power_up = false
 var next_question_right_power_up = false
+var menu = false
 
 func reset():
 	coins = 0

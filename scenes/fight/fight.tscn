@@ -162,7 +162,65 @@ offset_right = 722.0
 offset_bottom = 527.0
 placeholder_text = "Solution"
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 1166.0
+offset_bottom = 661.0
+scale = Vector2(0.994465, 0.981124)
+color = Color(0.00394095, 0.213376, 0.368103, 1)
+
+[node name="game_title2" type="RichTextLabel" parent="Control"]
+offset_left = 384.0
+offset_top = 24.0
+offset_right = 768.0
+offset_bottom = 144.0
+theme_override_font_sizes/normal_font_size = 70
+text = "Game Title"
+
+[node name="resume" type="Button" parent="Control"]
+offset_left = 456.0
+offset_top = 176.0
+offset_right = 672.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 55
+text = "Resume"
+
+[node name="option" type="Button" parent="Control"]
+offset_left = 456.0
+offset_top = 280.0
+offset_right = 674.0
+offset_bottom = 364.0
+theme_override_font_sizes/font_size = 55
+text = "Options"
+
+[node name="main" type="Button" parent="Control"]
+offset_left = 457.0
+offset_top = 378.0
+offset_right = 675.0
+offset_bottom = 462.0
+theme_override_font_sizes/font_size = 55
+text = "Menu"
+
+[node name="quit" type="Button" parent="Control"]
+offset_left = 458.0
+offset_top = 480.0
+offset_right = 676.0
+offset_bottom = 564.0
+theme_override_font_sizes/font_size = 55
+text = "Quit"
+
 [connection signal="pressed" from="Button" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_exited" from="Answer" to="." method="_on_answer_focus_exited"]
 [connection signal="focus_exited" from="Answer2" to="." method="_on_answer_2_focus_exited"]
 [connection signal="focus_exited" from="Answer3" to="." method="_on_answer_3_focus_exited"]
+[connection signal="pressed" from="Control/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Control/main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="Control/quit" to="." method="_on_quit_pressed"]

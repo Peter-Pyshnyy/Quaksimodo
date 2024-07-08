@@ -30,8 +30,26 @@ var squares_dict: Dictionary
 @onready var start_btn = $TileMap/player_icon/Camera2D/start
 @onready var coin_label = get_node("/root/map/Laich")
 
-# Called when the node enters the scene tree for the first time.
+@onready var pause_menu = $Control
+var paused = false
+
+func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+
+# Diese Methode pausiert das Spiel und zeigt das Pausenmenü an
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	paused = !paused
+
+# Wird aufgerufen, wenn der Knoten in die Szene eingefügt wird
 func _ready():
+	pause_menu.hide()
 	if !MapAutoload.squares_dict.is_empty():
 		squares_dict = MapAutoload.squares_dict
 		player_icon.position = MapAutoload.player_icon_pos
@@ -169,3 +187,19 @@ func btn_toggle():
 
 func _update_coin_display():
 	coin_label.set_text(str(PlayerDataAl.coins))
+
+
+func _on_resume_pressed():
+	pauseMenu()
+
+
+func _on_main_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+
+func _on_option_pressed():
+	pass # Replace with function body.
