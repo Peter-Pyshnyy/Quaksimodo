@@ -21,6 +21,7 @@ func _ready():
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
 	$background/AnimationPlayer.play("idle")
+
 	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"storch_battle_start")
 
 
@@ -29,7 +30,7 @@ func _process(delta):
 	pass
 
 func load_questions():
-	$Function.text = "Function: " + Levels.QuestionDatabase[str(current_question_number)].f
+	$Function.text = "Function: " + generate_function()
 	$Question.text = Levels.QuestionDatabase[str(current_question_number)].q1
 	$Question2.text = Levels.QuestionDatabase[str(current_question_number)].q2
 	$Question3.text = Levels.QuestionDatabase[str(current_question_number)].q3
@@ -75,7 +76,6 @@ func _on_attack_button_pressed():
 	$Answer.modulate = Color.WHITE
 	$Answer2.modulate = Color.WHITE
 	$Answer3.modulate = Color.WHITE
-	$Button.grab_focus()
 	if(enemy_health <= 0):
 		MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
 		activate_random_power_up()
@@ -155,3 +155,63 @@ func set_frog_shield_power_up():
 
 func set_next_question_right_power_up():
 	PlayerDataAl.next_question_right_power_up = true
+
+func generate_function():
+	#generiert ein polynom vom grad 1 bis 3 mit den zufälligen parametern a, b und c
+	var rng = RandomNumberGenerator.new()
+	var a = rng.randi_range(-50, 50)
+	var b = rng.randi_range(-50, 50)
+	var c = rng.randi_range(-50, 50)
+	var d = rng.randi_range(-50, 50)
+	var degree = rng.randi_range(1, 3)
+	print(degree)
+	var function = "f(x) = "
+	if(a != 0 && degree >= 0):
+		if(a == 1):
+			function += "1"
+		elif(a == -1):
+			function += "-1"
+		else:
+			function += str(a)
+			
+	if(b != 0 && degree >= 1):
+		if(b > 0):
+			function += " +"
+		else: 
+			function += " "
+		
+		if(b == 1):
+			function += "x"
+		elif(b == -1):
+			function += "-x"
+		else:
+			function += str(b) + "x"
+			
+	if(c != 0 && degree >= 2):
+		if(c > 0):
+			function += " +"
+		else: 
+			function += " "
+		
+		if(c == 1):
+			function += "x²"
+		elif(c == -1):
+			function += "-x²"
+		else:
+			function += str(c) + "x²"
+	if(d != 0 && degree >= 3):
+		if(d > 0):
+			function += " +"
+		else: 
+			function += " "
+		
+		if(d == 1):
+			function += "x³"
+		elif(d == -1):
+			function += "-x³"
+		else:
+			function += str(d) + "x³"
+			
+			
+	return function
+
