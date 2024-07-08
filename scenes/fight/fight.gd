@@ -9,6 +9,7 @@ var current_level
 var current_question_number
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	current_level = 1
 	current_question_number = 1
 	frog_health = PlayerDataAl.health

@@ -231,7 +231,7 @@ func btn_toggle(roomType: int):
 		4: btn_boss.show()
 
 func _on_btn_fight_pressed():
-	get_tree().change_scene_to_file("res://scenes/fight/fight.tscn")
+	Transition.transition_scene("res://scenes/fight/fight.tscn")
 
 func _on_btn_shop_pressed():
-	get_tree().change_scene_to_file("res://scenes/shop/shop.tscn")
+	Transition.transition_scene("res://scenes/shop/shop.tscn")
