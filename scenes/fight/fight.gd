@@ -23,17 +23,9 @@ func _ready():
 	$background/AnimationPlayer.play("idle")
 	generate_function()
 	
-	
-	#fkt.add_coeff(4,-12)
-	#fkt.add_coeff(5,-2)
-	#fkt.add_coeff(0,3)
-	#fkt.add_coeff(1,0)
-	
-	for n in 20:
-		var fkt = MFunc.new("linear")
+	for n in 1:
+		var fkt = MFunc.new("quadratic")
 		print(fkt._to_string())
-		print(fkt.calc_zero())
-		print()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
