@@ -23,10 +23,10 @@ func _ready():
 	$background/AnimationPlayer.play("idle")
 	generate_function()
 	
-	for n in 15:
-		var fkt = MFunc.new("cubic_x")
+	for n in 1:
+		var fkt = MFunc_comp.new("nested")
 		print(fkt)
-		print(fkt.calc_turning_p())
+		print(fkt.calc_deriv())
 		#print(fkt.calc_extremes())
 		#print(fkt.calc_deriv())
 		#print(fkt.value_at(3.5))

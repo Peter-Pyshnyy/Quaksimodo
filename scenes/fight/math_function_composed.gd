@@ -24,8 +24,6 @@ func _init(type:String = "multiplied", a:MFunc = null, b:MFunc = null):
 			create_trig_fn()
 		"nested":
 			create_nested_fn()
-		"nested_nice":
-			create_nested_fn_with_nice_value()
 		_:
 			print("INVALID FUNCTION TYPE")
 			return
@@ -67,20 +65,13 @@ func create_trig_fn():
 		fn = "cos"
 		
 	trig[fn] = temp
-
+	
 
 func create_nested_fn():
 	if a == null:
-		a = MFunc.new()
-	exp = randi_range(2,5)
-
-func create_nested_fn_with_nice_value():
-	type = "nested"
-	if a == null:
-		a = MFunc.new()
-	for n in a.degrees_sorted:
-		if n == a.highest_exp: continue
-		a.coefficients[n] = round(a.coefficients[n])
+		a = MFunc.new("linear")
+	a.coefficients[0] = round(a.coefficients[0])
+	exp = 2
 
 
 func _to_string():
@@ -139,4 +130,23 @@ func calc_deriv():
 			print("temp3:", temp3)
 			var temp4 = b.multiply_fn(b)
 			return MFunc_comp.new("divided", temp3, temp4)
+		"trigonometric":
+			#Kettenregel
+			var temp:MFunc_comp = self
+			var v1 = self.a.calc_deriv().coefficients[0]
 			
+			print(v1)
+			
+			if "sin" in self.trig:
+				temp.trig["cos"] = v1*temp.trig["sin"]
+				temp.trig.erase("sin")
+			else:
+				temp.trig["sin"] = v1*temp.trig["cos"]*-1
+				temp.trig.erase("cos")
+			
+			return temp
+		"nested":
+			#Kettenregel
+			var v1:MFunc = self.a.calc_deriv()
+			v1.coefficients[0] = v1.coefficients[0]*2
+			return a.multiply_fn(v1)
