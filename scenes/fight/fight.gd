@@ -23,10 +23,15 @@ func _ready():
 	$background/AnimationPlayer.play("idle")
 	generate_function()
 	
-	for n in 1:
-		var fkt = MFunc.new("quadratic")
-		print(fkt._to_string())
-	
+	for n in 15:
+		var fkt = MFunc.new("cubic_x")
+		print(fkt)
+		print(fkt.calc_turning_p())
+		#print(fkt.calc_extremes())
+		#print(fkt.calc_deriv())
+		#print(fkt.value_at(3.5))
+		#print(fkt.value_at(8))
+		print()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

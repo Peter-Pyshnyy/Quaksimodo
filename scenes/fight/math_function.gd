@@ -44,6 +44,12 @@ func _init(type:String = "random"):
 		"quadratic":
 			create_quadr_fn()
 			if coefficients.keys().is_empty(): _init(type)
+		"cubic":
+			create_cub_fn()
+			if coefficients.keys().is_empty(): _init(type)
+		"cubic_x":
+			create_cub_fn_extr()
+			if coefficients.keys().is_empty(): _init(type)
 		"random":
 			match randi_range(0,2):
 				0:
@@ -82,7 +88,7 @@ func num_to_exp(n:int):
 	
 	return result 
 
-func _to_string():
+func _to_string(trimmed:bool = false):
 	var regex = RegEx.new()
 	var result:String = ""
 	
@@ -91,6 +97,8 @@ func _to_string():
 			if (degree != 0):
 				if (coefficients[degree] == 1):
 					result += str(" + x", num_to_exp(degree))
+				elif(coefficients[degree] == -1):
+					result += str(" - x", num_to_exp(degree))
 				else:
 					result += str(" + ", coefficients[degree], "x", num_to_exp(degree))
 			else:
@@ -100,8 +108,17 @@ func _to_string():
 	#var temp = result.substr(3, result.length() - 3) #removes first " + 
 	result = regex.sub(result.substr(3, result.length() - 3), " - ", true)
 	
-
-	return "f(x) = " + result
+	if(coefficients[highest_exp] == -1):
+		result = "-" + result
+	
+	# Replace "0.33333333333333" with "1⁄3"
+	regex.compile(r"0\.33333333333333")
+	result = regex.sub(result, "1⁄3", true)
+	
+	if trimmed:
+		return result
+	else:
+		return "f(x) = " + result
 
 func create_lin_fn():
 	var a:float = 0
@@ -148,10 +165,45 @@ func create_quadr_fn():
 		add_coeff(1,function[1])
 		add_coeff(0,function[2])
 		
+		if randi_range(0,1) == 0:
+			coefficients[2] = -1
+		
 	else:
 		print("Unexpected data")
 
+
+func create_cub_fn():
+	var a:float = 1
+	var b:float = 0
+	var c:float = 0
+	var d:float = 0
 	
+	if randi_range(0,1) == 0:
+		a = -1
+
+	b = randi_range(-2,2)
+	c = randi_range(-10,10)
+	
+	if range(3).pick_random() == 1:
+		d = [-0.25, -0.5, -0.75, 0.25, 0.5, 0.75].pick_random()
+	else:
+		d = randi_range(-5,5)
+	
+	add_coeff(3,a)
+	add_coeff(2,b)
+	add_coeff(1,c)
+	add_coeff(0,d)
+
+
+func create_cub_fn_extr():
+	var temp:MFunc = MFunc.new("quadratic")
+	
+	for n in temp.degrees_sorted:
+		add_coeff(n+1,float(temp.coefficients[n])/(n+1))
+	
+	add_coeff(0, randi_range(-5,5))
+
+
 #rounds after the decimal point
 func round_place(num:int, places:int = 2):
 	return (round(num*pow(10,places))/pow(10,places))
@@ -164,6 +216,7 @@ func calc_zero():
 	
 	#linear
 	if highest_exp < 2:
+		if !coefficients.has(0): return [0]
 		var temp:float = coefficients[degrees_sorted[1]] * -1
 		return [float(round(temp/coefficients[degrees_sorted[0]]*100))/100]
 		
@@ -171,8 +224,14 @@ func calc_zero():
 	if highest_exp == 2:
 		var x1:float
 		var x2:float
-		var p:float = coefficients[degrees_sorted[1]] 
-		var q:float = coefficients[degrees_sorted[2]]
+		var p:float = 0
+		var q:float = 0
+		
+		if coefficients.has(1):
+			p = coefficients[1]
+			
+		if coefficients.has(0):
+			q = coefficients[0]
 		
 		#pq
 		x1 = -(p/2)+sqrt(pow((p/2) , 2) - q)
@@ -193,5 +252,107 @@ func calc_deriv(n:int = 1) -> MFunc:
 			temp.add_coeff(j-1,fn.coefficients[j]*j)
 		
 		fn = temp
+		
+	return temp
+
+#adds two functions together
+func add_fn(a:MFunc, b:MFunc = self) -> MFunc:
+	var temp:MFunc = a
+	
+	for i in b.degrees_sorted: 
+		if a.degrees_sorted.has(i):
+			temp.coefficients[i] += b.coefficients[i]
+		else:
+			temp.add_coeff(i, b.coefficients[i])
 	
 	return temp
+
+
+func multiply_fn(a:MFunc, b:MFunc = self) -> MFunc:
+	var temp:MFunc = MFunc.new("empty")
+	
+	for i in a.degrees_sorted:
+		var temp_inner:MFunc = MFunc.new("empty")
+		for j in b.degrees_sorted:
+			temp_inner.add_coeff(i + j, a.coefficients[i] * b.coefficients[j])
+		
+		temp = temp.add_fn(temp_inner)
+	
+	return temp
+
+
+func inverse_fn() -> MFunc:
+	var temp:MFunc = MFunc.new("empty")
+	temp.add_coeff(0,-1)
+	
+	return self.multiply_fn(temp)
+
+
+func is_of_type(type:String) -> bool:
+	return self.type == type
+
+
+func is_compressed() -> bool:
+	if highest_exp > 2:
+		print("compressed only for quadratics")
+		return false
+	
+	if coefficients[2] < 1:
+		return true
+	
+	return false
+
+func is_streched() -> bool:
+	if highest_exp > 2:
+		print("compressed only for quadratics")
+		return false
+	
+	if coefficients[2] > 1:
+		return true
+	
+	return false
+
+
+func value_at(x:float) -> float:
+	var result:float = 0
+	for n in degrees_sorted:
+		var temp = 1
+		for i in n:
+			temp *= x
+		
+		temp *= coefficients[n]
+		result += temp
+	
+	return result
+
+func slope_at(x:float) -> float:
+	var deriv:MFunc = calc_deriv()
+	
+	return  deriv.value_at(x)
+
+func calc_extremes():
+	if highest_exp > 3:
+		print("extremes only for cubes and lower")
+		return false
+		
+	var deriv:MFunc = calc_deriv()
+	
+	return deriv.calc_zero()
+
+#returns two functions, who's crossing point is easily calculated
+func cross_fn():
+	if highest_exp != 2:
+		print("cross only for quadratics")
+		return false
+	
+	var lin:MFunc = MFunc.new("linear")
+	var quadr:MFunc = self.add_fn(lin.inverse_fn())
+	
+	return [quadr, lin]
+
+func calc_turning_p():
+	if highest_exp != 3:
+		print("cross only for cubics")
+		return false
+	var temp:MFunc = self.calc_deriv(2)
+	return temp.calc_zero()
