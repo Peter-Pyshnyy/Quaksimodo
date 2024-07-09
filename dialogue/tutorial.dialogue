@@ -13,15 +13,15 @@ Euler: Was soll ich heute erklären?
 Euler: Lineare Funktionen sind wohl die einfachsten der Funktionen
 do show_graphic("linear")
 Euler: Eine lineare Funktion sieht in der Regel so aus:\na * x + b
-Euler: a * x + b\nDie Funktion, die du hier sehen kannst ist f(x) = x
-Euler: a * x + b\nDas b in der Funktion bestimmt die [b]Verschiebung entlang der y-Achse[/b]
+Euler: ax + b\nDie Funktion, die du hier sehen kannst ist f(x) = x
+Euler: ax + b\nDas b in der Funktion bestimmt die [b]Verschiebung entlang der y-Achse[/b]
 do show_graphic("linear1")
-Euler: a * x + b\nHier ist die Funktion f(x) = x + 1. Die Funktion wird um 1 nach oben verschoben.
-Euler: a * x + b\nDas b in der Funktion bestimmt die [b]Steigung[/b] der Funktion
+Euler: ax + b\nHier ist die Funktion f(x) = x + 1. Die Funktion wird um 1 nach oben verschoben.
+Euler: ax + b\nDas b in der Funktion bestimmt die [b]Steigung[/b] der Funktion
 do show_graphic("linear2")
-Euler: a * x + b\nHier siehst du die Funktion f(x) = 2x
+Euler: ax + b\nHier siehst du die Funktion f(x) = 2x
 do show_graphic("linear3")
-Euler: a * x + b\nUnd hier ist die Funktion f(x) = (1/2)x
+Euler: ax + b\nUnd hier ist die Funktion f(x) = (1/2)x
 do hide_graphic()
 Euler: Soll ich lineare Funktionen noch einmal erklären?
 - Ja => tutorial_lineareFunktionen
@@ -31,24 +31,24 @@ Euler: Soll ich lineare Funktionen noch einmal erklären?
 
 Euler: Es gibt verschiedene Arten von quadratischen Funktionen, die nach der Form a*x²+b*x+c verlaufen!
 do show_graphic("quadratisch")
-Euler: a*x²+b*x+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
-Euler: a*x²+b*x+c\nDies hier ist f(x) = x^2
+Euler: ax²+bx+c\nWenn a größer 0 ist, dann ist die Parabel nach oben geöffnet.
+Euler: ax²+bx+c\nDies hier ist f(x) = x²
 do show_graphic("quadratisch1")
-Euler: a*x²+b*x+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
-Euler: a*x²+b*x+c\nHier siehst du die Funktion f(x) = -x^2
+Euler: ax²+bx+c\nSollte a kleiner als 0 sein, dann ist die Parabel nach unten geöffnet.
+Euler: ax²+bx+c\nHier siehst du die Funktion f(x) = -x²
 do show_graphic("quadratisch2")
-Euler: a*x²+b*x+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse [b]gestaucht[/b].[wait = 0.5] Hier ist f(x) = 2 * x^2
+Euler: ax²+bx+c\nDesto größer a ist, desto näher wird die Parabel an die x-Achse [b]gestaucht[/b].[wait = 0.5] Hier ist f(x) = 2 * x^2
 do show_graphic("quadratisch3")
-Euler: a*x²+b*x+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse [b]gestreckt[/b].[wait = 0.5] Hier ist f(x) = (1/2) * x^2
+Euler: ax²+bx+c\nDesto kleiner a ist, desto näher wird die Parabel an die y-Achse [b]gestreckt[/b].[wait = 0.5] Hier ist f(x) = (1/2) * x^2
 do show_graphic("quadratisch")
-Euler: a*x²+b*x+c\nc verschiebt den Graphen entlang der y-Achse, genau wie bei linearen Funktionen.
+Euler: ax²+bx+c\nc verschiebt den Graphen entlang der y-Achse, genau wie bei linearen Funktionen.
 do show_graphic("quadratisch4")
-Euler: a*x²+b*x+c\nHier ist f(x) = x^2 + 1 zum Beispiel.
-Euler: a*x²+b*x+c\nDen Graphen entlang der x-Achse zu verschieben geht auch, ist aber ein wenig komplizierter
-Euler: a*x²+b*x+c\nInnerhalb einer Klammer muss zu x hinzuaddiert werden, um diesen Effekt zu erreichen.
+Euler: ax²+bx+c\nHier ist f(x) = x² + 1 zum Beispiel.
+Euler: ax²+bx+c\nDen Graphen entlang der x-Achse zu verschieben geht auch, ist aber ein wenig komplizierter
+Euler: ax²+bx+c\nInnerhalb einer Klammer muss zu x hinzuaddiert werden, um diesen Effekt zu erreichen.
 do show_graphic("quadratisch5")
-Euler: (x+d)²+b*x+c\nd verschiebt den Graphen entlang der x-Achse, jedoch in entgegengesetzter Richtung.
-Euler: (x+d)²+b*x+c\n Die Funktion vor dir ist f(x) = (x+1)^2
+Euler: (x+d)²+bx+c\nd verschiebt den Graphen entlang der x-Achse, jedoch in entgegengesetzter Richtung.
+Euler: (x+d)²+bx+c\n Die Funktion vor dir ist f(x) = (x+1)²
 do hide_graphic()
 => quadratisch_weiter
 
@@ -64,7 +64,7 @@ Euler: Soll ich dir noch etwas zu quadratischen Funktionen erklären?
 Euler: Nullstellen errechnen ist ganz einfach!
 Euler: Du musst nur die Funktion gegen 0 setzen und gegen x rechnen.
 Euler: Bei linearen funktionen ist das sehr leicht.
-Euler: f(x)= 2x+4 -> 0 = 2x+4 |-4 -> -4 = 2x |:2 -> -2 = x
+Euler: f(x)= 2x+4\n0 = 2x+4 |-4\n-4 = 2x |:2\n-2 = x
 Euler: Bei quadratischen Funktionen musst du einfach in die pq-Formel umstellen.
 Euler: Was ist die pq-Formel? Ganz einfach!
 Euler: x = -p/2 +/- √((p/2)²-q)
@@ -79,14 +79,14 @@ Euler: Pass auf, dass du immer alle Nullstellen angibst!
 ~ tutorial_scheitelpunkte
 Euler: Um einen Scheitelpunkt zu finden, musst du zuerst die Ableitung der Funktion bestimmen.
 Euler: Das tust du indem du ausschließlich jedes x in der Funktion nimmst und durch deren Faktoren ersetzt.
-Euler: Aus 5*x, zum Beispiel, wird 5. Aus 5*x + 3 wird ebenfalls 5.
+Euler: Aus 5x, zum Beispiel, wird 5. Aus 5x + 3 wird ebenfalls 5.
 Euler: Das liegt daran, dass die Ableitung den Anstieg der Funktion an jeder Stelle angibt.
 Euler: Sollte x einen Faktor haben, so wird von diesem 1 subtrahiert und der ursprüngliche Faktor mit dem x multipliziert.
-Euler: 5*x^3, zum Beispiel, wird zu 15*x^2
+Euler: 5x³, zum Beispiel, wird zu 15x²
 Euler: An einem Scheitelpunkt ist der Anstieg der Funktion 0, also suchen wir nach den Nullstellen der Ableitung.
-Euler: Die Ableitung der quadratischen Funktion f(x) = 3x^2 + 5x - 6 ist f'(x) = 6x + 5
+Euler: Die Ableitung der quadratischen Funktion f(x) = 3x² + 5x - 6 ist f'(x) = 6x + 5
 Euler: Die Nullstelle von f'(x) = 6x + 5 liegt bei -(5/6)
-Euler: Also ist der Scheitelpunkt von f(x) 3x^2 + 5x - 6 an der Stelle -(5/6)
+Euler: Also ist der Scheitelpunkt von f(x) 3x² + 5x - 6 an der Stelle -(5/6)
 => quadratisch_weiter
 
 ~ tutorial_exponentielleFunktionen
