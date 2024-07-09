@@ -23,22 +23,15 @@ func _ready():
 	$background/AnimationPlayer.play("idle")
 	generate_function()
 	
-	for n in 1:
-		var fkt:MFunc_comp = MFunc_comp.new("multiplied")
-		print(fkt.calc_deriv())
-		print()
-		fkt = MFunc_comp.new("divided")
-		print(fkt.calc_deriv())
-		print()
-		fkt = MFunc_comp.new("trigonometric")
-		print(fkt.calc_deriv())
-		print()
-		fkt = MFunc_comp.new("nested")
-		print(fkt.calc_deriv())
-		print()
-		#var question:Question = Question.new(1)
+	for n in 100:
+		#var fkt:MFunc = MFunc.new()
+		#print(fkt.calc_extremes())
+		
+		var question:Question = Question.new(3)
+		#print(question.fn_type)
 		#print(question.fn)
-		#print(question.chosen)
+		#print("Antworten: ", question.question_pool)
+		#print("Parameter: ", question.extras)
 		#print()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

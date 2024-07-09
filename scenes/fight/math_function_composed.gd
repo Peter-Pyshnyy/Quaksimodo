@@ -60,7 +60,7 @@ func create_trig_fn():
 	while(temp == 0):
 		temp = randi_range(-10,10)
 	
-	if (randf_range(0,1) == 0):
+	if (randi_range(0,1) == 0):
 		fn = "cos"
 		
 	trig[fn] = temp
@@ -129,7 +129,7 @@ func calc_deriv(i:int = 1):
 			return MFunc_comp.new("divided", temp3, temp4)
 		"trigonometric":
 			#Kettenregel
-			var temp:MFunc_comp = self
+			var temp:MFunc_comp = self.clone_trig()
 			var v1 = self.a.calc_deriv().coefficients[0]
 			
 			if "sin" in self.trig:
@@ -147,10 +147,24 @@ func calc_deriv(i:int = 1):
 			return a.multiply_fn(v1)
 
 func slope_at(x:float) -> float:
-	if type == "trigonometric":
-		print("no slope for trig")
+	if type == "trigonometric" || type == "divided":
+		print("no slope for trig and div")
 		return 0
 		
 	var deriv:MFunc = calc_deriv()
 	return  deriv.value_at(x)
-	
+
+func calc_rate_of_change(x:int) -> float:
+	if type == "trigonometric" || type == "divided":
+		print("no change for trig and div")
+		return 0
+		
+	var temp:MFunc = calc_deriv()
+	return temp.calc_deriv().value_at(x)
+
+func clone_trig() -> MFunc_comp:
+	var temp:MFunc_comp = MFunc_comp.new("trigonometric")
+	temp.a = a.clone()
+	temp.trig.erase(temp.trig.keys()[0])
+	temp.trig[trig.keys()[0]] = trig.values()[0]
+	return temp

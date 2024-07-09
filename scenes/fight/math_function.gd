@@ -165,8 +165,6 @@ func create_quadr_fn():
 		add_coeff(1,function[1])
 		add_coeff(0,function[2])
 		
-		if randi_range(0,1) == 0:
-			coefficients[2] = -1
 		
 	else:
 		print("Unexpected data")
@@ -177,9 +175,6 @@ func create_cub_fn():
 	var b:float = 0
 	var c:float = 0
 	var d:float = 0
-	
-	if randi_range(0,1) == 0:
-		a = -1
 
 	b = randi_range(-2,2)
 	c = randi_range(-10,10)
@@ -215,9 +210,9 @@ func calc_zero():
 		return
 	
 	#linear
-	if highest_exp < 2:
+	if highest_exp == 1:
 		if !coefficients.has(0): return [0]
-		var temp:float = coefficients[degrees_sorted[1]] * -1
+		var temp:float = coefficients[1] * -1
 		return [float(round(temp/coefficients[degrees_sorted[0]]*100))/100]
 		
 	#quadratic
@@ -257,7 +252,12 @@ func calc_deriv(n:int = 1):
 
 #adds two functions together
 func add_fn(a:MFunc, b:MFunc = self) -> MFunc:
-	var temp:MFunc = a
+	var temp:MFunc = a.clone()
+	
+	#used to prevent a rare bug
+	if a.coefficients.has(1):
+		temp.coefficients[1] = a.coefficients[1]
+	
 	
 	for i in b.degrees_sorted: 
 		if a.degrees_sorted.has(i):
@@ -327,8 +327,7 @@ func value_at(x:int) -> float:
 
 func slope_at(x:float) -> float:
 	var deriv:MFunc = calc_deriv()
-	
-	return  deriv.value_at(x)
+	return deriv.value_at(x)
 
 func calc_extremes():
 	if highest_exp > 3:
@@ -336,18 +335,24 @@ func calc_extremes():
 		return false
 		
 	var deriv:MFunc = calc_deriv()
-	
 	return deriv.calc_zero()
 
 #returns two functions, who's crossing point is easily calculated
 func cross_fn():
-	if highest_exp != 2:
-		print("cross only for quadratics")
+	if highest_exp > 2:
+		print("cross only for quadratics and linear")
 		return false
 	
-	var lin:MFunc = MFunc.new("linear")
-	var quadr:MFunc = self.add_fn(lin.inverse_fn())
+	var lin:MFunc;
+	var quadr:MFunc = self.duplicate();
 	
+	if highest_exp == 2:
+		lin = MFunc.new("linear")
+		#quadr = quadr.add_fn(lin.duplicate())
+	#else:
+		#print('else')
+		#lin = self.duplicate()
+		#quadr = MFunc.new("quadratic").add_fn(lin)
 	return [quadr, lin]
 
 func calc_turning_p():
@@ -356,3 +361,19 @@ func calc_turning_p():
 		return false
 	var temp:MFunc = self.calc_deriv(2)
 	return temp.calc_zero()
+
+func calc_rate_of_change(x:int) -> float:
+	if highest_exp < 2:
+		print("RATE OF CHANGE NOT FOR LINEAR")
+		return 0
+	
+	var temp:MFunc = calc_deriv(2)
+	return temp.value_at(x)
+
+
+func clone() -> MFunc:
+	var temp:MFunc = MFunc.new("empty")
+	for n in degrees_sorted:
+		temp.add_coeff(n, coefficients[n])
+	
+	return temp
