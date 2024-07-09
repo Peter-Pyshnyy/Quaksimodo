@@ -150,3 +150,12 @@ func calc_deriv():
 			var v1:MFunc = self.a.calc_deriv()
 			v1.coefficients[0] = v1.coefficients[0]*2
 			return a.multiply_fn(v1)
+
+func slope_at(x:float) -> float:
+	if type == "trigonometric":
+		print("no slope for trig")
+		return 0
+		
+	var deriv:MFunc = calc_deriv()
+	return  deriv.value_at(x)
+	

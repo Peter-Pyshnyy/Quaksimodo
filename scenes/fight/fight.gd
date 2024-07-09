@@ -26,7 +26,7 @@ func _ready():
 	for n in 1:
 		var fkt = MFunc_comp.new("nested")
 		print(fkt)
-		print(fkt.calc_deriv())
+		print(fkt.slope_at(2))
 		#print(fkt.calc_extremes())
 		#print(fkt.calc_deriv())
 		#print(fkt.value_at(3.5))
