@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqyuvd8tf77jb"]
+
+[ext_resource type="Texture2D" uid="uid://d0g8gl5d0kams" path="res://assets/menu_scene/backgroundpuddle.png" id="1_jbya2"]
+[ext_resource type="Script" path="res://scenes/GameOver/returnMenu.gd" id="2_7entm"]
+[ext_resource type="Script" path="res://scenes/GameOver/EndStats.gd" id="3_u1k45"]
+
+[node name="GameOver" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-24.0]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jbya2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 32.0
+offset_right = 124.0
+offset_bottom = 23.0
+text = "GAME OVER
+"
+
+[node name="returnMenu" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 57.0
+offset_right = 146.0
+offset_bottom = 88.0
+text = "Return to Menu"
+icon_alignment = 1
+script = ExtResource("2_7entm")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 52.0
+offset_top = 25.0
+offset_right = 107.0
+offset_bottom = 52.0
+script = ExtResource("3_u1k45")

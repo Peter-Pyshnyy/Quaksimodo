@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
 [ext_resource type="Script" path="res://scenes/map/player_icon/player_icon.gd" id="5_m0txf"]
-[ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/map/player_icon/frog1.png" id="6_0r7ri"]
+[ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/Map/player_icon/frog1.png" id="6_0r7ri"]
 [ext_resource type="Texture2D" uid="uid://mn6wonkh2r6l" path="res://assets/map_scene/QM_move_tut.png" id="6_ejjvt"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="7_sgvhx"]
 [ext_resource type="Script" path="res://scenes/map/steuerung.gd" id="9_ikvlr"]
@@ -18,7 +18,6 @@ texture = ExtResource("2_63p1a")
 4:0/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oex7a"]
-load_path = "res://.godot/imported/QM_tiles_single.png-ba78cd8b753cd08d9e1ab36a0a558b3f.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6lwc"]
 texture = SubResource("CompressedTexture2D_oex7a")
@@ -28,7 +27,6 @@ texture = SubResource("CompressedTexture2D_oex7a")
 3:0/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pk4c8"]
-load_path = "res://.godot/imported/QM_tiles_double.png-6102b1aaa58a31d88a2bde8e2ee1c350.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkxin"]
 texture = SubResource("CompressedTexture2D_pk4c8")
@@ -41,7 +39,6 @@ texture = SubResource("CompressedTexture2D_pk4c8")
 3:2/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i82p1"]
-load_path = "res://.godot/imported/QM_tiles_triple.png-a7d898c817eceea98930273afe14cc72.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kxduf"]
 texture = SubResource("CompressedTexture2D_i82p1")
