@@ -44,11 +44,13 @@ func _on_attack_button_pressed():
 	$Answer.grab_focus()
 	if(anwer_to_q1 == Levels.QuestionDatabase[str(current_question_number)].a1):
 		print("right")
+		Statistics._on_answer_received(true)
 		$Answer.modulate = Color.GREEN
 		hurt_enemy()
 	else:
 		$Answer.modulate = Color.RED
 		hurt_frog()
+		Statistics._on_answer_received(false)
 		print("wrong")
 	
 	await get_tree().create_timer(0.75).timeout
@@ -56,11 +58,13 @@ func _on_attack_button_pressed():
 	$Answer2.grab_focus()
 	if(anwer_to_q2 == Levels.QuestionDatabase[str(current_question_number)].a2):
 		print("right")
+		Statistics._on_answer_received(true)
 		$Answer2.modulate = Color.GREEN
 		hurt_enemy()
 	else:
 		$Answer2.modulate = Color.RED
 		hurt_frog()
+		Statistics._on_answer_received(false)
 		print("wrong")
 	
 	await get_tree().create_timer(0.75).timeout
@@ -68,10 +72,12 @@ func _on_attack_button_pressed():
 	$Answer3.grab_focus()
 	if(anwer_to_q3 == Levels.QuestionDatabase[str(current_question_number)].a3):
 		$Answer3.modulate = Color.GREEN
+		Statistics._on_answer_received(true)
 		hurt_enemy()
 		print("right")
 	else:
 		$Answer3.modulate = Color.RED
+		Statistics._on_answer_received(false)
 		hurt_frog()
 		print("wrong")
 		
