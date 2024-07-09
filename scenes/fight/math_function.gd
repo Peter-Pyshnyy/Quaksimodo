@@ -242,7 +242,7 @@ func calc_zero():
 			
 		return [x1, x2]
 
-func calc_deriv(n:int = 1) -> MFunc:
+func calc_deriv(n:int = 1):
 	var fn = self
 	var temp:MFunc
 	
@@ -313,7 +313,7 @@ func is_streched() -> bool:
 	return false
 
 
-func value_at(x:float) -> float:
+func value_at(x:int) -> float:
 	var result:float = 0
 	for n in degrees_sorted:
 		var temp = 1

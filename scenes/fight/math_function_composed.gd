@@ -1,11 +1,11 @@
 #composed
 class_name MFunc_comp
 
-extends Node
+extends MFunc
 
 var a:MFunc
 var b:MFunc
-var type:String
+#var type:String
 var is_trig = false
 var trig = {}
 var exp = 1
@@ -37,7 +37,6 @@ func create_multiplied_fn():
 
 
 func create_divided_fn():
-	print(a)
 	type = "divided"
 	if a == null:
 		a = MFunc.new("empty")
@@ -74,7 +73,7 @@ func create_nested_fn():
 	exp = 2
 
 
-func _to_string():
+func _to_string(trunc:bool = false):
 	match type:
 		"multiplied":
 			return str("f(x) = (" ,a._to_string(true),") ⋅ (", b._to_string(true), ")")
@@ -102,13 +101,12 @@ func value_at(x:int) -> float:
 			for n in exp-1:
 				temp = temp.multiply_fn(a)
 			
-			print(temp)
 			return temp.value_at(x)
 		_:
 			print("WRONG FUNCTION TYPE")
 			return 0
 
-func calc_deriv():
+func calc_deriv(i:int = 1):
 	match type:
 		"multiplied":
 			#Produktregel
@@ -127,15 +125,12 @@ func calc_deriv():
 			var temp1 = a1.multiply_fn(b)
 			var temp2 = b1.multiply_fn(a)
 			var temp3 = temp1.add_fn(temp2.inverse_fn())
-			print("temp3:", temp3)
 			var temp4 = b.multiply_fn(b)
 			return MFunc_comp.new("divided", temp3, temp4)
 		"trigonometric":
 			#Kettenregel
 			var temp:MFunc_comp = self
 			var v1 = self.a.calc_deriv().coefficients[0]
-			
-			print(v1)
 			
 			if "sin" in self.trig:
 				temp.trig["cos"] = v1*temp.trig["sin"]

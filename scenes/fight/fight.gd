@@ -24,14 +24,22 @@ func _ready():
 	generate_function()
 	
 	for n in 1:
-		var fkt = MFunc_comp.new("nested")
-		print(fkt)
-		print(fkt.slope_at(2))
-		#print(fkt.calc_extremes())
-		#print(fkt.calc_deriv())
-		#print(fkt.value_at(3.5))
-		#print(fkt.value_at(8))
+		var fkt:MFunc_comp = MFunc_comp.new("multiplied")
+		print(fkt.calc_deriv())
 		print()
+		fkt = MFunc_comp.new("divided")
+		print(fkt.calc_deriv())
+		print()
+		fkt = MFunc_comp.new("trigonometric")
+		print(fkt.calc_deriv())
+		print()
+		fkt = MFunc_comp.new("nested")
+		print(fkt.calc_deriv())
+		print()
+		#var question:Question = Question.new(1)
+		#print(question.fn)
+		#print(question.chosen)
+		#print()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
