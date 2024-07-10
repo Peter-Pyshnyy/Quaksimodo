@@ -11,6 +11,9 @@ extends Node2D
 @onready var option1 = $OptionButton
 @onready var option2 = $OptionButton2
 @onready var option3 = $OptionButton3
+@onready var lbl_triangle = $Item3/lbl_triangle
+@onready var lbl_flies = $Item4/lbl_flies
+@onready var lbl_tooth = $Item5/lbl_tooth
 
 var print_inputs = [$Question, $Question2, $Question3]
 var option_inputs = [option1,option2,option3]
@@ -18,6 +21,7 @@ var question_lbls = [lbl_question1, lbl_question2, lbl_question3]
 
 var rng = RandomNumberGenerator.new()
 var enemy_health
+var enemy_damage
 var frog_health
 var current_level
 var current_question_number
@@ -27,22 +31,28 @@ var num_of_questions:int
 var anwer_to_q1 = ""
 var anwer_to_q2 = ""
 var anwer_to_q3 = ""
+var player_manager = PlayerManager.new()
+var triangle_active = false
+var enemy_max_hp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_level = PlayerDataAl.current_level
+	current_level = 1
+	current_question_number = 1
 	frog_health = PlayerDataAl.health
 	load_enemy()
-
 	healthbar_enemy.init_health(enemy_health)
-	healthbar_frog.init_health(10)
+	healthbar_frog.init_health(PlayerDataAl.max_health)
 	healthbar_frog.health = frog_health
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
 	$Background/AnimationPlayer.play("idle")
+	
+	lbl_triangle.text = str(PlayerDataAl.shield)
+	lbl_flies.text = str(PlayerDataAl.heal)
+	lbl_tooth.text = str(PlayerDataAl.tooth)
 
 	gen_new_questions()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -102,15 +112,14 @@ func gen_new_questions():
 					input3.visible = true
 					input3.editable = true
 
-func _on_attack_button_button_up():
-	$AttackButton.position.y -= 2
-	$AttackButton.texture_normal = load(str("res://assets/fight_scene/attack_btn_inverted.png"))
-	$AttackButton.disabled = true
-	
+func _on_attack_button_pressed():
 	var ans:String = ""
 	input1.editable = false
 	input2.editable = false
 	input3.editable = false
+	$Item3/btn_triangle.disabled = true
+	$Item4/btn_flies.disabled = true
+	$Item5/btn_tooth.disabled = true
 	#option1.disabled = true
 	#option2.disabled = true
 	#option3.disabled = true
@@ -159,6 +168,7 @@ func _on_attack_button_button_up():
 		ans = anwer_to_q3
 		if option3.visible:
 			ans = str(option3.selected)
+			print("ANS3: ", ans)
 		if(ans != null && question.give_answer(2, ans)):
 			input3.modulate = Color.GREEN
 			option3.modulate = Color.GREEN
@@ -180,26 +190,26 @@ func _on_attack_button_button_up():
 	option2.modulate = Color.WHITE
 	option3.modulate = Color.WHITE
 	if(enemy_health <= 0):
-		PlayerDataAl.next_level()
-		MapAutoload.reset()
+		MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
 		Transition.transition_scene("res://scenes/Map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
 		PlayerDataAl.reset()
 		Transition.transition_scene("res://scenes/menu/main_menu.tscn")
 	else:
+		PlayerDataAl.shield_active = false
 		gen_new_questions()
 
 func hurt_frog():
-	frog_health = frog_health - 1
+	frog_health = player_manager.take_damage(enemy_damage + randi_range(-2, 2))
+	
 	healthbar_frog.health = frog_health
 	$Frog.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	$Frog.modulate = Color.WHITE
-	PlayerDataAl.health = frog_health
 	
 func hurt_enemy():
-	enemy_health = enemy_health - 1
+	enemy_health = enemy_health - player_manager.deal_damage()
 	healthbar_enemy.health = enemy_health
 	$Enemy.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
@@ -241,8 +251,6 @@ func turn_input_to_option(options: Array, input_nr: int):
 		option_button.add_item(item)
 
 func reset_scene():
-	$AttackButton.disabled = false
-	$AttackButton.texture_normal = load(str("res://assets/fight_scene/attack_btn.png"))
 	$Question.text = ""
 	$Question2.text = ""
 	$Question3.text = ""
@@ -258,32 +266,89 @@ func reset_scene():
 	option1.visible = false
 	option2.visible = false
 	option3.visible = false
+	$Item3/btn_triangle.disabled = false
+	$Item4/btn_flies.disabled = false
+	$Item5/btn_tooth.disabled = false
+
+func _on_option_button_item_focused(index):
+	print("FICUS")
+	anwer_to_q1 = str(index)
 
 
-func _on_attack_button_button_down():
-	$AttackButton.position.y += 2
+func _on_option_button_2_item_focused(index):
+	print("FICUS")
+	anwer_to_q2 = str(index)
 
 
-func _on_help_button_button_down():
-	$HelpButton.position.y += 2
+func _on_option_button_3_item_focused(index):
+	print("FICUS")
+	anwer_to_q3 = str(index)
 
 
+func _on_btn_triangle_pressed():
+	if PlayerDataAl.shield > 0 && PlayerDataAl.shield_active == false:
+		PlayerDataAl.shield_active = true
+		PlayerDataAl.shield -= 1
+		lbl_triangle.text = str(PlayerDataAl.shield)
 
-func _on_help_button_button_up():
-	$HelpButton.position.y -= 2
+
+func _on_btn_triangle_mouse_entered():
+	$Item3.position.y -= 1
 
 
+func _on_btn_triangle_mouse_exited():
+	$Item3.position.y += 1
+
+
+func _on_btn_flies_mouse_entered():
+	$Item4.position.y -= 1
+
+
+func _on_btn_flies_mouse_exited():
+	$Item4.position.y += 1
+
+
+func _on_btn_tooth_mouse_entered():
+	$Item5.position.y -= 1
+
+
+func _on_btn_tooth_mouse_exited():
+	$Item5.position.y += 1
+
+
+func _on_btn_flies_pressed():
+	if PlayerDataAl.heal > 0 && frog_health != PlayerDataAl.max_health:
+		player_manager.heal_hp()
+		PlayerDataAl.heal -= 1
+		lbl_flies.text = str(PlayerDataAl.heal)
+		frog_health = PlayerDataAl.health
+		healthbar_frog.health = frog_health
+
+
+func _on_btn_tooth_pressed():
+	if PlayerDataAl.tooth > 0:
+		$Enemy.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Enemy.modulate = Color.WHITE
+	
+		enemy_health -= round(float(enemy_max_hp)/2)
+		PlayerDataAl.tooth -= 1
+		lbl_tooth.text = str(PlayerDataAl.tooth)
+		healthbar_enemy.health = enemy_health
+	
 func load_enemy():
 	var path = "res://assets/fight_scene/boss_sprites/boss_sheet_" + str(current_level) + ".png"
 	$Enemy.texture = load(path)
 	match current_level:
 		1:
 			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
-			enemy_health = 100
+			enemy_max_hp = 100
+			enemy_health = enemy_max_hp
 		2:
 			$Background.texture = load("res://assets/fight_scene/dawn_animation.png")
-			enemy_health = 150
+			enemy_max_hp = 150
+			enemy_health = enemy_max_hp
 		3:
 			$Background.texture = load("res://assets/fight_scene/night_animation.png")
-			enemy_health = 200
-
+			enemy_max_hp = 200
+			enemy_health = enemy_max_hp

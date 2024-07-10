@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://oxhdfhjkcwp5"]
+[gd_scene load_steps=32 format=3 uid="uid://bceuth2nasm28"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight_boss.gd" id="1_y4g6u"]
 [ext_resource type="Texture2D" uid="uid://chjpy7axjwi8l" path="res://assets/fight_scene/background_animation_darker.png" id="2_y78jw"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="9_jl5pd"]
 [ext_resource type="Texture2D" uid="uid://bni2nictmlkac" path="res://assets/fight_scene/health_bars.png" id="10_2kx85"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="11_u3lin"]
+[ext_resource type="Texture2D" uid="uid://dhml3dcoji4rr" path="res://assets/powerups/item_3.png" id="12_f8fxn"]
+[ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="13_7srvp"]
+[ext_resource type="Texture2D" uid="uid://c6vgx1sobgtsn" path="res://assets/powerups/item_4.png" id="14_8g1vd"]
+[ext_resource type="Texture2D" uid="uid://cxei05r4dcli" path="res://assets/powerups/item_5.png" id="15_h2w26"]
 
 [sub_resource type="Animation" id="Animation_ik2so"]
 resource_name = "new_animation"
@@ -100,6 +104,16 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npgfe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvba2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_10rk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1ojg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrq5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2t4tr"]
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_y4g6u")
@@ -266,6 +280,103 @@ offset_top = 507.0
 offset_right = 1112.0
 offset_bottom = 538.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(582, 327)
+zoom = Vector2(1.685, 1.685)
+
+[node name="Item3" type="Sprite2D" parent="."]
+position = Vector2(49, 390)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("12_f8fxn")
+
+[node name="lbl_triangle" type="Label" parent="Item3"]
+offset_left = -9.42857
+offset_top = -11.4286
+offset_right = 3.57143
+offset_bottom = 4.57143
+theme_override_colors/font_shadow_color = Color(0.0130029, 0.0555567, 0.0708754, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_7srvp")
+theme_override_font_sizes/font_size = 10
+text = "3"
+metadata/_edit_use_anchors_ = true
+
+[node name="btn_triangle" type="Button" parent="Item3"]
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dvba2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_10rk8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q1ojg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hrq5n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2t4tr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Item4" type="Sprite2D" parent="."]
+position = Vector2(114.562, 389.438)
+scale = Vector2(3.42969, 3.42969)
+texture = ExtResource("14_8g1vd")
+
+[node name="lbl_flies" type="Label" parent="Item4"]
+offset_left = -9.42857
+offset_top = -10.5974
+offset_right = 3.57143
+offset_bottom = 5.4026
+theme_override_colors/font_shadow_color = Color(0.0130029, 0.0555567, 0.0708754, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_7srvp")
+theme_override_font_sizes/font_size = 10
+text = "3"
+metadata/_edit_use_anchors_ = true
+
+[node name="btn_flies" type="Button" parent="Item4"]
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dvba2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_10rk8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q1ojg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hrq5n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2t4tr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Item5" type="Sprite2D" parent="."]
+position = Vector2(184.375, 386.625)
+scale = Vector2(3.20313, 3.20313)
+texture = ExtResource("15_h2w26")
+
+[node name="lbl_tooth" type="Label" parent="Item5"]
+offset_left = -9.42857
+offset_top = -11.4286
+offset_right = 3.57143
+offset_bottom = 4.57143
+theme_override_colors/font_shadow_color = Color(0.0130029, 0.0555567, 0.0708754, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_7srvp")
+theme_override_font_sizes/font_size = 10
+text = "3"
+metadata/_edit_use_anchors_ = true
+
+[node name="btn_tooth" type="Button" parent="Item5"]
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dvba2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_10rk8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q1ojg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hrq5n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2t4tr")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_up" from="AttackButton" to="." method="_on_attack_button_button_up"]

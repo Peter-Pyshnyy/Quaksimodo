@@ -302,6 +302,7 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("13_snnd0")
 theme_override_font_sizes/font_size = 10
 text = "3"
+metadata/_edit_use_anchors_ = true
 
 [node name="btn_triangle" type="Button" parent="Item3"]
 offset_left = -9.0
@@ -313,6 +314,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_k3r46")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_iq656")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
+metadata/_edit_use_anchors_ = true
 
 [node name="Item4" type="Sprite2D" parent="."]
 position = Vector2(110.562, 386.438)
@@ -331,6 +333,7 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("13_snnd0")
 theme_override_font_sizes/font_size = 10
 text = "3"
+metadata/_edit_use_anchors_ = true
 
 [node name="btn_flies" type="Button" parent="Item4"]
 offset_left = -9.0
@@ -342,6 +345,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_k3r46")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_iq656")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
+metadata/_edit_use_anchors_ = true
 
 [node name="Item5" type="Sprite2D" parent="."]
 position = Vector2(180.375, 383.625)
@@ -360,6 +364,7 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("13_snnd0")
 theme_override_font_sizes/font_size = 10
 text = "3"
+metadata/_edit_use_anchors_ = true
 
 [node name="btn_tooth" type="Button" parent="Item5"]
 offset_left = -8.0
@@ -371,6 +376,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_k3r46")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_iq656")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
