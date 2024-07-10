@@ -258,7 +258,7 @@ func _on_button_button_down():
 
 func _on_button_button_up():
 	btn_back.position.y -= 2
-	get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+	Transition.transition_scene("res://scenes/Map/Map.tscn")
 
 
 func _on_button_mouse_entered():
