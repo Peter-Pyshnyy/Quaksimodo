@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dwtpqnatu4gi" path="res://assets/fight_scene/attack_btn_inverted.png" id="6_dx4cd"]
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
 [ext_resource type="Texture2D" uid="uid://h03mkgyusxhf" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
-[ext_resource type="Texture2D" uid="uid://d34omd6d3xcn" path="res://assets/fight_scene/enemy_sheet_1.png" id="8_4m4yi"]
+[ext_resource type="Texture2D" uid="uid://di8dx14sv2j5q" path="res://assets/fight_scene/enemy_sheet_2.png" id="8_8favx"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="8_624dc"]
 [ext_resource type="Texture2D" uid="uid://g50akol0mlsl" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
 [ext_resource type="Texture2D" uid="uid://dhml3dcoji4rr" path="res://assets/powerups/item_3.png" id="12_5xbqf"]
@@ -127,11 +127,11 @@ metadata/_edit_vertical_guides_ = [576.0]
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 0
+z_index = -2
 position = Vector2(576, 221.5)
 scale = Vector2(7.2, 4.92222)
 texture = ExtResource("2_peegu")
 hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 libraries = {
@@ -162,10 +162,11 @@ texture_hover = ExtResource("8_624dc")
 stretch_mode = 0
 
 [node name="Enemy" type="Sprite2D" parent="."]
+z_index = -1
 texture_filter = 1
-position = Vector2(820, 190)
+position = Vector2(818, 208)
 scale = Vector2(0.313583, 0.313583)
-texture = ExtResource("8_4m4yi")
+texture = ExtResource("8_8favx")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
