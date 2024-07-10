@@ -23,15 +23,24 @@ func _ready():
 	$background/AnimationPlayer.play("idle")
 	generate_function()
 	
-	for n in 100:
-		#var fkt:MFunc = MFunc.new()
-		#print(fkt.calc_extremes())
+	for n in 1:
+		var parser:MFunc = MFunc.new("empty")
+		#print(parser.parse_polynomial("2*x^3 - 3*x^2 + 5*x - 7"))
+		
+		#var parser_comp:MFunc_comp = MFunc_comp.new("empty")
+		#print(parser_comp.parse_polynomial_comp("nested", "(x^3-5x)^3"))
+		#fkt.add_coeff(2,7)
+		#fkt.add_coeff(1,1)
+		#fkt.add_coeff(0,-1)
+		
 		
 		var question:Question = Question.new(3)
+		#print(question.parse_answer_float("3.3,4,1/3"))
 		#print(question.fn_type)
 		#print(question.fn)
-		#print("Antworten: ", question.question_pool)
-		#print("Parameter: ", question.extras)
+		print("Antworten: ", question.question_pool)
+		print("Parameter: ", question.extras)
+		#print(question.give_answer(0, "-198*sin(22*x+22)"))
 		#print()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

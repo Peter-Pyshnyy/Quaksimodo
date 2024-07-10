@@ -72,7 +72,6 @@ var fn_type:F
 var question_pool = {}
 var extras = {}
 var fn:MFunc
-var answers = {}
 
 func _init(lvl:int):
 	match lvl:
@@ -160,3 +159,42 @@ func handle_wp():
 func handle_aer():
 	extras[Q.AER] = randi_range(-2,2)
 	return fn.calc_rate_of_change(extras[Q.AER])
+
+func round_place(num:float, places:int = 2) -> float:
+	return (round(num*pow(10,places))/pow(10,places))
+
+func parse_answer_float(expression:String):
+	var result = []
+	
+	var terms = expression.split(",")
+	for term in terms:
+		#print(term)
+		term = term.strip_edges(true, true)
+		if term.contains(("/")):
+			var n = float(term.get_slice("/", 0))/float(term.get_slice("/", 1))
+			print(n)
+			result.append(round_place(n))
+			continue
+		var num:float = float(term)
+		result.append(round_place(num))
+	return result
+
+func parse_answer_function(f_type:F, expression:String):
+	if f_type in enum2str_comp:
+		var parser_comp:MFunc_comp = MFunc_comp.new("empty")
+		return parser_comp.parse_polynomial_comp(enum2str_comp[f_type], expression)
+	else:
+		var parser:MFunc = MFunc.new("empty")
+		return parser.parse_polynomial(expression)
+
+
+func give_answer(question_index:int, answer:String) -> bool:
+	var question = question_pool.keys()[question_index]
+	if question == Q.ABL_1 || question == Q.ABL_2:
+		var ans:MFunc = parse_answer_function(fn_type, answer)
+		return question_pool[question].equals()
+	
+	var ans = parse_answer_float(answer)
+	ans.sort()
+	question_pool[question].sort()
+	return ans == question_pool[question]

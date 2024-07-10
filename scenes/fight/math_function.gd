@@ -120,6 +120,18 @@ func _to_string(trimmed:bool = false):
 	else:
 		return "f(x) = " + result
 
+
+func equals(fn:MFunc) -> bool:
+	if degrees_sorted != fn.degrees_sorted:
+		return false
+	
+	for n in degrees_sorted:
+		if coefficients[n] != fn.coefficients[n]:
+			return false
+	
+	return true
+
+
 func create_lin_fn():
 	var a:float = 0
 	var b:float = 0
@@ -200,7 +212,7 @@ func create_cub_fn_extr():
 
 
 #rounds after the decimal point
-func round_place(num:int, places:int = 2):
+func round_place(num:float, places:int = 2) -> float:
 	return (round(num*pow(10,places))/pow(10,places))
 
 #only for linear and quadratic functions
@@ -377,3 +389,53 @@ func clone() -> MFunc:
 		temp.add_coeff(n, coefficients[n])
 	
 	return temp
+
+
+func parse_polynomial(expression: String) -> MFunc:
+	var terms = expression.replace(" ","")
+	terms = terms.replace("-","+-").split("+")
+	var fn:MFunc = MFunc.new("empty")
+	
+	for term in terms:
+		# Trim whitespace
+		term = term.strip_edges(true, true)
+		var sub_fn:MFunc = MFunc.new("empty")
+		var degree = 0
+		var coeff:float = 0
+		
+		#print(term)
+		
+		term = term.replace(",",".")
+		
+		if term.contains("^"):
+			degree = int(term.get_slice("^", 1))
+		elif term.contains("x"):
+			degree = 1
+		else:
+			degree = 0
+		
+		if term.contains("*"):
+			var temp:String = term.get_slice("*", 0)
+			if temp.contains(")"):
+				temp = temp.replace("(","")
+				temp = temp.replace(")","")
+			if temp.contains(("/")):
+				var n = float(temp.get_slice("/", 0))/float(temp.get_slice("/", 1))
+				coeff = round_place(n)
+			else:
+				coeff = float(term.get_slice("*", 0))
+		elif term.contains("x"):
+			if term.contains("-"):
+				coeff = -1
+			else:
+				coeff = 1
+		else:
+			coeff = round_place(term)
+		
+		sub_fn.add_coeff(degree, coeff)
+		#print(sub_fn)
+		
+		fn = fn.add_fn(sub_fn)
+		#print(fn)
+	
+	return fn

@@ -24,6 +24,8 @@ func _init(type:String = "multiplied", a:MFunc = null, b:MFunc = null):
 			create_trig_fn()
 		"nested":
 			create_nested_fn()
+		"empty":
+			return
 		_:
 			print("INVALID FUNCTION TYPE")
 			return
@@ -69,8 +71,12 @@ func create_trig_fn():
 func create_nested_fn():
 	if a == null:
 		a = MFunc.new("linear")
-	a.coefficients[0] = round(a.coefficients[0])
-	exp = 2
+	else:
+		if(a.coefficients.has(0)):
+			a.coefficients[0] = round(a.coefficients[0])
+	
+	if exp == 1:
+		exp = 2
 
 
 func _to_string(trunc:bool = false):
@@ -80,11 +86,41 @@ func _to_string(trunc:bool = false):
 		"divided":
 			return str("f(x) = (", a._to_string(true), ") / (", b._to_string(true), ")")
 		"trigonometric":
-			return str("f(x) = ", trig.values()[0], " ⋅ ", trig.keys()[0], "(", a._to_string(true), ")") 
+			if abs(trig.values()[0]) != 1:
+				return str("f(x) = ", trig.values()[0], " ⋅ ", trig.keys()[0], "(", a._to_string(true), ")") 
+			elif trig.values()[0] == -1:
+				return str("f(x) = -", trig.keys()[0], "(", a._to_string(true), ")") 
+			else:
+				return str("f(x) = ", trig.keys()[0], "(", a._to_string(true), ")") 
 		"nested":
 			return str("f(x) = (", a._to_string(true), ")", MFunc.exponents[str(exp)])
 		_:
 			return "WRONG FUNCTION TYPE"
+
+func equals(fn:MFunc) -> bool:
+	match type:
+		"multiplied":
+			if (a.equals(fn.a) && b.equals(fn.b) || a.equals(fn.b) && b.equals(fn.a)):
+				return true
+			else:
+				return false
+		"divided":
+			if (a.equals(fn.a) && b.equals(fn.b)):
+				return true
+			else:
+				return false
+		"trigonometric":
+			if (a.equals(fn.a) && trig == fn.trig):
+				return true
+			else:
+				return false
+		"nested":
+			if (a.equals(fn.a) && exp == fn.exp):
+				return true
+			else:
+				return false
+	return false
+	
 
 func value_at(x:int) -> float:
 	match type:
@@ -168,3 +204,103 @@ func clone_trig() -> MFunc_comp:
 	temp.trig.erase(temp.trig.keys()[0])
 	temp.trig[trig.keys()[0]] = trig.values()[0]
 	return temp
+
+
+func parse_polynomial_comp(expected_type:String, expression: String) -> MFunc:
+	expression = expression.strip_edges(true, true)
+	match expected_type:
+		"multiplied":
+			var parser:MFunc = MFunc.new("empty")
+			if expression.contains(")*("):
+				var terms = expression.split(")*(")
+				terms[0] = terms[0].replace("(","")
+				terms[0] = terms[0].replace(")","")
+				terms[1] = terms[1].replace("(","")
+				terms[1] = terms[1].replace(")","")
+				var a = parser.parse_polynomial(terms[0])
+				var b = parser.parse_polynomial(terms[1])
+				
+				return MFunc_comp.new("multiplied", a, b)
+			else:
+				var term = expression.replace("(", "")
+				term = term.replace(")","")
+				return MFunc.new("empty").parse_polynomial(term)
+		"divided": #x/(x+1) ; (x+1)/x ; (x+1)/(x-1)
+			var parser:MFunc = MFunc.new("empty")
+			if expression.contains(")/("):
+				var terms = expression.split(")/(")
+				terms[0] = terms[0].replace("(","")
+				terms[0] = terms[0].replace(")","")
+				terms[1] = terms[1].replace("(","")
+				terms[1] = terms[1].replace(")","")
+				var a = parser.parse_polynomial(terms[0])
+				var b = parser.parse_polynomial(terms[1])
+				return MFunc_comp.new("divided", a, b)
+				
+			elif expression.contains(")/"):
+				var terms = expression.split(")/")
+				terms[0] = terms[0].replace("(","")
+				terms[0] = terms[0].replace(")","")
+				terms[1] = terms[1].replace("(","")
+				terms[1] = terms[1].replace(")","")
+				var a = parser.parse_polynomial(terms[0])
+				var b = parser.parse_polynomial(terms[1])
+				return MFunc_comp.new("divided", a, b)
+				
+			elif expression.contains("/("):
+				var terms = expression.split("/(")
+				terms[0] = terms[0].replace("(","")
+				terms[0] = terms[0].replace(")","")
+				terms[1] = terms[1].replace("(","")
+				terms[1] = terms[1].replace(")","")
+				var a = parser.parse_polynomial(terms[0])
+				var b = parser.parse_polynomial(terms[1])
+				return MFunc_comp.new("divided", a, b)
+		"trigonometric":
+			var parser:MFunc = MFunc.new("empty")
+			var terms = expression.split("(")
+			var a = parser.parse_polynomial(terms[1].replace(")",""))
+			var coeff = 1
+			var fn:String = "sin"
+			if terms[0].contains("cos"):
+				fn = "cos"
+			
+			var i = terms[0].find(fn)
+			if i != 0:
+				var temp:String = terms[0].replace("*","").erase(i,3)
+				if temp == "-":
+					coeff = -1
+				else:
+					if temp.contains(("/")):
+						var n = float(temp.get_slice("/", 0))/float(temp.get_slice("/", 1))
+						coeff = round_place(n)
+					else:
+						coeff = float(temp)
+			
+			var result:MFunc_comp = MFunc_comp.new("trigonometric", a)
+			result.trig.erase(result.trig.keys()[0])
+			result.trig[fn] = coeff
+			
+			return result
+		
+		"nested":
+			var terms = expression.split(")^")
+			var exp = float(terms[1])
+			terms[0] = terms[0].replace("(","")
+			var a = MFunc.new("empty").parse_polynomial(terms[0])
+			
+			var result = MFunc_comp.new('nested', a);
+			result.exp = exp
+			
+			return result
+			
+	return MFunc_comp.new("empty")
+		#"divided":
+			#return str("f(x) = (", a._to_string(true), ") / (", b._to_string(true), ")")
+		#"trigonometric":
+			#return str("f(x) = ", trig.values()[0], " ⋅ ", trig.keys()[0], "(", a._to_string(true), ")") 
+		#"nested":
+			#return str("f(x) = (", a._to_string(true), ")", MFunc.exponents[str(exp)])
+		#_:
+			#return "WRONG FUNCTION TYPE"
+	
