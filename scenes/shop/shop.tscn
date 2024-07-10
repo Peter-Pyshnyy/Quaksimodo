@@ -277,7 +277,7 @@ theme_override_font_sizes/font_size = 41
 text = "VERKAUFT"
 
 [node name="lbl_thanks" type="Label" parent="."]
-visible = false
+z_index = 3
 offset_left = 11.0
 offset_top = 165.0
 offset_right = 1144.0
