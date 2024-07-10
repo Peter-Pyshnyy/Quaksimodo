@@ -108,7 +108,11 @@ func gen_new_questions():
 					input3.visible = true
 					input3.editable = true
 
-func _on_attack_button_pressed():
+func _on_attack_button_button_up():
+	$AttackButton.position.y -= 2
+	$AttackButton.texture_normal = load(str("res://assets/fight_scene/attack_btn_inverted.png"))
+	$AttackButton.disabled = true
+	
 	var ans:String = ""
 	input1.editable = false
 	input2.editable = false
@@ -161,7 +165,6 @@ func _on_attack_button_pressed():
 		ans = anwer_to_q3
 		if option3.visible:
 			ans = str(option3.selected)
-			print("ANS3: ", ans)
 		if(ans != null && question.give_answer(2, ans)):
 			input3.modulate = Color.GREEN
 			option3.modulate = Color.GREEN
@@ -243,6 +246,8 @@ func turn_input_to_option(options: Array, input_nr: int):
 		option_button.add_item(item)
 
 func reset_scene():
+	$AttackButton.disabled = false
+	$AttackButton.texture_normal = load(str("res://assets/fight_scene/attack_btn.png"))
 	$Question.text = ""
 	$Question2.text = ""
 	$Question3.text = ""
@@ -259,16 +264,14 @@ func reset_scene():
 	option2.visible = false
 	option3.visible = false
 
-func _on_option_button_item_focused(index):
-	print("FICUS")
-	anwer_to_q1 = str(index)
+
+func _on_attack_button_button_down():
+	$AttackButton.position.y += 2
 
 
-func _on_option_button_2_item_focused(index):
-	print("FICUS")
-	anwer_to_q2 = str(index)
+func _on_help_button_button_down():
+	$HelpButton.position.y += 2
 
 
-func _on_option_button_3_item_focused(index):
-	print("FICUS")
-	anwer_to_q3 = str(index)
+func _on_help_button_button_up():
+	$HelpButton.position.y -= 2
