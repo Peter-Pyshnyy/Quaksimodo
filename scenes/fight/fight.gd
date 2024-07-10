@@ -193,11 +193,11 @@ func _on_attack_button_pressed():
 	option3.modulate = Color.WHITE
 	if(enemy_health <= 0):
 		MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
-		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+		Transition.transition_scene("res://scenes/Map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
 		PlayerDataAl.reset()
-		get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+		Transition.transition_scene("res://scenes/menu/main_menu.tscn")
 	else:
 		PlayerDataAl.shield_active = false
 		gen_new_questions()

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chjpy7axjwi8l" path="res://assets/fight_scene/background_animation_darker.png" id="2_y78jw"]
 [ext_resource type="Texture2D" uid="uid://bw8f11kgdg8xl" path="res://assets/fight_scene/input.png" id="3_ra6um"]
 [ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="4_uo03b"]
-[ext_resource type="Texture2D" uid="uid://tgeuq7w7qpwd" path="res://assets/fight_scene/attack_btn_inverted.png" id="5_qiica"]
+[ext_resource type="Texture2D" uid="uid://dwtpqnatu4gi" path="res://assets/fight_scene/attack_btn_inverted.png" id="5_qiica"]
 [ext_resource type="Texture2D" uid="uid://b0hv501rel7ts" path="res://assets/fight_scene/help_btn.png" id="6_mnqfo"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="7_8qcoh"]
 [ext_resource type="Texture2D" uid="uid://csa5mr2kmlgut" path="res://assets/fight_scene/boss_sprites/boss_sheet_2.png" id="8_f16ha"]
