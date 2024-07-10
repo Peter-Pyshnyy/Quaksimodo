@@ -39,13 +39,9 @@ var enemy_max_hp
 func _ready():
 	current_level = PlayerDataAl.current_level
 	frog_health = PlayerDataAl.health
-	enemy_max_hp = Levels.LevelDatabase[str(current_level)].enemy_health
-	enemy_health = enemy_max_hp
-	enemy_damage = Levels.LevelDatabase[str(current_level)].enemy_damage
-	healthbar_enemy.init_health(enemy_health)
+	load_enemy()
 	healthbar_frog.init_health(PlayerDataAl.max_health)
 	healthbar_frog.health = frog_health
-	load_enemy()
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
 	$Background/AnimationPlayer.play("idle")
@@ -341,6 +337,10 @@ func _on_btn_tooth_pressed():
 func load_enemy():
 	var path = "res://assets/fight_scene/enemy_sheet_" + str(rng.randi_range(1,3)) + ".png"
 	$Enemy.texture = load(path)
+	enemy_max_hp = Levels.LevelDatabase[str(current_level)].enemy_health 
+	enemy_damage = Levels.LevelDatabase[str(current_level)].enemy_damage
+	enemy_health = enemy_max_hp
+	healthbar_enemy.init_health(enemy_health)
 	match current_level:
 		1:
 			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
