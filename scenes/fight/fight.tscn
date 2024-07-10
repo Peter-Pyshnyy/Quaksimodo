@@ -274,3 +274,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 [connection signal="item_focused" from="OptionButton" to="." method="_on_option_button_item_focused"]
 [connection signal="item_focused" from="OptionButton2" to="." method="_on_option_button_2_item_focused"]
 [connection signal="item_focused" from="OptionButton3" to="." method="_on_option_button_3_item_focused"]
+
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(580, 325)
+zoom = Vector2(1.685, 1.685)
+

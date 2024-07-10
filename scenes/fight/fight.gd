@@ -30,6 +30,7 @@ var anwer_to_q3 = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	current_level = 1
 	current_question_number = 1
 	frog_health = PlayerDataAl.health

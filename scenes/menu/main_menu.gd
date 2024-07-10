@@ -5,13 +5,14 @@ extends Control
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/map/map.tscn")
+	Transition.transition_scene("res://scenes/Map/Map.tscn")
+
 	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
 	
 	
 
 func _on_options_pressed():
-	get_tree().change_scene_to_file("res://scenes/menu/statistics.tscn")
+	Transition.transition_scene("res://scenes/menu/statistics.tscn")
 	
 
 
