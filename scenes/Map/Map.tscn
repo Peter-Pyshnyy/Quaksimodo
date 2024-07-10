@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyk3l5r2ap5qe"]
+[gd_scene load_steps=18 format=3 uid="uid://dyk3l5r2ap5qe"]
 
 [ext_resource type="Script" path="res://scenes/Map/Map.gd" id="1_qhwr2"]
 [ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
@@ -34,6 +34,7 @@ texture = ExtResource("4_stmnf")
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
+6:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_i7vu4"]
 sources/0 = SubResource("TileSetAtlasSource_64uvy")
@@ -55,6 +56,8 @@ func _process(delta):
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmuyi"]
 size = Vector2(10, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os6dj"]
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_qhwr2")
@@ -99,6 +102,7 @@ offset_right = 39.0
 offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_os6dj")
 text = "Kämpfen!"
 
 [node name="btn_shop" type="Button" parent="TileMap/player_icon/Camera2D"]
@@ -109,6 +113,7 @@ offset_right = 39.0
 offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_os6dj")
 text = "Zum Shop"
 
 [node name="btn_chest" type="Button" parent="TileMap/player_icon/Camera2D"]
@@ -119,6 +124,7 @@ offset_right = 39.0
 offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_os6dj")
 text = "Schatz! OwO"
 
 [node name="btn_boss" type="Button" parent="TileMap/player_icon/Camera2D"]
@@ -129,6 +135,7 @@ offset_right = 39.0
 offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxEmpty_os6dj")
 text = "Boss!"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
