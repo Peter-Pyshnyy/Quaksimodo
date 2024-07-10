@@ -18,6 +18,7 @@ var question_lbls = [lbl_question1, lbl_question2, lbl_question3]
 
 var rng = RandomNumberGenerator.new()
 var enemy_health
+var enemy_damage
 var frog_health
 var current_level
 var current_question_number
@@ -27,6 +28,7 @@ var num_of_questions:int
 var anwer_to_q1 = ""
 var anwer_to_q2 = ""
 var anwer_to_q3 = ""
+var player_manager = PlayerManager.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,9 +37,9 @@ func _ready():
 	current_question_number = 1
 	frog_health = PlayerDataAl.health
 	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
-
+	enemy_damage = Levels.LevelDatabase[str(current_level)].enemy_damage
 	healthbar_enemy.init_health(enemy_health)
-	healthbar_frog.init_health(10)
+	healthbar_frog.init_health(PlayerDataAl.max_health)
 	healthbar_frog.health = frog_health
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
@@ -124,7 +126,7 @@ func _on_attack_button_pressed():
 		ans = str(option1.selected)
 	if(ans != null && question.give_answer(0, ans)):
 		print("right")
-		Statistics._on_answer_received(true)
+		#Statistics._on_answer_received(true)
 		input1.modulate = Color.GREEN
 		option1.modulate = Color.GREEN
 		hurt_enemy()
@@ -132,7 +134,7 @@ func _on_attack_button_pressed():
 		input1.modulate = Color.LIGHT_CORAL
 		option1.modulate = Color.LIGHT_CORAL
 		hurt_frog()
-		Statistics._on_answer_received(false)
+		#Statistics._on_answer_received(false)
 		print("wrong")
 	
 	await get_tree().create_timer(0.75).timeout
@@ -144,7 +146,7 @@ func _on_attack_button_pressed():
 			ans = str(option2.selected)
 		if(ans != null && question.give_answer(1, ans)):
 			print("right")
-			Statistics._on_answer_received(true)
+			#Statistics._on_answer_received(true)
 			input2.modulate = Color.GREEN
 			option2.modulate = Color.GREEN
 			hurt_enemy()
@@ -152,7 +154,7 @@ func _on_attack_button_pressed():
 			input2.modulate = Color.LIGHT_CORAL
 			option2.modulate = Color.LIGHT_CORAL
 			hurt_frog()
-			Statistics._on_answer_received(false)
+			#Statistics._on_answer_received(false)
 			print("wrong")
 	
 		await get_tree().create_timer(0.75).timeout
@@ -166,13 +168,13 @@ func _on_attack_button_pressed():
 		if(ans != null && question.give_answer(2, ans)):
 			input3.modulate = Color.GREEN
 			option3.modulate = Color.GREEN
-			Statistics._on_answer_received(true)
+			#Statistics._on_answer_received(true)
 			hurt_enemy()
 			print("right")
 		else:
 			input3.modulate = Color.LIGHT_CORAL
 			option3.modulate = Color.LIGHT_CORAL
-			Statistics._on_answer_received(false)
+			#Statistics._on_answer_received(false)
 			hurt_frog()
 			print("wrong")
 		
@@ -194,15 +196,15 @@ func _on_attack_button_pressed():
 		gen_new_questions()
 
 func hurt_frog():
-	frog_health = frog_health - 1
+	frog_health = player_manager.take_damage(enemy_damage + randi_range(-2, 2))
+	
 	healthbar_frog.health = frog_health
 	$Frog.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	$Frog.modulate = Color.WHITE
-	PlayerDataAl.health = frog_health
 	
 func hurt_enemy():
-	enemy_health = enemy_health - 1
+	enemy_health = enemy_health - player_manager.deal_damage()
 	healthbar_enemy.health = enemy_health
 	$Enemy.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout

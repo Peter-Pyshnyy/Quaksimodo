@@ -11,11 +11,11 @@ func _ready():
 # Function to calculate the percentage of correct answers
 func calculatePercentage() -> float:
 	# If there are no attempts, return 0.0 to avoid division by zero
-	if Statistics.statistics["total_attempts"] == 0:
+	#if Statistics.statistics["total_attempts"] == 0:
 		return 0.0
 	
 	# Calculate the percentage of correct answers
-	return float(Statistics.statistics["correct_answers"]) / Statistics.statistics["total_attempts"] * 100
+	#return float(Statistics.statistics["correct_answers"]) / Statistics.statistics["total_attempts"] * 100
 
 # Function to update the progress bar based on the current statistics
 func updateProgressBar() -> void:

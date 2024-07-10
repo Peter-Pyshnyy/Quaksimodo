@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:assets/fight_scene/attack_btn_inverted.png.import
-uid="uid://tgeuq7w7qpwd"
+uid="uid://dwtpqnatu4gi"
 path="res://.godot/imported/attack_btn_inverted.png-c4a93e8bffb5889f69faaa88520d26db.ctex"
-========
-uid="uid://dxdwfyldem60b"
-path="res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-b77eea4af1737bab13a78cb14e33d27b.ctex"
->>>>>>>> fight_improvements:scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:assets/fight_scene/attack_btn_inverted.png.import
 source_file="res://assets/fight_scene/attack_btn_inverted.png"
 dest_files=["res://.godot/imported/attack_btn_inverted.png-c4a93e8bffb5889f69faaa88520d26db.ctex"]
-========
-source_file="res://scenes/map/Design_ohne_Titel_1__1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-b77eea4af1737bab13a78cb14e33d27b.ctex"]
->>>>>>>> fight_improvements:scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png.import
 
 [params]
 
