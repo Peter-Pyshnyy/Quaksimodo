@@ -40,7 +40,7 @@ func _ready():
 	healthbar_frog.health = frog_health
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
-	$background/AnimationPlayer.play("idle")
+	$Background/AnimationPlayer.play("idle")
 
 	gen_new_questions()
 	load_sprites()

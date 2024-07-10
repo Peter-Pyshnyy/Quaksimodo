@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=21 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=22 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
 [ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_peegu"]
