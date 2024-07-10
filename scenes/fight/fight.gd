@@ -183,7 +183,7 @@ func _on_attack_button_pressed():
 	option2.modulate = Color.WHITE
 	option3.modulate = Color.WHITE
 	if(enemy_health <= 0):
-		MapAutoload.active_sqr.completed = true
+		MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
 		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
