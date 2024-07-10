@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxdwfyldem60b"
-path="res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-b77eea4af1737bab13a78cb14e33d27b.ctex"
+path="res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-05e3c5d0d96c3f8cdc30bf0556e4b692.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/map/Design_ohne_Titel_1__1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-b77eea4af1737bab13a78cb14e33d27b.ctex"]
+source_file="res://scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png"
+dest_files=["res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-05e3c5d0d96c3f8cdc30bf0556e4b692.ctex"]
 
 [params]
 

@@ -5,6 +5,9 @@ extends Node2D
 @onready var input1 = $Answer
 @onready var input2 = $Answer2
 @onready var input3 = $Answer3
+@onready var option1 = $OptionButton
+@onready var option2 = $OptionButton2
+@onready var option3 = $OptionButton3
 var rng = RandomNumberGenerator.new()
 var enemy_health
 var frog_health
@@ -37,6 +40,8 @@ func _process(delta):
 	pass
 
 func gen_new_questions():
+	input1.visible = true
+	reset_option_visible()
 	question = Question.new(current_level)
 	current_function = question.fn
 	num_of_questions = question.question_pool.size()
@@ -176,3 +181,41 @@ func _on_answer_2_focus_entered():
 func _on_answer_3_focus_entered():
 	if $Answer3.text != null:
 		anwer_to_q3 = $Answer3.text
+
+	
+func turn_input_to_option(options: Array, input_nr: int):
+	var option_button
+	var input
+	match input_nr:
+		1:
+			option_button = option1
+			input = input1
+		2: 
+			option_button = option2
+			input = input2
+		3: 
+			option_button = option3
+			input = input3
+	
+	option_button.visible = true
+	input.visible = false
+	option_button.clear()
+	for item in options:
+		option_button.add_item(item)
+
+func reset_option_visible():
+	option1.visible = false
+	option2.visible = false
+	option3.visible = false
+
+
+func _on_option_button_item_selected(index):
+	anwer_to_q1 = option1.get_item_text(index)
+
+
+func _on_option_button_2_item_selected(index):
+	anwer_to_q2 = option2.get_item_text(index)
+
+
+func _on_option_button_3_item_selected(index):
+	anwer_to_q3 = option3.get_item_text(index)

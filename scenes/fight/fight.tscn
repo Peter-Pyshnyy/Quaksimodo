@@ -244,7 +244,29 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Solution"
 
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_left = 40.0
+offset_top = 507.0
+offset_right = 356.0
+offset_bottom = 538.0
+
+[node name="OptionButton2" type="OptionButton" parent="."]
+offset_left = 414.0
+offset_top = 507.0
+offset_right = 730.0
+offset_bottom = 538.0
+
+[node name="OptionButton3" type="OptionButton" parent="."]
+offset_left = 796.0
+offset_top = 507.0
+offset_right = 1112.0
+offset_bottom = 538.0
+
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
 [connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
 [connection signal="focus_entered" from="Answer3" to="." method="_on_answer_3_focus_entered"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="OptionButton2" to="." method="_on_option_button_2_item_selected"]
+[connection signal="item_selected" from="OptionButton3" to="." method="_on_option_button_3_item_selected"]
+
