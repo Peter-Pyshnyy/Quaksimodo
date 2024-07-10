@@ -30,10 +30,9 @@ var anwer_to_q3 = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_level = 1
-	current_question_number = 1
+	current_level = PlayerDataAl.current_level
 	frog_health = PlayerDataAl.health
-	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
+	load_enemy()
 
 	healthbar_enemy.init_health(enemy_health)
 	healthbar_frog.init_health(10)
@@ -43,7 +42,7 @@ func _ready():
 	$Background/AnimationPlayer.play("idle")
 
 	gen_new_questions()
-	load_sprites()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -181,12 +180,13 @@ func _on_attack_button_button_up():
 	option2.modulate = Color.WHITE
 	option3.modulate = Color.WHITE
 	if(enemy_health <= 0):
-		MapAutoload.active_sqr.completed = true
-		get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+		PlayerDataAl.next_level()
+		MapAutoload.reset()
+		Transition.transition_scene("res://scenes/Map/Map.tscn")
 	elif(frog_health <= 0):
 		MapAutoload.reset()
 		PlayerDataAl.reset()
-		get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
+		Transition.transition_scene("res://scenes/menu/main_menu.tscn")
 	else:
 		gen_new_questions()
 
@@ -273,14 +273,17 @@ func _on_help_button_button_up():
 	$HelpButton.position.y -= 2
 
 
-func load_sprites():
+func load_enemy():
 	var path = "res://assets/fight_scene/boss_sprites/boss_sheet_" + str(current_level) + ".png"
 	$Enemy.texture = load(path)
 	match current_level:
 		1:
 			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
+			enemy_health = 1
 		2:
 			$Background.texture = load("res://assets/fight_scene/dawn_animation.png")
+			enemy_health = 15
 		3:
 			$Background.texture = load("res://assets/fight_scene/night_animation.png")
+			enemy_health = 20
 
