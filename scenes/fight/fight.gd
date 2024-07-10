@@ -37,8 +37,7 @@ var enemy_max_hp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_level = 1
-	current_question_number = 1
+	current_level = PlayerDataAl.current_level
 	frog_health = PlayerDataAl.health
 	enemy_max_hp = Levels.LevelDatabase[str(current_level)].enemy_health
 	enemy_health = enemy_max_hp
@@ -46,9 +45,10 @@ func _ready():
 	healthbar_enemy.init_health(enemy_health)
 	healthbar_frog.init_health(PlayerDataAl.max_health)
 	healthbar_frog.health = frog_health
+	load_enemy()
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
-	$background/AnimationPlayer.play("idle")
+	$Background/AnimationPlayer.play("idle")
 	
 	lbl_triangle.text = str(PlayerDataAl.shield)
 	lbl_flies.text = str(PlayerDataAl.heal)
@@ -338,3 +338,14 @@ func _on_btn_tooth_pressed():
 		lbl_tooth.text = str(PlayerDataAl.tooth)
 		healthbar_enemy.health = enemy_health
 	
+func load_enemy():
+	var path = "res://assets/fight_scene/enemy_sheet_" + str(rng.randi_range(1,3)) + ".png"
+	$Enemy.texture = load(path)
+	match current_level:
+		1:
+			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
+		2:
+			$Background.texture = load("res://assets/fight_scene/dawn_animation.png")
+		3:
+			$Background.texture = load("res://assets/fight_scene/night_animation.png")
+
