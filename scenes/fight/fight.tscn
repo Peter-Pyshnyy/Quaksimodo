@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=23 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
 [ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_peegu"]
@@ -98,6 +98,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npgfe"]
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_fxtqe")
@@ -249,24 +251,26 @@ offset_left = 40.0
 offset_top = 507.0
 offset_right = 356.0
 offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
 [node name="OptionButton2" type="OptionButton" parent="."]
 offset_left = 414.0
 offset_top = 507.0
 offset_right = 730.0
 offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
 [node name="OptionButton3" type="OptionButton" parent="."]
 offset_left = 796.0
 offset_top = 507.0
 offset_right = 1112.0
 offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
 [connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
 [connection signal="focus_entered" from="Answer3" to="." method="_on_answer_3_focus_entered"]
-[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="item_selected" from="OptionButton2" to="." method="_on_option_button_2_item_selected"]
-[connection signal="item_selected" from="OptionButton3" to="." method="_on_option_button_3_item_selected"]
-
+[connection signal="item_focused" from="OptionButton" to="." method="_on_option_button_item_focused"]
+[connection signal="item_focused" from="OptionButton2" to="." method="_on_option_button_2_item_focused"]
+[connection signal="item_focused" from="OptionButton3" to="." method="_on_option_button_3_item_focused"]

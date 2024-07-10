@@ -6,13 +6,13 @@ enum F {LIN, QDR, QDR_S, CUB, CUB_X, MLT, DIV, TRG, NST}
 		#Linear, Quadratisch, Quadratisch mit Schnitt, Kubisch mit Extrema,
 		#Multipliziert, Geteilt, Trigonometrisch, Verschachtelt
 
-enum Q {TYP, X, NS, ABL_1, ABL_2, ANST, SCHNITT, SCHEITEL, COMP, EXTR, WP, AER}
+enum Q {TYP, X, NS, ABL_1, ABL_2, ANST, SCHNITT, SCHEITEL, EXTR, WP, KRM}
 		#Funktionstyp, Wert an Stelle x, Nullstelle, Ableitung, Anstieg, 
 		#Schnitt, Scheitel, Gestaucht?, Extremstellen, Wendepunkt, Änderungsrate
 
 const lvl1 = {
 	F.LIN: [Q.TYP, Q.X, Q.NS],
-	F.QDR: [Q.TYP, Q.X, Q.ABL_1, Q.ABL_2, Q.COMP, Q.ANST],
+	F.QDR: [Q.TYP, Q.X, Q.ABL_1, Q.ABL_2, Q.ANST],
 	F.CUB: [Q.TYP, Q.X, Q.ABL_1, Q.ABL_2,Q.ANST],
 }
 
@@ -28,10 +28,10 @@ const lvl3 = {
 	F.QDR: [Q.ANST, Q.NS, Q.SCHEITEL],
 	F.QDR_S: [Q.ANST, Q.SCHEITEL, Q.SCHNITT],
 	F.CUB_X: [Q.ABL_1, Q.ABL_2, Q.ANST, Q.EXTR, Q.WP],
-	F.MLT: [Q.X, Q.ABL_1, Q.ANST, Q.AER],
+	F.MLT: [Q.X, Q.ABL_1, Q.ANST, Q.KRM],
 	F.DIV: [Q.ABL_1],
 	F.TRG: [Q.ABL_1],
-	F.NST: [Q.X, Q.ABL_1, Q.ANST, Q.AER],
+	F.NST: [Q.X, Q.ABL_1, Q.ANST, Q.KRM],
 }
 
 const enum2str = {
@@ -49,6 +49,19 @@ const enum2str_comp = {
 	F.NST: "nested",
 }
 
+const enum2name = {
+	F.LIN: "linear",
+	F.QDR: "quadratisch",
+	F.CUB: "kubisch",
+	F.QDR_S: "quadratisch",
+	F.CUB_X: "kubisch",
+}
+
+const q_with_options = {
+	Q.TYP: ["linear", "quadratisch", "kubisch"],
+	Q.KRM: ["linksgekrümmt", "rechtsgekrümmt"]
+}
+
 const extra_int = [Q.X, Q.ANST, Q.WP]
 
 
@@ -62,10 +75,9 @@ var q2s = {
   Q.ANST: "Was ist der Anstieg  an Stelle x=", 
   Q.SCHNITT: "Wo schneidet sich f(x) mit der g(x) = ", 
   Q.SCHEITEL: "Wo befinden sich die Scheitelpunkte?",
-  Q.COMP: "Ist die Funktion gestaucht?",
   Q.EXTR: "Wo befinden sich die Extremstellen?",
   Q.WP: "Wo hat die Funktion Wendepunkte?" ,
-  Q.AER: "Ist f(x) links- oder rechtsgekrümmt bei x = "
+  Q.KRM: "Ist f(x) links- oder rechtsgekrümmt bei x = "
 }
 
 var handlers = {
@@ -77,10 +89,9 @@ var handlers = {
 	Q.ANST: handle_anst, #
 	Q.SCHNITT: handle_schnitt, #
 	Q.SCHEITEL: handle_extr,
-	Q.COMP: handle_comp,
 	Q.EXTR: handle_extr,
 	Q.WP: handle_wp,
-	Q.AER: handle_aer #
+	Q.KRM: handle_krm #
 }
 
 var f_pool = {}
@@ -135,7 +146,7 @@ func _init(lvl:int):
 
 
 func handle_typ():
-	return fn.type
+	return enum2name[fn_type]
 
 func handle_x():
 	extras[Q.X] = randi_range(-2,2)
@@ -172,9 +183,12 @@ func handle_extr():
 func handle_wp():
 	return fn.calc_turning_p()
 
-func handle_aer():
-	extras[Q.AER] = randi_range(-2,2)
-	return fn.calc_rate_of_change(extras[Q.AER])
+func handle_krm():
+	extras[Q.KRM] = randi_range(-2,2)
+	if fn.calc_rate_of_change(extras[Q.KRM]) > 0:
+		return q_with_options[Q.KRM][0]
+	else:
+		return q_with_options[Q.KRM][1]
 
 func round_place(num:float, places:int = 2) -> float:
 	return (round(num*pow(10,places))/pow(10,places))
@@ -205,13 +219,17 @@ func parse_answer_function(f_type:F, expression:String):
 
 
 func give_answer(question_index:int, answer:String) -> bool:
-	print("answer: ", answer)
 	if answer == "": return false
 	var question = question_pool.keys()[question_index]
+	
+	if question in q_with_options:
+		var i = int(answer)
+		print("answer multi: ", q_with_options[question][i])
+		print("correct multi: ", question_pool[question])
+		return q_with_options[question][i] == question_pool[question]
+	
 	if question == Q.ABL_1 || question == Q.ABL_2:
 		var ans:MFunc = parse_answer_function(fn_type, answer)
-		print("given answer: ", ans)
-		print("correct answer: ", question_pool[question])
 		return question_pool[question].equals(ans)
 	
 	var ans = parse_answer_float(answer)
