@@ -143,7 +143,7 @@ offset_top = 567.0
 offset_right = 551.0
 offset_bottom = 617.0
 texture_normal = ExtResource("5_qfwxr")
-texture_pressed = ExtResource("6_dx4cd")
+texture_hover = ExtResource("6_dx4cd")
 stretch_mode = 0
 
 [node name="HelpButton" type="TextureButton" parent="."]
@@ -152,7 +152,7 @@ offset_top = 567.0
 offset_right = 1128.0
 offset_bottom = 617.0
 texture_normal = ExtResource("7_vh5qi")
-texture_pressed = ExtResource("8_624dc")
+texture_hover = ExtResource("8_624dc")
 stretch_mode = 0
 
 [node name="Enemy" type="Sprite2D" parent="."]
@@ -378,7 +378,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
+[connection signal="button_up" from="AttackButton" to="." method="_on_attack_button_button_up"]
+[connection signal="button_down" from="HelpButton" to="." method="_on_help_button_button_down"]
+[connection signal="button_up" from="HelpButton" to="." method="_on_help_button_button_up"]
 [connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
 [connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
 [connection signal="focus_entered" from="Answer3" to="." method="_on_answer_3_focus_entered"]

@@ -131,7 +131,11 @@ func gen_new_questions():
 					input5.visible = true
 					input5.editable = true
 
-func _on_attack_button_pressed():
+func _on_attack_button_button_up():
+	$AttackButton.texture_normal = load("res://assets/fight_scene/attack_btn_inverted.png")
+	$AttackButton.position.y -= 2
+	$AttackButton.disabled = true
+	
 	var ans:String = ""
 	input1.editable = false
 	input2.editable = false
@@ -300,6 +304,7 @@ func _on_answer_5_focus_entered():
 
 
 func reset_scene():
+	$AttackButton.texture_normal = load("res://assets/fight_scene/attack_btn.png")
 	$Question.text = ""
 	$Question2.text = ""
 	$Question3.text = ""
@@ -325,5 +330,15 @@ func reset_scene():
 	option3.visible = false
 	option4.visible = false
 	option5.visible = false
+	$AttackButton.disabled = false
+
+func _on_attack_button_button_down():
+	$AttackButton.position.y += 2
 
 
+func _on_help_button_button_down():
+	$AttackButton.position.y += 2
+
+
+func _on_help_button_button_up():
+	$AttackButton.position.y -= 2
