@@ -167,7 +167,7 @@ func draw_active_square():
 	draw_neighbours(square)
 
 func draw_neighbours(square: Square):
-	#if square.roomType == Square.ROOMS.ENEMY: return
+	if square.roomType == Square.ROOMS.ENEMY: return
 	
 	for neighbor in square.exits_dict.values():
 			if neighbor != null && !neighbor.visited:

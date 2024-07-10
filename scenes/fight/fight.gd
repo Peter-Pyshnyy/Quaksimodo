@@ -339,6 +339,10 @@ func _on_btn_tooth_pressed():
 		PlayerDataAl.tooth -= 1
 		lbl_tooth.text = str(PlayerDataAl.tooth)
 		healthbar_enemy.health = enemy_health
+		
+		if(enemy_health <= 0):
+			MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
+			Transition.transition_scene("res://scenes/Map/Map.tscn")
 	
 func load_enemy():
 	var path = "res://assets/fight_scene/enemy_sheet_" + str(rng.randi_range(1,3)) + ".png"
@@ -362,10 +366,20 @@ func _on_attack_button_button_down():
 
 
 func _on_help_button_button_down():
-	$AttackButton.position.y += 2
+	$HelpButton.position.y += 2
 
 
 func _on_help_button_button_up():
-	$AttackButton.position.y -= 2
+	$HelpButton.position.y -= 2
 
 
+
+
+func _on_button_pressed():
+	$Enemy.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	$Enemy.modulate = Color.WHITE
+	healthbar_enemy.health = 0
+	await get_tree().create_timer(0.75).timeout
+	MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
+	Transition.transition_scene("res://scenes/Map/Map.tscn")

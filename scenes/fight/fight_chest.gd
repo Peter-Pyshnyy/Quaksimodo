@@ -337,8 +337,8 @@ func _on_attack_button_button_down():
 
 
 func _on_help_button_button_down():
-	$AttackButton.position.y += 2
+	$HelpButton.position.y += 2
 
 
 func _on_help_button_button_up():
-	$AttackButton.position.y -= 2
+	$HelpButton.position.y -= 2

@@ -21,7 +21,6 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 TutorialManager="*res://scenes/tutorial/tutorialManager.gd"
 MapAutoload="*res://scenes/Map/map_autoload.gd"
 PlayerDataAl="*res://main_classes/player/player_data_AL.gd"
-GlobalProgressBar="*res://scenes/menu/ProgressBar.gd"
 Transition="*res://scenes/transition/transition.tscn"
 
 [dialogue_manager]

@@ -350,7 +350,7 @@ func load_enemy():
 	match current_level:
 		1:
 			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
-			enemy_max_hp = 100
+			enemy_max_hp = 70 #made for presentation, change later
 			enemy_health = enemy_max_hp
 			enemy_damage = 10
 		2:
@@ -370,8 +370,8 @@ func _on_attack_button_button_down():
 
 
 func _on_help_button_button_down():
-	$AttackButton.position.y += 2
+	$HelpButton.position.y += 2
 
 
 func _on_help_button_button_up():
-	$AttackButton.position.y -= 2
+	$HelpButton.position.y -= 2
