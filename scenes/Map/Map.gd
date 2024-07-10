@@ -93,7 +93,7 @@ func generate_map(i: int = 7):
 	var boss_square = Square.new(furthest_square.coords + COORDS_ADD_DICT[new_path])
 	connect_surroundings(boss_square)
 	boss_square.roomType = Square.ROOMS.BOSS
-	boss_square.variation = randi_range(0,2)
+	boss_square.variation = 3 - PlayerDataAl.current_level
 	print(boss_square.variation)
 	squares_dict[boss_square.coords] = boss_square
 	
