@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0chub6m0k7fj"
-path="res://.godot/imported/enemy_sheet_1.png-d490287ee7f7b2621e91aef004d8c3b8.ctex"
+uid="uid://ofqu1g485l5d"
+path="res://.godot/imported/dawn_animation.png-2130ee4eae9a8242e43108b1cd5543c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fight_scene/enemy_sheet_1.png"
-dest_files=["res://.godot/imported/enemy_sheet_1.png-d490287ee7f7b2621e91aef004d8c3b8.ctex"]
+source_file="res://assets/fight_scene/dawn_animation.png"
+dest_files=["res://.godot/imported/dawn_animation.png-2130ee4eae9a8242e43108b1cd5543c8.ctex"]
 
 [params]
 

@@ -40,15 +40,10 @@ func _ready():
 	healthbar_frog.health = frog_health
 	$Enemy/AnimationPlayer.play("idle")
 	$Frog/AnimationPlayer.play("idle")
-	$background/AnimationPlayer.play("idle")
-	
-	#for n in 20:
-		#var q:Question = Question.new(3)
-		#print(q.fn)
-		#print(q.question_pool)
-		#print(q.extras)
-	
+	$Background/AnimationPlayer.play("idle")
+
 	gen_new_questions()
+	load_sprites()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -273,5 +268,19 @@ func _on_help_button_button_down():
 	$HelpButton.position.y += 2
 
 
+
 func _on_help_button_button_up():
 	$HelpButton.position.y -= 2
+
+
+func load_sprites():
+	var path = "res://assets/fight_scene/enemy_sheet_" + str(rng.randi_range(1,3)) + ".png"
+	$Enemy.texture = load(path)
+	match current_level:
+		1:
+			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
+		2:
+			$Background.texture = load("res://assets/fight_scene/dawn_animation.png")
+		3:
+			$Background.texture = load("res://assets/fight_scene/night_animation.png")
+
