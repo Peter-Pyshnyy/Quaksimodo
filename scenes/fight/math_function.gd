@@ -16,9 +16,9 @@ const exponents = {
 	}
 
 const pleasant_dividers = {
-	2: [1,2,3,4,5,6,8,10,12,14,16,18,20,22,24,25],
-	3: [6,9,18],
-	4: [8,16,24],
+	2: [1,2,3,4,5,6,8,10,12,14,16,18,20,22,24],
+	3: [6,18],
+	4: [8,16],
 	5: [10,20]
 }
 
@@ -430,7 +430,8 @@ func parse_polynomial(expression: String) -> MFunc:
 			else:
 				coeff = 1
 		else:
-			coeff = round_place(term)
+			var temp = float(term)
+			coeff = round_place(temp)
 		
 		sub_fn.add_coeff(degree, coeff)
 		#print(sub_fn)

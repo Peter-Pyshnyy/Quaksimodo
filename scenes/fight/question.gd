@@ -51,6 +51,20 @@ const enum2str_comp = {
 
 const extra_int = [Q.X, Q.ANST, Q.WP]
 
+const q2s = {
+	Q.TYP: "Was ist der Funtionstyp?",
+	Q.X: "Welchen Wert hat die Funtion bei x = ",
+	Q.NS: "Wo befinden sich die Nullstellen?",
+	Q.ABL_1: "Wie lautet die erste Ableitung?",
+	Q.ABL_2: "Wie lautet die zweite Ableitung?",
+	Q.ANST: "anst x=", #
+	Q.SCHNITT: "schnitt g(x)=", #
+	Q.SCHEITEL: "scheitel",
+	Q.COMP: "gestaucht",
+	Q.EXTR: "extr x=",
+	Q.WP: "wendep x=",
+	Q.AER: "änderung x=" #
+}
 
 var handlers = {
 	Q.TYP: handle_typ,
@@ -192,9 +206,20 @@ func give_answer(question_index:int, answer:String) -> bool:
 	var question = question_pool.keys()[question_index]
 	if question == Q.ABL_1 || question == Q.ABL_2:
 		var ans:MFunc = parse_answer_function(fn_type, answer)
-		return question_pool[question].equals()
+		print("given answer: ", ans)
+		print("correct answer: ", question_pool[question])
+		return question_pool[question].equals(ans)
 	
 	var ans = parse_answer_float(answer)
 	ans.sort()
 	question_pool[question].sort()
 	return ans == question_pool[question]
+
+func question_to_str(i:int):
+	var result:String = ""
+	var question = question_pool.keys()[i]
+	result = q2s[question]
+	if extras.has(question):
+		result += str(extras[question])
+		
+	return result

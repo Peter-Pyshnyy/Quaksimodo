@@ -2,11 +2,17 @@ extends Node2D
 
 @onready var healthbar_enemy = $HealthBarEnemy
 @onready var healthbar_frog = $HealthBarFrog
+@onready var input1 = $Answer
+@onready var input2 = $Answer2
+@onready var input3 = $Answer3
 var rng = RandomNumberGenerator.new()
 var enemy_health
 var frog_health
 var current_level
 var current_question_number
+var current_function:MFunc
+var question:Question
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_level = 1
@@ -23,25 +29,7 @@ func _ready():
 	$background/AnimationPlayer.play("idle")
 	generate_function()
 	
-	for n in 1:
-		var parser:MFunc = MFunc.new("empty")
-		#print(parser.parse_polynomial("2*x^3 - 3*x^2 + 5*x - 7"))
-		
-		#var parser_comp:MFunc_comp = MFunc_comp.new("empty")
-		#print(parser_comp.parse_polynomial_comp("nested", "(x^3-5x)^3"))
-		#fkt.add_coeff(2,7)
-		#fkt.add_coeff(1,1)
-		#fkt.add_coeff(0,-1)
-		
-		
-		var question:Question = Question.new(3)
-		#print(question.parse_answer_float("3.3,4,1/3"))
-		#print(question.fn_type)
-		#print(question.fn)
-		print("Antworten: ", question.question_pool)
-		print("Parameter: ", question.extras)
-		#print(question.give_answer(0, "-198*sin(22*x+22)"))
-		#print()
+	gen_new_questions()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -53,11 +41,33 @@ func load_questions():
 	$Question2.text = Levels.QuestionDatabase[str(current_question_number)].q2
 	$Question3.text = Levels.QuestionDatabase[str(current_question_number)].q3
 
+func gen_new_questions():
+	question = Question.new(current_level)
+	current_function = question.fn
 	
+	$Question2.text = ""
+	$Question3.text = ""
+	
+	input2.visible = false
+	input3.visible = false
+	
+	$Function.text = "Function: " + current_function.to_string()
+	$Question.text = question.question_to_str(0)
+	$Question2.text = ""
+	$Question3.text = ""
+	
+	if question.question_pool.size() == 2:
+		$Question2.text = question.question_to_str(1)
+		input2.visible = true
+	elif question.question_pool.size() == 3:
+		$Question2.text = question.question_to_str(1)
+		$Question3.text = question.question_to_str(2)
+		input2.visible = true
+		input3.visible = true
 
 func _on_attack_button_pressed():
 	$Answer.grab_focus()
-	if(anwer_to_q1 == Levels.QuestionDatabase[str(current_question_number)].a1):
+	if(question.give_answer(0, anwer_to_q1)):
 		print("right")
 		Statistics._on_answer_received(true)
 		$Answer.modulate = Color.GREEN

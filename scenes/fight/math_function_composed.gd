@@ -110,10 +110,24 @@ func equals(fn:MFunc) -> bool:
 			else:
 				return false
 		"trigonometric":
-			if (a.equals(fn.a) && trig == fn.trig):
-				return true
-			else:
+			var i:float = a.value_at(1)
+			var j:float = fn.a.value_at(1)
+			
+			
+			if trig.has("sin"):
+				if (sin(j) != sin(i)):
+					return false
+			elif trig.has("cos"):
+				if (cos(j) != cos(i)):
+					return false
+				
+			if !(fn.trig.has(trig.keys()[0])):
 				return false
+				
+			if !(fn.trig[trig.keys()[0]] == trig.values()[0]):
+				return false
+			else:
+				return true
 		"nested":
 			if (a.equals(fn.a) && exp == fn.exp):
 				return true
@@ -295,12 +309,4 @@ func parse_polynomial_comp(expected_type:String, expression: String) -> MFunc:
 			return result
 			
 	return MFunc_comp.new("empty")
-		#"divided":
-			#return str("f(x) = (", a._to_string(true), ") / (", b._to_string(true), ")")
-		#"trigonometric":
-			#return str("f(x) = ", trig.values()[0], " ⋅ ", trig.keys()[0], "(", a._to_string(true), ")") 
-		#"nested":
-			#return str("f(x) = (", a._to_string(true), ")", MFunc.exponents[str(exp)])
-		#_:
-			#return "WRONG FUNCTION TYPE"
-	
+
