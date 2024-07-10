@@ -1,5 +1,6 @@
 extends Node
 
+var current_level = 1
 var health = 10
 var max_health = 10
 var money = 14
@@ -46,3 +47,6 @@ func reset():
 	
 	for power_up in passives_dict.keys():
 		passives_dict[power_up] = false
+
+func next_level():
+	current_level += 1
