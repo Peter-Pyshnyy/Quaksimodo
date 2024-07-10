@@ -6,8 +6,6 @@ extends Control
 
 func _on_play_pressed():
 	Transition.transition_scene("res://scenes/Map/Map.tscn")
-
-	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
 	
 	
 

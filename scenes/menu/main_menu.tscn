@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcc40141uitgn"]
+[gd_scene load_steps=9 format=3 uid="uid://dcc40141uitgn"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_thwqc"]
-[ext_resource type="Texture2D" uid="uid://d0g8gl5d0kams" path="res://assets/menu_scene/backgroundpuddle.png" id="2_tjyw3"]
+[ext_resource type="Texture2D" uid="uid://b2hkbymrftpye" path="res://assets/menu_scene/bg_title.png" id="2_mj5qn"]
+[ext_resource type="Texture2D" uid="uid://vc6h71hwa266" path="res://assets/menu_scene/btn_start.png" id="3_odc4e"]
+[ext_resource type="Texture2D" uid="uid://wa5x5uxrft7l" path="res://assets/menu_scene/btn_start_hovered.png" id="4_ub1io"]
+[ext_resource type="Texture2D" uid="uid://cjitp4rccwlx4" path="res://assets/menu_scene/btn_options.png" id="5_44m4v"]
+[ext_resource type="Texture2D" uid="uid://drqvp0ndilglg" path="res://assets/menu_scene/btn_options_hovered.png" id="6_be6ow"]
+[ext_resource type="Texture2D" uid="uid://bmnkeao238t0l" path="res://assets/menu_scene/btn_quit.png" id="7_q6l5u"]
+[ext_resource type="Texture2D" uid="uid://djppjcpi3hw4m" path="res://assets/menu_scene/btn_quit_hovered.png" id="8_a872e"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -22,44 +28,37 @@ offset_left = -8.0
 offset_top = 8.0
 offset_right = 1160.0
 offset_bottom = 672.0
-texture = ExtResource("2_tjyw3")
+texture = ExtResource("2_mj5qn")
 
-[node name="game_title" type="RichTextLabel" parent="."]
+[node name="play" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 368.0
-offset_top = 16.0
-offset_right = 752.0
-offset_bottom = 136.0
-theme_override_font_sizes/normal_font_size = 70
-text = "Game Title"
+offset_left = 458.0
+offset_top = 271.0
+offset_right = 702.0
+offset_bottom = 355.0
+texture_normal = ExtResource("3_odc4e")
+texture_hover = ExtResource("4_ub1io")
+stretch_mode = 0
 
-[node name="play" type="Button" parent="."]
+[node name="Button2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 448.0
-offset_top = 168.0
-offset_right = 664.0
-offset_bottom = 252.0
-theme_override_font_sizes/font_size = 55
-text = "Play"
+offset_left = 456.0
+offset_top = 375.0
+offset_right = 703.0
+offset_bottom = 459.0
+texture_normal = ExtResource("5_44m4v")
+texture_hover = ExtResource("6_be6ow")
+stretch_mode = 0
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button3" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 272.0
-offset_right = 679.0
-offset_bottom = 356.0
-theme_override_font_sizes/font_size = 55
-text = "Statistics
-"
-
-[node name="Button3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 376.0
-offset_right = 666.0
-offset_bottom = 460.0
-theme_override_font_sizes/font_size = 55
-text = "Quit"
+offset_left = 456.0
+offset_top = 479.0
+offset_right = 706.0
+offset_bottom = 563.0
+texture_normal = ExtResource("7_q6l5u")
+texture_hover = ExtResource("8_a872e")
+stretch_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(578, 339)

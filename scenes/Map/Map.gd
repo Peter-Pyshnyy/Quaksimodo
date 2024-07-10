@@ -47,11 +47,15 @@ func _ready():
 		
 	else:
 		generate_map()
+		if PlayerDataAl.current_level == 1:
+			DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
 	
 	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.MAP]:
 		draw_map()
 	else:
 		draw_active_square()
+		
+		
 
 
 #i = map size - 2
