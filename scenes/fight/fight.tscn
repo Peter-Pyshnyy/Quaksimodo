@@ -1,14 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=23 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
 [ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_peegu"]
 [ext_resource type="Texture2D" uid="uid://bw8f11kgdg8xl" path="res://assets/fight_scene/input.png" id="3_jk81y"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="4_dqjig"]
 [ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="5_qfwxr"]
-[ext_resource type="Texture2D" uid="uid://ddp0o33nqegbv" path="res://assets/fight_scene/sheet_schwan.png" id="5_vwpuy"]
 [ext_resource type="Texture2D" uid="uid://tgeuq7w7qpwd" path="res://assets/fight_scene/attack_btn_inverted.png" id="6_dx4cd"]
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
 [ext_resource type="Texture2D" uid="uid://crdnh3imwtcjk" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
+[ext_resource type="Texture2D" uid="uid://8opi8tjxs6vm" path="res://assets/fight_scene/enemy_sheet_1.png" id="8_4m4yi"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="8_624dc"]
 [ext_resource type="Texture2D" uid="uid://h8rfbq2b3jrm" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
 
@@ -81,6 +81,26 @@ _data = {
 [sub_resource type="Theme" id="Theme_5545p"]
 default_font_size = 25
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxw6u"]
+content_margin_left = 7.0
+bg_color = Color(0.141176, 0.223529, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1kkv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s456w"]
+content_margin_left = 7.0
+bg_color = Color(0.141176, 0.223529, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npgfe"]
+
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_fxtqe")
 metadata/_edit_vertical_guides_ = [576.0]
@@ -123,9 +143,9 @@ stretch_mode = 0
 
 [node name="Enemy" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(663, 524)
-scale = Vector2(0.499166, 0.499166)
-texture = ExtResource("5_vwpuy")
+position = Vector2(820, 190)
+scale = Vector2(0.313583, 0.313583)
+texture = ExtResource("8_4m4yi")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
@@ -195,27 +215,62 @@ offset_left = 40.0
 offset_top = 507.0
 offset_right = 356.0
 offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Solution"
 
 [node name="Answer2" type="LineEdit" parent="."]
 offset_left = 414.0
 offset_top = 507.0
 offset_right = 730.0
-offset_bottom = 539.0
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Solution"
 
 [node name="Answer3" type="LineEdit" parent="."]
+offset_left = 795.0
+offset_top = 507.0
+offset_right = 1111.0
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
+placeholder_text = "Solution"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_left = 40.0
+offset_top = 507.0
+offset_right = 356.0
+offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="OptionButton2" type="OptionButton" parent="."]
+offset_left = 414.0
+offset_top = 507.0
+offset_right = 730.0
+offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="OptionButton3" type="OptionButton" parent="."]
 offset_left = 796.0
 offset_top = 507.0
 offset_right = 1112.0
 offset_bottom = 538.0
-placeholder_text = "Solution"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(580, 325)
-zoom = Vector2(1.685, 1.685)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
-[connection signal="focus_exited" from="Answer" to="." method="_on_answer_focus_exited"]
-[connection signal="focus_exited" from="Answer2" to="." method="_on_answer_2_focus_exited"]
-[connection signal="focus_exited" from="Answer3" to="." method="_on_answer_3_focus_exited"]
+[connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
+[connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
+[connection signal="focus_entered" from="Answer3" to="." method="_on_answer_3_focus_entered"]
+[connection signal="item_focused" from="OptionButton" to="." method="_on_option_button_item_focused"]
+[connection signal="item_focused" from="OptionButton2" to="." method="_on_option_button_2_item_focused"]
+[connection signal="item_focused" from="OptionButton3" to="." method="_on_option_button_3_item_focused"]
