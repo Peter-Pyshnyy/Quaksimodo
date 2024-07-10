@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Quaksimodo"
-run/main_scene="res://scenes/shop/shop.tscn"
+run/main_scene="res://scenes/menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ TutorialManager="*res://scenes/tutorial/tutorialManager.gd"
 MapAutoload="*res://scenes/map/map_autoload.gd"
 PlayerDataAl="*res://main_classes/player/player_data_AL.gd"
 GlobalProgressBar="*res://scenes/menu/ProgressBar.gd"
+Transition="*res://scenes/transition/transition.tscn"
 
 [dialogue_manager]
 
