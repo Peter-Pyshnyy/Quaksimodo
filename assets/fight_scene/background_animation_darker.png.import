@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:assets/fight_scene/background_animation_darker.png.import
-uid="uid://bqt1v6fdk8d3y"
+uid="uid://chjpy7axjwi8l"
 path="res://.godot/imported/background_animation_darker.png-53b6b38b1322b3e14138f6e7ea2337b0.ctex"
-========
-uid="uid://dxdwfyldem60b"
-path="res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-b77eea4af1737bab13a78cb14e33d27b.ctex"
->>>>>>>> fight_improvements:scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:assets/fight_scene/background_animation_darker.png.import
 source_file="res://assets/fight_scene/background_animation_darker.png"
 dest_files=["res://.godot/imported/background_animation_darker.png-53b6b38b1322b3e14138f6e7ea2337b0.ctex"]
-========
-source_file="res://scenes/map/Design_ohne_Titel_1__1_-removebg-preview.png"
-dest_files=["res://.godot/imported/Design_ohne_Titel_1__1_-removebg-preview.png-b77eea4af1737bab13a78cb14e33d27b.ctex"]
->>>>>>>> fight_improvements:scenes/Map/Design_ohne_Titel_1__1_-removebg-preview.png.import
 
 [params]
 

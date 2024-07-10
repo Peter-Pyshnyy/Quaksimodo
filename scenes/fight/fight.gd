@@ -122,7 +122,7 @@ func _on_attack_button_button_up():
 		ans = str(option1.selected)
 	if(ans != null && question.give_answer(0, ans)):
 		print("right")
-		Statistics._on_answer_received(true)
+		#Statistics._on_answer_received(true)
 		input1.modulate = Color.GREEN
 		option1.modulate = Color.GREEN
 		hurt_enemy()
@@ -130,7 +130,7 @@ func _on_attack_button_button_up():
 		input1.modulate = Color.LIGHT_CORAL
 		option1.modulate = Color.LIGHT_CORAL
 		hurt_frog()
-		Statistics._on_answer_received(false)
+		#Statistics._on_answer_received(false)
 		print("wrong")
 	
 	await get_tree().create_timer(0.75).timeout
@@ -142,7 +142,7 @@ func _on_attack_button_button_up():
 			ans = str(option2.selected)
 		if(ans != null && question.give_answer(1, ans)):
 			print("right")
-			Statistics._on_answer_received(true)
+			#Statistics._on_answer_received(true)
 			input2.modulate = Color.GREEN
 			option2.modulate = Color.GREEN
 			hurt_enemy()
@@ -150,7 +150,7 @@ func _on_attack_button_button_up():
 			input2.modulate = Color.LIGHT_CORAL
 			option2.modulate = Color.LIGHT_CORAL
 			hurt_frog()
-			Statistics._on_answer_received(false)
+			#Statistics._on_answer_received(false)
 			print("wrong")
 	
 		await get_tree().create_timer(0.75).timeout
@@ -163,13 +163,13 @@ func _on_attack_button_button_up():
 		if(ans != null && question.give_answer(2, ans)):
 			input3.modulate = Color.GREEN
 			option3.modulate = Color.GREEN
-			Statistics._on_answer_received(true)
+			#Statistics._on_answer_received(true)
 			hurt_enemy()
 			print("right")
 		else:
 			input3.modulate = Color.LIGHT_CORAL
 			option3.modulate = Color.LIGHT_CORAL
-			Statistics._on_answer_received(false)
+			#Statistics._on_answer_received(false)
 			hurt_frog()
 			print("wrong")
 		
