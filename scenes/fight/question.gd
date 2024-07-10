@@ -51,19 +51,21 @@ const enum2str_comp = {
 
 const extra_int = [Q.X, Q.ANST, Q.WP]
 
-const q2s = {
-	Q.TYP: "Was ist der Funtionstyp?",
-	Q.X: "Welchen Wert hat die Funtion bei x = ",
-	Q.NS: "Wo befinden sich die Nullstellen?",
-	Q.ABL_1: "Wie lautet die erste Ableitung?",
-	Q.ABL_2: "Wie lautet die zweite Ableitung?",
-	Q.ANST: "anst x=", #
-	Q.SCHNITT: "schnitt g(x)=", #
-	Q.SCHEITEL: "scheitel",
-	Q.COMP: "gestaucht",
-	Q.EXTR: "extr x=",
-	Q.WP: "wendep x=",
-	Q.AER: "änderung x=" #
+
+var q2s = {
+
+  Q.TYP: "Was ist der Funktionstyp?",
+  Q.X: "Welchen Wert hat die Funktion bei x = ", 
+  Q.NS: "Wo befinden sich die Nullstellen?",
+  Q.ABL_1: "Wie lautet die erste Ableitung?",
+  Q.ABL_2: "Wie lautet die zweite Ableitung?",
+  Q.ANST: "Was ist der Anstieg  an Stelle x=", 
+  Q.SCHNITT: "Wo schneidet sich f(x) mit der g(x) = ", 
+  Q.SCHEITEL: "Wo befinden sich die Scheitelpunkte?",
+  Q.COMP: "Ist die Funktion gestaucht?",
+  Q.EXTR: "Wo befinden sich die Extremstellen?",
+  Q.WP: "Wo hat die Funktion Wendepunkte?" ,
+  Q.AER: "Ist f(x) links- oder rechtsgekrümmt bei x = "
 }
 
 var handlers = {
@@ -203,6 +205,8 @@ func parse_answer_function(f_type:F, expression:String):
 
 
 func give_answer(question_index:int, answer:String) -> bool:
+	print("answer: ", answer)
+	if answer == "": return false
 	var question = question_pool.keys()[question_index]
 	if question == Q.ABL_1 || question == Q.ABL_2:
 		var ans:MFunc = parse_answer_function(fn_type, answer)
@@ -211,9 +215,15 @@ func give_answer(question_index:int, answer:String) -> bool:
 		return question_pool[question].equals(ans)
 	
 	var ans = parse_answer_float(answer)
-	ans.sort()
-	question_pool[question].sort()
-	return ans == question_pool[question]
+	print("ans: ", ans)
+	print("correct: ", question_pool[question] )
+	
+	if typeof(question_pool[question]) == TYPE_ARRAY:
+		ans.sort()
+		question_pool[question].sort()
+		return ans == question_pool[question]
+	
+	return ans[0] == question_pool[question]
 
 func question_to_str(i:int):
 	var result:String = ""

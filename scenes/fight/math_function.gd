@@ -224,8 +224,9 @@ func calc_zero():
 	#linear
 	if highest_exp == 1:
 		if !coefficients.has(0): return [0]
-		var temp:float = coefficients[1] * -1
-		return [float(round(temp/coefficients[degrees_sorted[0]]*100))/100]
+		var temp:float = coefficients[0] * -1
+		temp /= coefficients[1]
+		return [round_place(temp)]
 		
 	#quadratic
 	if highest_exp == 2:
