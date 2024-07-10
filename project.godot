@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Quaksimodo"
-run/main_scene="res://scenes/menu/main_menu.tscn"
+run/main_scene="res://scenes/fight/fight_chest.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 TutorialManager="*res://scenes/tutorial/tutorialManager.gd"
-MapAutoload="*res://scenes/map/map_autoload.gd"
+MapAutoload="*res://scenes/Map/map_autoload.gd"
 PlayerDataAl="*res://main_classes/player/player_data_AL.gd"
 GlobalProgressBar="*res://scenes/menu/ProgressBar.gd"
 Transition="*res://scenes/transition/transition.tscn"
