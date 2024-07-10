@@ -40,6 +40,9 @@ func next_question_right_power_up():
 
 
 func take_damage(damage:int) -> int:
+	if PlayerDataAl.shield_active:
+		return PlayerDataAl.health
+	
 	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.BUCKET]:
 		PlayerDataAl.health -= round(damage/1.5)
 		return PlayerDataAl.health
@@ -52,3 +55,13 @@ func deal_damage() -> int:
 		return round(PlayerDataAl.player_damage*1.5)
 	else:
 		return PlayerDataAl.player_damage
+
+func heal_hp() -> int:
+	var to_heal = round(PlayerDataAl.max_health/3)
+	if (PlayerDataAl.health + to_heal) > PlayerDataAl.max_health:
+		PlayerDataAl.health = PlayerDataAl.max_health
+	else:
+		PlayerDataAl.health += to_heal
+	
+	return PlayerDataAl.health
+	

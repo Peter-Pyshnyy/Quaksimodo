@@ -1,16 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://di01bxnwvvn8m"]
+[gd_scene load_steps=32 format=3 uid="uid://di01bxnwvvn8m"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_fxtqe"]
 [ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_peegu"]
 [ext_resource type="Texture2D" uid="uid://bw8f11kgdg8xl" path="res://assets/fight_scene/input.png" id="3_jk81y"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="4_dqjig"]
 [ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="5_qfwxr"]
-[ext_resource type="Texture2D" uid="uid://tgeuq7w7qpwd" path="res://assets/fight_scene/attack_btn_inverted.png" id="6_dx4cd"]
+[ext_resource type="Texture2D" uid="uid://dwtpqnatu4gi" path="res://assets/fight_scene/attack_btn_inverted.png" id="6_dx4cd"]
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
 [ext_resource type="Texture2D" uid="uid://crdnh3imwtcjk" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
-[ext_resource type="Texture2D" uid="uid://8opi8tjxs6vm" path="res://assets/fight_scene/enemy_sheet_1.png" id="8_4m4yi"]
+[ext_resource type="Texture2D" uid="uid://d34omd6d3xcn" path="res://assets/fight_scene/enemy_sheet_1.png" id="8_4m4yi"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="8_624dc"]
-[ext_resource type="Texture2D" uid="uid://h8rfbq2b3jrm" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
+[ext_resource type="Texture2D" uid="uid://c43c8hnagcf41" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
+[ext_resource type="Texture2D" uid="uid://dhml3dcoji4rr" path="res://assets/powerups/item_3.png" id="12_5xbqf"]
+[ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="13_snnd0"]
+[ext_resource type="Texture2D" uid="uid://c6vgx1sobgtsn" path="res://assets/powerups/item_4.png" id="14_0dmpq"]
+[ext_resource type="Texture2D" uid="uid://cxei05r4dcli" path="res://assets/powerups/item_5.png" id="15_wch2d"]
 
 [sub_resource type="Animation" id="Animation_ik2so"]
 resource_name = "new_animation"
@@ -100,6 +104,16 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npgfe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujlxd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3r46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iq656"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vp8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b2wr"]
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_fxtqe")
@@ -267,6 +281,97 @@ offset_right = 1112.0
 offset_bottom = 538.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 324)
+zoom = Vector2(1.685, 1.685)
+
+[node name="Item3" type="Sprite2D" parent="."]
+position = Vector2(45, 387)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("12_5xbqf")
+
+[node name="lbl_triangle" type="Label" parent="Item3"]
+offset_left = -9.42857
+offset_top = -11.4286
+offset_right = 3.57143
+offset_bottom = 4.57143
+theme_override_colors/font_shadow_color = Color(0.0130029, 0.0555567, 0.0708754, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_snnd0")
+theme_override_font_sizes/font_size = 10
+text = "3"
+
+[node name="btn_triangle" type="Button" parent="Item3"]
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ujlxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k3r46")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iq656")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
+
+[node name="Item4" type="Sprite2D" parent="."]
+position = Vector2(110.562, 386.438)
+scale = Vector2(3.42969, 3.42969)
+texture = ExtResource("14_0dmpq")
+
+[node name="lbl_flies" type="Label" parent="Item4"]
+offset_left = -9.42857
+offset_top = -10.5974
+offset_right = 3.57143
+offset_bottom = 5.4026
+theme_override_colors/font_shadow_color = Color(0.0130029, 0.0555567, 0.0708754, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_snnd0")
+theme_override_font_sizes/font_size = 10
+text = "3"
+
+[node name="btn_flies" type="Button" parent="Item4"]
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ujlxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k3r46")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iq656")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
+
+[node name="Item5" type="Sprite2D" parent="."]
+position = Vector2(180.375, 383.625)
+scale = Vector2(3.20313, 3.20313)
+texture = ExtResource("15_wch2d")
+
+[node name="lbl_tooth" type="Label" parent="Item5"]
+offset_left = -9.42857
+offset_top = -11.4286
+offset_right = 3.57143
+offset_bottom = 4.57143
+theme_override_colors/font_shadow_color = Color(0.0130029, 0.0555567, 0.0708754, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_snnd0")
+theme_override_font_sizes/font_size = 10
+text = "3"
+
+[node name="btn_tooth" type="Button" parent="Item5"]
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ujlxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k3r46")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iq656")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2vp8w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7b2wr")
+
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
 [connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
@@ -274,9 +379,12 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 [connection signal="item_focused" from="OptionButton" to="." method="_on_option_button_item_focused"]
 [connection signal="item_focused" from="OptionButton2" to="." method="_on_option_button_2_item_focused"]
 [connection signal="item_focused" from="OptionButton3" to="." method="_on_option_button_3_item_focused"]
-
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(580, 325)
-zoom = Vector2(1.685, 1.685)
-
+[connection signal="mouse_entered" from="Item3/btn_triangle" to="." method="_on_btn_triangle_mouse_entered"]
+[connection signal="mouse_exited" from="Item3/btn_triangle" to="." method="_on_btn_triangle_mouse_exited"]
+[connection signal="pressed" from="Item3/btn_triangle" to="." method="_on_btn_triangle_pressed"]
+[connection signal="mouse_entered" from="Item4/btn_flies" to="." method="_on_btn_flies_mouse_entered"]
+[connection signal="mouse_exited" from="Item4/btn_flies" to="." method="_on_btn_flies_mouse_exited"]
+[connection signal="pressed" from="Item4/btn_flies" to="." method="_on_btn_flies_pressed"]
+[connection signal="mouse_entered" from="Item5/btn_tooth" to="." method="_on_btn_tooth_mouse_entered"]
+[connection signal="mouse_exited" from="Item5/btn_tooth" to="." method="_on_btn_tooth_mouse_exited"]
+[connection signal="pressed" from="Item5/btn_tooth" to="." method="_on_btn_tooth_pressed"]

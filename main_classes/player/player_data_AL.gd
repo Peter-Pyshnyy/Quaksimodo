@@ -4,6 +4,7 @@ var health = 100
 var max_health = 100
 var money = 14
 var player_damage = 10
+var shield_active = false
 
 enum POWER_UPS {MAP, FORK, BUCKET, TRIANGLE, FLIES, TOOTH, NONE}
 

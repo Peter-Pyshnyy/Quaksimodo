@@ -417,6 +417,7 @@ func parse_polynomial(expression: String) -> MFunc:
 		
 		if term.contains("*"):
 			var temp:String = term.get_slice("*", 0)
+			temp = temp.strip_edges(true, true)
 			if temp.contains(")"):
 				temp = temp.replace("(","")
 				temp = temp.replace(")","")

@@ -224,6 +224,7 @@ func parse_polynomial_comp(expected_type:String, expression: String) -> MFunc:
 	expression = expression.strip_edges(true, true)
 	match expected_type:
 		"multiplied":
+			expression = expression.replace(") * (", ")*(")
 			var parser:MFunc = MFunc.new("empty")
 			if expression.contains(")*("):
 				var terms = expression.split(")*(")
@@ -241,6 +242,7 @@ func parse_polynomial_comp(expected_type:String, expression: String) -> MFunc:
 				return MFunc.new("empty").parse_polynomial(term)
 		"divided": #x/(x+1) ; (x+1)/x ; (x+1)/(x-1)
 			var parser:MFunc = MFunc.new("empty")
+			expression = expression.replace(") / (", ")/(")
 			if expression.contains(")/("):
 				var terms = expression.split(")/(")
 				terms[0] = terms[0].replace("(","")
@@ -282,6 +284,7 @@ func parse_polynomial_comp(expected_type:String, expression: String) -> MFunc:
 			var i = terms[0].find(fn)
 			if i != 0:
 				var temp:String = terms[0].replace("*","").erase(i,3)
+				temp = temp.strip_edges(true, true)
 				if temp == "-":
 					coeff = -1
 				else:

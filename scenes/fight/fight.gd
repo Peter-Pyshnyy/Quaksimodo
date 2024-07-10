@@ -11,6 +11,9 @@ extends Node2D
 @onready var option1 = $OptionButton
 @onready var option2 = $OptionButton2
 @onready var option3 = $OptionButton3
+@onready var lbl_triangle = $Item3/lbl_triangle
+@onready var lbl_flies = $Item4/lbl_flies
+@onready var lbl_tooth = $Item5/lbl_tooth
 
 var print_inputs = [$Question, $Question2, $Question3]
 var option_inputs = [option1,option2,option3]
@@ -29,14 +32,16 @@ var anwer_to_q1 = ""
 var anwer_to_q2 = ""
 var anwer_to_q3 = ""
 var player_manager = PlayerManager.new()
+var triangle_active = false
+var enemy_max_hp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	current_level = 1
 	current_question_number = 1
 	frog_health = PlayerDataAl.health
-	enemy_health = Levels.LevelDatabase[str(current_level)].enemy_health
+	enemy_max_hp = Levels.LevelDatabase[str(current_level)].enemy_health
+	enemy_health = enemy_max_hp
 	enemy_damage = Levels.LevelDatabase[str(current_level)].enemy_damage
 	healthbar_enemy.init_health(enemy_health)
 	healthbar_frog.init_health(PlayerDataAl.max_health)
@@ -45,12 +50,10 @@ func _ready():
 	$Frog/AnimationPlayer.play("idle")
 	$background/AnimationPlayer.play("idle")
 	
-	#for n in 20:
-		#var q:Question = Question.new(3)
-		#print(q.fn)
-		#print(q.question_pool)
-		#print(q.extras)
-	
+	lbl_triangle.text = str(PlayerDataAl.shield)
+	lbl_flies.text = str(PlayerDataAl.heal)
+	lbl_tooth.text = str(PlayerDataAl.tooth)
+
 	gen_new_questions()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -116,6 +119,9 @@ func _on_attack_button_pressed():
 	input1.editable = false
 	input2.editable = false
 	input3.editable = false
+	$Item3/btn_triangle.disabled = true
+	$Item4/btn_flies.disabled = true
+	$Item5/btn_tooth.disabled = true
 	#option1.disabled = true
 	#option2.disabled = true
 	#option3.disabled = true
@@ -193,6 +199,7 @@ func _on_attack_button_pressed():
 		PlayerDataAl.reset()
 		get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 	else:
+		PlayerDataAl.shield_active = false
 		gen_new_questions()
 
 func hurt_frog():
@@ -261,6 +268,9 @@ func reset_scene():
 	option1.visible = false
 	option2.visible = false
 	option3.visible = false
+	$Item3/btn_triangle.disabled = false
+	$Item4/btn_flies.disabled = false
+	$Item5/btn_tooth.disabled = false
 
 func _on_option_button_item_focused(index):
 	print("FICUS")
@@ -275,3 +285,56 @@ func _on_option_button_2_item_focused(index):
 func _on_option_button_3_item_focused(index):
 	print("FICUS")
 	anwer_to_q3 = str(index)
+
+
+func _on_btn_triangle_pressed():
+	if PlayerDataAl.shield > 0 && PlayerDataAl.shield_active == false:
+		PlayerDataAl.shield_active = true
+		PlayerDataAl.shield -= 1
+		lbl_triangle.text = str(PlayerDataAl.shield)
+
+
+func _on_btn_triangle_mouse_entered():
+	$Item3.position.y -= 1
+
+
+func _on_btn_triangle_mouse_exited():
+	$Item3.position.y += 1
+
+
+func _on_btn_flies_mouse_entered():
+	$Item4.position.y -= 1
+
+
+func _on_btn_flies_mouse_exited():
+	$Item4.position.y += 1
+
+
+func _on_btn_tooth_mouse_entered():
+	$Item5.position.y -= 1
+
+
+func _on_btn_tooth_mouse_exited():
+	$Item5.position.y += 1
+
+
+func _on_btn_flies_pressed():
+	if PlayerDataAl.heal > 0 && frog_health != PlayerDataAl.max_health:
+		player_manager.heal_hp()
+		PlayerDataAl.heal -= 1
+		lbl_flies.text = str(PlayerDataAl.heal)
+		frog_health = PlayerDataAl.health
+		healthbar_frog.health = frog_health
+
+
+func _on_btn_tooth_pressed():
+	if PlayerDataAl.tooth > 0:
+		$Enemy.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Enemy.modulate = Color.WHITE
+	
+		enemy_health -= round(float(enemy_max_hp)/2)
+		PlayerDataAl.tooth -= 1
+		lbl_tooth.text = str(PlayerDataAl.tooth)
+		healthbar_enemy.health = enemy_health
+	
