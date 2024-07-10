@@ -99,17 +99,34 @@ var fn_type:F
 var question_pool = {}
 var extras = {}
 var fn:MFunc
+var num_of_questions = 3
 
-func _init(lvl:int):
-	match lvl:
-		1: f_pool = lvl1
-		2: f_pool = lvl2
-		3: f_pool = lvl3
-		_: 
-			print("WRONG LVL")
-			return
-	
-	fn_type = f_pool.keys().pick_random()
+func _init(lvl:int, chest:bool = false):
+	if chest:
+		match lvl:
+			1: 
+				fn_type = F.CUB
+				num_of_questions = 5
+				f_pool = lvl1
+			2:
+				fn_type = F.CUB_X
+				num_of_questions = 5
+				f_pool = lvl2
+			3: 
+				fn_type = F.MLT
+				num_of_questions = 4
+				f_pool = lvl3
+	else:
+		match lvl:
+			1: f_pool = lvl1
+			2: f_pool = lvl2
+			3: f_pool = lvl3
+			_: 
+				print("WRONG LVL")
+				return
+		fn_type = f_pool.keys().pick_random()
+		#ammount of questions per function
+		num_of_questions = randi_range(1,3)
 	
 	if enum2str.keys().has(fn_type):
 		fn = MFunc.new(enum2str[fn_type])
@@ -135,10 +152,7 @@ func _init(lvl:int):
 			question_pool[question] = handlers[question].call()
 		return
 	
-	#ammount of questions per function
-	var q_ammount = randi_range(1,3)
-	
-	while question_pool.keys().size() < q_ammount:
+	while question_pool.keys().size() < num_of_questions:
 		var question = f_pool[fn_type].pick_random()
 		if !question_pool.has(question):
 				

@@ -1,84 +1,55 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0gvt74c3klwf"]
+[gd_scene load_steps=17 format=3 uid="uid://b6stlwl7oamft"]
 
-[ext_resource type="Script" path="res://scenes/fight/fight.gd" id="1_cc0ss"]
-[ext_resource type="Texture2D" uid="uid://bqt1v6fdk8d3y" path="res://assets/fight_scene/background_animation_darker.png" id="2_r0he5"]
-[ext_resource type="Texture2D" uid="uid://bw8f11kgdg8xl" path="res://assets/fight_scene/input.png" id="3_f70k2"]
+[ext_resource type="Script" path="res://scenes/fight/fight_chest.gd" id="1_k1m7s"]
+[ext_resource type="Texture2D" uid="uid://bds7li7s047vk" path="res://assets/fight_scene/background_chest.png" id="2_56xka"]
+[ext_resource type="Texture2D" uid="uid://cq8gq236tsp2d" path="res://assets/fight_scene/input_chest.png" id="3_5gkqn"]
 [ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="4_jcyni"]
-[ext_resource type="Texture2D" uid="uid://tgeuq7w7qpwd" path="res://assets/fight_scene/attack_btn_inverted.png" id="5_3c25r"]
-[ext_resource type="Texture2D" uid="uid://crdnh3imwtcjk" path="res://assets/fight_scene/help_btn.png" id="6_fesqu"]
+[ext_resource type="Texture2D" uid="uid://dwtpqnatu4gi" path="res://assets/fight_scene/attack_btn_inverted.png" id="5_3c25r"]
+[ext_resource type="Texture2D" uid="uid://h03mkgyusxhf" path="res://assets/fight_scene/help_btn.png" id="6_fesqu"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="7_78qh5"]
-[ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="9_jh142"]
-[ext_resource type="Texture2D" uid="uid://h8rfbq2b3jrm" path="res://assets/fight_scene/health_bars.png" id="10_ckdv7"]
-[ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="11_tw22f"]
-
-[sub_resource type="Animation" id="Animation_ik2so"]
-resource_name = "new_animation"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r031u"]
-_data = {
-"idle": SubResource("Animation_ik2so")
-}
-
-[sub_resource type="Animation" id="Animation_hxc4k"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iybaq"]
-_data = {
-"idle": SubResource("Animation_hxc4k")
-}
+[ext_resource type="Texture2D" uid="uid://do31lui8yy8th" path="res://assets/fight_scene/chest.png" id="8_lqj02"]
+[ext_resource type="Texture2D" uid="uid://bsd55e3hf1yhd" path="res://assets/fight_scene/chest_open.png" id="9_krpgv"]
+[ext_resource type="Texture2D" uid="uid://dgfngkn8x6mfw" path="res://assets/powerups/item_0.png" id="11_8sb2g"]
+[ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="13_tpnjg"]
 
 [sub_resource type="Theme" id="Theme_5545p"]
 default_font_size = 25
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxw6u"]
+content_margin_left = 7.0
+bg_color = Color(0.141176, 0.223529, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1kkv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s456w"]
+content_margin_left = 7.0
+bg_color = Color(0.141176, 0.223529, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npgfe"]
+
 [node name="Fight" type="Node2D"]
-script = ExtResource("1_cc0ss")
+script = ExtResource("1_k1m7s")
 metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="background" type="Sprite2D" parent="."]
-light_mask = 0
-position = Vector2(576, 221.5)
-scale = Vector2(7.2, 4.92222)
-texture = ExtResource("2_r0he5")
-hframes = 2
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="background"]
-libraries = {
-"": SubResource("AnimationLibrary_r031u")
-}
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1153.0
+offset_bottom = 645.0
+texture = ExtResource("2_56xka")
 
 [node name="BackgroundInput" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(7.2, 7.2)
-texture = ExtResource("3_f70k2")
+texture = ExtResource("3_5gkqn")
 
 [node name="AttackButton" type="TextureButton" parent="."]
 offset_left = 30.0
@@ -98,40 +69,11 @@ texture_normal = ExtResource("6_fesqu")
 texture_pressed = ExtResource("7_78qh5")
 stretch_mode = 0
 
-[node name="Frog" type="Sprite2D" parent="."]
-position = Vector2(212, 425)
-scale = Vector2(4.80833, 4.80833)
-texture = ExtResource("9_jh142")
-hframes = 2
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Frog"]
-libraries = {
-"": SubResource("AnimationLibrary_iybaq")
-}
-
-[node name="HealthBarFrame" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(7.2, 7.2)
-texture = ExtResource("10_ckdv7")
-
-[node name="HealthBarEnemy" parent="." instance=ExtResource("11_tw22f")]
-offset_left = 836.0
-offset_top = 303.0
-offset_right = 1131.0
-offset_bottom = 360.0
-
-[node name="HealthBarFrog" parent="." instance=ExtResource("11_tw22f")]
-offset_left = 29.0
-offset_top = 22.0
-offset_right = 324.0
-offset_bottom = 79.0
-
 [node name="Function" type="Label" parent="."]
-offset_left = 737.0
-offset_top = 372.0
-offset_right = 990.0
-offset_bottom = 418.0
+offset_left = 24.0
+offset_top = 246.0
+offset_right = 277.0
+offset_bottom = 292.0
 theme = SubResource("Theme_5545p")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
@@ -160,23 +102,200 @@ offset_left = 40.0
 offset_top = 507.0
 offset_right = 356.0
 offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Solution"
 
 [node name="Answer2" type="LineEdit" parent="."]
 offset_left = 414.0
 offset_top = 507.0
 offset_right = 730.0
-offset_bottom = 539.0
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Solution"
 
 [node name="Answer3" type="LineEdit" parent="."]
+offset_left = 795.0
+offset_top = 507.0
+offset_right = 1111.0
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
+placeholder_text = "Solution"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_left = 40.0
+offset_top = 507.0
+offset_right = 356.0
+offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="OptionButton2" type="OptionButton" parent="."]
+offset_left = 414.0
+offset_top = 507.0
+offset_right = 730.0
+offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="OptionButton3" type="OptionButton" parent="."]
 offset_left = 796.0
 offset_top = 507.0
 offset_right = 1112.0
 offset_bottom = 538.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 324)
+zoom = Vector2(1.685, 1.685)
+
+[node name="Answer4" type="LineEdit" parent="."]
+offset_left = 40.0
+offset_top = 377.0
+offset_right = 356.0
+offset_bottom = 408.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Solution"
 
+[node name="Answer5" type="LineEdit" parent="."]
+offset_left = 414.0
+offset_top = 377.0
+offset_right = 730.0
+offset_bottom = 408.0
+theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
+theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
+placeholder_text = "Solution"
+
+[node name="OptionButton4" type="OptionButton" parent="."]
+offset_left = 40.0
+offset_top = 377.0
+offset_right = 356.0
+offset_bottom = 408.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="OptionButton5" type="OptionButton" parent="."]
+offset_left = 414.0
+offset_top = 377.0
+offset_right = 730.0
+offset_bottom = 408.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
+
+[node name="Question4" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 329.0
+offset_right = 210.0
+offset_bottom = 352.0
+
+[node name="Question5" type="Label" parent="."]
+offset_left = 414.0
+offset_top = 329.0
+offset_right = 584.0
+offset_bottom = 352.0
+
+[node name="Chest" type="Sprite2D" parent="."]
+position = Vector2(598, 312)
+scale = Vector2(7.13333, 7.13333)
+texture = ExtResource("8_lqj02")
+
+[node name="Chest2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(598, 312)
+scale = Vector2(7.13333, 7.13333)
+texture = ExtResource("9_krpgv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1155.0
+offset_bottom = 649.0
+color = Color(0.0117647, 0.0509804, 0.0627451, 0.639216)
+
+[node name="lbl_msg" type="Label" parent="ColorRect"]
+visible = false
+z_index = 3
+offset_left = 8.0
+offset_top = 108.0
+offset_right = 1141.0
+offset_bottom = 388.0
+theme_override_colors/font_color = Color(0.905882, 0.929412, 0.85098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_tpnjg")
+theme_override_font_sizes/font_size = 66
+text = "Schade!"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 485.0
+offset_top = 179.0
+offset_right = 666.0
+offset_bottom = 360.0
+texture = ExtResource("11_8sb2g")
+
+[node name="lbl_20G" type="Label" parent="ColorRect"]
+visible = false
+z_index = 3
+offset_left = 14.0
+offset_top = 202.0
+offset_right = 1147.0
+offset_bottom = 482.0
+theme_override_colors/font_color = Color(0.905882, 0.929412, 0.85098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_tpnjg")
+theme_override_font_sizes/font_size = 96
+text = "20G"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="lbl_amount" type="Label" parent="ColorRect"]
+visible = false
+z_index = 3
+offset_left = 622.0
+offset_top = 311.0
+offset_right = 696.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(0.905882, 0.929412, 0.85098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_tpnjg")
+theme_override_font_sizes/font_size = 40
+text = "2x"
+horizontal_alignment = 1
+uppercase = true
+
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
-[connection signal="focus_exited" from="Answer" to="." method="_on_answer_focus_exited"]
-[connection signal="focus_exited" from="Answer2" to="." method="_on_answer_2_focus_exited"]
-[connection signal="focus_exited" from="Answer3" to="." method="_on_answer_3_focus_exited"]
+[connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
+[connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
+[connection signal="focus_entered" from="Answer3" to="." method="_on_answer_3_focus_entered"]
+[connection signal="item_focused" from="OptionButton" to="." method="_on_option_button_item_focused"]
+[connection signal="item_focused" from="OptionButton2" to="." method="_on_option_button_2_item_focused"]
+[connection signal="item_focused" from="OptionButton3" to="." method="_on_option_button_3_item_focused"]
+[connection signal="focus_entered" from="Answer4" to="." method="_on_answer_4_focus_entered"]
+[connection signal="focus_entered" from="Answer5" to="." method="_on_answer_5_focus_entered"]
+[connection signal="item_focused" from="OptionButton4" to="." method="_on_option_button_item_focused"]
+[connection signal="item_focused" from="OptionButton5" to="." method="_on_option_button_2_item_focused"]

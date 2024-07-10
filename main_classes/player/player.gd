@@ -64,4 +64,6 @@ func heal_hp() -> int:
 		PlayerDataAl.health += to_heal
 	
 	return PlayerDataAl.health
-	
+
+func add_money(amount:int):
+	PlayerDataAl.money += amount

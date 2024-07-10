@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://djsbwcc645wxp" path="res://assets/map_scene/QM_tiles.png" id="2_63p1a"]
 [ext_resource type="Texture2D" uid="uid://uavf1ddsk6e4" path="res://scenes/fight/QM_tiles_boss.png" id="3_gvv1e"]
 [ext_resource type="Texture2D" uid="uid://wgin878yo60v" path="res://assets/map_scene/QM_tiles_bought.png" id="4_stmnf"]
-[ext_resource type="Script" path="res://scenes/map/player_icon/player_icon.gd" id="5_m0txf"]
-[ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/map/player_icon/frog1.png" id="6_0r7ri"]
+[ext_resource type="Script" path="res://scenes/Map/player_icon/player_icon.gd" id="5_m0txf"]
+[ext_resource type="Texture2D" uid="uid://dy3gmcpu7cqaq" path="res://scenes/Map/player_icon/frog1.png" id="6_0r7ri"]
 [ext_resource type="Texture2D" uid="uid://mn6wonkh2r6l" path="res://assets/map_scene/QM_move_tut.png" id="6_ejjvt"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="7_sgvhx"]
 [ext_resource type="Script" path="res://scenes/Map/steuerung.gd" id="9_ikvlr"]
@@ -125,7 +125,7 @@ offset_bottom = -27.0
 theme_override_fonts/font = ExtResource("7_sgvhx")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = SubResource("StyleBoxEmpty_os6dj")
-text = "Schatz! OwO"
+text = "Schatz! "
 
 [node name="btn_boss" type="Button" parent="TileMap/player_icon/Camera2D"]
 visible = false
@@ -194,4 +194,5 @@ texture = ExtResource("11_7xx01")
 
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_fight" to="." method="_on_btn_fight_pressed"]
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_shop" to="." method="_on_btn_shop_pressed"]
+[connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_chest" to="." method="_on_btn_chest_pressed"]
 [connection signal="pressed" from="TileMap/player_icon/Camera2D/btn_boss" to="." method="_on_btn_boss_pressed"]

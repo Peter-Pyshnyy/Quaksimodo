@@ -238,3 +238,7 @@ func _on_btn_shop_pressed():
 
 func _on_btn_boss_pressed():
 	Transition.transition_scene("res://scenes/fight/fight_boss.tscn")
+
+
+func _on_btn_chest_pressed():
+	Transition.transition_scene("res://scenes/fight/fight_chest.tscn")
