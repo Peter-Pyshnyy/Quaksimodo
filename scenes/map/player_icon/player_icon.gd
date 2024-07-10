@@ -3,8 +3,9 @@ extends CharacterBody2D
 var currPos: Vector2
 @onready var map = $"../.."
 var has_moved = false
+var can_move = true
 
-func _input(event):
+func _unhandled_input(event):
 	var input_movement: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	input_movement = round(input_movement)
 	currPos = self.position
