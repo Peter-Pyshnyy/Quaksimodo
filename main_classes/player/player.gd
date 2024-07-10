@@ -1,8 +1,9 @@
-extends CharacterBody2D
+class_name PlayerManager
+
+extends Node
 
 func _ready():
 	pass
-
 
 func set_player_damage(damage):
 	PlayerDataAl.player_damage = damage
@@ -36,3 +37,31 @@ func next_question_right_power_up():
 	if PlayerDataAl.next_question_right_power_up:
 		print("All Question right")
 		PlayerDataAl.next_question_right_power_up = false
+
+
+func take_damage(damage:int) -> int:
+	if PlayerDataAl.shield_active:
+		return PlayerDataAl.health
+	
+	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.BUCKET]:
+		PlayerDataAl.health -= round(damage/1.5)
+		return PlayerDataAl.health
+	else:
+		PlayerDataAl.health -= damage
+		return PlayerDataAl.health
+
+func deal_damage() -> int:
+	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.FORK]:
+		return round(PlayerDataAl.player_damage*1.5)
+	else:
+		return PlayerDataAl.player_damage
+
+func heal_hp() -> int:
+	var to_heal = round(PlayerDataAl.max_health/3)
+	if (PlayerDataAl.health + to_heal) > PlayerDataAl.max_health:
+		PlayerDataAl.health = PlayerDataAl.max_health
+	else:
+		PlayerDataAl.health += to_heal
+	
+	return PlayerDataAl.health
+	

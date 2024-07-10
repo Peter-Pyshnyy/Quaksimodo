@@ -1,10 +1,10 @@
 extends Node
 
-var health = 10
-var max_health = 10
+var health = 100
+var max_health = 100
 var money = 14
-var player_damage = 1
-var enemy_damage = 1
+var player_damage = 10
+var shield_active = false
 
 enum POWER_UPS {MAP, FORK, BUCKET, TRIANGLE, FLIES, TOOTH, NONE}
 
@@ -39,7 +39,6 @@ func activate_power_up(index:POWER_UPS):
 func reset():
 	health = max_health
 	player_damage = 1
-	enemy_damage = 1
 	heal = 0
 	shield = 0
 	tooth = 0

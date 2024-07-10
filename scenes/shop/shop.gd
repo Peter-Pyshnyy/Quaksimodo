@@ -171,7 +171,7 @@ func _on_btn_dmg_button_down():
 	btn_dmg.position.y += 2
 	
 	item_selected()
-	cart.dmg_inc += 1
+	cart.dmg_inc += 2
 	sum += 2
 	btn_dmg.get_child(1).text = str(cart.dmg_inc)
 	update_sum()
@@ -195,7 +195,7 @@ func _on_btn_hp_button_down():
 	btn_hp.position.y += 2
 	
 	item_selected()
-	cart.hp_inc += 1
+	cart.hp_inc += 5
 	sum += 2
 	btn_hp.get_child(1).text = str(cart.hp_inc)
 	update_sum()
