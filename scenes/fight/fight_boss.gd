@@ -279,11 +279,11 @@ func load_enemy():
 	match current_level:
 		1:
 			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
-			enemy_health = 1
+			enemy_health = 100
 		2:
 			$Background.texture = load("res://assets/fight_scene/dawn_animation.png")
-			enemy_health = 15
+			enemy_health = 150
 		3:
 			$Background.texture = load("res://assets/fight_scene/night_animation.png")
-			enemy_health = 20
+			enemy_health = 200
 
