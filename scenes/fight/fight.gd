@@ -57,7 +57,7 @@ func gen_new_questions():
 	print(question.fn)
 	print(question.question_pool)
 	
-	$Function.text = current_function.to_string()
+	$Function.text = "Function: " + current_function.to_string()
 	$Question.text = ""
 	$Question2.text = ""
 	$Question3.text = ""

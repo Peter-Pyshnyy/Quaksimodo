@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b14dvvdqhlrvf"
+<<<<<<<< HEAD:assets/fight_scene/enemy_sheet_3.png.import
+uid="uid://cg63cltln721x"
 path="res://.godot/imported/enemy_sheet_3.png-c8cf932cc4b7fd0321d79e6c7f72c954.ctex"
+========
+uid="uid://ofqu1g485l5d"
+path="res://.godot/imported/dawn_animation.png-2130ee4eae9a8242e43108b1cd5543c8.ctex"
+>>>>>>>> fight_improvements:assets/fight_scene/dawn_animation.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/fight_scene/enemy_sheet_3.png.import
 source_file="res://assets/fight_scene/enemy_sheet_3.png"
 dest_files=["res://.godot/imported/enemy_sheet_3.png-c8cf932cc4b7fd0321d79e6c7f72c954.ctex"]
+========
+source_file="res://assets/fight_scene/dawn_animation.png"
+dest_files=["res://.godot/imported/dawn_animation.png-2130ee4eae9a8242e43108b1cd5543c8.ctex"]
+>>>>>>>> fight_improvements:assets/fight_scene/dawn_animation.png.import
 
 [params]
 

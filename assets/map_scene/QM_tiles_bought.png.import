@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpgn4up3c2kd5"
+<<<<<<<< HEAD:assets/map_scene/QM_tiles_bought.png.import
+uid="uid://dt1h8i35c1odj"
 path="res://.godot/imported/QM_tiles_bought.png-46cab0af0b3ba1a3c54ea2b698f0bb43.ctex"
+========
+uid="uid://dqnv6jeg8805t"
+path="res://.godot/imported/QM_tiles.png-ec3518d020477dcec978266ff36c4143.ctex"
+>>>>>>>> Game-loop:scenes/fight/QM_tiles.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/map_scene/QM_tiles_bought.png.import
 source_file="res://assets/map_scene/QM_tiles_bought.png"
 dest_files=["res://.godot/imported/QM_tiles_bought.png-46cab0af0b3ba1a3c54ea2b698f0bb43.ctex"]
+========
+source_file="res://scenes/fight/QM_tiles.png"
+dest_files=["res://.godot/imported/QM_tiles.png-ec3518d020477dcec978266ff36c4143.ctex"]
+>>>>>>>> Game-loop:scenes/fight/QM_tiles.png.import
 
 [params]
 
