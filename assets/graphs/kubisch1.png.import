@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca6lwwq8hdmm6"
-path="res://.godot/imported/exponentiell.png-311667f9b34999ce3d5edc432e2ae25a.ctex"
+uid="uid://bq7gwnebre5vw"
+path="res://.godot/imported/kubisch1.png-97c23bdd59f62a57105d9c541556f397.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphs/exponentiell.png"
-dest_files=["res://.godot/imported/exponentiell.png-311667f9b34999ce3d5edc432e2ae25a.ctex"]
+source_file="res://assets/graphs/kubisch1.png"
+dest_files=["res://.godot/imported/kubisch1.png-97c23bdd59f62a57105d9c541556f397.ctex"]
 
 [params]
 
