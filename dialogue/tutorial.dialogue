@@ -148,7 +148,7 @@ Euler: Soll ich das alles nochmal erklären?
 % Storch: Jetzt hab ich keinen Appetit mehr...
 % Storch: Taschenrechner ist Schummeln!
 
-=> END
+=> victory_transition
 
 ~ storch_battle_failure
 
@@ -158,7 +158,7 @@ Euler: Soll ich das alles nochmal erklären?
 % Storch: Ich hoffe ich kann das Baby noch rechtzeitig abliefern.
 % Storch: So viel kann ich garnicht essen.
 
-=> END
+=> failure_transition
 
 ~ igel_battle_start
 
@@ -178,7 +178,7 @@ Euler: Soll ich das alles nochmal erklären?
 % Igel: Hey warte, du sollst verlieren!
 % Igel: Das war unfair!
 
-=> END
+=> victory_transition
 
 ~ igel_battle_failure
 
@@ -188,7 +188,7 @@ Euler: Soll ich das alles nochmal erklären?
 % Igel: Hat sich jemand gestochen?
 % Igel: Das passiert, wenn man einen Igel anstachelt.
 
-=> END
+=> failure_transition
 
 ~ bieber_battle_start
 
@@ -210,7 +210,7 @@ Euler: Soll ich das alles nochmal erklären?
 % Bieber: Eh, egal. Ich geh weiter Stöcke sammeln.
 % Bieber: Ich mag dich nicht.
 
-=> END
+=> victory_transition
 
 ~ bieber_battle_failure
 
@@ -220,7 +220,7 @@ Euler: Soll ich das alles nochmal erklären?
 % Bieber: Endlich! Ich dachte schon, wir werden hier garnicht fertig.
 % Bieber: Nein nein, so rechnet man das nicht.
 
-=> END
+=> failure_transition
 
 ~ storchimedes_battle_start
 Storchimedes: Du begehst einen schweren Fehler, kleiner Frosch!
@@ -229,11 +229,11 @@ Storchimedes: Ich brutzel dich mit meinem Storchimedes Hitzestrahl!
 
 ~ storchimedes_battle_victory
 Storchimedes: Oh nein. Ich glaube, ich wurde gebrutzelt...
-=> END
+=> victory_transition
 
 ~ storchimedes_battle_failure
 Storchimedes: Immernoch unbesiegt!
-=> END
+=> failure_transition
 
 ~ pythaguhus_battle_start
 Pythaguhus: Katheten bei Seite, ich schnapp mir 'nen Frosch!
@@ -241,13 +241,13 @@ Pythaguhus: Katheten bei Seite, ich schnapp mir 'nen Frosch!
 
 ~ pythaguhus_battle_victory
 Pythaguhus: Hurrah! Ich... [wait=1] warte was? Ich habe verloren???
-=> END
+=> victory_transition
 
 ~ pythaguhus_battle_failure
 Pythaguhus: Hypotenuse? Wohl eher Hypothe-[wait=0.5].[wait=0.5].[wait=0.5].[wait=0.5]Loser
 Pythaguhus: ...
 Pythaguhus: Argh, was auch immer. Ich fress dich!
-=> END
+=> failure_transition
 
 ~ fuchlid_battle_start
 Fuchlid: Was als nächstes passiert wird dir unproportional heftig weh tun.
@@ -255,8 +255,28 @@ Fuchlid: Was als nächstes passiert wird dir unproportional heftig weh tun.
 
 ~ fuchlid_battle_victory
 Fuchlid: ... >:(
-=> END
+=> victory_transition
 
 ~ fuchlid_battle_failure
 Fuchlid: Wenn ich mit dir fertig bin wirst du nicht mehr euklidisch aussehen, das verspreche ich dir.
+=> failure_transition
+
+~ euler_battle_start
+Euler: Wenn du dies liest, hast du bereits verloren.
+=> END
+
+~ euler_battle_victory
+Euler: Mach dir weniger Gedanken übers Gewinnen und mehr Gedanken darüber, das hier zu patchen.
+=> victory_transition
+
+~ euler_battle_failure
+Euler: Eh, was auch immer. Ich bin eh nur hier, um Errors abzufangen.
+=> END
+
+~ victory_transition
+do Transition.transition_scene("res://scenes/Map/Map.tscn")
+=> END
+
+~ failure_transition
+do Transition.transition_scene("res://scenes/menu/main_menu.tscn")
 => END

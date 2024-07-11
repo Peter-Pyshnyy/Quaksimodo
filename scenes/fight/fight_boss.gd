@@ -19,6 +19,7 @@ var print_inputs = [$Question, $Question2, $Question3]
 var option_inputs = [option1,option2,option3]
 var question_lbls = [lbl_question1, lbl_question2, lbl_question3]
 
+var boss = "euler"
 var rng = RandomNumberGenerator.new()
 var enemy_health
 var enemy_damage
@@ -197,11 +198,11 @@ func _on_attack_button_button_up():
 		MapAutoload.reset()
 		PlayerDataAl.next_level()
 		PlayerDataAl.health = PlayerDataAl.max_health
-		Transition.transition_scene("res://scenes/Map/Map.tscn")
+		DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"%s_battle_victory" %boss)
 	elif(frog_health <= 0):
 		MapAutoload.reset()
 		PlayerDataAl.reset()
-		Transition.transition_scene("res://scenes/menu/main_menu.tscn")
+		DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"%s_battle_failure" %boss)
 	else:
 		PlayerDataAl.shield_active = false
 		gen_new_questions()
@@ -353,16 +354,21 @@ func load_enemy():
 			enemy_max_hp = 70 #made for presentation, change later
 			enemy_health = enemy_max_hp
 			enemy_damage = 10
+			boss = "fuchlid"
 		2:
 			$Background.texture = load("res://assets/fight_scene/dawn_animation.png")
 			enemy_max_hp = 150
 			enemy_health = enemy_max_hp
 			enemy_damage = 15
+			boss = "storchimedes"
 		3:
 			$Background.texture = load("res://assets/fight_scene/night_animation.png")
 			enemy_max_hp = 200
 			enemy_health = enemy_max_hp
 			enemy_damage = 20
+			boss = "pythaguhus"
+			
+	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"%s_battle_start" %boss)
 
 
 func _on_attack_button_button_down():
