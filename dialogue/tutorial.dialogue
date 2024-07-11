@@ -46,7 +46,8 @@ Euler: Kann ich dir irgendwie weiterhelfen?
 - (Wiederholung) Lineare Funktionen =>< tutorial_lineareFunktionen
 - (Wiederholung) Quadratische Funktionen =>< tutorial_quadratischeFunktionen
 - Kubische Funktionen =>< tutorial_kubischeFunktionen
-- Änderungsrate =>< tutorial_aenderungsrate
+- Krümmungsverhalten =>< tutorial_kruemmung
+- Schnitt zweier Funktionen =>< tutorial_schnitt
 - Ich weiß, was ich zu tun habe! => END
 => fragen_level_2
 
@@ -57,8 +58,8 @@ Euler: Was kann ich für dich tun?
 - (Wiederholung) Lineare Funktionen =>< tutorial_lineareFunktionen
 - (Wiederholung) Quadratische Funktionen =>< tutorial_quadratischeFunktionen
 - (Wiederholung) Kubische Funktionen =>< tutorial_kubischeFunktionen
+- (Wiederholung) Krümmungsverhalten =>< tutorial_kruemmung
 - Erweiterte Ableitungsregeln =>< tutorial_ableitungen2
-- Änderungsrate =>< tutorial_aenderungsrate
 - Ich weiß, was ich zu tun habe! => END
 => fragen_level_3
 
@@ -281,11 +282,35 @@ Euler: Extremstellen sind die Stellen, an denen die 1. Ableitung = 0 ist.
 Euler: Wendepunkte erhältst du, wenn du die Nullstellen der 2. Ableitung findest.
 => END
 
-~ tutorial_aenderungsrate
-Euler: Die Änderungsrate gibt an, wie schnell die Beschleunigung beschleunigt.
-Euler: Sie ist einfach der Wert der 2. Ableitung an der Stelle x
+~ tutorial_kruemmung
+Euler: Die Krümmung einer Funktion gibt an in welche Richtung sie...[wait=1] nunja, [wait=1] gekrümmt ist.
+Euler: Die Krümmung einer Funktion erkennt man daran, ob die 2. Ableitung positiv, oder negativ ist.
+do show_graphic("quadratisch")
+Euler: Nehmen wir die Funktion x² zum Beispiel.
+Euler: Die 2. Ableitung der Funktion ist 2. 2 > 0. Sie ist [b]linksgekrümmt[/b].
+do show_graphic("quadratisch1")
+Euler: Die 2. Ableitung von -x^2 hingegen ist -2 und damit negativ. Sie ist [b]rechtsgekrümmt[/b].
+do show_graphic("linear")
+Euler: Die 2. Ableitung von x jedoch ist 0. Es besteht [b]keine Krümmung[/b].
+do show_graphic("kubisch")
+Euler: Es ist möglich, dass das krümmungsverhalten einer Funktion an verschiedenen Stellen unterschiedlich ist.
+Euler: In einem solchen Fall wird die Krümmung Intervallabhängig.
+do hide_graphic()
 => END
 
+~ tutorial_schnitt
+Euler: Manchmal wirst du nach den Schnittstellen zweier Funktionen gefragt.
+Euler: Bei zwei linearen Funktionen ist das sehr leicht. Es gibt immer eine Schnittstelle, außer sie haben den selben Anstieg.
+Euler: 2x+1 = 3x+2 -> 2x = 3x+1 -> x = -x = 1 -> x = -1 Du hast sowas mit Sicherheit schon hundert mal gemacht.
+Euler: Aber die Tiere um diesen Teich schneiden lieber Quadratische Funktionen mit Linearen Funktionen.
+Euler: Obwohl es absolut möglich ist, dass sie sich garnicht schneiden, wird es hier immer entweder eine, oder zwei Schnittstellen geben.
+Euler: Der Trick dafür ist es, in die pq-Formel umzustellen.
+Euler: Nehmen wir x² + 2x - 4 = 3x + 4\nZuerst bringen wir alles auf eine Seite.
+Euler: x² + 2x - 4 = 4x + 4 | -4x-4\nx² - 2x - 8 = 0
+Euler: Und da ist sie. Unsere pq-Formel x² + 2x - 8 = 0
+Euler: x² + 2x - 8 = 0\nVon hier wie gehabt. x = 1 +/- √(1² + 8) = 1 +/- 3
+Euler: Damit sind die Schnittstellen -2 und 4.
+=> END
 
 ~ storch_battle_start
 
