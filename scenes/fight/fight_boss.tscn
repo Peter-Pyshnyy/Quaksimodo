@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bceuth2nasm28"]
+[gd_scene load_steps=36 format=3 uid="uid://bceuth2nasm28"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight_boss.gd" id="1_y4g6u"]
 [ext_resource type="Texture2D" uid="uid://chjpy7axjwi8l" path="res://assets/fight_scene/background_animation_darker.png" id="2_y78jw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bni2nictmlkac" path="res://assets/fight_scene/health_bars.png" id="10_2kx85"]
 [ext_resource type="PackedScene" uid="uid://dmm2kvxyuadk4" path="res://scenes/fight/health_bar.tscn" id="11_u3lin"]
 [ext_resource type="Texture2D" uid="uid://dhml3dcoji4rr" path="res://assets/powerups/item_3.png" id="12_f8fxn"]
+[ext_resource type="Texture2D" uid="uid://cvindexvstnd5" path="res://assets/fight_scene/eye_open.png" id="12_jk2or"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="13_7srvp"]
 [ext_resource type="Texture2D" uid="uid://c6vgx1sobgtsn" path="res://assets/powerups/item_4.png" id="14_8g1vd"]
 [ext_resource type="Texture2D" uid="uid://cxei05r4dcli" path="res://assets/powerups/item_5.png" id="15_h2w26"]
@@ -89,8 +90,6 @@ default_font_size = 25
 content_margin_left = 7.0
 bg_color = Color(0.141176, 0.223529, 0.247059, 1)
 corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1kkv"]
@@ -101,6 +100,18 @@ bg_color = Color(0.141176, 0.223529, 0.247059, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h15xw"]
+bg_color = Color(0.305882, 0.572549, 0.654902, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yf2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c58lp"]
+bg_color = Color(0.305882, 0.572549, 0.654902, 1)
+corner_radius_top_left = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npgfe"]
@@ -227,7 +238,7 @@ offset_bottom = 488.0
 [node name="Answer" type="LineEdit" parent="."]
 offset_left = 40.0
 offset_top = 507.0
-offset_right = 356.0
+offset_right = 327.0
 offset_bottom = 538.0
 theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
 theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
@@ -235,11 +246,36 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Lösung"
+
+[node name="btn_a1" type="Button" parent="Answer"]
+z_index = 2
+offset_left = 285.0
+offset_right = 316.0
+offset_bottom = 31.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3yf2g")
+
+[node name="TextureRect" type="TextureRect" parent="Answer/btn_a1"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 28.0
+offset_bottom = 26.0
+texture = ExtResource("12_jk2or")
+
+[node name="Label" type="Label" parent="Answer"]
+visible = false
+offset_right = 288.0
+offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_c58lp")
+text = "f(x)"
 
 [node name="Answer2" type="LineEdit" parent="."]
 offset_left = 414.0
 offset_top = 507.0
-offset_right = 730.0
+offset_right = 701.0
 offset_bottom = 538.0
 theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
 theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
@@ -247,11 +283,36 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Lösung"
+
+[node name="btn_a2" type="Button" parent="Answer2"]
+z_index = 2
+offset_left = 285.0
+offset_right = 316.0
+offset_bottom = 31.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3yf2g")
+
+[node name="TextureRect" type="TextureRect" parent="Answer2/btn_a2"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 28.0
+offset_bottom = 26.0
+texture = ExtResource("12_jk2or")
+
+[node name="Label" type="Label" parent="Answer2"]
+visible = false
+offset_right = 288.0
+offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_c58lp")
+text = "f(x)"
 
 [node name="Answer3" type="LineEdit" parent="."]
 offset_left = 795.0
 offset_top = 507.0
-offset_right = 1111.0
+offset_right = 1082.0
 offset_bottom = 538.0
 theme_override_colors/font_color = Color(0.764706, 0.803922, 0.756863, 1)
 theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.756863, 0.698039)
@@ -260,7 +321,33 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
 placeholder_text = "Lösung"
 
+[node name="btn_a3" type="Button" parent="Answer3"]
+z_index = 2
+offset_left = 285.0
+offset_right = 316.0
+offset_bottom = 31.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h15xw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3yf2g")
+
+[node name="TextureRect" type="TextureRect" parent="Answer3/btn_a3"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 28.0
+offset_bottom = 26.0
+texture = ExtResource("12_jk2or")
+
+[node name="Label" type="Label" parent="Answer3"]
+visible = false
+offset_right = 288.0
+offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_c58lp")
+text = "f(x)"
+
 [node name="OptionButton" type="OptionButton" parent="."]
+visible = false
 offset_left = 40.0
 offset_top = 507.0
 offset_right = 356.0
@@ -268,6 +355,7 @@ offset_bottom = 538.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
 [node name="OptionButton2" type="OptionButton" parent="."]
+visible = false
 offset_left = 414.0
 offset_top = 507.0
 offset_right = 730.0
@@ -275,6 +363,7 @@ offset_bottom = 538.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_npgfe")
 
 [node name="OptionButton3" type="OptionButton" parent="."]
+visible = false
 offset_left = 796.0
 offset_top = 507.0
 offset_right = 1112.0
@@ -383,8 +472,14 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="HelpButton" to="." method="_on_help_button_button_down"]
 [connection signal="button_up" from="HelpButton" to="." method="_on_help_button_button_up"]
 [connection signal="focus_entered" from="Answer" to="." method="_on_answer_focus_entered"]
+[connection signal="button_down" from="Answer/btn_a1" to="." method="_on_btn_a_1_button_down"]
+[connection signal="button_up" from="Answer/btn_a1" to="." method="_on_btn_a_1_button_up"]
 [connection signal="focus_entered" from="Answer2" to="." method="_on_answer_2_focus_entered"]
+[connection signal="button_down" from="Answer2/btn_a2" to="." method="_on_btn_a_2_button_down"]
+[connection signal="button_up" from="Answer2/btn_a2" to="." method="_on_btn_a_2_button_up"]
 [connection signal="focus_entered" from="Answer3" to="." method="_on_answer_3_focus_entered"]
+[connection signal="button_down" from="Answer3/btn_a3" to="." method="_on_btn_a_3_button_down"]
+[connection signal="button_up" from="Answer3/btn_a3" to="." method="_on_btn_a_3_button_up"]
 [connection signal="mouse_entered" from="Item3/btn_triangle" to="." method="_on_btn_triangle_mouse_entered"]
 [connection signal="mouse_exited" from="Item3/btn_triangle" to="." method="_on_btn_triangle_mouse_exited"]
 [connection signal="pressed" from="Item3/btn_triangle" to="." method="_on_btn_triangle_pressed"]
