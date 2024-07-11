@@ -425,7 +425,7 @@ Pythaguhus: Katheten bei Seite, ich schnapp mir 'nen Frosch!
 
 ~ pythaguhus_battle_victory
 Pythaguhus: Hurrah! Ich... [wait=1] warte was? Ich habe verloren???
-=> victory_transition
+=> end_transition
 
 ~ pythaguhus_battle_failure
 Pythaguhus: Hypotenuse? Wohl eher Hypothe-[wait=0.5].[wait=0.5].[wait=0.5].[wait=0.5]Loser
@@ -463,4 +463,8 @@ do Transition.transition_scene("res://scenes/Map/Map.tscn")
 
 ~ failure_transition
 do Transition.transition_scene("res://scenes/menu/main_menu.tscn")
+=> END
+
+~ end_transition
+do end_scene()
 => END

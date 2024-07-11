@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqwslcrnmpwgn"]
+
+[ext_resource type="Texture2D" uid="uid://dcdb603pgp40b" path="res://assets/menu_scene/end_screen.png" id="1_rg0h3"]
+[ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="2_8e12x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yaeb"]
+bg_color = Color(0, 0, 0, 0.756863)
+
+[node name="End" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rg0h3")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1030.0
+offset_top = -66.0
+offset_right = 1982.0
+offset_bottom = 1169.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1yaeb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 207.0
+offset_right = -65.145
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.905654, 1.02328)
+theme_override_fonts/normal_font = ExtResource("2_8e12x")
+theme_override_font_sizes/normal_font_size = 66
+text = "Ein Spiel von:
+	
+	Peter Pyshnyy
+	Ege Erdurak
+	Steve Lang
+	Jasmin Steckel
+	Jona Vorderbrügge
+	Sylvie Gnüchtel
+
+
+
+
+Danke fürs Spielen"
