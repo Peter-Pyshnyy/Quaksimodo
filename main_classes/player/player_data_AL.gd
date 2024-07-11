@@ -10,7 +10,7 @@ var shield_active = false
 enum POWER_UPS {MAP, FORK, BUCKET, TRIANGLE, FLIES, TOOTH, NONE}
 
 #active power-ups
-var heal = 2
+var heal = 0
 var shield = 0
 var tooth = 0
 

@@ -384,15 +384,3 @@ func _on_help_button_button_down():
 func _on_help_button_button_up():
 	$HelpButton.position.y -= 2
 	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
-
-
-
-
-func _on_button_pressed():
-	$Enemy.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	$Enemy.modulate = Color.WHITE
-	healthbar_enemy.health = 0
-	await get_tree().create_timer(0.75).timeout
-	MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
-	Transition.transition_scene("res://scenes/Map/Map.tscn")

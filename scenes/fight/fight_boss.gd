@@ -351,7 +351,7 @@ func load_enemy():
 	match current_level:
 		1:
 			$Background.texture = load("res://assets/fight_scene/background_animation_darker.png")
-			enemy_max_hp = 70 #made for presentation, change later
+			enemy_max_hp = 100 #made for presentation, change later
 			enemy_health = enemy_max_hp
 			enemy_damage = 10
 			boss = "fuchlid"
@@ -382,15 +382,3 @@ func _on_help_button_button_down():
 func _on_help_button_button_up():
 	$HelpButton.position.y -= 2
 	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
-
-
-func _on_button_pressed():
-	$Enemy.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	$Enemy.modulate = Color.WHITE
-	healthbar_enemy.health = 0
-	await get_tree().create_timer(0.75).timeout
-	MapAutoload.reset()
-	PlayerDataAl.next_level()
-	PlayerDataAl.health = PlayerDataAl.max_health
-	Transition.transition_scene("res://scenes/Map/Map.tscn")
