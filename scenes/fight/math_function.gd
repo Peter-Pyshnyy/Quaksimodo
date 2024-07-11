@@ -108,7 +108,7 @@ func _to_string(trimmed:bool = false):
 	#var temp = result.substr(3, result.length() - 3) #removes first " + 
 	result = regex.sub(result.substr(3, result.length() - 3), " - ", true)
 	
-	if(coefficients[highest_exp] == -1):
+	if(coefficients.has(highest_exp) && coefficients[highest_exp] == -1):
 		result = "-" + result
 	
 	# Replace "0.33333333333333" with "1⁄3"
