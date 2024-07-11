@@ -384,4 +384,5 @@ func _on_help_button_button_down():
 
 func _on_help_button_button_up():
 	$HelpButton.position.y -= 2
-	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
+	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),
+	"fragen_level_%s"%PlayerDataAl.current_level)
