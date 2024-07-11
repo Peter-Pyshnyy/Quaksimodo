@@ -22,6 +22,13 @@ Euler: Desto später es wird, desto schwerer wird es auch sein, bei Konflikten m
 Euler: Sag Bescheid, wenn ich dir irgendwas erklären soll!
 => fragen_level_2
 
+~ tutorial_level_3
+Euler: Was machst du denn jetzt noch hier??
+Euler: Es ist mitten in der Nacht. Du bist doch verrückt!
+Euler: Es wäre ein Wunder, wenn du die Nacht so spät noch überstehst.
+Euler: Ich werde dir natürlich weiter helfen, aber so langsam muss ich mich auch auf die Jagd begeben.
+=> fragen_level_3
+
 
 ~ fragen_level_1
 Euler: Bitte sag mir, was ich dir erklären soll!
@@ -39,8 +46,21 @@ Euler: Kann ich dir irgendwie weiterhelfen?
 - (Wiederholung) Lineare Funktionen =>< tutorial_lineareFunktionen
 - (Wiederholung) Quadratische Funktionen =>< tutorial_quadratischeFunktionen
 - Kubische Funktionen =>< tutorial_kubischeFunktionen
+- Änderungsrate =>< tutorial_aenderungsrate
 - Ich weiß, was ich zu tun habe! => END
 => fragen_level_2
+
+~ fragen_level_3
+Euler: Was kann ich für dich tun?
+- (Wiederholung) Wie gebe ich meine Antworten ein? =>< tutorial_input
+- (Wiederholung) Ableitungen =>< tutorial_ableitungen
+- (Wiederholung) Lineare Funktionen =>< tutorial_lineareFunktionen
+- (Wiederholung) Quadratische Funktionen =>< tutorial_quadratischeFunktionen
+- (Wiederholung) Kubische Funktionen =>< tutorial_kubischeFunktionen
+- Erweiterte Ableitungsregeln =>< tutorial_ableitungen2
+- Änderungsrate =>< tutorial_aenderungsrate
+- Ich weiß, was ich zu tun habe! => END
+=> fragen_level_3
 
 ~ tutorial_input
 Euler: Pass auf, dass du deine Antworten immer korrekt einträgst!
@@ -75,6 +95,64 @@ Euler: Erst multiplizierst du den Summanden mit dem Exponenten in der Ausgangsfu
 Euler: Das klingt vielleicht etwas kompliziert. Daher hier ein Beispiel:
 Euler: f(x) = 2x³ + 5x² + x + 15\nf'(x) = 6x² + 10x + 1\nf"(x) = 6x + 10
 => END
+
+~ tutorial_ableitungen2
+=>< tutorial_produktregel
+=>< tutorial_quotientenregel
+=>< tutorial_trigonometrische
+=>< tutorial_kettenregel
+=> abl_wiederholung
+
+
+~ tutorial_produktregel
+Euler: Sollten zwei verschiedene x miteinander multipliziert werden, kannst du sie nicht einfach wie gehabt Ableiten.
+Euler: 3x³ * 5x² sind abgeleitet nicht einfach 9x² * 10x.
+Euler: Die Formel, die du dir merken musst ist "g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)".
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nDu musst also beide einzeln ableiten, mit dem ursprünglichen Faktor multiplizieren und dann beide addieren.
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nNehmen wir wieder unsere 3x³ * 5x².
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\n3x³' = 6x² und 5x²' = 10x
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nAlso ist unsere Ableitung 3x³ * 10x + 6x² * 5x²
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nDas ganze können wir jetzt noch zusammenfassen und bekommen 30x⁴ + 30x⁴ = 60x⁴
+=> END
+
+~ tutorial_quotientenregel
+Euler: Die Quotientenregel ist noch komplizierter als die Produktregel.
+Euler: Die Formel lautet g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nGehen wir das in Ruhe ab.
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nNehmen wir (2x³)/(5x)
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nh(x)*g'(x) ist 5x * 6x²
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nh'(x)*g(x) ist 5 * 2x³
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nUnd zuletzt (h(x))² ist 25x²
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nAlso lautet unsere Formel (5x * 6x² - 5 * 2x³) / 25x²
+Euler: Und das macht 30x³-10x³/25x², also lautet die Ableitung 20x³/25x²
+=> END
+
+~ tutorial_trigonometrische
+Euler: Trigonometrische Ableitungen sind eigentlich ganz simpel.
+Euler: sin(x) -> cos(x) -> -sin(x) -> -cos(x) -> sin(x)
+Euler: Wenn du dir diesen Kreislauf merken kannst, sollten trigonometrische Ableitungen nie ein Problem sein.
+Euler: Du musst nur wissen, was du mit machst, wenn da mehr als x in der Klammer steht.
+=> END
+
+~ tutorial_kettenregel
+Euler: Sollte innerhalb einer Funktion eine andere Funktion vorkommen musst du die Kettenregel anwenden.
+Euler: So kannst du zum Beispiel sin(2x) ableiten.
+Euler: Im Grunde ist sie auch ganz einfach: g(h(x)) -> g'(h(x)) * h'(x)
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nNehmen wir unser Sinusbeispiel: sin(2x)
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nDie Ableitung vom Sinus ist der Cosinus, also ist g'(h(x)) = cos(2x)
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nUnd die Ableitung von 2x ist 2.
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nAlso ist sin(2x)' = 2cos(2x)
+Euler: Dieses Prinzip kann auf klassiche Klammern wie 2x(x² + 3x³) angewendet werden, aber auch zum Beispiel auf Exponentialfunktionen wie 2x^x
+=> END
+
+~ abl_wiederholung
+Euler: Soll ich die neuen Regeln nochmal wiederholen?
+- Nur die Produktregel =>< tutorial_produktregel
+- Nur die Quotientenregel =>< tutorial_quotientenregel
+- Nur die Trigonometrieregeln =>< tutorial_trigonometrische
+- Ja, alle bitte => tutorial_ableitungen2
+- Nein => END
+=> abl_wiederholung
 
 ~ tutorial_lineareFunktionen
 
@@ -202,6 +280,12 @@ Euler: Sie sind eigentlich nur Extreme, aber eine Ableitung tiefer.
 Euler: Extremstellen sind die Stellen, an denen die 1. Ableitung = 0 ist.
 Euler: Wendepunkte erhältst du, wenn du die Nullstellen der 2. Ableitung findest.
 => END
+
+~ tutorial_aenderungsrate
+Euler: Die Änderungsrate gibt an, wie schnell die Beschleunigung beschleunigt.
+Euler: Sie ist einfach der Wert der 2. Ableitung an der Stelle x
+=> END
+
 
 ~ storch_battle_start
 
