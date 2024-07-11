@@ -107,7 +107,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="Answer2" type="LineEdit" parent="."]
 offset_left = 414.0
@@ -119,7 +119,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="Answer3" type="LineEdit" parent="."]
 offset_left = 795.0
@@ -131,7 +131,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="OptionButton" type="OptionButton" parent="."]
 offset_left = 40.0
@@ -168,7 +168,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="Answer5" type="LineEdit" parent="."]
 offset_left = 414.0
@@ -180,7 +180,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="OptionButton4" type="OptionButton" parent="."]
 offset_left = 40.0

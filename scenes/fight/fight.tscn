@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="5_qfwxr"]
 [ext_resource type="Texture2D" uid="uid://dwtpqnatu4gi" path="res://assets/fight_scene/attack_btn_inverted.png" id="6_dx4cd"]
 [ext_resource type="Texture2D" uid="uid://eeec4ttvqsvn" path="res://assets/fight_scene/froschfigur.png" id="6_hen0n"]
-[ext_resource type="Texture2D" uid="uid://h03mkgyusxhf" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
-[ext_resource type="Texture2D" uid="uid://di8dx14sv2j5q" path="res://assets/fight_scene/enemy_sheet_2.png" id="8_8favx"]
+[ext_resource type="Texture2D" uid="uid://b0hv501rel7ts" path="res://assets/fight_scene/help_btn.png" id="7_vh5qi"]
+[ext_resource type="Texture2D" uid="uid://di8dx14sv2j5q" path="res://assets/fight_scene/enemy_sheet_bieber.png" id="8_8favx"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="8_624dc"]
-[ext_resource type="Texture2D" uid="uid://g50akol0mlsl" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
+[ext_resource type="Texture2D" uid="uid://bni2nictmlkac" path="res://assets/fight_scene/health_bars.png" id="10_17p3r"]
 [ext_resource type="Texture2D" uid="uid://dhml3dcoji4rr" path="res://assets/powerups/item_3.png" id="12_5xbqf"]
 [ext_resource type="FontFile" uid="uid://3b6n0r1c7mkq" path="res://assets/map_scene/VCR_OSD_MONO_1.001.ttf" id="13_snnd0"]
 [ext_resource type="Texture2D" uid="uid://c6vgx1sobgtsn" path="res://assets/powerups/item_4.png" id="14_0dmpq"]
@@ -241,7 +241,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="Answer2" type="LineEdit" parent="."]
 offset_left = 414.0
@@ -253,7 +253,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="Answer3" type="LineEdit" parent="."]
 offset_left = 795.0
@@ -265,7 +265,7 @@ theme_override_colors/font_placeholder_color = Color(0.764706, 0.803922, 0.75686
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxw6u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1kkv")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_s456w")
-placeholder_text = "Solution"
+placeholder_text = "Lösung"
 
 [node name="OptionButton" type="OptionButton" parent="."]
 offset_left = 40.0
