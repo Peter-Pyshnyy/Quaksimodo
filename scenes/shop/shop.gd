@@ -29,7 +29,7 @@ const DESCRIPTIONS = {
 	PlayerDataAl.POWER_UPS.FLIES:
 		"Effekt: Frosch heilt sicht",
 	PlayerDataAl.POWER_UPS.TOOTH:
-		"Effekt: beantwortet alle aktuelle Fragen (außer bei Kisten)",
+		"Effekt: zieht dem Gegner die Hälfte seiner HP ab",
 	PlayerDataAl.POWER_UPS.NONE:
 		""
 } 
