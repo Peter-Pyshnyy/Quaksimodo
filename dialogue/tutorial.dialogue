@@ -1,12 +1,158 @@
 ~ tutorial_start
 Euler: Was soll ich heute erklären?
 
-- Lineare Funktionen => tutorial_lineareFunktionen
+- Lineare Funktionen =>< tutorial_lineareFunktionen
 - Quadratische Funktionen => tutorial_quadratischeFunktionen
-- Exponentialfunktionen => tutorial_exponentielleFunktionen
 - Nichts => END
 => END
 
+
+~ tutorial_level_1
+Euler: Hallo Quaksimodo. Ich sehe, du hast dich wieder auf den Weg über den Teich gemacht!
+Euler: Pass bitte auf dich auf. Da draußen gibt es viele Tiere, die dich als Futter sehen.
+Euler: Ich möchte dir dabei helfen, dich durchzuschlagen. 
+=>< fragen_level_1
+Euler: Viel Glück!
+=> END
+
+~ tutorial_level_2
+Euler: Guten Abend Quaksimodo. Du bist ja immernoch unterwegs!
+Euler: So spät am Abend sind nurnoch die hungrigsten Tiere hier draußen.
+Euler: Desto später es wird, desto schwerer wird es auch sein, bei Konflikten mit deinen Froschschenkeln intakt davon zu kommen.
+Euler: Sag Bescheid, wenn ich dir irgendwas erklären soll!
+=> fragen_level_2
+
+~ tutorial_level_3
+Euler: Was machst du denn jetzt noch hier??
+Euler: Es ist mitten in der Nacht. Du bist doch verrückt!
+Euler: Es wäre ein Wunder, wenn du die Nacht so spät noch überstehst.
+Euler: Ich werde dir natürlich weiter helfen, aber so langsam muss ich mich auch auf die Jagd begeben.
+=> fragen_level_3
+
+
+~ fragen_level_1
+Euler: Bitte sag mir, was ich dir erklären soll!
+- Wie gebe ich meine Antworten ein? =>< tutorial_input
+- Ableitungen =>< tutorial_ableitungen
+- Lineare Funktionen =>< tutorial_lineareFunktionen
+- Quadratische Funktionen =>< tutorial_quadratischeFunktionen
+- Ich weiß, was ich zu tun habe! => END
+=> fragen_level_1
+
+~ fragen_level_2
+Euler: Kann ich dir irgendwie weiterhelfen?
+- (Wiederholung) Wie gebe ich meine Antworten ein? =>< tutorial_input
+- (Wiederholung) Ableitungen =>< tutorial_ableitungen
+- (Wiederholung) Lineare Funktionen =>< tutorial_lineareFunktionen
+- (Wiederholung) Quadratische Funktionen =>< tutorial_quadratischeFunktionen
+- Kubische Funktionen =>< tutorial_kubischeFunktionen
+- Änderungsrate =>< tutorial_aenderungsrate
+- Ich weiß, was ich zu tun habe! => END
+=> fragen_level_2
+
+~ fragen_level_3
+Euler: Was kann ich für dich tun?
+- (Wiederholung) Wie gebe ich meine Antworten ein? =>< tutorial_input
+- (Wiederholung) Ableitungen =>< tutorial_ableitungen
+- (Wiederholung) Lineare Funktionen =>< tutorial_lineareFunktionen
+- (Wiederholung) Quadratische Funktionen =>< tutorial_quadratischeFunktionen
+- (Wiederholung) Kubische Funktionen =>< tutorial_kubischeFunktionen
+- Erweiterte Ableitungsregeln =>< tutorial_ableitungen2
+- Änderungsrate =>< tutorial_aenderungsrate
+- Ich weiß, was ich zu tun habe! => END
+=> fragen_level_3
+
+~ tutorial_input
+Euler: Pass auf, dass du deine Antworten immer korrekt einträgst!
+Euler: Die anderen Tiere sind schlau, aber wenn du nicht genau das schreibst, was sie erwarten, können sie schnell ungeduldig werden
+Euler: Also pass jetzt genau auf!
+Euler: Grundlegend musst du naürlich auf die klassischen Reihenfolgengesetzt achten, wenn du Klammern setzt.
+Euler: Punkt vor Strich und der ganze Rest.
+Euler: Wenn du multiplizierst musst du [b]immer[/b] ein * setzen!
+Euler: Selbst wenn du eine Funktionen ansonsten wie "12x" schreiben würdest, hier heißt es immer "12 * x"
+Euler: Potenzen werden immer durch ein "^" ausgedrückt.
+Euler: "x²" musst du also als "x^2" und "x³" als "x^3" schreiben.
+Euler: Brüche werden als "a/b" geschrieben. "0.5" kannst du dadurch auch als "1/2" darstellen.
+Euler: Um den Bruch selbst musst du keine Klammer setzen. Sollte jedoch eine kompliziertere Funktion unter dem Bruchstrich stehen, musst du diese in eine Klammer fassen.
+Euler: Alles bedacht musst du "(x³ - 4) / (x⁵ - 1)" also als "(x^3 - 4)/(x^5 - 1)" darstellen.
+Euler: Sollte es mehrere Antworten geben, wie bei Nullstellen, so musst du sie mit einem Komma trennen.
+Euler: Zwei Nullstellen, bei -1 und 1 zum Beispiel, gibst du als "-1, 1" an.
+=> END
+
+~ tutorial_ableitungen
+Euler: Ableitungen sind eigentlich recht simpel. Du musst nur wissen, wie du ihre Regeln anwendest.
+Euler: Wenn du eine Funktion ableitest erhältst du dessen Anstieg.
+Euler: Der Anstieg der Funktion 12x ist 12. Daher ist dies die Ableitung.
+Euler: Für alle nicht-linearen Funktionen ist der Anstieg aber natürlich an den verschiedenen Werten unterschiedlich.
+Euler: Daher ist die Ableitung selbst auch eine Funktion. Sie wird als f'(x) geschrieben.
+Euler: Dabei bestimmt die Anzahl der Striche, um die wievielte Ableitung es sich handelt.
+Euler: f"(x) ist einfach die Ableitung von f'(x).
+Euler: Aber wie leitet man denn jetzt überhaupt ab?
+Euler: Wie du an der linearen Ableitung gesehen hast nimmst du einfach ein x weg. Einzelne Summanden ohne x verschwinden komplett.
+Euler: Schließlich hat die Verschiebung entlang der y-Achse keinen Einfluss auf den Anstieg.
+Euler: Hat das x jedoch einen Exponenten musst du etwas mehr tun.
+Euler: Erst multiplizierst du den Summanden mit dem Exponenten in der Ausgangsfunktion. Dann subtrahierst du 1 von dem Exponenten.
+Euler: Das klingt vielleicht etwas kompliziert. Daher hier ein Beispiel:
+Euler: f(x) = 2x³ + 5x² + x + 15\nf'(x) = 6x² + 10x + 1\nf"(x) = 6x + 10
+=> END
+
+~ tutorial_ableitungen2
+=>< tutorial_produktregel
+=>< tutorial_quotientenregel
+=>< tutorial_trigonometrische
+=>< tutorial_kettenregel
+=> abl_wiederholung
+
+
+~ tutorial_produktregel
+Euler: Sollten zwei verschiedene x miteinander multipliziert werden, kannst du sie nicht einfach wie gehabt Ableiten.
+Euler: 3x³ * 5x² sind abgeleitet nicht einfach 9x² * 10x.
+Euler: Die Formel, die du dir merken musst ist "g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)".
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nDu musst also beide einzeln ableiten, mit dem ursprünglichen Faktor multiplizieren und dann beide addieren.
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nNehmen wir wieder unsere 3x³ * 5x².
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\n3x³' = 6x² und 5x²' = 10x
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nAlso ist unsere Ableitung 3x³ * 10x + 6x² * 5x²
+Euler: g(x)*h(x) wird g'(x)*h(x) + g(x)*h'(x)\nDas ganze können wir jetzt noch zusammenfassen und bekommen 30x⁴ + 30x⁴ = 60x⁴
+=> END
+
+~ tutorial_quotientenregel
+Euler: Die Quotientenregel ist noch komplizierter als die Produktregel.
+Euler: Die Formel lautet g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nGehen wir das in Ruhe ab.
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nNehmen wir (2x³)/(5x)
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nh(x)*g'(x) ist 5x * 6x²
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nh'(x)*g(x) ist 5 * 2x³
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nUnd zuletzt (h(x))² ist 25x²
+Euler: g(x)/h(x) -> (h(x)*g'(x)-g(x)*h(x))/(h(x))²\nAlso lautet unsere Formel (5x * 6x² - 5 * 2x³) / 25x²
+Euler: Und das macht 30x³-10x³/25x², also lautet die Ableitung 20x³/25x²
+=> END
+
+~ tutorial_trigonometrische
+Euler: Trigonometrische Ableitungen sind eigentlich ganz simpel.
+Euler: sin(x) -> cos(x) -> -sin(x) -> -cos(x) -> sin(x)
+Euler: Wenn du dir diesen Kreislauf merken kannst, sollten trigonometrische Ableitungen nie ein Problem sein.
+Euler: Du musst nur wissen, was du mit machst, wenn da mehr als x in der Klammer steht.
+=> END
+
+~ tutorial_kettenregel
+Euler: Sollte innerhalb einer Funktion eine andere Funktion vorkommen musst du die Kettenregel anwenden.
+Euler: So kannst du zum Beispiel sin(2x) ableiten.
+Euler: Im Grunde ist sie auch ganz einfach: g(h(x)) -> g'(h(x)) * h'(x)
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nNehmen wir unser Sinusbeispiel: sin(2x)
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nDie Ableitung vom Sinus ist der Cosinus, also ist g'(h(x)) = cos(2x)
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nUnd die Ableitung von 2x ist 2.
+Euler: g(h(x)) -> g'(h(x)) * h'(x)\nAlso ist sin(2x)' = 2cos(2x)
+Euler: Dieses Prinzip kann auf klassiche Klammern wie 2x(x² + 3x³) angewendet werden, aber auch zum Beispiel auf Exponentialfunktionen wie 2x^x
+=> END
+
+~ abl_wiederholung
+Euler: Soll ich die neuen Regeln nochmal wiederholen?
+- Nur die Produktregel =>< tutorial_produktregel
+- Nur die Quotientenregel =>< tutorial_quotientenregel
+- Nur die Trigonometrieregeln =>< tutorial_trigonometrische
+- Ja, alle bitte => tutorial_ableitungen2
+- Nein => END
+=> abl_wiederholung
 
 ~ tutorial_lineareFunktionen
 
@@ -52,13 +198,40 @@ Euler: (x+d)²+bx+c\n Die Funktion vor dir ist f(x) = (x+1)²
 do hide_graphic()
 => quadratisch_weiter
 
+~ tutorial_kubischeFunktionen
+Euler: Eine kubische Funktion ist eine Funktion, dessen größter Exponent 3 ist.
+Euler: Also besteht eine Kubische Funktion aus der Form a * x³ + b * x² + c * x + d.
+do show_graphic("kubisch")
+Euler: ax³+bx²+cx+d\nier siehst du die kubische Funktion x³.
+Euler: ax³+bx²+cx+d\nSie wird nicht verschoben und hat daher eine Plateaustelle an x=0.
+do show_graphic("kubisch1")
+Euler: ax³+bx²+cx+d\nUnd hier ist die Funktion x³+x².
+Euler: ax³+bx²+cx+d\nSie hat zwei Extremstellen, einen [b]lokales Maximum[/b], gefolgt von einem [b]lokalen Minimum[/b].
+Euler: ax³+bx²+cx+d\nZwischen ihnen befindet sich ein [b]Wendepunkt[/b] an welchem der Anstieg aus vom Wachsen ins Fallen wechselt.
+Euler: Um beide zu errechnen musst du natürlich Ableitungen verwenden.
+do hide_graphic()
+=> kubisch_weiter
+
 
 ~ quadratisch_weiter
 Euler: Soll ich dir noch etwas zu quadratischen Funktionen erklären?
-- Wie berechne ich die Nullstellen? => tutorial_nullstellen
-- Wie finde ich Scheitelpunkte? => tutorial_scheitelpunkte
+- Wie berechne ich die Nullstellen? 
+	=>< tutorial_nullstellen
+- Wie finde ich Scheitelpunkte? 
+	=>< tutorial_scheitelpunkte
 - Kannst du das alles nochmal wiederholen? => tutorial_quadratischeFunktionen
 - Nein => END
+=> quadratisch_weiter
+
+~ kubisch_weiter
+Euler: Soll ich dir noch etwas zu kubischen Funktionen erklären?
+- Wie berechne ich Nullstellen?
+	=>< tutorial_nullstellen
+	=>< tutorial_nullstellen_kubisch
+- Wie finde ich Wendepunkte?
+	=>< tutorial_wendepunkte
+- Nein => END
+=> kubisch_weiter
 
 ~ tutorial_nullstellen
 Euler: Nullstellen errechnen ist ganz einfach!
@@ -74,9 +247,21 @@ Euler: Du siehst, dass zwei Lösungen herauskommen: 3+2 und 3-2
 Euler: Die Funktion schneidet die x-Achse also an x=1 und x=5
 Euler: Sollte unter der Wurzel 0 herauskommen gäbe es nur eine Nullstelle. 
 Euler: Pass auf, dass du immer alle Nullstellen angibst!
-=> quadratisch_weiter
+=> END
+
+~ tutorial_nullstellen_kubisch
+Euler: Es ist möglich, dass es mehr als zwei Nullstellen geben kann.
+Euler: In dem Fall musst du versuchen, die Funktion in eine Quadratische umzustellen, damit du die pq-Formel anwenden kannst.
+Euler: Ein einfaches Beispiel wäre "x³+5x²+x".
+Euler: Wir können x aus der Funktion heraus ziehen.\nAus x³+5x²+x wird x(x²+5x+1).
+Euler: x(x²+5x+1)\nJetzt wissen wir, dass 0 eine Nullstelle sein muss, denn dann wird das x vor der Klammer 0 und damit der Rest auch.
+Euler: x(x²+5x+1)\nIn der Klammer können wir dann einfach die pq-Formel anwenden: x = -p/2 +/- √((p/2)²-q)
+=> END
 
 ~ tutorial_scheitelpunkte
+Euler: Scheitelpunkte werden unterschieden in [b]Maxima[/b] und [b]Minima[/b]
+Euler: Ein Maximum ist die Stelle, an der der Anstieg vom Positiven in das Negative geht.
+Euler: Ein Minimum ist das genaue Gegenteil.
 Euler: Um einen Scheitelpunkt zu finden, musst du zuerst die Ableitung der Funktion bestimmen.
 Euler: Das tust du indem du ausschließlich jedes x in der Funktion nimmst und durch deren Faktoren ersetzt.
 Euler: Aus 5x, zum Beispiel, wird 5. Aus 5x + 3 wird ebenfalls 5.
@@ -87,45 +272,19 @@ Euler: An einem Scheitelpunkt ist der Anstieg der Funktion 0, also suchen wir na
 Euler: Die Ableitung der quadratischen Funktion f(x) = 3x² + 5x - 6 ist f'(x) = 6x + 5
 Euler: Die Nullstelle von f'(x) = 6x + 5 liegt bei -(5/6)
 Euler: Also ist der Scheitelpunkt von f(x) 3x² + 5x - 6 an der Stelle -(5/6)
-=> quadratisch_weiter
+=> END
 
-~ tutorial_exponentielleFunktionen
+~ tutorial_wendepunkte
+Euler: Wendepunkte sind eigentlich ganz leicht.
+Euler: Sie sind eigentlich nur Extreme, aber eine Ableitung tiefer.
+Euler: Extremstellen sind die Stellen, an denen die 1. Ableitung = 0 ist.
+Euler: Wendepunkte erhältst du, wenn du die Nullstellen der 2. Ableitung findest.
+=> END
 
-Euler: Exponentialfunktionen mag ich am liebsten!
-Euler: Aber die sind echt kompliziert.
-Euler: Ganz grob sehen sie immer aus wie a * b^x + c
-do show_graphic("exponentiell")
-Euler: a * b^x + c\n1^x... Huch! Nanu?
-Euler: a * b^x + c\n1^x ist immer 1. Also eignet sie sich nicht als Wert für b!
-Euler: a * b^x + c\nNehmen wir stattdessen erstmal 2^x.
-do show_graphic("exponentiell1")
-Euler: a * b^x + c\nWie du siehst wird der Anstieg konstant immer größer. Der Wert steigt [b]exponentiell[/b]
-Euler: a * b^x + c\nEgal welchen Wert du für b einsetzt, der Graph wird bei f(0) immer durch 1 gehen, da b^0 immer 1 ist.
-Euler: a * b^x + c\nDa diese Funktion immer ansteigt, egal wie groß x wird nennt man sie auch [b]monoton steigend[/b].
-do show_graphic("exponentiell2")
-Euler: a * b^x + c\n(1/2)^x hingegen ist [b]monoton fallend[/b]
-Euler: a * b^x + c\nAuch wenn es vielleicht von weit weg so aussieht, wird der Graph 0 nie erreichen, jedoch stehst kleiner sein als zuvor.
-do show_graphic("exponentiell3")
-Euler: a * b^x + c\nNur wenn a [b]oder[/b] b negativ sind fällt der Graph wie hier unter 0.
-Euler: a * b^x + c\nEr nähert sich immernoch 0 an, jedoch jetzt aus dem Negativen. Jetzt ist auch er [b]monoton steigend[/b]
-do show_graphic("exponentiell4")
-Euler: a * b^x + c\nUnd wie du es dir mit Sicherheit schon denken konntest, -2^x fällt exponentiell schneller in das Negative. Auch es ist [b]monoton fallend[/b]
-do hide_graphic()
-Euler: Wusstest du, dass ich meine eigene Funktion habe?
-Euler: Die Euler Funktion!
-do show_graphic("efunktion")
-Euler: Hier ist sie! e^x: Die natürliche Exponentialfunktion.
-Euler: Das lustigste an dieser Funktion ist, dass sie ihre eigene Ableitung ist.
-Euler: Das ist richtig! Die Ableitung von e^x ist e^x.
-Euler: Was ist e?
-Euler: Natürlich [speed=10]2.71828182845904523536028747135266249775724709369995957496696762772407663035354759457138217852516642742746639193200305992181741359662904357290033429526059563073813232862794349076323382988075319525101901157383418793070215408914993488416750924476146066808226480016847741185374234544243710753907774499206955170276183860626133138458300075204493382656029760673711320070932870912744374704723069697720931014169283681902551510865746 [next]
-Euler: [speed=10]37721112523897844250569536967707854499699679468644549059879316368892300987931277361782154249992295763514822082698951936680331825288693984964651058209392398294887933203625094431173012381970684161403970198376793206832823764648042953118023287825098194558153017567173613320698112509961818815930416903515988885193458072738667385894228792284998920868058257492796104841984443634632449684875602336248270419786232090021609902353043699418491 [next]
-Euler: [speed=10]46314093431738143640546253152096183690888707016768396424378140592714563549061303107208510383750510115747704171898610687396965521267154688957035035402123407849819334321068170121005627880235193033224745015853904730419957777093503660416997329725088687696640355570716226844716256079882651787134195124665201030592123667719432527867539855894489697096409754591856956380236370162112047742722836489613422516445078182442352948636372141740238 [next]
-Euler: Das ist natürlich lange nicht alles. e ist schleißlich irrational, ähnlich wie pi.
-do hide_graphic()
-Euler: Soll ich das alles nochmal erklären?
-- Ja => tutorial_exponentielleFunktionen
-- Nein => END
+~ tutorial_aenderungsrate
+Euler: Die Änderungsrate gibt an, wie schnell die Beschleunigung beschleunigt.
+Euler: Sie ist einfach der Wert der 2. Ableitung an der Stelle x
+=> END
 
 
 ~ storch_battle_start

@@ -47,8 +47,6 @@ func _ready():
 		
 	else:
 		generate_map()
-		if PlayerDataAl.current_level == 1:
-			DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
 	
 	if PlayerDataAl.passives_dict[PlayerDataAl.POWER_UPS.MAP]:
 		draw_map()
@@ -60,6 +58,11 @@ func _ready():
 
 #i = map size - 2
 func generate_map(i: int = 7):
+	
+	#starts tutorial dialogue for the current level
+	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),
+			"tutorial_level_%s" %PlayerDataAl.current_level)
+	
 	#creates the first square with coords (0,0) of type PATH
 	var start = Square.new()
 	start.visited = true
