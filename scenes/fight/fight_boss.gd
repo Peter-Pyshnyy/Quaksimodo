@@ -195,6 +195,7 @@ func _on_attack_button_button_up():
 	option2.modulate = Color.WHITE
 	option3.modulate = Color.WHITE
 	if(enemy_health <= 0):
+		PlayerDataAl.money += 3 + current_level
 		MapAutoload.reset()
 		PlayerDataAl.next_level()
 		PlayerDataAl.health = PlayerDataAl.max_health

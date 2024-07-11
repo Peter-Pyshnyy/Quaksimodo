@@ -3,7 +3,7 @@ extends Node
 var current_level = 1
 var health = 100
 var max_health = 100
-var money = 15
+var money = 5
 var player_damage = 10
 var shield_active = false
 
