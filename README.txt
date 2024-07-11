@@ -1,1 +1,1 @@
-Please use the "Dialogue Manager" addon by Nathan Hoad
+Uses the "Dialogue Manager" addon by Nathan Hoad
