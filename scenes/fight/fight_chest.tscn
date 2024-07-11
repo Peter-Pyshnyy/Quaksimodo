@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cq8gq236tsp2d" path="res://assets/fight_scene/input_chest.png" id="3_5gkqn"]
 [ext_resource type="Texture2D" uid="uid://cp1aayx8j0p21" path="res://assets/fight_scene/attack_btn.png" id="4_jcyni"]
 [ext_resource type="Texture2D" uid="uid://dwtpqnatu4gi" path="res://assets/fight_scene/attack_btn_inverted.png" id="5_3c25r"]
-[ext_resource type="Texture2D" uid="uid://h03mkgyusxhf" path="res://assets/fight_scene/help_btn.png" id="6_fesqu"]
+[ext_resource type="Texture2D" uid="uid://b0hv501rel7ts" path="res://assets/fight_scene/help_btn.png" id="6_fesqu"]
 [ext_resource type="Texture2D" uid="uid://b13a3tb4nxwkm" path="res://assets/fight_scene/help_btn_inverted.png" id="7_78qh5"]
 [ext_resource type="Texture2D" uid="uid://do31lui8yy8th" path="res://assets/fight_scene/chest.png" id="8_lqj02"]
 [ext_resource type="Texture2D" uid="uid://bsd55e3hf1yhd" path="res://assets/fight_scene/chest_open.png" id="9_krpgv"]

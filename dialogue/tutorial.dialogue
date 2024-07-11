@@ -78,6 +78,7 @@ Euler: Um den Bruch selbst musst du keine Klammer setzen. Sollte jedoch eine kom
 Euler: Alles bedacht musst du "(x³ - 4) / (x⁵ - 1)" also als "(x^3 - 4)/(x^5 - 1)" darstellen.
 Euler: Sollte es mehrere Antworten geben, wie bei Nullstellen, so musst du sie mit einem Komma trennen.
 Euler: Zwei Nullstellen, bei -1 und 1 zum Beispiel, gibst du als "-1, 1" an.
+Euler: Wenn du auf das Auge neben dem Eingabefeld klickst, kannst du die Formatierung deiner Funktion überprüfen.
 => END
 
 ~ tutorial_ableitungen
