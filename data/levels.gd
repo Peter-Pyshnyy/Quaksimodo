@@ -5,6 +5,16 @@ const LevelDatabase = {
 		"enemy_health" : 40, #made for presentation, change later
 		"enemy_damage" : 15, #made for presentation, change later
 		
+	}, 
+	"2" : {
+		"enemy_health" : 50, #made for presentation, change later
+		"enemy_damage" : 17, #made for presentation, change later
+		
+	}, 
+	"3" : {
+		"enemy_health" : 60, #made for presentation, change later
+		"enemy_damage" : 20, #made for presentation, change later
+		
 	} 
 }
 const QuestionDatabase = {
