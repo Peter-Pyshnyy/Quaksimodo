@@ -343,3 +343,93 @@ func _on_help_button_button_down():
 func _on_help_button_button_up():
 	$HelpButton.position.y -= 2
 	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"tutorial_start")
+
+
+func _on_btn_a_1_button_down():
+	var input = $Answer.text
+	if input == "": return
+	if question.fn_type in question.enum2str_comp.keys():
+		var parser:MFunc_comp = MFunc_comp.new()
+		var type = question.fn_type
+		$Answer/Label.visible = true
+		$Answer/Label.text = parser.parse_polynomial_comp(question.enum2str_comp[type], input).to_string()
+	else:
+		var parser:MFunc = MFunc.new()
+		$Answer/Label.visible = true
+		$Answer/Label.text = parser.parse_polynomial(input).to_string()
+
+
+func _on_btn_a_1_button_up():
+	$Answer/Label.visible = false
+
+
+func _on_btn_a_2_button_down():
+	var input = $Answer2.text
+	if input == "": return
+	if question.fn_type in question.enum2str_comp.keys():
+		var parser:MFunc_comp = MFunc_comp.new()
+		var type = question.fn_type
+		$Answer2/Label.visible = true
+		$Answer2/Label.text = parser.parse_polynomial_comp(question.enum2str_comp[type], input).to_string()
+	else:
+		var parser:MFunc = MFunc.new()
+		$Answer2/Label.visible = true
+		$Answer2/Label.text = parser.parse_polynomial(input).to_string()
+
+
+func _on_btn_a_2_button_up():
+	$Answer2/Label.visible = false
+
+
+func _on_btn_a_3_button_down():
+	var input = $Answer3.text
+	if input == "": return
+	if question.fn_type in question.enum2str_comp.keys():
+		var parser:MFunc_comp = MFunc_comp.new()
+		var type = question.fn_type
+		$Answer3/Label.visible = true
+		$Answer3/Label.text = parser.parse_polynomial_comp(question.enum2str_comp[type], input).to_string()
+	else:
+		var parser:MFunc = MFunc.new()
+		$Answer3/Label.visible = true
+		$Answer3/Label.text = parser.parse_polynomial(input).to_string()
+
+
+func _on_btn_a_3_button_up():
+	$Answer3/Label.visible = false
+
+
+func _on_btn_a_4_button_down():
+	var input = $Answer4.text
+	if input == "": return
+	if question.fn_type in question.enum2str_comp.keys():
+		var parser:MFunc_comp = MFunc_comp.new()
+		var type = question.fn_type
+		$Answer4/Label.visible = true
+		$Answer4/Label.text = parser.parse_polynomial_comp(question.enum2str_comp[type], input).to_string()
+	else:
+		var parser:MFunc = MFunc.new()
+		$Answer4/Label.visible = true
+		$Answer4/Label.text = parser.parse_polynomial(input).to_string()
+
+
+func _on_btn_a_4_button_up():
+	$Answer4/Label.visible = false
+
+
+func _on_btn_a_5_button_down():
+	var input = $Answer5.text
+	if input == "": return
+	if question.fn_type in question.enum2str_comp.keys():
+		var parser:MFunc_comp = MFunc_comp.new()
+		var type = question.fn_type
+		$Answer5/Label.visible = true
+		$Answer5/Label.text = parser.parse_polynomial_comp(question.enum2str_comp[type], input).to_string()
+	else:
+		var parser:MFunc = MFunc.new()
+		$Answer5/Label.visible = true
+		$Answer5/Label.text = parser.parse_polynomial(input).to_string()
+
+
+func _on_btn_a_5_button_up():
+	$Answer5/Label.visible = false
