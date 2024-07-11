@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bceuth2nasm28"]
+[gd_scene load_steps=35 format=3 uid="uid://bceuth2nasm28"]
 
 [ext_resource type="Script" path="res://scenes/fight/fight_boss.gd" id="1_y4g6u"]
 [ext_resource type="Texture2D" uid="uid://chjpy7axjwi8l" path="res://assets/fight_scene/background_animation_darker.png" id="2_y78jw"]
@@ -114,6 +114,12 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrq5n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2t4tr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl7bm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ppcy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b64lt"]
 
 [node name="Fight" type="Node2D"]
 script = ExtResource("1_y4g6u")
@@ -378,6 +384,15 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_hrq5n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2t4tr")
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="."]
+offset_left = 1079.0
+offset_top = 6.0
+offset_right = 1141.0
+offset_bottom = 38.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fl7bm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7ppcy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b64lt")
+
 [connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_up" from="AttackButton" to="." method="_on_attack_button_button_up"]
 [connection signal="button_down" from="HelpButton" to="." method="_on_help_button_button_down"]
@@ -394,3 +409,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="mouse_entered" from="Item5/btn_tooth" to="." method="_on_btn_tooth_mouse_entered"]
 [connection signal="mouse_exited" from="Item5/btn_tooth" to="." method="_on_btn_tooth_mouse_exited"]
 [connection signal="pressed" from="Item5/btn_tooth" to="." method="_on_btn_tooth_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
