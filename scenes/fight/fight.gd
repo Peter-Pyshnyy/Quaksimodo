@@ -19,6 +19,7 @@ var print_inputs = [$Question, $Question2, $Question3]
 var option_inputs = [option1,option2,option3]
 var question_lbls = [lbl_question1, lbl_question2, lbl_question3]
 
+var enemy = "euler"
 var rng = RandomNumberGenerator.new()
 var enemy_health
 var enemy_damage
@@ -193,11 +194,12 @@ func _on_attack_button_button_up():
 	option3.modulate = Color.WHITE
 	if(enemy_health <= 0):
 		MapAutoload.active_sqr.roomType = Square.ROOMS.PATH
-		Transition.transition_scene("res://scenes/Map/Map.tscn")
+		DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"%s_battle_victory" %enemy)
+		
 	elif(frog_health <= 0):
 		MapAutoload.reset()
 		PlayerDataAl.reset()
-		Transition.transition_scene("res://scenes/menu/main_menu.tscn")
+		DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"%s_battle_failure" %enemy)
 	else:
 		PlayerDataAl.shield_active = false
 		gen_new_questions()
@@ -345,7 +347,17 @@ func _on_btn_tooth_pressed():
 			Transition.transition_scene("res://scenes/Map/Map.tscn")
 	
 func load_enemy():
-	var path = "res://assets/fight_scene/enemy_sheet_" + str(rng.randi_range(1,3)) + ".png"
+	match rng.randi_range(1,3):
+		1:
+			enemy = "storch"
+		2:
+			enemy = "bieber"
+		3:
+			enemy = "igel"
+		_:
+			enemy = "euler"
+	var path = "res://assets/fight_scene/enemy_sheet_%s.png" %enemy
+	DialogueManager.show_dialogue_balloon(load("res://dialogue/tutorial.dialogue"),"%s_battle_start" %enemy)
 	$Enemy.texture = load(path)
 	enemy_max_hp = Levels.LevelDatabase[str(current_level)].enemy_health 
 	enemy_damage = Levels.LevelDatabase[str(current_level)].enemy_damage
