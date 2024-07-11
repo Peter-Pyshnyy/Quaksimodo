@@ -3,7 +3,7 @@ class_name Levels
 const LevelDatabase = {
 	"1" : {
 		"enemy_health" : 40, #made for presentation, change later
-		"enemy_damage" : 5,
+		"enemy_damage" : 15, #made for presentation, change later
 		
 	} 
 }
